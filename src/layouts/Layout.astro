@@ -1,0 +1,43 @@
+---
+import "~/styles/global.css";
+import Nav from "~/components/Nav.astro";
+import Footer from "~/components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  current?: string;
+  /** Set to false on pages where the marketing nav/footer would feel out of
+   *  place (e.g. the auth pages). */
+  chrome?: boolean;
+}
+
+const {
+  title = "qwriter — AI copywriter that knows your customer",
+  description = "Scan a customer's site, then write copy grounded in their real content. Stop shipping generic AI output.",
+  current,
+  chrome = true,
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    {chrome && <Nav current={current} />}
+    <main>
+      <slot />
+    </main>
+    {chrome && <Footer />}
+  </body>
+</html>

@@ -1,0 +1,100 @@
+---
+import Layout from "~/layouts/Layout.astro";
+---
+<Layout current="sources" title="Sources — qwriter's differentiator">
+
+  <section style="padding: 96px 32px 48px;">
+    <div class="qw-section">
+      <div class="qw-eyebrow qw-eyebrow-accent">· SOURCES · THE WHOLE POINT</div>
+      <h1 class="qw-h-display" style="margin-top: 14px; max-width: 1040px;">
+        Every generation footed with <span style="color: var(--accent); font-style: italic;">where it came from.</span>
+      </h1>
+      <p class="qw-body" style="max-width: 720px; margin-top: 24px; font-size: 19px;">
+        Most AI writing tools take a prompt and produce text. qwriter takes a <em>URL</em> first.
+        We scan the page in under a second, store the extracted markdown plus metadata, and let
+        you check which pages should ground each generation. The result: copy that references
+        what's actually on your customer's site.
+      </p>
+    </div>
+  </section>
+
+  {/* THE 3-STEP DIAGRAM */}
+  <section style="padding: 64px 32px;">
+    <div class="qw-section">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch;">
+        <div style="background: var(--white); border: 1px solid var(--rule); border-radius: 16px; padding: 28px;">
+          <div class="qw-mono" style="font-size: 56px; font-weight: 600; color: var(--accent); letter-spacing: -0.04em;">01.</div>
+          <h2 class="qw-h-2" style="margin-top: 4px;">Paste a URL</h2>
+          <p style="margin-top: 8px; color: var(--ink-3); font-size: 15px;">crawlcrawl.com fetches the page, extracts clean markdown, signals, and JSON-LD in ~600 ms.</p>
+          <div style="margin-top: 18px; background: var(--bone); padding: 12px 14px; border-radius: 8px;">
+            <div class="qw-mono" style="font-size: 11px; color: var(--ink-3); letter-spacing: 0.06em;">POST /v1/scan</div>
+            <div class="qw-mono" style="font-size: 13px; margin-top: 4px; color: var(--ink);">{`{ "url": "studiobirch.com" }`}</div>
+          </div>
+        </div>
+        <div style="background: var(--white); border: 1px solid var(--rule); border-radius: 16px; padding: 28px;">
+          <div class="qw-mono" style="font-size: 56px; font-weight: 600; color: var(--accent); letter-spacing: -0.04em;">02.</div>
+          <h2 class="qw-h-2" style="margin-top: 4px;">Pick what to ground in</h2>
+          <p style="margin-top: 8px; color: var(--ink-3); font-size: 15px;">Sidebar checkboxes per scanned page. Pick the pricing page for an ad, the homepage for a hero, the blog post for a follow-up email.</p>
+          <div style="margin-top: 18px; background: var(--bone); padding: 12px 14px; border-radius: 8px; display: flex; flex-direction: column; gap: 6px;">
+            <label style="display: flex; gap: 8px; font-size: 13px; align-items: center;"><input type="checkbox" checked />studiobirch.com</label>
+            <label style="display: flex; gap: 8px; font-size: 13px; align-items: center;"><input type="checkbox" checked />studiobirch.com/about</label>
+            <label style="display: flex; gap: 8px; font-size: 13px; align-items: center;"><input type="checkbox" />studiobirch.com/blog/rose-balm</label>
+          </div>
+        </div>
+        <div style="background: var(--ink); color: var(--paper); border-radius: 16px; padding: 28px;">
+          <div class="qw-mono" style="font-size: 56px; font-weight: 600; color: var(--accent); letter-spacing: -0.04em;">03.</div>
+          <h2 class="qw-h-2" style="margin-top: 4px;">Read the footer</h2>
+          <p style="margin-top: 8px; color: rgba(250,247,242,0.7); font-size: 15px;">Each batch arrives with a dark footer telling you exactly which sources contributed and how much markdown went in.</p>
+          <div style="margin-top: 18px; padding: 12px 14px; background: rgba(250,247,242,0.06); border-radius: 8px;">
+            <span style="color: var(--accent);">✦</span>
+            <span class="qw-mono" style="font-size: 11px; color: rgba(250,247,242,0.7); letter-spacing: 0.06em;">3 SOURCES · 4.2KB MD · 32 FACTS DETECTED · GPT-4o</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* INFRASTRUCTURE STRIP */}
+  <section style="padding: 64px 32px;">
+    <div class="qw-section">
+      <div class="qw-dotrule" style="margin-bottom: 48px;"></div>
+      <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center;">
+        <div>
+          <div class="qw-eyebrow qw-eyebrow-accent">· INFRASTRUCTURE</div>
+          <h2 class="qw-h-1" style="margin-top: 12px;">200,000 pages/day. <br /><span style="color: var(--ink-3);">Our crawler. Our cost.</span></h2>
+          <p class="qw-body" style="margin-top: 18px;">
+            We don't pay a third-party vendor per page. <strong>crawlcrawl.com</strong> is our own
+            crawler infrastructure — internal-tier quota, sub-second per page, no rate caps inside
+            normal product use. Cost-of-goods doesn't scale with usage.
+          </p>
+        </div>
+        <div class="qw-mono" style="background: var(--bone); border-radius: 12px; padding: 28px; font-size: 13px; line-height: 1.7;">
+          <div style="color: var(--accent);"># tier · internal</div>
+          <div>200,000 pages / day</div>
+          <div>6,000,000 pages / month</div>
+          <div>50,000 cloud pages / day</div>
+          <div>500 cron monitors</div>
+          <div>64 concurrent</div>
+          <div style="margin-top: 12px; color: var(--ink-3);"># cost-to-customer</div>
+          <div>$0 per scan</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section style="padding: 96px 32px;">
+    <div class="qw-section-tight" style="text-align: center;">
+      <h2 class="qw-h-display">
+        Scan your <em style="color: var(--accent);">first URL.</em>
+      </h2>
+      <p class="qw-body" style="margin: 18px auto 32px; max-width: 480px; font-size: 17px;">
+        Free tier includes unlimited scans + 5,000 generated words/month. No card.
+      </p>
+      <a href="/signup" style="display: inline-flex; align-items: center; padding: 16px 28px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500;">
+        Start now →
+      </a>
+    </div>
+  </section>
+
+</Layout>

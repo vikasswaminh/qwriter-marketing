@@ -1,0 +1,16 @@
+{
+  "name": "qwriter-marketing",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Marketing site for qwriter.com — landing, features, sources pitch, pricing, journal, auth forms.",
+  "scripts": {
+    "dev": "astro dev --port 4321",
+    "build": "astro build",
+    "preview": "astro preview --port 4321",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  }
+}

@@ -1,0 +1,70 @@
+---
+import Layout from "~/layouts/Layout.astro";
+
+const APP_BASE = import.meta.env.PUBLIC_APP_BASE ?? "https://app.qwriter.com";
+---
+<Layout current="" chrome={false} title="Create your qwriter account">
+  <section style="min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;">
+
+    {/* Left — form */}
+    <div style="display: flex; flex-direction: column; padding: 32px 48px; min-height: 100vh;">
+      <a href="/" style="font-weight: 600; letter-spacing: -0.02em; font-size: 18px; color: var(--ink);">qwriter</a>
+
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 380px;">
+        <div class="qw-eyebrow qw-eyebrow-accent">SIGN UP</div>
+        <h1 class="qw-h-1" style="margin-top: 12px;">Create your account.</h1>
+        <p style="color: var(--ink-3); margin-top: 8px;">
+          Start with 5,000 words/month. No card.
+        </p>
+
+        <form method="post" action={`${APP_BASE}/auth/register`} style="margin-top: 28px;">
+          <div style="margin-bottom: 16px;">
+            <label for="name" style="display: block; font-size: 13px; color: var(--ink-2); font-weight: 500; margin-bottom: 6px;">Name</label>
+            <input id="name" name="name" type="text" required minlength="2" autocomplete="name"
+                   style="width: 100%; padding: 12px 14px; border: 1px solid var(--rule); border-radius: 8px; background: var(--white); font-family: inherit; font-size: 14px;">
+          </div>
+          <div style="margin-bottom: 16px;">
+            <label for="email" style="display: block; font-size: 13px; color: var(--ink-2); font-weight: 500; margin-bottom: 6px;">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email"
+                   style="width: 100%; padding: 12px 14px; border: 1px solid var(--rule); border-radius: 8px; background: var(--white); font-family: inherit; font-size: 14px;">
+          </div>
+          <div style="margin-bottom: 20px;">
+            <label for="password" style="display: block; font-size: 13px; color: var(--ink-2); font-weight: 500; margin-bottom: 6px;">Password</label>
+            <input id="password" name="password" type="password" required minlength="8" autocomplete="new-password"
+                   style="width: 100%; padding: 12px 14px; border: 1px solid var(--rule); border-radius: 8px; background: var(--white); font-family: inherit; font-size: 14px;">
+            <div style="font-size: 12px; color: var(--ink-3); margin-top: 6px;">8+ characters.</div>
+          </div>
+          <button type="submit"
+                  style="width: 100%; padding: 14px 22px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500; font-size: 15px; border: 0; cursor: pointer;">
+            Create account →
+          </button>
+        </form>
+
+        <div style="margin-top: 18px; font-size: 14px; color: var(--ink-3);">
+          Already have an account? <a href="/login" style="color: var(--ink); font-weight: 500; border-bottom: 1px solid var(--ink-3);">Sign in</a>
+        </div>
+
+        <div style="margin-top: 24px; font-size: 11px; color: var(--ink-3); line-height: 1.5;">
+          By creating an account you agree to our <a href="/legal/terms" style="border-bottom: 1px solid var(--ink-3);">Terms</a>
+          and <a href="/legal/privacy" style="border-bottom: 1px solid var(--ink-3);">Privacy Policy</a>.
+        </div>
+      </div>
+    </div>
+
+    {/* Right — editorial side */}
+    <div style="background: var(--ink); color: var(--paper); padding: 48px; display: flex; flex-direction: column; justify-content: space-between;">
+      <span class="qw-mono" style="font-size: 11px; color: rgba(250,247,242,0.5); letter-spacing: 0.08em;">QWRITER · NEW WORKSPACE</span>
+      <div>
+        <p style="font-size: 36px; line-height: 1.15; font-weight: 500; letter-spacing: -0.02em; max-width: 460px;">
+          Five thousand words a month is enough to write
+          <span style="font-style: italic; color: var(--accent);">a small batch of real ads.</span>
+        </p>
+        <p style="margin-top: 18px; font-size: 14px; color: rgba(250,247,242,0.6); max-width: 460px;">
+          Free plan includes unlimited site scans. Crawling is our infrastructure — you're only paying for the
+          generation tokens that hit the model.
+        </p>
+      </div>
+      <div></div>
+    </div>
+  </section>
+</Layout>

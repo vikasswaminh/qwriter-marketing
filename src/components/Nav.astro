@@ -1,0 +1,23 @@
+---
+const { current } = Astro.props as { current?: string };
+const links = [
+  { href: "/features", label: "Features", key: "features" },
+  { href: "/sources",  label: "Sources",  key: "sources" },
+  { href: "/pricing",  label: "Pricing",  key: "pricing" },
+  { href: "/journal",  label: "Journal",  key: "journal" },
+];
+---
+<header style="border-bottom: 1px solid var(--rule); background: var(--paper);">
+  <div class="qw-section" style="display: flex; align-items: center; justify-content: space-between; padding: 18px 32px;">
+    <a href="/" style="font-weight: 600; letter-spacing: -0.02em; font-size: 18px; color: var(--ink);">qwriter</a>
+    <nav style="display: flex; gap: 28px; align-items: center;">
+      {links.map(l => (
+        <a href={l.href} style={`font-size: 14px; color: ${current === l.key ? 'var(--ink)' : 'var(--ink-3)'}; font-weight: ${current === l.key ? 500 : 400};`}>{l.label}</a>
+      ))}
+      <a href="https://app.qwriter.com/auth" style="font-size: 14px; color: var(--ink-3);">Sign in</a>
+      <a href="/signup" style="display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 13px; font-weight: 500;">
+        Start free
+      </a>
+    </nav>
+  </div>
+</header>

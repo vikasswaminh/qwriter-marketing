@@ -1,0 +1,60 @@
+---
+import Layout from "~/layouts/Layout.astro";
+
+// In dev (DEV=1) we point at the local Loco backend on port 5150.
+// In prod the form posts cross-subdomain to app.qwriter.com/auth/login,
+// which sets a cookie scoped to .qwriter.com and 303s back to /.
+const APP_BASE = import.meta.env.PUBLIC_APP_BASE ?? "https://app.qwriter.com";
+---
+<Layout current="" chrome={false} title="Sign in to qwriter">
+  <section style="min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;">
+
+    {/* Left — form */}
+    <div style="display: flex; flex-direction: column; padding: 32px 48px; min-height: 100vh;">
+      <a href="/" style="font-weight: 600; letter-spacing: -0.02em; font-size: 18px; color: var(--ink);">qwriter</a>
+
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 380px;">
+        <div class="qw-eyebrow qw-eyebrow-accent">SIGN IN</div>
+        <h1 class="qw-h-1" style="margin-top: 12px;">Welcome back.</h1>
+        <p style="color: var(--ink-3); margin-top: 8px;">Pick up where you left off.</p>
+
+        <form method="post" action={`${APP_BASE}/auth/login`} style="margin-top: 28px;">
+          <div style="margin-bottom: 16px;">
+            <label for="email" style="display: block; font-size: 13px; color: var(--ink-2); font-weight: 500; margin-bottom: 6px;">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email"
+                   style="width: 100%; padding: 12px 14px; border: 1px solid var(--rule); border-radius: 8px; background: var(--white); font-family: inherit; font-size: 14px;">
+          </div>
+          <div style="margin-bottom: 20px;">
+            <label for="password" style="display: block; font-size: 13px; color: var(--ink-2); font-weight: 500; margin-bottom: 6px;">Password</label>
+            <input id="password" name="password" type="password" required autocomplete="current-password"
+                   style="width: 100%; padding: 12px 14px; border: 1px solid var(--rule); border-radius: 8px; background: var(--white); font-family: inherit; font-size: 14px;">
+          </div>
+          <button type="submit"
+                  style="width: 100%; padding: 14px 22px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500; font-size: 15px; border: 0; cursor: pointer;">
+            Sign in →
+          </button>
+        </form>
+
+        <div style="margin-top: 18px; font-size: 14px; color: var(--ink-3);">
+          New to qwriter? <a href="/signup" style="color: var(--ink); font-weight: 500; border-bottom: 1px solid var(--ink-3);">Create an account</a>
+        </div>
+      </div>
+    </div>
+
+    {/* Right — editorial side */}
+    <div style="background: var(--ink); color: var(--paper); padding: 48px; display: flex; flex-direction: column; justify-content: space-between;">
+      <span class="qw-mono" style="font-size: 11px; color: rgba(250,247,242,0.5); letter-spacing: 0.08em;">QWRITER · GROUNDED WRITING</span>
+      <div>
+        <p style="font-size: 36px; line-height: 1.15; font-weight: 500; letter-spacing: -0.02em; max-width: 460px;">
+          Most AI writing tools take a prompt and <span style="font-style: italic; color: var(--accent);">guess</span>. We start from
+          what's already true on your customer's site.
+        </p>
+        <div style="margin-top: 24px; padding: 14px 18px; background: rgba(250,247,242,0.06); border-radius: 8px; max-width: 460px;">
+          <span style="color: var(--accent);">✦</span>
+          <span class="qw-mono" style="font-size: 12px; color: rgba(250,247,242,0.7); letter-spacing: 0.04em;">3 SOURCES · 4.2KB MD · 32 FACTS DETECTED</span>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </section>
+</Layout>

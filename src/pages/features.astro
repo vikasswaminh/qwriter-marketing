@@ -1,0 +1,85 @@
+---
+import Layout from "~/layouts/Layout.astro";
+
+const features = [
+  {
+    eyebrow: "GROUNDING",
+    title: "Sources",
+    body: "Per-project library of scanned URLs. Each scan stores extracted markdown, on-page title, description, OG metadata, JSON-LD. Selectable per generation.",
+    link: { href: "/sources", text: "How sources work" },
+  },
+  {
+    eyebrow: "EDITOR",
+    title: "Trix rich-text",
+    body: "The same editor 37signals ships in Hey. Block-level toolbar, paste-clean, lists, headings, undo/redo. Autosaves every 700 ms via Hotwire Streams.",
+  },
+  {
+    eyebrow: "GENERATION",
+    title: "Variant grid",
+    body: "Up to 6 variants per click. Each card shows the source attribution at the bottom. Pick one to insert into the document, Copy to clipboard, or Re-roll just that card.",
+  },
+  {
+    eyebrow: "TEMPLATES",
+    title: "Save reusable prompts",
+    body: "Write a prompt with `{{ '{{variable}}' }}` placeholders. Reuse across documents. Variables become input fields in the editor.",
+  },
+  {
+    eyebrow: "ORGANIZATION",
+    title: "Projects + folders",
+    body: "One workspace per agency, one project per client, one folder per campaign. Documents move freely. Folder + doc counts in the sidebar.",
+  },
+  {
+    eyebrow: "EXPORT",
+    title: ".md / .pdf / .txt",
+    body: "Pick your destination format. Markdown for CMS, PDF for client review, plain text for ad managers that strip everything anyway.",
+  },
+];
+---
+<Layout current="features" title="Features — qwriter">
+
+  <section style="padding: 96px 32px 48px;">
+    <div class="qw-section">
+      <div class="qw-eyebrow qw-eyebrow-accent">· FEATURES · WHAT IT DOES</div>
+      <h1 class="qw-h-display" style="margin-top: 14px; max-width: 940px;">
+        Eight tools. <span style="color: var(--ink-3);">One assumption: your customer's site already says what matters.</span>
+      </h1>
+    </div>
+  </section>
+
+  <section style="padding: 32px;">
+    <div class="qw-section">
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 16px; overflow: hidden;">
+        {features.map((f) => (
+          <div style="background: var(--white); padding: 36px 32px;">
+            <div class="qw-eyebrow qw-eyebrow-accent">{f.eyebrow}</div>
+            <h2 class="qw-h-2" style="margin-top: 10px;">{f.title}</h2>
+            <p class="qw-body" style="margin-top: 12px; font-size: 15px;">{f.body}</p>
+            {f.link && (
+              <a href={f.link.href} style="display: inline-block; margin-top: 16px; font-size: 14px; color: var(--accent); border-bottom: 1px solid var(--accent);">{f.link.text} →</a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* DIFFERENTIATOR PULL-QUOTE */}
+  <section style="padding: 96px 32px;">
+    <div class="qw-section-tight" style="text-align: center;">
+      <span class="qw-eyebrow qw-eyebrow-accent">· THE BIG IDEA</span>
+      <p class="qw-h-1" style="margin-top: 14px; font-style: italic; font-weight: 500;">
+        "Most AI writing tools take a prompt and guess. We take a URL first, scan it for facts, and write copy that
+        knows what's already true."
+      </p>
+      <div class="qw-mono" style="margin-top: 14px; font-size: 11px; color: var(--ink-3); letter-spacing: 0.1em;">— FROM THE ROADMAP DOC, NOV 2025</div>
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section style="padding: 48px 32px 96px;">
+    <div class="qw-section" style="text-align: center;">
+      <a href="/signup" style="display: inline-flex; align-items: center; padding: 16px 28px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500;">Start free</a>
+    </div>
+  </section>
+
+</Layout>
