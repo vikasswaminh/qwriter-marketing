@@ -2,9 +2,9 @@
 import Layout from "~/layouts/Layout.astro";
 
 // In dev (DEV=1) we point at the local Loco backend on port 5150.
-// In prod the form posts cross-subdomain to app.qwriter.com/auth/login,
-// which sets a cookie scoped to .qwriter.com and 303s back to /.
-const APP_BASE = import.meta.env.PUBLIC_APP_BASE ?? "https://app.qwriter.com";
+// In prod the form posts cross-subdomain to app.ollawrite.com/auth/login,
+// which sets a cookie scoped to .ollawrite.com and 303s back to /.
+const APP_BASE = import.meta.env.PUBLIC_APP_BASE ?? "https://app.ollawrite.com";
 ---
 <Layout current="" chrome={false} title="Sign in to qwriter">
   <section style="min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;">

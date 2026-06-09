@@ -6,7 +6,7 @@
  * In dev we fall back to a local copy so the site works without network.
  * Override the URL via the TOKENS_URL env var.
  */
-@import url("https://tokens.qwriter.com/v1/tokens.css");
+@import url("https://qwriter-tokens.pages.dev/v1/tokens.css");
 
 /* Marketing-only resets + page chrome */
 html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
