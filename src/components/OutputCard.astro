@@ -1,0 +1,40 @@
+---
+// Large preview card showing a real-feel deliverable.
+// Each card is a faux artifact — investor update, board report, etc.
+// Shows the output FORMAT, not a description of it.
+export interface Props {
+  category: string;        // tag: "INVESTOR UPDATE", "BOARD REPORT"
+  color: string;           // accent color (per agent)
+  title: string;           // "October Investor Update"
+  agent: string;           // which agent makes it
+  body: string;            // 2-3 line preview snippet (markdown allowed)
+  href?: string;
+}
+const { category, color, title, agent, body, href } = Astro.props as Props;
+const Tag = href ? 'a' : 'div';
+---
+<Tag
+  href={href}
+  class="qw-card"
+  style={`display: block; padding: 22px 22px 20px; color: var(--ink); position: relative; overflow: hidden;`}
+>
+  {/* Tiny color tab on the left edge */}
+  <div style={`position: absolute; left: 0; top: 20px; bottom: 20px; width: 3px; background: ${color}; border-radius: 0 2px 2px 0;`}></div>
+
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px;">
+    <span style={`font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; color: ${color}; text-transform: uppercase;`}>{category}</span>
+    <span style="font-size: 11px; color: var(--ink-3);">by <strong style="color: var(--ink-2); font-weight: 700;">{agent}</strong></span>
+  </div>
+
+  <h3 style="margin: 0; font-weight: 700; font-size: 17px; letter-spacing: -0.015em; line-height: 1.25; color: var(--ink);">{title}</h3>
+
+  <div style="margin-top: 10px; padding: 14px 16px; background: var(--paper-warm); border: 1px solid var(--rule-soft); border-radius: 8px; font-size: 12.5px; line-height: 1.55; color: var(--ink-2);">
+    <Fragment set:html={body} />
+  </div>
+
+  {href && (
+    <div style={`margin-top: 14px; font-size: 12px; font-weight: 600; color: ${color};`}>
+      See sample →
+    </div>
+  )}
+</Tag>

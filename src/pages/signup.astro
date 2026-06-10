@@ -1,14 +1,17 @@
 ---
 import Layout from "~/layouts/Layout.astro";
+import Logo from "~/components/Logo.astro";
 
-const APP_BASE = import.meta.env.PUBLIC_APP_BASE ?? "https://app.ollawrite.com";
+const APP_BASE = import.meta.env.PUBLIC_APP_BASE ?? "https://app.ollasuper.com";
 ---
-<Layout current="" chrome={false} title="Create your qwriter account">
-  <section style="min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;">
+<Layout current="" chrome={false} title="Create your OllaSuper account">
+  <section class="qw-split-even" style="min-height: 100vh; gap: 0;">
 
     {/* Left — form */}
     <div style="display: flex; flex-direction: column; padding: 32px 48px; min-height: 100vh;">
-      <a href="/" style="font-weight: 600; letter-spacing: -0.02em; font-size: 18px; color: var(--ink);">qwriter</a>
+      <a href="/" style="display: inline-flex; align-items: center;">
+        <Logo size={28} wordmark={true} />
+      </a>
 
       <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 380px;">
         <div class="qw-eyebrow qw-eyebrow-accent">SIGN UP</div>
@@ -53,15 +56,14 @@ const APP_BASE = import.meta.env.PUBLIC_APP_BASE ?? "https://app.ollawrite.com";
 
     {/* Right — editorial side */}
     <div style="background: var(--ink); color: var(--paper); padding: 48px; display: flex; flex-direction: column; justify-content: space-between;">
-      <span class="qw-mono" style="font-size: 11px; color: rgba(250,247,242,0.5); letter-spacing: 0.08em;">QWRITER · NEW WORKSPACE</span>
+      <span class="qw-mono" style="font-size: 11px; color: rgba(250,247,242,0.5); letter-spacing: 0.08em;">OLLASUPER · NEW WORKSPACE</span>
       <div>
-        <p style="font-size: 36px; line-height: 1.15; font-weight: 500; letter-spacing: -0.02em; max-width: 460px;">
-          Five thousand words a month is enough to write
-          <span style="font-style: italic; color: var(--accent);">a small batch of real ads.</span>
+        <p style="font-size: 36px; line-height: 1.15; font-weight: 900; letter-spacing: -0.025em; max-width: 460px;">
+          30 agents. <span style="color: var(--accent);">One stack.</span><br/>Every tool, owned.
         </p>
         <p style="margin-top: 18px; font-size: 14px; color: rgba(250,247,242,0.6); max-width: 460px;">
-          Free plan includes unlimited site scans. Crawling is our infrastructure — you're only paying for the
-          generation tokens that hit the model.
+          Free plan: full access to all 30 specialist agents, 200M proxies, 4,000+ tools. No card.
+          We are Bright Data + Apify + Lindy — in one vendor.
         </p>
       </div>
       <div></div>

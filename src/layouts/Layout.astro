@@ -13,8 +13,8 @@ interface Props {
 }
 
 const {
-  title = "qwriter — AI copywriter that knows your customer",
-  description = "Scan a customer's site, then write copy grounded in their real content. Stop shipping generic AI output.",
+  title = "OllaSuper — Build Your AI Workforce",
+  description = "Deploy AI specialists across Sales, Marketing, HR, Operations, Finance, Support and Engineering from a single workspace. 30 specialists. 9 departments. Free tier.",
   current,
   chrome = true,
 } = Astro.props;
@@ -26,12 +26,52 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={Astro.url.href} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#0066ff" />
+
+    {/* Open Graph */}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:site_name" content="OllaSuper" />
+    <meta property="og:image" content="https://ollasuper.com/og-default.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_IN" />
+
+    {/* Twitter */}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://ollasuper.com/og-default.svg" />
+
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    {/* Structured data — Organization + WebSite */}
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ollasuper.com/#org",
+          "name": "OllaSuper",
+          "url": "https://ollasuper.com",
+          "logo": "https://ollasuper.com/favicon.svg",
+          "description": "AI Workforce Platform. Deploy AI specialists across Sales, Marketing, HR, Operations, Finance, Support and Engineering from a single workspace. 30 specialists. 9 departments. Multi-agent collaboration.",
+          "sameAs": []
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ollasuper.com/#site",
+          "url": "https://ollasuper.com",
+          "name": "OllaSuper",
+          "publisher": { "@id": "https://ollasuper.com/#org" }
+        }
+      ]
+    })} />
   </head>
   <body>
     {chrome && <Nav current={current} />}

@@ -1,0 +1,66 @@
+---
+// OllaSuper brand mark — "constellation" — solid core + 6 satellite dots.
+// Each dot represents a category of expert (People · GTM · Ops · Data · Build · Personal).
+// Renders inline so it's crisp + zero network requests.
+//
+// Props:
+//   size      — pixel size of the bounding box (default 32)
+//   wordmark  — when true, also renders "OllaSuper" in Lato 900 next to the mark
+//   monochrome — when true, all dots are pure black (used in tight UI)
+export interface Props {
+  size?: number;
+  wordmark?: boolean;
+  monochrome?: boolean;
+}
+const { size = 32, wordmark = false, monochrome = false } = Astro.props as Props;
+
+const colors = monochrome
+  ? Array(6).fill("#0a0a0a")
+  : [
+      "#ff6b4a", // People — coral
+      "#16a34a", // GTM — green
+      "#52525b", // Ops — steel
+      "#7c3aed", // Data — purple
+      "#0066ff", // Build — blue (brand accent)
+      "#facc15", // Personal — gold
+    ];
+
+// 6 satellite positions, evenly spaced around the core
+const r = 30;
+const cx = 40;
+const cy = 40;
+const dotPositions = Array.from({ length: 6 }, (_, i) => {
+  const angle = (Math.PI * 2 * i) / 6 - Math.PI / 2; // start at top
+  return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
+});
+---
+
+<span
+  style={`display: inline-flex; align-items: center; gap: ${Math.round(size * 0.3)}px;`}
+  aria-label="OllaSuper"
+>
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 80 80"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-hidden={wordmark ? "true" : "false"}
+  >
+    {/* Solid core — the user */}
+    <circle cx={cx} cy={cy} r="11" fill="#0a0a0a" />
+
+    {/* 6 satellites — the experts */}
+    {dotPositions.map((p, i) => (
+      <circle cx={p.x} cy={p.y} r="5" fill={colors[i]} />
+    ))}
+  </svg>
+
+  {wordmark && (
+    <span
+      style={`font-family: 'Lato', system-ui, sans-serif; font-weight: 900; font-size: ${Math.round(size * 0.75)}px; letter-spacing: -0.025em; color: #0a0a0a; line-height: 1;`}
+    >
+      OllaSuper
+    </span>
+  )}
+</span>

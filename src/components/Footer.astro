@@ -1,42 +1,55 @@
 ---
-const year = new Date().getFullYear();
+import Logo from "~/components/Logo.astro";
+const year = 2026;
 ---
-<footer style="border-top: 1px solid var(--rule); margin-top: 96px; background: var(--bone);">
-  <div class="qw-section" style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; padding: 64px 32px;">
+<footer style="border-top: 1px solid var(--rule); margin-top: 0; background: var(--bg-sunken);">
+  <div class="qw-section" style="display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 40px; padding: 64px 0;">
     <div>
-      <a href="/" style="font-size: 24px; font-weight: 600; letter-spacing: -0.025em; color: var(--ink);">qwriter</a>
-      <p style="color: var(--ink-3); margin-top: 14px; max-width: 280px; font-size: 14px; line-height: 1.55;">
-        AI copywriter built around your customer's site. Ground in real content, write less generic copy.
+      <Logo size={32} wordmark={true} />
+      <p style="color: var(--ink-3); margin-top: 16px; max-width: 300px; font-size: 14px; line-height: 1.6;">
+        The Agent Operating System. 30 specialist AI agents on infrastructure we own —
+        HR, Sales, Ops, SEO, AEO, Data, Legal, Engineering, and 11 more.
       </p>
     </div>
     <div>
-      <div class="qw-eyebrow" style="margin-bottom: 14px;">PRODUCT</div>
+      <div class="qw-eyebrow qw-eyebrow-caps" style="margin-bottom: 16px;">EXPERTS</div>
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-        <li><a href="/features" style="color: var(--ink-2);">Features</a></li>
-        <li><a href="/sources" style="color: var(--ink-2);">Sources</a></li>
+        <li><a href="/experts" style="color: var(--ink-2);">All 30 agents</a></li>
+        <li><a href="/experts/hr" style="color: var(--ink-2);">HR</a></li>
+        <li><a href="/experts/sales" style="color: var(--ink-2);">Sales</a></li>
+        <li><a href="/experts/seo" style="color: var(--ink-2);">SEO</a></li>
+        <li><a href="/experts/aeo" style="color: var(--ink-2);">AEO</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="qw-eyebrow qw-eyebrow-caps" style="margin-bottom: 16px;">PRODUCT</div>
+      <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+        <li><a href="/how-it-works" style="color: var(--ink-2);">How it works</a></li>
         <li><a href="/pricing" style="color: var(--ink-2);">Pricing</a></li>
-        <li><a href="/journal" style="color: var(--ink-2);">Journal</a></li>
+        <li><a href="/changelog" style="color: var(--ink-2);">Changelog</a></li>
+        <li><a href="https://app.ollasuper.com/auth" style="color: var(--ink-2);">Sign in</a></li>
       </ul>
     </div>
     <div>
-      <div class="qw-eyebrow" style="margin-bottom: 14px;">COMPANY</div>
+      <div class="qw-eyebrow qw-eyebrow-caps" style="margin-bottom: 16px;">COMPANY</div>
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-        <li><a href="mailto:hello@ollawrite.com" style="color: var(--ink-2);">Contact</a></li>
-        <li><a href="/journal" style="color: var(--ink-2);">Changelog</a></li>
+        <li><a href="mailto:hello@ollasuper.com" style="color: var(--ink-2);">Contact</a></li>
+        <li><a href="mailto:support@ollasuper.com" style="color: var(--ink-2);">Support</a></li>
       </ul>
     </div>
     <div>
-      <div class="qw-eyebrow" style="margin-bottom: 14px;">LEGAL</div>
+      <div class="qw-eyebrow qw-eyebrow-caps" style="margin-bottom: 16px;">LEGAL</div>
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
         <li><a href="/legal/privacy" style="color: var(--ink-2);">Privacy</a></li>
         <li><a href="/legal/terms" style="color: var(--ink-2);">Terms</a></li>
+        <li><a href="/legal/dpa" style="color: var(--ink-2);">DPDP / DPA</a></li>
       </ul>
     </div>
   </div>
-  <div style="border-top: 1px solid var(--rule);">
-    <div class="qw-section" style="padding: 18px 32px; display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-3);">
-      <span class="qw-mono">© {year} QWRITER · MADE WITH WARMTH</span>
-      <span class="qw-mono">QWRITER.COM</span>
+  <div style="border-top: 1px solid var(--rule-soft);">
+    <div class="qw-section" style="padding: 18px 0; display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-3);">
+      <span>© {year} OllaSuper · Made in India</span>
+      <span>ollasuper.com</span>
     </div>
   </div>
 </footer>

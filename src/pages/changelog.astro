@@ -1,0 +1,120 @@
+---
+import Layout from "~/layouts/Layout.astro";
+
+interface ChangelogEntry {
+  date: string;
+  title: string;
+  category: "ship" | "improve" | "fix";
+  body: string;
+}
+
+const entries: ChangelogEntry[] = [
+  { date: "2026-06-10", title: "Sleeker redesign — dense bento, hairline borders, live hero chat",
+    category: "improve",
+    body: "Full marketing-site visual overhaul. Tightened vertical rhythm (sections from 72px → 32px), shrunk body type from 16px → 13.5px, swapped the 4×5 expert grid for a single-bordered 5×4 bento, replaced the static hero logo with a live-feel chat preview, and made the /experts filter row sticky. Same 19 personas, same copy, same URLs — denser frame." },
+  { date: "2026-06-09", title: "OllaSuper launches with 19 experts",
+    category: "ship",
+    body: "Full rebrand from qwriter / ollawrite to OllaSuper — the office super-assistant. New constellation mark, multi-page marketing site, 19 specialist experts each with their own detail page, glyph, and 4 starter prompts. Marketing site at ollasuper.com is the front door; the dashboard at app.ollasuper.com keeps the qwriter feel during the transition." },
+  { date: "2026-06-04", title: "Async chat with typing dots + memory",
+    category: "ship",
+    body: "Chats now stream through a Turbo Stream channel. Typing dots appear within ~120ms of submit; the model's response appends incrementally without page reload. Pass-2 memory carries the last 6 messages of context across regenerations so voice stays consistent." },
+  { date: "2026-05-28", title: "Quillbot-style prompt-first home",
+    category: "ship",
+    body: "Dashboard home is now a single prompt composer with 56 starter prompts across 14 categories — pick the work, the right expert auto-loads. US business English is the default tone; 12 other voices on a dropdown." },
+  { date: "2026-05-22", title: "4-source upload UI",
+    category: "ship",
+    body: "Drop a URL, crawl a sitemap, upload PDF/DOCX/MD/CSV (up to 100 MB), or paste text — all four work in the same chat. Sources are shown inline so you can see exactly what the expert is grounded in." },
+  { date: "2026-05-18", title: "Google OAuth sign-in",
+    category: "improve",
+    body: "Sign in with Google added alongside email/password. Workspace invites work the same way — invite a teammate by email, they accept with Google in one click." },
+  { date: "2026-05-12", title: "ollasuper.com goes live",
+    category: "ship",
+    body: "Domain moved from ollawrite.com to ollasuper.com. DNS-only change — no breaking links, all redirects in place." },
+  { date: "2026-05-04", title: "ollagraph.com integration",
+    category: "ship",
+    body: "All URL grounding now flows through ollagraph.com — sub-second clean-markdown extraction, JSON-LD parsing, and OG-tag pulling for 200k pages a day. Replaces our stubbed scraper end-to-end." },
+  { date: "2026-04-28", title: "Production VM cut over",
+    category: "improve",
+    body: "Backend moved to a dedicated VM (Rust + Loco + axum, Postgres for persistence, Redis for jobs). Median p95 latency dropped from 480ms to 140ms." },
+  { date: "2026-04-20", title: "Audit-driven hardening",
+    category: "fix",
+    body: "Closed 27 security + performance findings from internal audit: prepared-statement rewrites for all DB calls, rate limits on auth endpoints, CSRF tokens on every mutating route, and a 4x speedup on the document-load path via cached snapshots." },
+  { date: "2026-03-30", title: "Phase 2 — chat editor",
+    category: "ship",
+    body: "Trix-based document editor with autosave every 700ms, exports to MD/PDF/DOCX, and inline regeneration of any block. Variant comparison: 3-6 outputs side-by-side, pick the one you ship." },
+  { date: "2026-03-12", title: "Phase 1 launch",
+    category: "ship",
+    body: "Initial release. URL-grounded copywriting with ollagraph.com on the back-end. Five tones, sub-second scans, hand-off to the editor." },
+];
+
+const categoryStyle = {
+  ship:    { label: "Shipped",   color: "#0066ff" },
+  improve: { label: "Improved",  color: "#16a34a" },
+  fix:     { label: "Fixed",     color: "#ff6b4a" },
+};
+---
+<Layout current="changelog" title="Changelog — OllaSuper" description="What we've shipped. Big launches, small improvements, real bug fixes — in plain English, dated, no hype.">
+
+  {/* HERO */}
+  <section style="padding: 48px 0 24px;">
+    <div class="qw-section">
+      <div class="qw-split">
+        <div>
+          <div class="qw-eyebrow qw-eyebrow-accent">Changelog · updated weekly</div>
+          <h1 class="qw-h-display" style="margin-top: 10px;">
+            Every week,<br/>something new.
+          </h1>
+          <p class="qw-body" style="max-width: 540px; margin-top: 14px; font-size: 16px;">
+            What we shipped, improved, and fixed. No marketing copy — if it broke and we fixed it,
+            you'll see "Fixed" below.
+          </p>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          {Object.entries(categoryStyle).map(([key, c]) => (
+            <span style={`display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px; background: ${c.color}14; color: ${c.color}; font-weight: 600; font-size: 12px;`}>
+              <span style={`width: 6px; height: 6px; border-radius: 999px; background: ${c.color};`}></span>
+              {c.label} · {entries.filter(e => e.category === key).length}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* TIMELINE */}
+  <section style="padding: 16px 0 64px; border-top: 1px solid var(--rule);">
+    <div class="qw-section-narrow">
+      <ol style="list-style: none; padding: 0; margin: 0; position: relative;">
+        <div style="position: absolute; left: 7px; top: 24px; bottom: 24px; width: 2px; background: var(--rule);"></div>
+        {entries.map(e => {
+          const cat = categoryStyle[e.category];
+          return (
+            <li style="position: relative; padding: 22px 0 22px 32px; border-bottom: 1px solid var(--rule);">
+              <div style={`position: absolute; left: 0; top: 30px; width: 16px; height: 16px; border-radius: 999px; background: ${cat.color}; border: 3px solid var(--paper); box-shadow: 0 0 0 1px ${cat.color};`}></div>
+              <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+                <span class="qw-mono" style="font-size: 11px; color: var(--ink-3);">{e.date}</span>
+                <span style={`display: inline-block; padding: 2px 8px; border-radius: 4px; background: ${cat.color}14; color: ${cat.color}; font-weight: 600; font-size: 11px;`}>{cat.label}</span>
+              </div>
+              <h2 class="qw-h-2" style="margin: 0;">{e.title}</h2>
+              <p class="qw-body" style="margin-top: 8px; max-width: 720px; font-size: 14px;">{e.body}</p>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section class="qw-pad">
+    <div class="qw-section">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 24px; border: 1px solid var(--rule); border-radius: 12px;">
+        <div>
+          <div style="font-weight: 900; font-size: 18px; letter-spacing: -0.02em;">Want a feature? Tell us.</div>
+          <div style="margin-top: 2px; font-size: 12px; color: var(--ink-3);">We read every email, respond within a business day.</div>
+        </div>
+        <a href="mailto:hello@ollasuper.com" class="qw-btn primary">hello@ollasuper.com</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

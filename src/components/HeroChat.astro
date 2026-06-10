@@ -1,0 +1,63 @@
+---
+// Live-feel chat preview for the homepage hero. One static "user" message,
+// one streaming-feel "assistant" reply, typing dots. Pure CSS animation.
+export interface Props {
+  expertName?: string;
+  expertColor?: string;
+  expertShort?: string;
+  userPrompt?: string;
+  assistantOpener?: string;
+  bulletLine?: string;
+}
+const {
+  expertName = "HR Expert",
+  expertColor = "#ff6b4a",
+  expertShort = "HR",
+  userPrompt = "Draft a JD for a Senior Engineer in Bengaluru. Hybrid. Must own one production system end-to-end.",
+  assistantOpener = "Senior Engineer — Platform, Bengaluru (Hybrid)",
+  bulletLine = "You'll own one of the four production services that move money for our 200+ B2B customers…",
+} = Astro.props as Props;
+---
+<div style="position: relative; width: 100%; max-width: 460px;">
+  <div style="position: absolute; inset: -32px; background: radial-gradient(60% 60% at 70% 30%, rgba(0,102,255,0.10), transparent 70%); pointer-events: none; filter: blur(24px);"></div>
+
+  <div class="qw-card-pop" style="position: relative; overflow: hidden;">
+    {/* Title bar */}
+    <div style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--rule-soft); background: var(--paper-warm);">
+      <span style={`width: 7px; height: 7px; border-radius: 999px; background: ${expertColor};`}></span>
+      <span style="font-weight: 600; font-size: 13px; letter-spacing: -0.01em; color: var(--ink);">{expertName}</span>
+      <span style="margin-left: auto; font-size: 11px; color: var(--ink-3); display: inline-flex; align-items: center; gap: 6px;">
+        <span style="display: inline-block; width: 6px; height: 6px; border-radius: 999px; background: var(--sage);"></span>
+        Live
+      </span>
+    </div>
+
+    {/* User bubble */}
+    <div style="display: flex; gap: 10px; padding: 16px 16px 8px;">
+      <div style="flex: 0 0 24px; height: 24px; border-radius: 999px; background: var(--ink); color: var(--paper); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 10px;">You</div>
+      <div style="flex: 1; font-size: 13px; line-height: 1.55; color: var(--ink-2); padding-top: 3px;">{userPrompt}</div>
+    </div>
+
+    {/* Assistant bubble */}
+    <div style="display: flex; gap: 10px; padding: 8px 16px 16px;">
+      <div style={`flex: 0 0 24px; height: 24px; border-radius: 999px; background: ${expertColor}; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 9px;`}>{expertShort.slice(0,2)}</div>
+      <div style="flex: 1; padding-top: 3px;">
+        <div style="font-weight: 600; font-size: 13px; letter-spacing: -0.012em; margin-bottom: 8px; color: var(--ink);">{assistantOpener}</div>
+        <div style="font-size: 12.5px; line-height: 1.55; color: var(--ink-2); margin-bottom: 10px;">{bulletLine}</div>
+        <div class="qw-stream-line long"></div>
+        <div class="qw-stream-line mid"></div>
+        <div class="qw-stream-line short"></div>
+        <div style="margin-top: 12px; display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; background: var(--bg-elev); border-radius: 999px;">
+          <span class="qw-typing"><span></span><span></span><span></span></span>
+          <span style="font-size: 11px; color: var(--ink-3);">Drafting reply</span>
+        </div>
+      </div>
+    </div>
+
+    {/* Footer attribution */}
+    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-top: 1px solid var(--rule-soft); background: var(--paper-warm); font-size: 11px; color: var(--ink-3);">
+      <span style={`color: ${expertColor};`}>✦</span>
+      <span>3 sources · memory on · 200M proxies</span>
+    </div>
+  </div>
+</div>

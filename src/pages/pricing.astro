@@ -2,90 +2,99 @@
 import Layout from "~/layouts/Layout.astro";
 
 const tiers = [
-  { name: "Free", price: "$0", interval: "forever",
-    words: "5,000 words / month", scans: "Unlimited site scans",
-    features: ["1 project", "Basic templates", "Markdown / PDF export", "Community support"],
+  { name: "Free", price: "₹0", interval: "forever",
+    words: "5,000 words / month", scans: "Unlimited site scans + uploads",
+    features: ["All 30 specialist agents", "200M proxies + 4,000 tools", "1 workspace · 3 projects", "Markdown / PDF / DOCX export"],
     cta: "Start free", ctaHref: "/signup", emphasis: false },
-  { name: "Pro", price: "$19", interval: "per month",
-    words: "100,000 words / month", scans: "Unlimited site scans",
-    features: ["Unlimited projects + folders", "Custom templates", "GPT-4o", "Priority support",
-               "Multi-variant grid up to 6", "Export to .md / .pdf / .txt"],
+  { name: "Pro", price: "₹1,499", interval: "per month",
+    words: "100,000 words / month", scans: "Unlimited site scans + uploads",
+    features: ["Everything in Free", "Unlimited workspaces + projects", "Frontier-model routing per task", "Memory across sessions", "Multi-variant grid up to 6", "Priority support"],
     cta: "Upgrade", ctaHref: "/signup?plan=pro", emphasis: true },
-  { name: "Unlimited", price: "$49", interval: "per month",
+  { name: "Team", price: "₹3,999", interval: "per month",
     words: "2,000,000 words / month", scans: "Unlimited everything",
-    features: ["Everything in Pro", "Stripe Portal self-serve", "Multi-workspace", "API key access (soon)"],
-    cta: "Go unlimited", ctaHref: "/signup?plan=unlimited", emphasis: false },
+    features: ["Everything in Pro", "Up to 10 seats", "Shared workspaces + libraries", "Audit log + SSO", "Stripe Portal self-serve", "API key access (beta)"],
+    cta: "Start team", ctaHref: "/signup?plan=team", emphasis: false },
+];
+
+const faqs = [
+  { q: "What's actually different about OllaSuper vs generic chat tools?", a: "30 specialist agents with their own system prompts, files + site grounded into every chat, memory across sessions, and — critically — real tool use backed by 200M owned proxies and 4,000+ scraping actors. Generic chat tools rent their web access. OllaSuper agents actually execute work — research, scrape, audit, file — because they sit on infrastructure we built." },
+  { q: "What counts as a word?", a: "Every word in the model's output is counted against your monthly quota, including variants you reject. We track per-generation in the History panel so you can audit." },
+  { q: "Do scans or uploads count against my quota?", a: "No. Crawling and file uploads are our infrastructure and are unlimited at every tier. You're only paying for the generation tokens." },
+  { q: "Which model powers the agents?", a: "Each agent routes to the best frontier model for the task — you don't pick, you don't tune. We continuously evaluate and swap to whichever model performs best per task category. Bring-your-own-key is on the Team roadmap if you need to anchor on a specific provider." },
+  { q: "Do you train on my content?", a: "No. We send your prompts and selected source markdown to the LLM for inference only. We don't fine-tune on customer data and our vendors' APIs don't train on it either." },
+  { q: "Can I cancel anytime?", a: "Yes. Cancel from the Stripe Portal. Your plan stays active until the end of the billing period." },
+  { q: "Is OllaSuper DPDP-compliant?", a: "Yes. Designed-in. Workspace isolation, per-tenant encryption, delete-means-gone, and a published DPA on the legal page." },
 ];
 ---
-<Layout current="pricing" title="Pricing — qwriter">
+<Layout current="pricing" title="Pricing — OllaSuper" description="One subscription. 30 specialist agents on 200M owned proxies + 4,000 tools. Three tiers. We are Bright Data + Apify + Lindy in one bill.">
 
-  <section style="padding: 96px 32px 48px;">
-    <div class="qw-section" style="text-align: center;">
-      <div class="qw-eyebrow qw-eyebrow-accent">· PRICING · ONE PRODUCT · THREE TIERS</div>
-      <h1 class="qw-h-display" style="margin-top: 12px;">Pay for the words you ship.</h1>
-      <p class="qw-body" style="max-width: 540px; margin: 18px auto 0; font-size: 18px;">
-        Crawling is unlimited at every tier — that's our own infrastructure. You're only paying for
-        the generation tokens that hit the model.
+  {/* HERO */}
+  <section style="padding: 48px 0 24px;">
+    <div class="qw-section">
+      <div class="qw-eyebrow qw-eyebrow-accent">Pricing · one product · three tiers</div>
+      <h1 class="qw-h-display" style="margin-top: 10px; max-width: 1080px;">
+        Pay for one stack. <span style="color: var(--accent);">Hire 30 specialist agents.</span>
+      </h1>
+      <p class="qw-body" style="max-width: 580px; margin-top: 14px; font-size: 16px;">
+        Crawling and uploads are unlimited at every tier — that's our infrastructure.
+        You only pay for the generation tokens that hit the model.
       </p>
     </div>
   </section>
 
-  <section style="padding: 32px;">
+  {/* TIERS */}
+  <section class="qw-pad">
     <div class="qw-section">
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;">
+      <div class="qw-grid-3" style="gap: 16px;">
         {tiers.map((t) => (
-          <div style={`background: ${t.emphasis ? "var(--ink)" : "var(--white)"}; color: ${t.emphasis ? "var(--paper)" : "var(--ink)"}; border: 1px solid ${t.emphasis ? "var(--ink)" : "var(--rule)"}; border-radius: 16px; padding: 32px 28px; position: relative; ${t.emphasis ? "transform: translateY(-12px); box-shadow: 0 32px 64px rgba(20,17,13,0.18);" : ""}`}>
-            {t.emphasis && <div style="position: absolute; top: 12px; right: 12px; padding: 3px 10px; background: var(--accent); color: var(--paper); border-radius: 99px; font-size: 10px; font-weight: 600; letter-spacing: 0.1em;">MOST PICKED</div>}
-            <div class="qw-eyebrow" style={`color: ${t.emphasis ? "var(--accent)" : "var(--ink-3)"};`}>{t.name.toUpperCase()}</div>
-            <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 14px;">
-              <span style="font-size: 48px; font-weight: 600; letter-spacing: -0.04em;">{t.price}</span>
-              <span style={`font-size: 14px; color: ${t.emphasis ? "rgba(250,247,242,0.6)" : "var(--ink-3)"};`}>{t.interval}</span>
+          <div class={t.emphasis ? "qw-card-pop" : "qw-card"} style={`padding: 24px 24px 24px; position: relative; ${t.emphasis ? "border: 1px solid var(--accent-soft);" : ""}`}>
+            {t.emphasis && <div style="position: absolute; top: 12px; right: 12px; padding: 3px 9px; background: var(--accent-soft); color: var(--accent); border-radius: 999px; font-size: 11px; font-weight: 600;">Most picked</div>}
+            <div class="qw-eyebrow" style={`color: ${t.emphasis ? "var(--accent)" : "var(--ink-3)"};`}>{t.name}</div>
+            <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 12px;">
+              <span style="font-size: 40px; font-weight: 600; letter-spacing: -0.025em; color: var(--ink);">{t.price}</span>
+              <span style="font-size: 13px; color: var(--ink-3);">{t.interval}</span>
             </div>
-            <div style={`margin-top: 18px; padding-top: 18px; border-top: 1px solid ${t.emphasis ? "rgba(250,247,242,0.18)" : "var(--rule)"};`}>
-              <div style={`font-size: 14px; color: ${t.emphasis ? "rgba(250,247,242,0.8)" : "var(--ink-2)"};`}>{t.words}</div>
-              <div style={`font-size: 13px; color: ${t.emphasis ? "rgba(250,247,242,0.6)" : "var(--ink-3)"}; margin-top: 4px;`}>{t.scans}</div>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--rule-soft);">
+              <div style="font-size: 13px; color: var(--ink-2); font-weight: 600;">{t.words}</div>
+              <div style="font-size: 12px; color: var(--ink-3); margin-top: 2px;">{t.scans}</div>
             </div>
-            <ul style="list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 8px;">
+            <ul style="list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-direction: column; gap: 8px;">
               {t.features.map((f) => (
-                <li style="display: flex; gap: 8px; font-size: 14px;">
-                  <span style={`color: ${t.emphasis ? "var(--accent)" : "var(--accent)"};`}>✓</span>
+                <li style="display: flex; gap: 8px; font-size: 13px; line-height: 1.45; color: var(--ink-2);">
+                  <span style="color: var(--accent); flex-shrink: 0;">✓</span>
                   <span>{f}</span>
                 </li>
               ))}
             </ul>
             <a href={t.ctaHref}
-               style={`display: inline-flex; align-items: center; justify-content: center; width: 100%; margin-top: 28px; padding: 14px 22px; border-radius: 999px; font-weight: 500; ${t.emphasis ? "background: var(--accent); color: var(--paper);" : "background: var(--ink); color: var(--paper);"}`}>
+               class={t.emphasis ? "qw-btn accent" : "qw-btn ghost"}
+               style="width: 100%; justify-content: center; margin-top: 24px;">
               {t.cta} →
             </a>
           </div>
         ))}
       </div>
 
-      <div style="text-align: center; margin-top: 56px; color: var(--ink-3); font-size: 14px;">
-        Need higher limits or a team workspace? <a href="mailto:hello@ollawrite.com" style="color: var(--ink); border-bottom: 1px solid var(--ink-3);">Email us</a>.
+      <div style="text-align: center; margin-top: 28px; color: var(--ink-3); font-size: 12.5px;">
+        Need higher limits, SSO, or a custom workspace?
+        <a href="mailto:hello@ollasuper.com" style="color: var(--ink); border-bottom: 1px solid var(--ink-3); font-weight: 700;">Email us</a>.
       </div>
     </div>
   </section>
 
   {/* FAQ */}
-  <section style="padding: 96px 32px;">
-    <div class="qw-section-tight">
-      <div class="qw-eyebrow qw-eyebrow-accent">· FAQ</div>
-      <h2 class="qw-h-1" style="margin-top: 12px; margin-bottom: 32px;">Common questions.</h2>
-      <div style="display: flex; flex-direction: column; gap: 20px;">
-        {[
-          { q: "What counts as a word?", a: "Every word in the model's output is counted against your monthly quota, including variants you reject. We track per-generation in the History panel so you can audit." },
-          { q: "Do scans count against my quota?", a: "No. Crawling is our infrastructure and is unlimited at every tier. You're only paying for the generation tokens." },
-          { q: "Can I cancel anytime?", a: "Yes. Cancel from the Stripe Portal. Your plan stays active until the end of the billing period." },
-          { q: "What model do you use?", a: "OpenAI GPT-4o for Pro and Unlimited. Free tier uses GPT-3.5-turbo. Bring-your-own-key is on the roadmap." },
-          { q: "Do you train on my content?", a: "No. We send your prompts and selected source markdown to OpenAI for inference. We don't fine-tune on customer data and OpenAI's API doesn't train on it either." },
-        ].map((f) => (
-          <details style="padding: 16px 20px; background: var(--white); border: 1px solid var(--rule); border-radius: 12px;">
-            <summary style="font-weight: 500; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+  <section class="qw-pad">
+    <div class="qw-section-narrow">
+      <div class="qw-eyebrow qw-eyebrow-accent">FAQ</div>
+      <h2 class="qw-h-1" style="margin-top: 8px; margin-bottom: 22px;">Common questions.</h2>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        {faqs.map((f) => (
+          <details style="padding: 14px 18px; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px;">
+            <summary style="font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 14px;">
               <span>{f.q}</span>
-              <span style="color: var(--ink-3); font-size: 18px;">+</span>
+              <span style="color: var(--ink-3); font-size: 18px; font-weight: 400;">+</span>
             </summary>
-            <p style="margin-top: 12px; color: var(--ink-2); font-size: 15px; line-height: 1.6;">{f.a}</p>
+            <p style="margin-top: 10px; color: var(--ink-2); font-size: 13.5px; line-height: 1.6;">{f.a}</p>
           </details>
         ))}
       </div>

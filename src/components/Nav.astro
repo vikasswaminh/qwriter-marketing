@@ -1,22 +1,28 @@
 ---
+import Logo from "~/components/Logo.astro";
 const { current } = Astro.props as { current?: string };
 const links = [
-  { href: "/features", label: "Features", key: "features" },
-  { href: "/sources",  label: "Sources",  key: "sources" },
-  { href: "/pricing",  label: "Pricing",  key: "pricing" },
-  { href: "/journal",  label: "Journal",  key: "journal" },
+  { href: "/experts",       label: "Experts",        key: "experts" },
+  { href: "/how-it-works",  label: "How it works",   key: "how" },
+  { href: "/pricing",       label: "Pricing",        key: "pricing" },
+  { href: "/changelog",     label: "Changelog",      key: "changelog" },
 ];
 ---
-<header style="border-bottom: 1px solid var(--rule); background: var(--paper);">
-  <div class="qw-section" style="display: flex; align-items: center; justify-content: space-between; padding: 18px 32px;">
-    <a href="/" style="font-weight: 600; letter-spacing: -0.02em; font-size: 18px; color: var(--ink);">qwriter</a>
-    <nav style="display: flex; gap: 28px; align-items: center;">
-      {links.map(l => (
-        <a href={l.href} style={`font-size: 14px; color: ${current === l.key ? 'var(--ink)' : 'var(--ink-3)'}; font-weight: ${current === l.key ? 500 : 400};`}>{l.label}</a>
-      ))}
-      <a href="https://app.ollawrite.com/auth" style="font-size: 14px; color: var(--ink-3);">Sign in</a>
-      <a href="/signup" style="display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 13px; font-weight: 500;">
-        Start free
+<header class="qw-nav-blur" style="position: sticky; top: 0; z-index: 50; height: 57px;">
+  <div class="qw-section" style="display: flex; align-items: center; justify-content: space-between; padding: 0; height: 100%;">
+    <a href="/" style="display: inline-flex; align-items: center;">
+      <Logo size={26} wordmark={true} />
+    </a>
+    <nav style="display: flex; gap: 24px; align-items: center;">
+      <span class="qw-nav-mobile-hide" style="display: contents;">
+        {links.map(l => (
+          <a href={l.href} style={`font-size: 13px; color: ${current === l.key ? 'var(--ink)' : 'var(--ink-3)'}; font-weight: ${current === l.key ? 600 : 400};`}>{l.label}</a>
+        ))}
+        <span style="width: 1px; height: 16px; background: var(--rule);"></span>
+        <a href="https://app.ollasuper.com/auth" style="font-size: 13px; color: var(--ink-3); font-weight: 400;">Sign in</a>
+      </span>
+      <a href="/signup" class="qw-btn primary" style="padding: 7px 14px; font-size: 12.5px;">
+        Start free →
       </a>
     </nav>
   </div>

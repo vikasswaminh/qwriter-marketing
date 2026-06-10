@@ -1,0 +1,217 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import ExpertGlyph from "~/components/ExpertGlyph.astro";
+import { experts, departments } from "~/data/experts";
+import { marked } from "marked";
+
+export async function getStaticPaths() {
+  return experts.map(e => ({ params: { slug: e.slug }, props: { expert: e } }));
+}
+
+const { expert } = Astro.props as { expert: typeof experts[number] };
+const dept = departments[expert.department];
+const related = expert.pairs
+  .map(slug => experts.find(e => e.slug === slug))
+  .filter((e): e is typeof experts[number] => Boolean(e));
+const promptUrl = (prompt: string) =>
+  `https://app.ollasuper.com/?expert=${expert.slug}&prompt=${encodeURIComponent(prompt)}`;
+
+// Render the sample chat content as HTML (no raw markdown asterisks visible).
+marked.setOptions({ gfm: true, breaks: false });
+const assistantHtml = marked.parse(expert.sample.assistant) as string;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": expert.name,
+  "name": `${expert.name} — OllaSuper`,
+  "description": expert.oneliner,
+  "provider": { "@type": "Organization", "name": "OllaSuper", "url": "https://ollasuper.com" },
+  "areaServed": "Worldwide",
+  "url": `https://ollasuper.com/experts/${expert.slug}`,
+  "category": dept.label,
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": `${expert.short} capabilities`,
+    "itemListElement": expert.tasks.flatMap(group => group.items.map(item => ({
+      "@type": "Offer",
+      "itemOffered": { "@type": "Service", "name": item, "category": group.group }
+    })))
+  }
+};
+---
+<Layout
+  current="experts"
+  title={`${expert.name} — OllaSuper`}
+  description={expert.oneliner}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  {/* BREADCRUMB */}
+  <div style="border-bottom: 1px solid var(--rule-soft);">
+    <div class="qw-section" style="padding: 12px 0; font-size: 12px; color: var(--ink-3);">
+      <a href="/" style="color: var(--ink-3);">Home</a>
+      <span style="margin: 0 6px; color: var(--rule-2);">/</span>
+      <a href="/experts" style="color: var(--ink-3);">Experts</a>
+      <span style="margin: 0 6px; color: var(--rule-2);">/</span>
+      <span style="color: var(--ink); font-weight: 600;">{expert.name}</span>
+    </div>
+  </div>
+
+  {/* HERO */}
+  <section style="position: relative; padding: 56px 0 40px; overflow: hidden;">
+    <div class="qw-hero-bg"></div>
+    <div class="qw-section" style="position: relative;">
+      <div class="qw-split-wide">
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px 5px 8px; background: var(--paper); border: 1px solid var(--rule-soft); border-radius: 999px; font-size: 12px; font-weight: 500; color: var(--ink-3); margin-bottom: 18px; box-shadow: var(--shadow-xs);">
+            <span style={`width: 7px; height: 7px; border-radius: 999px; background: ${expert.color};`}></span>
+            {dept.label} <span style="color: var(--rule-2);">·</span> Expert
+          </div>
+          <h1 class="qw-h-display">{expert.name}</h1>
+          <p class="qw-body" style="max-width: 540px; margin-top: 18px; font-size: 17px;">
+            {expert.oneliner}
+          </p>
+          <div style="display: flex; gap: 10px; margin-top: 26px; flex-wrap: wrap;">
+            <a href="/signup" class="qw-btn accent">
+              Hire {expert.short} — Start free →
+            </a>
+            <a href="/experts" class="qw-btn ghost">All 30 agents</a>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+          <div style={`position: absolute; inset: -24px; background: radial-gradient(60% 60% at 50% 50%, ${expert.color}22, transparent 70%); filter: blur(24px);`}></div>
+          <div class="qw-card-pop" style="position: relative; padding: 32px; background: var(--grad-card);">
+            <ExpertGlyph slug={expert.slug} color={expert.color} size={200} flat={true} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* STARTER PROMPTS */}
+  <section style="background: var(--bg-elev); border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);">
+    <div class="qw-section qw-pad">
+      <div style="display: flex; align-items: end; justify-content: space-between; margin-bottom: 22px;">
+        <div>
+          <div class="qw-eyebrow qw-eyebrow-accent">Starter prompts</div>
+          <h2 class="qw-h-1" style="margin-top: 8px;">4 ways to start with {expert.short}.</h2>
+        </div>
+        <span style="font-size: 12.5px; color: var(--ink-3);">Click any → opens in app with prompt pre-loaded</span>
+      </div>
+      <div class="qw-bento qw-grid-4">
+        {expert.starters.map(c => (
+          <a href={promptUrl(c.prompt)} class="qw-bento-cell" style="display: flex; flex-direction: column; padding: 18px; color: var(--ink);">
+            <div style="display: flex; justify-content: space-between; gap: 8px; align-items: flex-start;">
+              <div style="font-weight: 600; font-size: 14.5px; letter-spacing: -0.012em; line-height: 1.25; color: var(--ink);">{c.title}</div>
+              <span style={`color: ${expert.color}; font-weight: 600; font-size: 14px;`}>→</span>
+            </div>
+            <div style="margin-top: 6px; font-size: 12px; color: var(--ink-3); line-height: 1.45;">{c.tagline}</div>
+            <details style="margin-top: 14px;">
+              <summary style="cursor: pointer; list-style: none; font-size: 11.5px; font-weight: 500; color: var(--ink-3);">▸ Preview prompt</summary>
+              <div style="margin-top: 8px; padding: 10px 12px; background: var(--bg-elev); border-radius: 6px; font-family: var(--font-mono); font-size: 10.5px; line-height: 1.55; color: var(--ink-2);">{c.prompt}</div>
+            </details>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* WHAT IT DOES */}
+  <section class="qw-pad">
+    <div class="qw-section">
+      <div style="display: flex; align-items: end; justify-content: space-between; margin-bottom: 22px;">
+        <div>
+          <div class="qw-eyebrow qw-eyebrow-accent">What it does</div>
+          <h2 class="qw-h-1" style="margin-top: 8px;">Tasks {expert.short} ships every week.</h2>
+        </div>
+      </div>
+      <div class={`qw-bento qw-grid-${expert.tasks.length}`}>
+        {expert.tasks.map(group => (
+          <div class="qw-bento-cell" style="padding: 20px;">
+            <div style={`display: inline-block; padding: 3px 8px; border-radius: 4px; background: ${expert.color}1a; color: ${expert.color}; font-weight: 600; font-size: 11px; letter-spacing: 0;`}>{group.group}</div>
+            <ul style="list-style: none; padding: 0; margin: 14px 0 0;">
+              {group.items.map(item => (
+                <li style="padding: 9px 0; border-top: 1px solid var(--rule-soft); font-size: 13px; line-height: 1.5; color: var(--ink-2);">{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* SAMPLE CHAT */}
+  <section style="background: var(--bg-elev); border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);">
+    <div class="qw-section-narrow qw-pad">
+      <div style="display: flex; align-items: end; justify-content: space-between; margin-bottom: 18px;">
+        <div>
+          <div class="qw-eyebrow qw-eyebrow-accent">Worked sample</div>
+          <h2 class="qw-h-1" style="margin-top: 8px;">A real {expert.short} chat.</h2>
+        </div>
+        <span style="font-size: 12px; color: var(--ink-3);">No edits · no cherry-picks</span>
+      </div>
+
+      <div class="qw-card-pop" style="overflow: hidden;">
+        <div style="display: flex; gap: 12px; padding: 20px 22px; border-bottom: 1px solid var(--rule-soft);">
+          <div style="flex: 0 0 28px; height: 28px; border-radius: 999px; background: var(--ink); color: var(--paper); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 10px;">You</div>
+          <div style="flex: 1; padding-top: 4px; font-size: 13.5px; line-height: 1.6; color: var(--ink-2);">{expert.sample.user}</div>
+        </div>
+        <div style="display: flex; gap: 12px; padding: 20px 22px;">
+          <div style={`flex: 0 0 28px; height: 28px; border-radius: 999px; background: ${expert.color}; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 10px;`}>{expert.short.slice(0,2)}</div>
+          <div class="qw-chat-body" style="flex: 1; padding-top: 4px; font-size: 13.5px; line-height: 1.65; color: var(--ink);" set:html={assistantHtml} />
+        </div>
+        <div style="padding: 10px 22px; background: var(--paper-warm); display: flex; gap: 10px; align-items: center; font-size: 11px; color: var(--ink-3); border-top: 1px solid var(--rule-soft);">
+          <span style={`color: ${expert.color};`}>✦</span>
+          <span>grounded in your files + site</span>
+          <span style="color: var(--rule-2);">·</span>
+          <span>memory on</span>
+          <span style="color: var(--rule-2);">·</span>
+          <span>200M proxies + 4,000 tools</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* RELATED EXPERTS */}
+  {related.length > 0 && (
+    <section class="qw-pad">
+      <div class="qw-section">
+        <div style="display: flex; align-items: end; justify-content: space-between; margin-bottom: 18px;">
+          <div>
+            <div class="qw-eyebrow qw-eyebrow-accent">Pairs well with</div>
+            <h2 class="qw-h-2" style="margin-top: 6px;">{expert.short} works best alongside these {related.length}.</h2>
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          {related.map(r => (
+            <a href={`/experts/${r.slug}`} class="qw-card" style="display: inline-flex; align-items: center; gap: 12px; padding: 10px 16px 10px 10px; color: var(--ink); border-radius: 999px;">
+              <ExpertGlyph slug={r.slug} color={r.color} size={32} flat={true} />
+              <span>
+                <span style="display: block; font-weight: 600; font-size: 13px; letter-spacing: -0.012em; line-height: 1.1; color: var(--ink);">{r.name}</span>
+                <span style="display: block; font-size: 11.5px; color: var(--ink-3); line-height: 1.35; max-width: 320px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{r.oneliner}</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* CTA — soft card, accent only on button */}
+  <section class="qw-pad">
+    <div class="qw-section">
+      <div class="qw-card-pop" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 26px 28px; background: var(--grad-card); position: relative; overflow: hidden;">
+        {/* expert-color accent on the left edge — subtle */}
+        <div style={`position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: ${expert.color};`}></div>
+        <div>
+          <div style="font-weight: 600; font-size: 24px; letter-spacing: -0.022em; line-height: 1.15; color: var(--ink);">Put {expert.short} on your team.</div>
+          <div style="margin-top: 4px; font-size: 13px; color: var(--ink-3);">Plus 18 other experts. One subscription. No setup.</div>
+        </div>
+        <a href="/signup" class="qw-btn accent" style={`background: ${expert.color};`}>Start free →</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,112 @@
+---
+// Interactive tab panel for the "One Workspace For Every Team" section.
+// Uses a tiny inline JS for click handling — no framework dependency.
+export interface Dept {
+  key: string;
+  label: string;
+  color: string;
+  pitch: string;             // one-liner shown in the panel
+  agents: { name: string; role: string }[];  // 3-4 agents on that team
+  outputs: string[];         // 3-5 deliverables
+}
+export interface Props { departments: Dept[]; }
+const { departments } = Astro.props as Props;
+---
+<div class="qw-dept-tabs">
+  {/* Tab row */}
+  <div role="tablist" style="display: flex; gap: 4px; flex-wrap: wrap; border-bottom: 1px solid var(--rule-soft); margin-bottom: 24px;">
+    {departments.map((d, i) => (
+      <button
+        type="button"
+        role="tab"
+        data-tab={d.key}
+        aria-selected={i === 0 ? "true" : "false"}
+        style={`
+          padding: 10px 16px;
+          border: 0;
+          background: transparent;
+          font-family: inherit;
+          font-size: 13px;
+          font-weight: 600;
+          color: ${i === 0 ? 'var(--ink)' : 'var(--ink-3)'};
+          border-bottom: 2px solid ${i === 0 ? d.color : 'transparent'};
+          cursor: pointer;
+          transition: color 140ms;
+          margin-bottom: -1px;
+        `}
+        onmouseover={`if(this.getAttribute('aria-selected') !== 'true') this.style.color='var(--ink)';`}
+        onmouseout={`if(this.getAttribute('aria-selected') !== 'true') this.style.color='var(--ink-3)';`}
+      >
+        <span style={`display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: ${d.color}; margin-right: 8px; vertical-align: middle;`}></span>
+        {d.label}
+      </button>
+    ))}
+  </div>
+
+  {/* Tab panels */}
+  {departments.map((d, i) => (
+    <div
+      role="tabpanel"
+      data-panel={d.key}
+      style={`display: ${i === 0 ? 'grid' : 'none'}; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: start;`}
+    >
+      {/* Pitch + outputs */}
+      <div>
+        <div style={`display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: ${d.color}1a; color: ${d.color}; font-weight: 700; font-size: 11px;`}>
+          <span style={`width: 6px; height: 6px; border-radius: 999px; background: ${d.color};`}></span>
+          {d.label}
+        </div>
+        <h3 class="qw-h-2" style="margin-top: 14px; margin-bottom: 12px;">{d.pitch}</h3>
+
+        <div style="margin-top: 18px;">
+          <div class="qw-eyebrow" style="margin-bottom: 10px;">What they ship</div>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+            {d.outputs.map(o => (
+              <li style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: var(--ink-2);">
+                <span style={`color: ${d.color}; font-weight: 700;`}>✓</span>
+                <span>{o}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Agent cards */}
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        {d.agents.map(a => (
+          <div class="qw-card" style="padding: 16px 18px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style={`width: 10px; height: 10px; border-radius: 999px; background: ${d.color};`}></span>
+              <span style="font-weight: 700; font-size: 13px; color: var(--ink);">{a.name}</span>
+            </div>
+            <div style="margin-top: 6px; font-size: 12px; color: var(--ink-3); line-height: 1.5;">{a.role}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll('.qw-dept-tabs').forEach(root => {
+    const tabs = root.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+    const panels = root.querySelectorAll<HTMLElement>('[role="tabpanel"]');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const key = tab.dataset.tab;
+        tabs.forEach(t => {
+          const active = t === tab;
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+          t.style.color = active ? 'var(--ink)' : 'var(--ink-3)';
+          if (!active) t.style.borderBottomColor = 'transparent';
+        });
+        // Set the selected tab's underline to its own color
+        const color = tab.querySelector('span')?.style.background || 'var(--ink)';
+        tab.style.borderBottomColor = color;
+        panels.forEach(p => {
+          p.style.display = (p.dataset.panel === key) ? 'grid' : 'none';
+        });
+      });
+    });
+  });
+</script>

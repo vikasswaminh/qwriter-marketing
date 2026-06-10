@@ -1,127 +1,529 @@
 ---
 import Layout from "~/layouts/Layout.astro";
+import OllaSuperChatLoop from "~/components/OllaSuperChatLoop.astro";
+import OutputCard from "~/components/OutputCard.astro";
+import DepartmentTabs from "~/components/DepartmentTabs.astro";
+import MultiAgentGraph from "~/components/MultiAgentGraph.astro";
+import ExpertGlyph from "~/components/ExpertGlyph.astro";
+
+const team = [
+  { slug: "data",        name: "Research Agent",      role: "Market scans, A/B writeups, board MoM",      color: "#7c3aed" },
+  { slug: "sales",       name: "Sales Agent",         role: "Outbound, pipeline, proposals",              color: "#16a34a" },
+  { slug: "marketing",   name: "Marketing Agent",     role: "Posts, campaigns, case studies",             color: "#22c55e" },
+  { slug: "hr",          name: "HR Agent",            role: "JDs, offers, reviews, exits",                color: "#ff6b4a" },
+  { slug: "operations",  name: "Operations Agent",    role: "SOPs, RFPs, runbooks, change mgmt",          color: "#52525b" },
+  { slug: "finance",     name: "Finance Agent",       role: "Reports, invoices, vendor mgmt",             color: "#475569" },
+  { slug: "support",     name: "Support Agent",       role: "Tickets, escalations, refunds",              color: "#0d9488" },
+  { slug: "engineering", name: "Engineering Agent",   role: "RFCs, post-mortems, code review",            color: "#0066ff" },
+  { slug: "cos",         name: "Chief of Staff",      role: "Briefings, OKRs, all-hands",                 color: "#c2410c" },
+];
+
+const outputs = [
+  { category: "INVESTOR UPDATE", color: "#d97706", title: "October Investor Update",  agent: "Investor Relations", href: "/experts/ir",
+    body: "<strong>Highlights.</strong> ARR up 22% MoM to $4.6M. Net new logos: 84. Hired Anjali as VP Product (ex-Razorpay). <br/><strong>Asks.</strong> Intros for VP Sales hire (former CRO, 500-2K SaaS)." },
+  { category: "BOARD REPORT", color: "#7c3aed", title: "Q3 Board Pre-Read",  agent: "Chief of Staff", href: "/experts/cos",
+    body: "Q3 vs Q2: revenue +28%, NRR 118%, customer count +12. <strong>Strategic decisions to surface:</strong> AI infra build vs buy, EU expansion timing, follow-on equity plan." },
+  { category: "SALES CAMPAIGN", color: "#16a34a", title: "23-touch ABM Sequence",  agent: "SDR Agent", href: "/experts/sdr",
+    body: "Day 1 · Day 3 · Day 7 · Day 12 · Day 21. <strong>50 prospects.</strong> US Series A SaaS hiring SDRs. Each step: subject + 90-word body + LinkedIn voice note." },
+  { category: "SEO AUDIT", color: "#10b981", title: "ollasuper.com SEO Audit",  agent: "SEO Agent", href: "/experts/seo",
+    body: "<strong>Score: 64/100.</strong> Top 5 fixes: title-tag rewrites, missing FAQPage schema, 12 broken internal links, page-speed on /experts, 3 cannibalization fixes." },
+  { category: "CONTENT BRIEF", color: "#0066ff", title: "AI for Sales Teams · 1,500w",  agent: "AEO Agent", href: "/experts/aeo",
+    body: "<strong>Primary keyword:</strong> ai sales tools (KD 38). Outline · 8 H2s · 2,000 words · 5 internal links · Author byline + last-updated. Projected AEO lift: 47 → 78." },
+  { category: "HIRING PLAN", color: "#ff6b4a", title: "Senior Engineer · Bengaluru JD",  agent: "HR Agent", href: "/experts/hr",
+    body: "<strong>Role:</strong> Own one of four production services that move money for our 200+ B2B customers. <strong>Comp:</strong> ₹32–48 LPA + ESOPs. Hybrid (2 days/week)." },
+  { category: "CS REVIEW", color: "#15803d", title: "ACME Co. Q3 QBR",  agent: "Customer Success", href: "/experts/cs",
+    body: "Usage +60% YoY (4,200 → 6,720 monthly workflows). 8 teams adopted, up from 3. <strong>Proposal:</strong> upgrade to Unlimited tier — projected to exceed quota by Feb." },
+  { category: "INCIDENT REPORT", color: "#1d4ed8", title: "P1 Postmortem · DB Failover",  agent: "DevOps", href: "/experts/devops",
+    body: "<strong>4h 12m outage.</strong> Root cause: misconfigured health check after a deploy 3 weeks earlier. <strong>Actions:</strong> 7 items with owners + dates, integration test added." },
+  { category: "PRD", color: "#4338ca", title: "Two-way Calendar Sync PRD",  agent: "Product", href: "/experts/product",
+    body: "Problem: duplicate events on 38% of bookings — #1 support ticket category. <strong>Success metric:</strong> duplicate-event tickets down 80% in 60 days." },
+  { category: "MARKET RESEARCH", color: "#ea580c", title: "HR-tech M&A Landscape",  agent: "M&A Agent", href: "/experts/ma",
+    body: "<strong>Tier 1 strategics</strong> (Workday, SAP SF, Oracle Fusion HCM). <strong>EV/Rev comps</strong> at $50M ARR · 40% growth: 8–12x. Recommended outreach order." },
+];
+
+const departments = [
+  {
+    key: "sales", label: "Sales", color: "#16a34a",
+    pitch: "From cold outbound to closed-won — without a 6-person SDR team.",
+    agents: [
+      { name: "SDR Agent",     role: "Sourcing, cadences, objection handling" },
+      { name: "Sales Agent",   role: "Pipeline, proposals, renewal pitches" },
+      { name: "CS Agent",      role: "QBRs, expansion, churn-saves" },
+      { name: "Support Agent", role: "Triage, escalation, refund logic" },
+    ],
+    outputs: ["Outbound sequences", "Discovery scripts", "Proposal decks", "QBR documents", "Renewal pitches"],
+  },
+  {
+    key: "marketing", label: "Marketing", color: "#22c55e",
+    pitch: "Ship a full content engine without hiring an agency.",
+    agents: [
+      { name: "Marketing Agent",  role: "Posts, campaigns, case studies" },
+      { name: "SEO Agent",        role: "Audits, briefs, on-page fixes" },
+      { name: "AEO Agent",        role: "Get cited by AI search" },
+      { name: "Content Writer",   role: "Long-form essays, voice match" },
+    ],
+    outputs: ["Blog posts + briefs", "LinkedIn essays", "Case studies", "Email campaigns", "Schema markup + AEO fixes"],
+  },
+  {
+    key: "hr", label: "HR", color: "#ff6b4a",
+    pitch: "Hire, onboard, review and offboard — at startup speed.",
+    agents: [
+      { name: "HR Agent",         role: "JDs, offers, reviews, exits" },
+      { name: "Recruiter Agent",  role: "Sourcing, InMails, scorecards" },
+      { name: "Career Agent",     role: "Promotion cases, salary asks" },
+      { name: "CoS Agent",        role: "Skip-levels, calendar audits" },
+    ],
+    outputs: ["Job descriptions", "Offer letters + grade rubrics", "Performance review templates", "Interview scorecards", "Exit interview synthesis"],
+  },
+  {
+    key: "ops", label: "Operations", color: "#52525b",
+    pitch: "Procedures, vendors, audits — the office's quiet engine.",
+    agents: [
+      { name: "Operations Agent", role: "SOPs, RFPs, runbooks" },
+      { name: "Finance Agent",    role: "AR, AP, vendor onboarding" },
+      { name: "SOC 2 Agent",      role: "TSC mapping, evidence, gaps" },
+      { name: "DevOps Agent",     role: "Incident response, SLOs" },
+    ],
+    outputs: ["SOPs", "RFPs + vendor evaluation memos", "Change-management RFCs", "Audit-readiness checklists", "Incident reports"],
+  },
+  {
+    key: "finance", label: "Finance", color: "#475569",
+    pitch: "Reports, models, tax — without the Big 4 invoice.",
+    agents: [
+      { name: "Finance Agent",  role: "AR, AP, board metrics" },
+      { name: "Tax Agent",      role: "Federal, state, sales tax, R&D" },
+      { name: "M&A Agent",      role: "Targets, comps, CIMs, DD" },
+      { name: "IR Agent",       role: "Updates, decks, cap table" },
+    ],
+    outputs: ["MIS reports + variance commentary", "Sales-tax nexus analysis", "Investor updates + board narratives", "M&A target lists + CIMs", "Vendor onboarding"],
+  },
+  {
+    key: "support", label: "Support", color: "#0d9488",
+    pitch: "First responses to escalations to root-cause memos.",
+    agents: [
+      { name: "Support Agent",  role: "Triage, ack, escalation" },
+      { name: "CS Agent",       role: "Onboarding, QBR, expansion" },
+      { name: "Engineering",    role: "Bug triage, post-mortems" },
+      { name: "Product Agent",  role: "PRDs, beta launches" },
+    ],
+    outputs: ["First-response templates", "Escalation replies", "Refund / credit decisions", "Bug acknowledgment scripts", "Post-incident summaries"],
+  },
+  {
+    key: "engineering", label: "Engineering", color: "#0066ff",
+    pitch: "RFCs, code reviews, post-mortems — at staff-engineer quality.",
+    agents: [
+      { name: "Engineering",    role: "RFCs, design docs, reviews" },
+      { name: "DevOps Agent",   role: "Runbooks, SLOs, incidents" },
+      { name: "Product Agent",  role: "PRDs, beta launches" },
+      { name: "Designer Agent", role: "Crits, microcopy, audits" },
+    ],
+    outputs: ["Technical RFCs", "Code-review comments", "Architecture decision records", "Blameless post-mortems", "Design critiques"],
+  },
+  {
+    key: "legal", label: "Legal", color: "#7f1d1d",
+    pitch: "Contracts, compliance, IP — drafted to be signed, not negotiated for weeks.",
+    agents: [
+      { name: "Legal Agent",      role: "NDAs, MSAs, NOCs" },
+      { name: "Litigation Agent", role: "Discovery, depo prep, motions" },
+      { name: "HIPAA Agent",      role: "BAAs, risk assessments" },
+      { name: "SEC Agent",        role: "S-1, 10-K, 10-Q, 8-K" },
+    ],
+    outputs: ["NDA + MSA drafts", "DPDP / GDPR notices", "BAA review and red-lines", "Litigation discovery protocols", "SEC filings"],
+  },
+  {
+    key: "founder", label: "Founder Office", color: "#f59e0b",
+    pitch: "Investor updates to all-hands scripts to the hard layoff email.",
+    agents: [
+      { name: "Founder Agent",  role: "Investor updates, vision" },
+      { name: "CoS Agent",      role: "Briefings, OKRs, calendar" },
+      { name: "IR Agent",       role: "Board decks, data room" },
+      { name: "M&A Agent",      role: "Targets, comps, DD" },
+    ],
+    outputs: ["Monthly investor updates", "Board pre-reads + narratives", "All-hands scripts", "Strategic decision memos", "Press + PR comms"],
+  },
+];
+
+const workflowSteps = [
+  { n: "01", t: "Choose a specialist", d: "30 to choose from — Sales, HR, Finance, Engineering. Tap to assign." },
+  { n: "02", t: "Add context",          d: "Drop a URL, upload a file, paste text, or connect a workspace." },
+  { n: "03", t: "Ask naturally",        d: "Plain English. No prompt engineering. The specialist knows their role." },
+  { n: "04", t: "Review the output",    d: "Edit inline, regenerate any block, or accept and ship." },
+  { n: "05", t: "Ship the work",        d: "Export to MD · PDF · DOCX. Or paste straight into your tool." },
+];
+
+const collaborationAgents = [
+  { short: "Sales",    color: "#16a34a" },
+  { short: "Data",     color: "#7c3aed" },
+  { short: "Finance",  color: "#475569" },
+  { short: "Mkt",      color: "#22c55e" },
+  { short: "HR",       color: "#ff6b4a" },
+  { short: "CoS",      color: "#c2410c" },
+];
+
+const enterpriseCards = [
+  { t: "Security",        d: "SOC 2 Type II ready. Per-workspace encryption. Audited controls.",                          icon: "🛡" },
+  { t: "Compliance",      d: "GDPR, CCPA, HIPAA-ready. DPA on request. Data-residency options.",                            icon: "✓" },
+  { t: "Privacy",         d: "Your data is never used to train any model — ours or any vendor's.",                          icon: "🔒" },
+  { t: "Governance",      d: "Workspace-level policies, role-based access, granular permissions.",                          icon: "⚙" },
+  { t: "Access Controls", d: "SSO via Okta / Azure AD. SCIM provisioning. Per-agent gating.",                               icon: "→" },
+  { t: "Audit Logs",      d: "Every action, every output, every model call — exportable to your SIEM.",                     icon: "≡" },
+];
 ---
-<Layout current="" title="qwriter — AI copywriter that knows your customer">
+<Layout
+  current=""
+  title="OllaSuper — Build Your AI Workforce"
+  description="Deploy AI specialists across Sales, Marketing, HR, Operations, Finance, Support and Engineering from a single workspace."
+>
 
-  {/* HERO */}
-  <section style="padding: 96px 32px 64px;">
-    <div class="qw-section">
-      <div class="qw-eyebrow qw-eyebrow-accent" style="margin-bottom: 18px;">· COPYWRITING · GROUNDED IN REAL CONTENT</div>
-      <h1 class="qw-h-display" style="max-width: 940px;">
-        Stop writing copy that <span style="font-style: italic; color: var(--accent);">could be anyone's</span>.
-        <br />
-        Ground it in your customer's site.
-      </h1>
-      <p class="qw-body" style="max-width: 640px; margin-top: 24px; font-size: 19px;">
-        Paste a URL. <strong>qwriter</strong> crawls the page in under a second, extracts clean markdown + the
-        on-page facts, and writes copy that actually references what's there. Same tools you've used.
-        Different output.
-      </p>
-      <div style="display: flex; gap: 12px; margin-top: 32px;">
-        <a href="/signup" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500; font-size: 15px;">Start free — 5,000 words/mo →</a>
-        <a href="/sources" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px; border: 1px solid var(--ink); color: var(--ink); font-weight: 500; font-size: 15px;">How grounding works</a>
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* 1 · HERO — 90vh · premium mesh + grain backdrop */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section style="position: relative; min-height: 90vh; display: flex; align-items: center; overflow: hidden; padding: 96px 0 80px;">
+    <div class="qw-mesh"></div>
+    <div class="qw-grain"></div>
+
+    <div class="qw-section" style="position: relative; z-index: 2; width: 100%;">
+      {/* Centered hero — copy on top, chat preview centered below.
+         Replaces the 2-col split that pushed the chat off to 77% of the viewport. */}
+      <div style="text-align: center; max-width: 920px; margin: 0 auto;">
+        <div class="qw-badge-premium" style="margin: 0 auto 28px;">
+          <span class="dot"></span>
+          AI Workforce Platform
+        </div>
+
+        <h1 class="qw-h-display" style="margin: 0 auto; max-width: 880px;">
+          Build Your AI Workforce.
+        </h1>
+
+        <p style="margin: 24px auto 0; max-width: 640px; font-size: 18px; line-height: 1.55; color: var(--ink-3);">
+          Deploy AI specialists across <span style="color: var(--ink); font-weight: 600;">Sales, Marketing, HR, Operations, Finance, Support and Engineering</span> — from a single workspace.
+        </p>
+
+        <div style="display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; justify-content: center;">
+          <a href="/signup" class="qw-btn premium qw-btn-block-mobile" style="padding: 14px 26px; font-size: 14.5px;">Start Free →</a>
+          <a href="#workflow" class="qw-btn ghost-premium qw-btn-block-mobile" style="padding: 14px 26px; font-size: 14.5px;">Watch Demo</a>
+        </div>
+
+        <div style="display: inline-flex; gap: 22px; margin-top: 30px; flex-wrap: wrap; align-items: center; font-size: 12.5px; color: var(--ink-3); justify-content: center;">
+          <span style="display: inline-flex; align-items: center; gap: 6px;">
+            <span style="color: var(--sage); font-weight: 700;">✓</span> No credit card
+          </span>
+          <span style="display: inline-flex; align-items: center; gap: 6px;">
+            <span style="color: var(--sage); font-weight: 700;">✓</span> Enterprise ready
+          </span>
+          <span style="display: inline-flex; align-items: center; gap: 6px;">
+            <span style="color: var(--sage); font-weight: 700;">✓</span> Multi-agent collaboration
+          </span>
+        </div>
       </div>
-      <div class="qw-mono" style="margin-top: 20px; font-size: 12px; color: var(--ink-3); letter-spacing: 0.08em;">
-        NO CARD · 200K PAGES/DAY · BACKED BY CRAWLCRAWL.COM
+
+      {/* Chat preview — centered below the headline */}
+      <div style="margin-top: 64px; display: flex; align-items: center; justify-content: center;">
+        <OllaSuperChatLoop />
       </div>
     </div>
   </section>
 
-  {/* MARQUEE STRIP */}
-  <div class="qw-marquee">
-    <span>· EDITORIAL TYPE</span>
-    <span>· CRAWLCRAWL.COM SCANS</span>
-    <span>· OPENAI GPT-4o</span>
-    <span>· TRIX EDITOR</span>
-    <span>· TURBO + STIMULUS</span>
-    <span>· 100% RUST BACKEND</span>
-    <span>· COOKIE AUTH</span>
-  </div>
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* 2 · SOCIAL PROOF */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section style="border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); background: var(--paper);">
+    <div class="qw-section" style="padding: 32px 0;">
+      <div style="text-align: center; font-size: 12px; color: var(--ink-3); margin-bottom: 24px; font-weight: 500;">
+        Built for the next generation of operating teams
+      </div>
 
-  {/* BIG PRODUCT SHOT — placeholder card */}
-  <section style="padding: 80px 32px;">
-    <div class="qw-section">
-      <div style="background: var(--white); border: 1px solid var(--rule); border-radius: 16px; padding: 12px; box-shadow: 0 32px 80px rgba(20,17,13,0.08);">
-        <div style="background: var(--bone); border-radius: 10px; padding: 32px 36px; min-height: 480px;">
-          <div class="qw-mono" style="font-size: 11px; color: var(--ink-3); letter-spacing: 0.08em; margin-bottom: 24px;">/ DOCUMENTS / Q4-LAUNCH / HERO ROSE BALM</div>
-          <h2 class="qw-h-2" style="margin-bottom: 18px;">The rose balm that took us four years to perfect.</h2>
-          <p class="qw-body" style="max-width: 720px;">
-            Studio Birch began as a kitchen experiment in Reykjavík. Our cold-pressed
-            Anatolian rose hip oil is sourced from a single co-op. 200 jars a batch.
-          </p>
-          <div style="margin-top: 36px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
-            <div style="background: var(--white); padding: 16px; border-radius: 8px; border: 1px solid var(--rule);">
-              <div class="qw-mono" style="font-size: 10px; color: var(--ink-3); letter-spacing: 0.1em;">VARIANT 01 · 142W</div>
-              <div style="margin-top: 8px; font-size: 14px; font-weight: 500;">The rose balm that took us four years…</div>
-            </div>
-            <div style="background: var(--white); padding: 16px; border-radius: 8px; border: 1px solid var(--rule);">
-              <div class="qw-mono" style="font-size: 10px; color: var(--ink-3); letter-spacing: 0.1em;">VARIANT 02 · 96W</div>
-              <div style="margin-top: 8px; font-size: 14px; font-weight: 500;">Four years. One jar. Same formula, new face.</div>
-            </div>
-            <div style="background: var(--ink); color: var(--paper); padding: 16px; border-radius: 8px; position: relative;">
-              <div style="position: absolute; top: -8px; left: 12px; background: var(--accent); padding: 2px 8px; border-radius: 4px; font-size: 9px; font-weight: 600; letter-spacing: 0.1em;">PICKED</div>
-              <div class="qw-mono" style="font-size: 10px; color: rgba(250,247,242,0.6); letter-spacing: 0.1em;">VARIANT 03 · 108W</div>
-              <div style="margin-top: 8px; font-size: 14px; font-weight: 500;">We rebuilt the jar. We left the formula alone.</div>
-            </div>
+      <div class="qw-grid-4" style="gap: 32px;">
+        {[
+          { v: "30",         l: "AI specialists" },
+          { v: "9",          l: "Departments covered" },
+          { v: "120+",       l: "Output types" },
+          { v: "1.2M",       l: "Tasks completed weekly" },
+        ].map(s => (
+          <div style="text-align: center;">
+            <div style="font-size: clamp(34px, 4vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: var(--ink); line-height: 1;">{s.v}</div>
+            <div style="margin-top: 6px; font-size: 12.5px; color: var(--ink-3);">{s.l}</div>
           </div>
-          <div style="margin-top: 24px; padding: 12px 14px; background: var(--ink); color: var(--paper); border-radius: 8px; display: flex; align-items: center; gap: 10px; font-size: 12px;">
-            <span style="color: var(--accent);">✦</span>
-            Grounded in <strong>studiobirch.com</strong> + 2 pages · <span class="qw-mono" style="color: rgba(250,247,242,0.7);">3 SOURCES · 4.2KB MD · 32 FACTS DETECTED · GPT-4o</span>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  {/* THREE-COLUMN BENEFIT */}
-  <section style="padding: 80px 32px;">
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* 3 · MEET YOUR AI TEAM */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section style="padding: 96px 0 80px;">
     <div class="qw-section">
-      <div class="qw-eyebrow qw-eyebrow-accent">· WHAT MAKES IT DIFFERENT</div>
-      <h2 class="qw-h-1" style="margin-top: 12px; max-width: 760px;">
-        Most AI writers <em>guess</em>. <span style="color: var(--ink-3);">qwriter starts from what's already true on your customer's site.</span>
-      </h2>
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px;">
-        <div>
-          <div style="font-size: 56px; font-weight: 600; color: var(--accent); letter-spacing: -0.04em;">01.</div>
-          <h3 class="qw-h-2" style="margin-top: 8px;">Sub-second scans.</h3>
-          <p style="margin-top: 8px; color: var(--ink-3); font-size: 15px; line-height: 1.55;">
-            Paste a URL. crawlcrawl.com pulls the page and returns clean markdown + JSON-LD + OG tags in ~600 ms.
-            We keep the extracted text per project.
-          </p>
-        </div>
-        <div>
-          <div style="font-size: 56px; font-weight: 600; color: var(--accent); letter-spacing: -0.04em;">02.</div>
-          <h3 class="qw-h-2" style="margin-top: 8px;">Pick what to ground in.</h3>
-          <p style="margin-top: 8px; color: var(--ink-3); font-size: 15px; line-height: 1.55;">
-            Check the pages you want this generation to reference. Every variant arrives with a footer telling
-            you exactly which sources contributed.
-          </p>
-        </div>
-        <div>
-          <div style="font-size: 56px; font-weight: 600; color: var(--accent); letter-spacing: -0.04em;">03.</div>
-          <h3 class="qw-h-2" style="margin-top: 8px;">3-6 variants per click.</h3>
-          <p style="margin-top: 8px; color: var(--ink-3); font-size: 15px; line-height: 1.55;">
-            Compare side-by-side. Pick one. Use it in the editor — Trix-based, autosaves every 700 ms,
-            exports to .md / .pdf / .txt.
-          </p>
-        </div>
+      <div style="max-width: 720px;">
+        <div class="qw-eyebrow qw-eyebrow-accent">Your AI Team</div>
+        <h2 class="qw-h-display" style="margin-top: 14px; font-size: clamp(36px, 4.6vw, 64px);">
+          Meet Your<br/>AI Team.
+        </h2>
+        <p style="margin-top: 22px; font-size: 17px; line-height: 1.55; color: var(--ink-3); max-width: 540px;">
+          Not chatbots. Specialists. Each one with their own role, voice, and tools — ready to ship real work from day one.
+        </p>
       </div>
-    </div>
-  </section>
 
-  {/* CTA FOOTER */}
-  <section style="padding: 96px 32px;">
-    <div class="qw-section" style="text-align: center;">
-      <h2 class="qw-h-display" style="max-width: 800px; margin: 0 auto;">
-        Try it on your <em style="color: var(--accent);">own site</em>.
-      </h2>
-      <p class="qw-body" style="max-width: 540px; margin: 18px auto 0; font-size: 18px;">
-        5,000 words/month free. No card. Watch what changes when the model knows where you've been.
-      </p>
-      <div style="margin-top: 32px;">
-        <a href="/signup" style="display: inline-flex; align-items: center; padding: 16px 28px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500; font-size: 15px;">
-          Start writing — free →
+      <div class="qw-grid-3" style="margin-top: 48px; gap: 20px;">
+        {team.map(t => (
+          <a href={`/experts/${t.slug}`} class="qw-card-premium" style="display: flex; gap: 18px; padding: 24px; color: var(--ink); align-items: center;">
+            <div style="flex: 0 0 64px;">
+              <ExpertGlyph slug={t.slug} color={t.color} size={64} flat={true} />
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style={`width: 8px; height: 8px; border-radius: 999px; background: ${t.color};`}></span>
+                <span style="font-weight: 700; font-size: 15px; letter-spacing: -0.012em; color: var(--ink);">{t.name}</span>
+              </div>
+              <div style="margin-top: 6px; font-size: 13px; color: var(--ink-3); line-height: 1.5;">{t.role}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div style="margin-top: 28px; text-align: center;">
+        <a href="/experts" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--accent);">
+          See all 30 specialists →
         </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* 4 · WORK THEY DELIVER  ← MOST IMPORTANT */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section style="background: var(--bg-elev); border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); padding: 96px 0;">
+    <div class="qw-section">
+      <div style="max-width: 720px;">
+        <div class="qw-eyebrow qw-eyebrow-accent">Work They Deliver</div>
+        <h2 class="qw-h-display" style="margin-top: 14px; font-size: clamp(36px, 4.6vw, 64px);">
+          The work that ships.
+        </h2>
+        <p style="margin-top: 22px; font-size: 17px; line-height: 1.55; color: var(--ink-3); max-width: 580px;">
+          Not summaries. Not drafts. The actual deliverables that go to boards, investors, customers and teams.
+        </p>
+      </div>
+
+      <div class="qw-grid-3" style="margin-top: 48px; gap: 20px;">
+        {outputs.slice(0, 6).map(o => (
+          <OutputCard {...o} />
+        ))}
+      </div>
+
+      <div class="qw-grid-4" style="margin-top: 20px; gap: 20px;">
+        {outputs.slice(6).map(o => (
+          <OutputCard {...o} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* 5 · HOW WORK GETS DONE */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section id="workflow" style="padding: 96px 0;">
+    <div class="qw-section">
+      <div style="max-width: 720px;">
+        <div class="qw-eyebrow qw-eyebrow-accent">How Work Gets Done</div>
+        <h2 class="qw-h-display" style="margin-top: 14px; font-size: clamp(36px, 4.6vw, 64px);">
+          From idea to shipped<br/>in five steps.
+        </h2>
+      </div>
+
+      <div style="margin-top: 56px; position: relative;">
+        {/* Connector line */}
+        <div style="position: absolute; left: 0; right: 0; top: 28px; height: 2px; background: var(--rule-soft); z-index: 0;"></div>
+
+        <div class="qw-grid-5" style="position: relative; z-index: 1; gap: 24px;">
+          {workflowSteps.map((s, i) => (
+            <div style="text-align: left;">
+              <div style="display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 999px; background: var(--paper); border: 2px solid var(--accent); color: var(--accent); font-weight: 700; font-size: 16px; box-shadow: var(--shadow-sm);">{s.n}</div>
+              <div style="margin-top: 18px; font-weight: 700; font-size: 16px; letter-spacing: -0.015em; color: var(--ink);">{s.t}</div>
+              <div style="margin-top: 6px; font-size: 13px; line-height: 1.55; color: var(--ink-3);">{s.d}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* 6 · MULTI-AGENT */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section style="position: relative; background: var(--ink); color: var(--paper); padding: 96px 0; overflow: hidden;">
+    <div class="qw-mesh dark"></div>
+    <div class="qw-grain dark"></div>
+    <div class="qw-section" style="position: relative; z-index: 2;">
+      <div class="qw-split">
+        <div>
+          <div class="qw-eyebrow" style="color: var(--accent-2);">Multi-agent collaboration</div>
+          <h2 class="qw-h-display" style="margin-top: 14px; font-size: clamp(36px, 4.6vw, 64px); color: var(--paper);">
+            An entire AI<br/>department.
+          </h2>
+          <p style="margin-top: 22px; font-size: 17px; line-height: 1.55; color: rgba(255,255,255,0.7); max-width: 480px;">
+            One outcome. Many specialists. The Sales agent pulls pipeline. Data drafts the chart. Finance sources the ARR. CoS structures the deck. <span style="color: var(--paper); font-weight: 600;">It just runs.</span>
+          </p>
+
+          <div style="margin-top: 28px; display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
+            <div style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.85);">
+              <span style="color: var(--accent-2); font-weight: 700;">✓</span>
+              Specialists share memory and context
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.85);">
+              <span style="color: var(--accent-2); font-weight: 700;">✓</span>
+              Handoffs happen automatically
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.85);">
+              <span style="color: var(--accent-2); font-weight: 700;">✓</span>
+              You stay in control of the final artifact
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <MultiAgentGraph goal="Q4 Board Deck" agents={collaborationAgents} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* 7 · DEPARTMENTS */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section style="padding: 96px 0;">
+    <div class="qw-section">
+      <div style="max-width: 720px;">
+        <div class="qw-eyebrow qw-eyebrow-accent">For every team</div>
+        <h2 class="qw-h-display" style="margin-top: 14px; font-size: clamp(36px, 4.6vw, 64px);">
+          One workspace.<br/>Every team.
+        </h2>
+        <p style="margin-top: 22px; font-size: 17px; line-height: 1.55; color: var(--ink-3); max-width: 580px;">
+          Each department gets the right specialists, the right outputs, and the right context — without switching tools.
+        </p>
+      </div>
+
+      <div style="margin-top: 48px;">
+        <DepartmentTabs departments={departments} />
+      </div>
+    </div>
+  </section>
+
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* 8 · ROI */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section style="background: var(--bg-elev); border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); padding: 96px 0;">
+    <div class="qw-section">
+      <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+        <div class="qw-eyebrow qw-eyebrow-accent">ROI</div>
+        <h2 class="qw-h-display" style="margin-top: 14px; font-size: clamp(36px, 4.6vw, 64px);">
+          Weeks of work,<br/>in minutes.
+        </h2>
+      </div>
+
+      <div class="qw-split-even" style="margin-top: 56px; gap: 24px; align-items: stretch;">
+        {/* Left: Traditional */}
+        <div class="qw-card" style="padding: 28px 28px 24px; background: var(--paper);">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+            <span style="width: 9px; height: 9px; border-radius: 999px; background: var(--ink-3);"></span>
+            <span style="font-weight: 700; font-size: 15px; color: var(--ink);">Traditional Work</span>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+            {["Agencies", "Consultants", "Manual processes", "Endless meetings", "Fragmented tools"].map(item => (
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: var(--ink-3);">
+                <span style="color: var(--ink-3); font-weight: 700;">×</span>
+                <span style="text-decoration: line-through; text-decoration-color: var(--rule-2);">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <div style="margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--rule-soft); font-size: 13px; color: var(--ink-3);">
+            <strong style="color: var(--ink-2);">Weeks per artifact.</strong> Multiple vendors. Coordination tax.
+          </div>
+        </div>
+
+        {/* Right: With Olla */}
+        <div class="qw-card-pop" style="padding: 28px 28px 24px; background: linear-gradient(180deg, var(--accent-soft) 0%, var(--paper) 100%);">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+            <span style="width: 9px; height: 9px; border-radius: 999px; background: var(--accent);"></span>
+            <span style="font-weight: 700; font-size: 15px; color: var(--ink);">With OllaSuper</span>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+            {["AI specialists", "Instant outputs", "Shared memory", "Continuous execution", "Single workspace"].map(item => (
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: var(--ink);">
+                <span style="color: var(--accent); font-weight: 700;">✓</span>
+                <span style="font-weight: 600;">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <div style="margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--rule-soft); font-size: 13px; color: var(--ink-2);">
+            <strong style="color: var(--ink);">Minutes per artifact.</strong> One workspace. Real outputs.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* 9 · ENTERPRISE */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section style="padding: 96px 0;">
+    <div class="qw-section">
+      <div style="max-width: 720px;">
+        <div class="qw-eyebrow qw-eyebrow-accent">Enterprise grade</div>
+        <h2 class="qw-h-display" style="margin-top: 14px; font-size: clamp(36px, 4.6vw, 64px);">
+          Built for serious teams.
+        </h2>
+        <p style="margin-top: 22px; font-size: 17px; line-height: 1.55; color: var(--ink-3); max-width: 580px;">
+          Security, compliance and governance designed in — not bolted on. From day one.
+        </p>
+      </div>
+
+      <div class="qw-grid-3" style="margin-top: 56px; gap: 20px;">
+        {enterpriseCards.map(c => (
+          <div class="qw-card-premium" style="padding: 28px 26px;">
+            <div style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); font-size: 18px; font-weight: 700; margin-bottom: 16px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 0 0 1px rgba(0,102,255,0.05);">
+              {c.icon}
+            </div>
+            <h3 style="margin: 0; font-weight: 700; font-size: 17px; letter-spacing: -0.015em; color: var(--ink);">{c.t}</h3>
+            <p style="margin: 8px 0 0; font-size: 13.5px; line-height: 1.6; color: var(--ink-3);">{c.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* 10 · FINAL CTA — mesh + dot grid + accent-premium */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section style="position: relative; padding: 128px 0 112px; overflow: hidden;">
+    <div class="qw-mesh"></div>
+    <div class="qw-dotgrid"></div>
+    <div class="qw-grain subtle"></div>
+
+    <div class="qw-section" style="position: relative; z-index: 2; text-align: center;">
+      <div class="qw-badge-premium" style="margin: 0 auto 24px;">
+        <span class="dot"></span>
+        Build today
+      </div>
+      <h2 class="qw-h-display">
+        Build Your AI Workforce<br/>Today.
+      </h2>
+      <p style="margin: 22px auto 0; max-width: 540px; font-size: 17px; line-height: 1.55; color: var(--ink-3);">
+        Deploy specialists across every department in minutes. No card, no sales call — just real work, shipped.
+      </p>
+
+      <div style="display: inline-flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; justify-content: center;">
+        <a href="/signup" class="qw-btn accent-premium" style="padding: 14px 28px; font-size: 14.5px;">Start Free →</a>
+        <a href="mailto:hello@ollasuper.com" class="qw-btn ghost-premium" style="padding: 14px 28px; font-size: 14.5px;">Book Demo</a>
+      </div>
+
+      <div style="display: inline-flex; gap: 24px; margin-top: 28px; flex-wrap: wrap; justify-content: center; font-size: 12.5px; color: var(--ink-3);">
+        <span><strong style="color: var(--ink);">30</strong> specialists</span>
+        <span style="color: var(--rule-2);">·</span>
+        <span><strong style="color: var(--ink);">9</strong> departments</span>
+        <span style="color: var(--rule-2);">·</span>
+        <span><strong style="color: var(--ink);">Free tier</strong></span>
+        <span style="color: var(--rule-2);">·</span>
+        <span><strong style="color: var(--ink);">No card</strong></span>
       </div>
     </div>
   </section>

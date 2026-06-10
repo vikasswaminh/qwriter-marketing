@@ -1,14 +1,4 @@
-import { defineCollection, z } from "astro:content";
-
-const journal = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    author: z.string().default("qwriter"),
-    publishedAt: z.coerce.date(),
-    tags: z.array(z.string()).default([]),
-  }),
-});
-
-export const collections = { journal };
+// Content collections are not used in the OllaSuper rebuild — the changelog
+// and expert detail pages are sourced from src/data/experts.ts and inline
+// arrays. Kept as an empty export so Astro's content layer doesn't complain.
+export const collections = {};

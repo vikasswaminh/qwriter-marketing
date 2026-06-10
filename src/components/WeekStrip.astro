@@ -1,0 +1,29 @@
+---
+// 7 narrow vertical day cards arranged in a single dense row.
+// Hover lifts a card up 4px and brightens its accent line.
+export interface Day {
+  day: string;       // "MON"
+  tag: string;       // "HR"
+  color: string;     // expert color
+  body: string;
+  href: string;
+}
+export interface Props { days: Day[]; }
+const { days } = Astro.props as Props;
+---
+<div class="qw-hscroll">
+  {days.map(d => (
+    <a href={d.href} style={`display: flex; flex-direction: column; min-height: 180px; padding: 14px 12px; border-radius: 10px; background: var(--paper); border: 1px solid var(--rule); color: var(--ink); position: relative; transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;`}
+       onmouseover={`this.style.transform='translateY(-3px)'; this.style.borderColor='${d.color}'; this.style.boxShadow='0 8px 20px rgba(10,10,10,0.06)';`}
+       onmouseout="this.style.transform=''; this.style.borderColor='var(--rule)'; this.style.boxShadow='';">
+      <div style={`width: 100%; height: 3px; background: ${d.color}; border-radius: 999px; margin-bottom: 10px;`}></div>
+      <div class="qw-mono" style="font-size: 10px; font-weight: 700; color: var(--ink-3); letter-spacing: 0.12em;">{d.day}</div>
+      <div style={`margin-top: 6px; display: inline-flex; align-items: center; gap: 5px; font-weight: 900; font-size: 11px; letter-spacing: 0.06em; color: ${d.color};`}>
+        <span style={`width: 6px; height: 6px; border-radius: 999px; background: ${d.color};`}></span>
+        {d.tag}
+      </div>
+      <p style="margin-top: 10px; font-size: 12.5px; line-height: 1.45; color: var(--ink-2); flex: 1;">{d.body}</p>
+      <div style="margin-top: 10px; font-size: 11px; font-weight: 700; color: var(--ink-3);">→</div>
+    </a>
+  ))}
+</div>

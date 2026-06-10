@@ -1,0 +1,43 @@
+---
+// Visualizes multiple agents collaborating on one outcome.
+// Inline SVG; renders crisp at any width.
+// Center node = the deliverable. Outer ring = contributing agents.
+export interface Agent {
+  short: string;       // "Sales", "Data" etc — used as label
+  color: string;
+}
+export interface Props {
+  goal: string;
+  agents: Agent[];     // 5-7 ideal
+}
+const { goal, agents } = Astro.props as Props;
+const cx = 200, cy = 200, r = 130;
+const positions = agents.map((a, i) => {
+  const angle = (Math.PI * 2 * i) / agents.length - Math.PI / 2;
+  return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle), ...a };
+});
+---
+<div style="position: relative; width: 100%; max-width: 480px;">
+  <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block;">
+    {/* Connection lines */}
+    {positions.map(p => (
+      <line x1={p.x} y1={p.y} x2={cx} y2={cy} stroke="var(--rule-2)" stroke-width="1.5" stroke-dasharray="3 4"/>
+    ))}
+
+    {/* Outer ring */}
+    <circle cx={cx} cy={cy} r={r + 8} fill="none" stroke="var(--rule-soft)" stroke-width="1" stroke-dasharray="2 6"/>
+
+    {/* Center: deliverable */}
+    <circle cx={cx} cy={cy} r="48" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+    <text x={cx} y={cy - 4} text-anchor="middle" font-family="Lato, sans-serif" font-weight="700" font-size="13" fill="var(--ink)">{goal.split(' ')[0]}</text>
+    <text x={cx} y={cy + 12} text-anchor="middle" font-family="Lato, sans-serif" font-weight="700" font-size="13" fill="var(--ink)">{goal.split(' ').slice(1).join(' ')}</text>
+
+    {/* Agent nodes */}
+    {positions.map(p => (
+      <g>
+        <circle cx={p.x} cy={p.y} r="28" fill={p.color}/>
+        <text x={p.x} y={p.y + 4} text-anchor="middle" font-family="Lato, sans-serif" font-weight="700" font-size="11" fill="#fff">{p.short}</text>
+      </g>
+    ))}
+  </svg>
+</div>

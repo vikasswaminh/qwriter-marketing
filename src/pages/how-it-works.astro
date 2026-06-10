@@ -1,0 +1,131 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Logo from "~/components/Logo.astro";
+
+const steps = [
+  { n:"01", t:"Pick an expert",     side:"People · GTM · Ops · Data · Build · Personal",
+    b:"30 specialist agents across the six departments. Tap a card, the right system prompt loads and the right tools are wired in. You can switch agents mid-chat; the new one inherits the conversation and the context." },
+  { n:"02", t:"Drop the context",   side:"URL · Crawl · Files · Drive",
+    b:"Four input modes in one chat: paste a URL (crawled in ~600 ms), upload a file (PDF · DOCX · MD · CSV up to 100 MB), connect a Drive folder, or paste text. The expert always shows what it's grounded in." },
+  { n:"03", t:"Ask in plain English", side:"76 starter prompts · 14 tones",
+    b:"US business English by default — clean, direct, no buzzwords. 120+ starter prompts across the agents kill the blank page. Paste your last email and say 'continue this voice' to clone tone." },
+  { n:"04", t:"Memory carries",     side:"Per-project memory · opt-out anytime",
+    b:"Every chat remembers the last one. The model learns whether you write short or long, whether you use 'we' or 'I', whether you cite numbers or stories. Turn it off per-chat if you need a fresh take." },
+  { n:"05", t:"Ship it",            side:"MD · PDF · DOCX · HTML",
+    b:"Edit inline, regenerate any block, save as a template. Export to Markdown · PDF · DOCX, or copy paste-ready HTML straight into Gmail, Confluence, Notion or whatever your team uses." },
+];
+---
+<Layout current="how" title="How OllaSuper Works" description="One chat. 30 specialist agents. 200M proxies. 4,000+ tools. Memory across sessions. Real work, not just drafts.">
+
+  {/* HERO */}
+  <section style="position: relative; padding: 56px 0 32px; overflow: hidden;">
+    <div class="qw-hero-bg"></div>
+    <div class="qw-section" style="position: relative;">
+      <div class="qw-eyebrow qw-eyebrow-accent">How it works</div>
+      <h1 class="qw-h-display" style="margin-top: 10px; max-width: 1000px;">
+        One chat. 30 agents.<br/><span style="color: var(--ink-3);">One owned stack.</span>
+      </h1>
+      <p class="qw-body" style="max-width: 660px; margin-top: 18px; font-size: 16px;">
+        OllaSuper isn't 19 tools wired together — it's one chat where every expert sees the same files,
+        the same site, the same memory.
+      </p>
+    </div>
+  </section>
+
+  {/* 5 STAGES — dense alternating rows */}
+  <section style="border-top: 1px solid var(--rule-soft);">
+    <div class="qw-section">
+      {steps.map(s => (
+        <div class="qw-split-bias-r" style="padding: 32px 0; border-bottom: 1px solid var(--rule-soft);">
+          <div>
+            <div style="display: inline-flex; align-items: center; gap: 12px;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-family: var(--font-mono); font-weight: 600; font-size: 11px;">{s.n}</span>
+              <span style="font-size: 12px; color: var(--ink-3); font-weight: 500;">Step {s.n}</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 12.5px; color: var(--ink-3); line-height: 1.5;">{s.side}</div>
+          </div>
+          <div>
+            <h2 class="qw-h-2" style="margin: 0;">{s.t}</h2>
+            <p class="qw-body" style="margin-top: 10px; font-size: 15px; max-width: 720px;">{s.b}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* INTELLIGENCE ROUTING — model-agnostic */}
+  <section style="background: var(--bg-elev); border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);">
+    <div class="qw-section qw-pad">
+      <div class="qw-split-bias-r">
+        <div>
+          <div class="qw-eyebrow qw-eyebrow-accent">Intelligence routing</div>
+          <h2 class="qw-h-1" style="margin-top: 10px;">
+            Right model.<br/>Every task.
+          </h2>
+          <p class="qw-body" style="margin-top: 14px; max-width: 380px;">
+            Each agent routes to the best frontier model for the task. You don't pick. You don't tune. You don't pay extra per model. It just works.
+          </p>
+        </div>
+        <div class="qw-grid-3" style="gap: 12px;">
+          {[
+            {n:"Long-form",  v:"Drafting + code",      w:"Frontier model tuned for sustained output and structured generation."},
+            {n:"Reasoning",  v:"Editing + analysis",   w:"Frontier model tuned for long-context reasoning and judgment."},
+            {n:"Research",   v:"Vision + summarisation", w:"Frontier model tuned for multimodal research and grounded summaries."},
+          ].map((m) => (
+            <div class="qw-card" style="padding: 20px 22px;">
+              <div style="font-size: 11px; color: var(--ink-3); font-weight: 600;">{m.n}</div>
+              <div style="margin-top: 8px; font-weight: 600; font-size: 17px; letter-spacing: -0.018em; color: var(--ink);">{m.v}</div>
+              <div style="margin-top: 10px; font-size: 12.5px; color: var(--ink-3); line-height: 1.55;">{m.w}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* SECURITY — 4-col soft cards */}
+  <section class="qw-pad">
+    <div class="qw-section">
+      <div style="display: flex; align-items: end; justify-content: space-between; margin-bottom: 22px;">
+        <div>
+          <div class="qw-eyebrow qw-eyebrow-accent">Your data</div>
+          <h2 class="qw-h-1" style="margin-top: 8px;">
+            Your files don't train anyone's model. <span style="color: var(--ink-3);">Including ours.</span>
+          </h2>
+        </div>
+      </div>
+      <div class="qw-bento qw-grid-4">
+        {[
+          {t:"DPDP-aligned",            d:"India's Digital Personal Data Protection Act — designed-in, not bolted on."},
+          {t:"Per-workspace isolation", d:"Files and chats scoped to your workspace. Nobody else sees them."},
+          {t:"No training on your data",d:"Not our vendors'. Not ours. Inference only, per contract."},
+          {t:"Delete = gone",           d:"Hit delete and it's purged from storage and the LLM's logs within 30 days."},
+        ].map(c => (
+          <div class="qw-bento-cell" style="padding: 18px;">
+            <div style="font-weight: 600; font-size: 14.5px; letter-spacing: -0.012em; color: var(--ink);">{c.t}</div>
+            <p style="margin-top: 6px; font-size: 12.5px; line-height: 1.55; color: var(--ink-3);">{c.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* CTA — soft card */}
+  <section class="qw-pad">
+    <div class="qw-section">
+      <div class="qw-card-pop" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 26px 28px;">
+        <div style="display: flex; align-items: center; gap: 18px;">
+          <Logo size={40} />
+          <div>
+            <div style="font-weight: 600; font-size: 22px; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink);">
+              Open a chat. Pick an expert. <span style="color: var(--accent);">Ship the work.</span>
+            </div>
+            <div style="margin-top: 3px; font-size: 13px; color: var(--ink-3);">No card · Free tier · 30 agents · 200M proxies · 4,000+ tools</div>
+          </div>
+        </div>
+        <a href="/signup" class="qw-btn accent">Start free →</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

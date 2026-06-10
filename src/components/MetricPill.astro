@@ -1,0 +1,18 @@
+---
+// Compact mono "─┼─ label · value" row used under hero CTAs.
+export interface Metric { label: string; value: string; }
+export interface Props { metrics: Metric[]; }
+const { metrics } = Astro.props as Props;
+---
+<div class="qw-metric-row">
+  {metrics.map((m, i) => (
+    <>
+      {i > 0 && <span class="sep">·</span>}
+      <span style="display: inline-flex; align-items: center; gap: 6px;">
+        <span style="display: inline-block; width: 10px; height: 1px; background: var(--ink-3);"></span>
+        <span style="color: var(--ink); font-weight: 700; letter-spacing: 0.05em;">{m.value}</span>
+        <span>{m.label}</span>
+      </span>
+    </>
+  ))}
+</div>

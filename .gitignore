@@ -3,3 +3,6 @@ dist/
 .astro/
 .wrangler/
 .DS_Store
+
+# graphify-generated knowledge graph (regenerated, not committed)
+graphify-out/
