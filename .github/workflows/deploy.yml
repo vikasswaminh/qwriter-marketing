@@ -1,0 +1,47 @@
+name: Deploy to Cloudflare Pages
+
+# Auto-deploys ollasuper.com on every push to main.
+#
+# The CF Pages git integration broke at some point (last auto-deploy was
+# 2026-06-10 commit 636dc6c — see Phase 6/9 reports). This workflow replaces
+# it: each main push builds the Astro site and uploads via wrangler.
+#
+# Required secrets (set via `gh secret set` on this repo):
+#   CLOUDFLARE_API_TOKEN — Pages-write scoped token
+#   CLOUDFLARE_ACCOUNT_ID
+#
+# Project name on CF Pages: qwriter-marketing
+# Custom domains served by that project: ollasuper.com, www.ollasuper.com
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=qwriter-marketing --branch=main --commit-hash=${{ github.sha }} --commit-message="${{ github.event.head_commit.message }}"
