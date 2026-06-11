@@ -18,7 +18,7 @@ const tiers = [
     words: "2,000,000 words / month", scans: "Unlimited everything",
     experts: "All 30 Experts",
     agents: "All 6 ⚡ Agents · custom Agent slots on request",
-    features: ["Everything in Pro", "Up to 10 seats", "Shared workspaces + libraries", "Per-agent approval policies", "Audit log + SSO", "Stripe Portal self-serve", "Custom Agent slots (on request)", "API key access (beta)"],
+    features: ["Everything in Pro", "Up to 10 seats", "Shared workspaces + libraries", "Per-agent approval policies", "Audit log + SSO", "Self-serve billing dashboard", "Custom Agent slots (on request)", "API key access (beta)"],
     cta: "Start team", ctaHref: "/signup?plan=team", emphasis: false },
 ];
 
@@ -30,7 +30,7 @@ const faqs = [
   { q: "Do scans or uploads count against my quota?", a: "No. Crawling and file uploads are our infrastructure and are unlimited at every tier. You're only paying for the generation tokens that hit the LLM." },
   { q: "Which models power the Experts and Agents?", a: "All inference is routed through OpenRouter — never Anthropic. Experts use a mix of OpenAI GPT-4o-mini / GPT-4o / Google Gemini / Mistral Large based on task. Agents pin specific models: outbound-sdr / inbox-triage / pipeline-curator on GPT-4o-mini, content-publisher on GPT-4o, and seo-auditor + deep-research on Tongyi DeepResearch 30B A3B (purpose-built for multi-step tool chains). You don't pick. You don't tune." },
   { q: "Do you train on my content?", a: "No. We send your prompts and selected source markdown to the LLM for inference only. We don't fine-tune on customer data and our vendors' APIs don't train on it either." },
-  { q: "Can I cancel anytime?", a: "Yes. Cancel from the Stripe Portal. Your plan stays active until the end of the billing period." },
+  { q: "Can I cancel anytime?", a: "Yes. Cancel from your billing dashboard. Your plan stays active until the end of the billing period. Billing is handled by Dodo Payments." },
   { q: "Is OllaSuper DPDP-compliant?", a: "Yes. Designed-in. Workspace isolation, per-tenant encryption, delete-means-gone, and a published DPA on the legal page." },
 ];
 ---
