@@ -1,0 +1,107 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import { agents, agentCategories } from "~/data/agents";
+
+const grouped = Object.keys(agentCategories).map(key => ({
+  key,
+  ...agentCategories[key as keyof typeof agentCategories],
+  agents: agents.filter(a => a.category === key),
+}));
+
+const dashboardBase = (import.meta.env.PUBLIC_DASHBOARD_URL as string | undefined) ?? "https://app.ollasuper.com";
+---
+<Layout current="agents" title="The 6 Agents — OllaSuper" description="6 production Agents that take real actions on schedules, with approval gates: Outbound SDR, Pipeline Curator, SEO Auditor, Content Publisher, Inbox Triage, and Deep Research powered by Tongyi DeepResearch.">
+
+  {/* HERO */}
+  <section style="position: relative; padding: 56px 0 28px; overflow: hidden;">
+    <div class="qw-hero-bg"></div>
+    <div class="qw-section" style="position: relative;">
+      <div class="qw-split">
+        <div>
+          <div class="qw-eyebrow qw-eyebrow-accent" style="color: #facc15;">⚡ Agents · 6 production workers</div>
+          <h1 class="qw-h-display" style="margin-top: 10px;">
+            The 6 Agents.
+          </h1>
+          <p class="qw-body" style="max-width: 600px; margin-top: 14px; font-size: 16px;">
+            Agents are the action-taking half of OllaSuper. Each runs on a recurring schedule, uses real tools (ollagraph + filesystem + memory), and writes its output to a workspace you can read.
+            Every action that could leave the platform is queued for your approval before it ships.
+          </p>
+          <p class="qw-body" style="max-width: 600px; margin-top: 10px; font-size: 13px; color: var(--ink-3);">
+            Looking for the chat-driven Experts? <a href="/experts" style="color: var(--accent);">See the 30 Experts →</a>
+          </p>
+        </div>
+        <div class="qw-card" style="padding: 14px 16px; font-size: 13px; color: var(--ink-3);">
+          <div style="display: flex; align-items: center; gap: 6px; color: var(--ink); font-weight: 600; font-size: 13px; letter-spacing: -0.01em; margin-bottom: 4px;">
+            <span style="font-size: 14px;">⚡</span>
+            Agents vs ○ Experts
+          </div>
+          Agents run on schedules and take actions (queued for approval). Experts are chat-driven specialists with no schedule and no real-world side effects.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* STICKY CATEGORY FILTER */}
+  <div style="position: sticky; top: 57px; z-index: 30;" class="qw-nav-blur">
+    <div class="qw-section" style="padding: 12px 0;">
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+        <a href="#all" class="qw-btn primary" style="padding: 6px 12px; font-size: 12px;">All 6</a>
+        {grouped.map(g => (
+          <a href={`#${g.key}`} class="qw-btn ghost" style="padding: 6px 12px; font-size: 12px;">
+            <span style={`width: 7px; height: 7px; border-radius: 999px; background: ${g.color}; margin-right: 6px; display: inline-block;`}></span>
+            {g.label} <span style="color: var(--ink-3); font-weight: 400; margin-left: 4px;">{g.agents.length}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  {/* GROUPED LIST */}
+  <section id="all" style="padding: 36px 0 72px;">
+    <div class="qw-section">
+      {grouped.map((group, gi) => (
+        <div id={group.key} style={`margin-top: ${gi === 0 ? '0' : '44px'};`}>
+          <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--rule);">
+            <span style={`width: 12px; height: 12px; border-radius: 999px; background: ${group.color};`}></span>
+            <h2 class="qw-h-2" style="margin: 0;">{group.label}</h2>
+            <span style="font-size: 12px; color: var(--ink-3);">{group.agents.length} agent{group.agents.length === 1 ? '' : 's'}</span>
+          </div>
+
+          <div class="qw-bento qw-grid-2">
+            {group.agents.map(a => (
+              <a href={`/agents/${a.slug}`} class="qw-bento-cell" style="display: block; padding: 22px; color: var(--ink);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style={`display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: ${a.color}1a; color: ${a.color}; font-weight: 700; font-size: 16px;`}>⚡</span>
+                  <div style="font-weight: 600; font-size: 16px; letter-spacing: -0.012em; line-height: 1.2; color: var(--ink);">{a.name}</div>
+                </div>
+                <p style="margin-top: 10px; font-size: 13px; line-height: 1.55; color: var(--ink-3);">{a.oneliner}</p>
+                <div style="margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
+                  <span style="display: inline-block; padding: 3px 8px; border-radius: 4px; background: var(--bg-2); color: var(--ink-3); font-weight: 500; font-size: 11px; border: 1px solid var(--rule);">{a.schedule.display}</span>
+                  <span style={`display: inline-block; padding: 3px 8px; border-radius: 4px; background: ${a.color}14; color: ${a.color}; font-weight: 500; font-size: 11px;`}>{a.modelTier === "deep-research" ? "Tongyi DeepResearch" : a.modelTier === "smart" ? "GPT-4o" : "GPT-4o-mini"}</span>
+                  {a.approval.mode !== "none" && (
+                    <span style="display: inline-block; padding: 3px 8px; border-radius: 4px; background: #facc1514; color: #b45309; font-weight: 500; font-size: 11px;">Approval required</span>
+                  )}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section style="padding: 0 0 80px;">
+    <div class="qw-section">
+      <div class="qw-card" style="padding: 32px; text-align: center;">
+        <div class="qw-eyebrow qw-eyebrow-accent" style="color: #facc15;">⚡ Try an Agent</div>
+        <h2 class="qw-h-2" style="margin-top: 10px;">Talk to an Agent — they run real workflows</h2>
+        <p class="qw-body" style="max-width: 560px; margin: 12px auto 20px; font-size: 14px;">
+          Every Agent has 4 starter prompts to try. Open the dashboard, pick an Agent, send your first prompt.
+        </p>
+        <a href={dashboardBase} class="qw-btn primary" style="font-size: 14px; padding: 10px 20px;">Open the dashboard →</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

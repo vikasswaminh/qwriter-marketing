@@ -1,0 +1,172 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import { agents, agentCategories } from "~/data/agents";
+
+export function getStaticPaths() {
+  return agents.map(a => ({ params: { slug: a.slug } }));
+}
+
+const { slug } = Astro.params as { slug: string };
+const agent = agents.find(a => a.slug === slug)!;
+const category = agentCategories[agent.category];
+
+const dashboardBase = (import.meta.env.PUBLIC_DASHBOARD_URL as string | undefined) ?? "https://app.ollasuper.com";
+const startChatHref = `${dashboardBase}/chat?agent=${agent.slug}`;
+
+const toolGroups = agent.tools.reduce((acc, t) => {
+  (acc[t.category] = acc[t.category] || []).push(t);
+  return acc;
+}, {} as Record<string, typeof agent.tools>);
+
+const related = agent.pairs.map(p => {
+  if (p.startsWith("experts/")) return { kind: "expert", slug: p.slice(8), href: `/${p}` };
+  return { kind: "agent", slug: p, href: `/agents/${p}` };
+});
+---
+<Layout current="agents" title={`${agent.name} — OllaSuper`} description={agent.oneliner}>
+
+  {/* HERO */}
+  <section style="position: relative; padding: 56px 0 28px; overflow: hidden;">
+    <div class="qw-hero-bg"></div>
+    <div class="qw-section" style="position: relative;">
+      <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-3); margin-bottom: 10px;">
+        <a href="/agents" style="color: var(--ink-3); text-decoration: none;">⚡ Agents</a>
+        <span>→</span>
+        <span style="color: var(--ink);">{agent.short}</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <span style={`display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 14px; background: ${agent.color}1a; color: ${agent.color}; font-weight: 700; font-size: 26px;`}>⚡</span>
+        <div>
+          <div class="qw-eyebrow qw-eyebrow-accent" style={`color: ${category.color};`}>{category.label} · openfang Agent</div>
+          <h1 class="qw-h-display" style="margin-top: 4px;">{agent.name}</h1>
+        </div>
+      </div>
+
+      <p class="qw-body" style="max-width: 640px; margin-top: 18px; font-size: 16px;">{agent.oneliner}</p>
+
+      <div style="margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href={startChatHref} class="qw-btn primary" style="font-size: 13px; padding: 8px 16px;">Chat with this Agent →</a>
+        <a href="#workflow" class="qw-btn ghost" style="font-size: 13px; padding: 8px 16px;">How it works</a>
+      </div>
+    </div>
+  </section>
+
+  {/* META BAR */}
+  <section style="padding: 18px 0 28px;">
+    <div class="qw-section">
+      <div class="qw-grid-3" style="display: grid; gap: 12px;">
+        <div class="qw-card" style="padding: 14px 16px;">
+          <div style="font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em;">Schedule</div>
+          <div style="font-weight: 600; margin-top: 4px;">{agent.schedule.display}</div>
+        </div>
+        <div class="qw-card" style="padding: 14px 16px;">
+          <div style="font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em;">Model</div>
+          <div style="font-weight: 600; margin-top: 4px;">{agent.modelTier === "deep-research" ? "Tongyi DeepResearch 30B A3B" : agent.modelTier === "smart" ? "OpenAI GPT-4o" : "OpenAI GPT-4o-mini"}</div>
+          <div style="font-size: 11px; color: var(--ink-3); margin-top: 2px;">{agent.model}</div>
+        </div>
+        <div class="qw-card" style="padding: 14px 16px;">
+          <div style="font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em;">Approval</div>
+          <div style="font-weight: 600; margin-top: 4px;">{agent.approval.display}</div>
+          {agent.approval.details && <div style="font-size: 11px; color: var(--ink-3); margin-top: 4px;">{agent.approval.details}</div>}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* WORKFLOW */}
+  <section id="workflow" style="padding: 32px 0;">
+    <div class="qw-section">
+      <h2 class="qw-h-2" style="margin: 0 0 14px;">What it does</h2>
+      <p class="qw-body" style="font-size: 15px; line-height: 1.65; max-width: 740px;">{agent.workflow}</p>
+    </div>
+  </section>
+
+  {/* TOOLS */}
+  <section style="padding: 32px 0;">
+    <div class="qw-section">
+      <h2 class="qw-h-2" style="margin: 0 0 14px;">Tools it can use</h2>
+      <div style="display: grid; gap: 20px;">
+        {Object.entries(toolGroups).map(([cat, ts]) => (
+          <div>
+            <div style="font-size: 12px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">{cat}</div>
+            <div style="display: grid; gap: 6px;">
+              {ts.map(t => (
+                <div style="display: flex; gap: 12px; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 6px; align-items: baseline;">
+                  <code style="font-size: 12px; font-family: ui-monospace, monospace; color: var(--ink);">{t.name}</code>
+                  <span style="font-size: 12.5px; color: var(--ink-3); flex: 1;">{t.description}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* WORKSPACE */}
+  <section style="padding: 32px 0;">
+    <div class="qw-section">
+      <h2 class="qw-h-2" style="margin: 0 0 14px;">Workspace</h2>
+      <p class="qw-body" style="font-size: 13.5px; color: var(--ink-3); margin-bottom: 10px;">Paths under <code>/var/lib/openfang/workspace/</code> this Agent reads or writes:</p>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        {agent.workspace.map(p => (
+          <code style="display: inline-block; padding: 6px 12px; font-size: 12px; font-family: ui-monospace, monospace; background: var(--bg-2); border: 1px solid var(--rule); border-radius: 4px;">{p}</code>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* STARTERS */}
+  <section style="padding: 32px 0;">
+    <div class="qw-section">
+      <h2 class="qw-h-2" style="margin: 0 0 14px;">Starter prompts</h2>
+      <div class="qw-bento qw-grid-2">
+        {agent.starters.map(s => (
+          <a href={`${dashboardBase}/chat?agent=${agent.slug}&prompt=${encodeURIComponent(s.prompt)}`} class="qw-bento-cell" style="display: block; padding: 18px; color: var(--ink);">
+            <div style="font-weight: 600; font-size: 14px;">{s.title}</div>
+            <div style="font-size: 12px; color: var(--ink-3); margin-top: 3px;">{s.tagline}</div>
+            <div style="font-size: 12.5px; color: var(--ink-3); margin-top: 10px; line-height: 1.55;">{s.prompt}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* SAMPLE */}
+  <section style="padding: 32px 0;">
+    <div class="qw-section">
+      <h2 class="qw-h-2" style="margin: 0 0 14px;">Sample interaction</h2>
+      <div class="qw-card" style="padding: 0; overflow: hidden;">
+        <div style="padding: 16px 18px; background: var(--bg-2); border-bottom: 1px solid var(--rule);">
+          <div style="font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">You</div>
+          <div style="font-size: 14px;">{agent.sample.user}</div>
+        </div>
+        <div style="padding: 16px 18px;">
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">
+            <span style="font-size: 12px;">⚡</span> {agent.name}
+          </div>
+          <div style="font-size: 13.5px; line-height: 1.65; white-space: pre-wrap;">{agent.sample.assistant}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* RELATED */}
+  {related.length > 0 && (
+    <section style="padding: 32px 0 80px;">
+      <div class="qw-section">
+        <h2 class="qw-h-2" style="margin: 0 0 14px;">Pairs well with</h2>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          {related.map(r => (
+            <a href={r.href} class="qw-btn ghost" style="font-size: 12px; padding: 6px 12px;">
+              <span style="margin-right: 6px;">{r.kind === "agent" ? "⚡" : "○"}</span>
+              {r.slug}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+</Layout>
