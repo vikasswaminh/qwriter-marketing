@@ -2,20 +2,33 @@
 import Layout from "~/layouts/Layout.astro";
 import Logo from "~/components/Logo.astro";
 
-const steps = [
-  { n:"01", t:"Pick an expert",     side:"People · GTM · Ops · Data · Build · Personal",
-    b:"30 specialist agents across the six departments. Tap a card, the right system prompt loads and the right tools are wired in. You can switch agents mid-chat; the new one inherits the conversation and the context." },
+const expertSteps = [
+  { n:"01", t:"Pick an Expert",     side:"People · GTM · Ops · Data · Build · Personal",
+    b:"30 chat-driven specialists across six departments. Tap a card, the right system prompt loads and the right tools are wired in. You can switch Experts mid-chat; the new one inherits the conversation and the context. Experts are advisory — they draft, audit, advise. They never take real-world action on their own." },
   { n:"02", t:"Drop the context",   side:"URL · Crawl · Files · Drive",
-    b:"Four input modes in one chat: paste a URL (crawled in ~600 ms), upload a file (PDF · DOCX · MD · CSV up to 100 MB), connect a Drive folder, or paste text. The expert always shows what it's grounded in." },
+    b:"Four input modes in one chat: paste a URL (crawled in ~600 ms), upload a file (PDF · DOCX · MD · CSV up to 100 MB), connect a Drive folder, or paste text. The Expert always shows what it's grounded in." },
   { n:"03", t:"Ask in plain English", side:"76 starter prompts · 14 tones",
-    b:"US business English by default — clean, direct, no buzzwords. 120+ starter prompts across the agents kill the blank page. Paste your last email and say 'continue this voice' to clone tone." },
+    b:"US business English by default — clean, direct, no buzzwords. 120+ starter prompts across the Experts kill the blank page. Paste your last email and say 'continue this voice' to clone tone." },
   { n:"04", t:"Memory carries",     side:"Per-project memory · opt-out anytime",
     b:"Every chat remembers the last one. The model learns whether you write short or long, whether you use 'we' or 'I', whether you cite numbers or stories. Turn it off per-chat if you need a fresh take." },
   { n:"05", t:"Ship it",            side:"MD · PDF · DOCX · HTML",
     b:"Edit inline, regenerate any block, save as a template. Export to Markdown · PDF · DOCX, or copy paste-ready HTML straight into Gmail, Confluence, Notion or whatever your team uses." },
 ];
+
+const agentSteps = [
+  { n:"A1", t:"Pick an Agent",         side:"6 production workers · scheduled · approval-gated",
+    b:"6 ⚡ Agents are different from the 30 ○ Experts. They run on a schedule (every 30 min, every 6 h) or on manual trigger. They call real tools — ollagraph scrapes, WHOIS, AEO audits — and write to a workspace you can read. Outbound SDR, SEO Auditor, Content Publisher, Inbox Triage, Pipeline Curator, Deep Research." },
+  { n:"A2", t:"Wire the inputs",       side:"deals.yaml · inbox/ · audit_targets/",
+    b:"Each Agent reads from a workspace path: Pipeline Curator wants pipeline/deals.yaml; Inbox Triage scans inbox/unread/; SEO Auditor reads audit_targets.yaml. You drop the data, the Agent picks it up on the next run. Drag and drop from Drive or upload directly." },
+  { n:"A3", t:"Watch the schedule",    side:"cron-style · run on demand · pause anytime",
+    b:"Each Agent has a built-in schedule. Outbound SDR every 30 min; SEO Auditor every 6 h; Inbox Triage every 15 min; Pipeline Curator every 4 h. Deep Research and Content Publisher are manual-trigger only. Pause any Agent with one click. See the next scheduled run, the last 10 runs, and the cost burned." },
+  { n:"A4", t:"Approve before send",   side:"every outbound action queued",
+    b:"Action-taking Agents (Outbound SDR, Content Publisher, Inbox Triage) write to outbox/drafts/ and stop. You read the draft, edit it, click approve. Nothing leaves the platform without that click. Advisory Agents (SEO Auditor, Pipeline Curator, Deep Research) skip this — they only produce reports for you." },
+  { n:"A5", t:"Hand off across Agents", side:"shared workspace · handoffs/<agent>/",
+    b:"Deep Research can drop a brief at handoffs/outbound-sdr/ and Outbound SDR picks it up. Content Publisher hands off to SEO Auditor for post-publish monitoring. Experts can hand off to Agents and vice-versa via shared memory namespaces. The 30 + 6 work as one workforce, not two silos." },
+];
 ---
-<Layout current="how" title="How OllaSuper Works" description="One chat. 30 specialist agents. 200M proxies. 4,000+ tools. Memory across sessions. Real work, not just drafts.">
+<Layout current="how" title="How OllaSuper Works — Experts + Agents" description="30 chat-driven Experts. 6 scheduled Agents. 200M proxies. 4,000+ tools. Memory across sessions. Approval gates on every outbound action.">
 
   {/* HERO */}
   <section style="position: relative; padding: 56px 0 32px; overflow: hidden;">
@@ -23,23 +36,65 @@ const steps = [
     <div class="qw-section" style="position: relative;">
       <div class="qw-eyebrow qw-eyebrow-accent">How it works</div>
       <h1 class="qw-h-display" style="margin-top: 10px; max-width: 1000px;">
-        One chat. 30 agents.<br/><span style="color: var(--ink-3);">One owned stack.</span>
+        Two primitives.<br/><span style="color: var(--ink-3);">One workforce.</span>
       </h1>
-      <p class="qw-body" style="max-width: 660px; margin-top: 18px; font-size: 16px;">
-        OllaSuper isn't 19 tools wired together — it's one chat where every expert sees the same files,
-        the same site, the same memory.
+      <p class="qw-body" style="max-width: 700px; margin-top: 18px; font-size: 16px;">
+        OllaSuper isn't 19 tools wired together. It's <span style="color: var(--ink); font-weight: 600;">30 chat-driven Experts</span> that advise,
+        and <span style="color: var(--ink); font-weight: 600;">6 scheduled Agents</span> that act with your approval — both running on the same workspace, files, and memory.
       </p>
+      <div style="margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="#experts-flow" class="qw-btn ghost" style="padding: 8px 14px; font-size: 13px;">○ How Experts work</a>
+        <a href="#agents-flow" class="qw-btn ghost" style="padding: 8px 14px; font-size: 13px;">⚡ How Agents work</a>
+      </div>
     </div>
   </section>
 
-  {/* 5 STAGES — dense alternating rows */}
-  <section style="border-top: 1px solid var(--rule-soft);">
-    <div class="qw-section">
-      {steps.map(s => (
+  {/* EXPERTS FLOW — 5 stages */}
+  <section id="experts-flow" style="border-top: 1px solid var(--rule-soft);">
+    <div class="qw-section qw-pad">
+      <div style="padding-bottom: 24px; border-bottom: 2px solid var(--ink); margin-bottom: 24px;">
+        <div class="qw-eyebrow qw-eyebrow-accent">○ Experts · chat-driven · advisory only</div>
+        <h2 class="qw-h-1" style="margin-top: 8px;">The 30 Experts — pick, ground, ask, ship.</h2>
+        <p style="margin-top: 10px; font-size: 14px; color: var(--ink-3); max-width: 620px;">
+          The default chat surface. 30 specialists across People, GTM, Ops, Data, Build, and Personal.
+          They draft, audit, advise — they never send a real email or modify a real system on their own.
+        </p>
+      </div>
+      {expertSteps.map(s => (
         <div class="qw-split-bias-r" style="padding: 32px 0; border-bottom: 1px solid var(--rule-soft);">
           <div>
             <div style="display: inline-flex; align-items: center; gap: 12px;">
               <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-family: var(--font-mono); font-weight: 600; font-size: 11px;">{s.n}</span>
+              <span style="font-size: 12px; color: var(--ink-3); font-weight: 500;">Step {s.n}</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 12.5px; color: var(--ink-3); line-height: 1.5;">{s.side}</div>
+          </div>
+          <div>
+            <h2 class="qw-h-2" style="margin: 0;">{s.t}</h2>
+            <p class="qw-body" style="margin-top: 10px; font-size: 15px; max-width: 720px;">{s.b}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* AGENTS FLOW — 5 stages */}
+  <section id="agents-flow" style="border-top: 1px solid var(--rule-soft); background: var(--bg-elev);">
+    <div class="qw-section qw-pad">
+      <div style="padding-bottom: 24px; border-bottom: 2px solid var(--ink); margin-bottom: 24px;">
+        <div class="qw-eyebrow qw-eyebrow-accent" style="color: #b45309;">⚡ Agents · scheduled · action-taking · approval-gated</div>
+        <h2 class="qw-h-1" style="margin-top: 8px;">The 6 Agents — schedule, wire, watch, approve, hand off.</h2>
+        <p style="margin-top: 10px; font-size: 14px; color: var(--ink-3); max-width: 640px;">
+          Agents go where Experts can't — they run on cron-style schedules, call real tools (ollagraph + memory + filesystem),
+          write to a workspace you can read, and queue every outbound action for your approval before it leaves the platform.
+          See <a href="/agents" style="color: var(--accent);">/agents</a> for the full list.
+        </p>
+      </div>
+      {agentSteps.map(s => (
+        <div class="qw-split-bias-r" style="padding: 32px 0; border-bottom: 1px solid var(--rule-soft);">
+          <div>
+            <div style="display: inline-flex; align-items: center; gap: 12px;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; background: #facc1521; color: #b45309; font-family: var(--font-mono); font-weight: 600; font-size: 11px;">{s.n}</span>
               <span style="font-size: 12px; color: var(--ink-3); font-weight: 500;">Step {s.n}</span>
             </div>
             <div style="margin-top: 12px; font-size: 12.5px; color: var(--ink-3); line-height: 1.5;">{s.side}</div>
@@ -62,8 +117,11 @@ const steps = [
           <h2 class="qw-h-1" style="margin-top: 10px;">
             Right model.<br/>Every task.
           </h2>
-          <p class="qw-body" style="margin-top: 14px; max-width: 380px;">
-            Each agent routes to the best frontier model for the task. You don't pick. You don't tune. You don't pay extra per model. It just works.
+          <p class="qw-body" style="margin-top: 14px; max-width: 420px;">
+            All inference is routed through OpenRouter — never Anthropic.
+            Experts mix OpenAI, Gemini, and Mistral based on the task.
+            Agents pin specific models (Tongyi DeepResearch for the SEO and research workloads; GPT-4o-mini and GPT-4o for the rest).
+            You don't pick. You don't tune.
           </p>
         </div>
         <div class="qw-grid-3" style="gap: 12px;">
@@ -118,9 +176,9 @@ const steps = [
           <Logo size={40} />
           <div>
             <div style="font-weight: 600; font-size: 22px; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink);">
-              Open a chat. Pick an expert. <span style="color: var(--accent);">Ship the work.</span>
+              Open a chat. Pick an Expert or an Agent. <span style="color: var(--accent);">Ship the work.</span>
             </div>
-            <div style="margin-top: 3px; font-size: 13px; color: var(--ink-3);">No card · Free tier · 30 agents · 200M proxies · 4,000+ tools</div>
+            <div style="margin-top: 3px; font-size: 13px; color: var(--ink-3);">No card · Free tier · 30 ○ Experts + 6 ⚡ Agents · 200M proxies · 4,000+ tools</div>
           </div>
         </div>
         <a href="/signup" class="qw-btn accent">Start free →</a>

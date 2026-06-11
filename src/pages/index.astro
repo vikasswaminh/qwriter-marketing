@@ -171,8 +171,8 @@ const enterpriseCards = [
 ---
 <Layout
   current=""
-  title="OllaSuper — Build Your AI Workforce"
-  description="Deploy AI specialists across Sales, Marketing, HR, Operations, Finance, Support and Engineering from a single workspace."
+  title="OllaSuper — 30 Experts that advise + 6 Agents that act"
+  description="30 chat-driven Experts (Sales, HR, SEO, Legal, Finance and more) plus 6 production Agents that run on schedules and take real actions with approval gates. One platform. Both primitives."
 >
 
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
@@ -195,8 +195,13 @@ const enterpriseCards = [
           Build Your AI Workforce.
         </h1>
 
-        <p style="margin: 24px auto 0; max-width: 640px; font-size: 18px; line-height: 1.55; color: var(--ink-3);">
-          Deploy AI specialists across <span style="color: var(--ink); font-weight: 600;">Sales, Marketing, HR, Operations, Finance, Support and Engineering</span> — from a single workspace.
+        <p style="margin: 24px auto 0; max-width: 680px; font-size: 18px; line-height: 1.55; color: var(--ink-3);">
+          <span style="color: var(--ink); font-weight: 600;">30 Experts</span> that advise across Sales, HR, SEO, Legal, Finance and 25 more — plus <span style="color: var(--ink); font-weight: 600;">6 Agents</span> that run on schedules and take real actions with your approval.
+        </p>
+        <p style="margin: 8px auto 0; max-width: 600px; font-size: 13px; line-height: 1.5; color: var(--ink-3);">
+          <a href="/experts" style="color: var(--ink-2); text-decoration: underline; text-decoration-color: var(--rule);">○ Browse the 30 Experts →</a>
+          &nbsp;&nbsp;
+          <a href="/agents" style="color: var(--ink-2); text-decoration: underline; text-decoration-color: var(--rule);">⚡ Meet the 6 Agents →</a>
         </p>
 
         <div style="display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; justify-content: center;">
@@ -388,17 +393,120 @@ const enterpriseCards = [
   </section>
 
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-  {/* 7 · DEPARTMENTS */}
+  {/* 6.5 · AGENTS — the action-taking primitive (distinct from Experts) */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section style="padding: 96px 0; border-top: 1px solid var(--rule-soft); background: var(--bg-elev);">
+    <div class="qw-section">
+      <div style="max-width: 760px;">
+        <div class="qw-eyebrow qw-eyebrow-accent" style="color: #b45309;">⚡ Agents · 6 production workers</div>
+        <h2 class="qw-h-display" style="margin-top: 14px; font-size: clamp(36px, 4.6vw, 64px);">
+          The 6 that don't<br/>just chat — they <span style="color: var(--accent);">do</span>.
+        </h2>
+        <p style="margin-top: 22px; font-size: 17px; line-height: 1.55; color: var(--ink-3); max-width: 600px;">
+          Agents run on a schedule. They call real tools — ollagraph scrapes, WHOIS lookups, AEO audits, structured extraction.
+          They write to a workspace you can read. Every action that could leave the platform is queued for your approval.
+        </p>
+        <p style="margin-top: 8px; font-size: 13px; color: var(--ink-3); max-width: 580px;">
+          The 30 Experts are chat-driven and advisory. The 6 Agents take action.
+          <a href="/how-it-works" style="color: var(--accent);">See how the two work together →</a>
+        </p>
+      </div>
+
+      <div class="qw-grid-3" style="margin-top: 40px; gap: 14px;">
+
+        <a href="/agents/outbound-sdr" class="qw-card" style="display: block; padding: 22px; color: var(--ink); border-color: var(--rule);">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 7px; background: #0066ff1a; color: #0066ff; font-weight: 700;">⚡</span>
+            <div style="font-weight: 600; font-size: 16px; letter-spacing: -0.012em;">Outbound SDR</div>
+          </div>
+          <p style="margin-top: 12px; font-size: 13.5px; line-height: 1.55; color: var(--ink-3);">Researches prospects, drafts personalized cold outreach with real company-specific hooks, queues every draft for your approval before send.</p>
+          <div style="margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--cream); color: var(--ink-3);">Every 30 min</span>
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #facc1514; color: #b45309;">Approval-gated</span>
+          </div>
+        </a>
+
+        <a href="/agents/seo-auditor" class="qw-card" style="display: block; padding: 22px; color: var(--ink); border-color: var(--rule);">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 7px; background: #16a34a1a; color: #16a34a; font-weight: 700;">⚡</span>
+            <div style="font-weight: 600; font-size: 16px; letter-spacing: -0.012em;">SEO Auditor</div>
+          </div>
+          <p style="margin-top: 12px; font-size: 13.5px; line-height: 1.55; color: var(--ink-3);">Real AEO + SEO audits every 6 hours with specific code-level fixes — not generic "improve your meta tags." Powered by Tongyi DeepResearch.</p>
+          <div style="margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--cream); color: var(--ink-3);">Every 6 h</span>
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #7c3aed14; color: #7c3aed;">Tongyi DeepResearch</span>
+          </div>
+        </a>
+
+        <a href="/agents/content-publisher" class="qw-card" style="display: block; padding: 22px; color: var(--ink); border-color: var(--rule);">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 7px; background: #10b9811a; color: #10b981; font-weight: 700;">⚡</span>
+            <div style="font-weight: 600; font-size: 16px; letter-spacing: -0.012em;">Content Publisher</div>
+          </div>
+          <p style="margin-top: 12px; font-size: 13.5px; line-height: 1.55; color: var(--ink-3);">AEO-first blog, social, newsletter drafts. Researches deeply, then writes — every draft queued for your approval before publish.</p>
+          <div style="margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--cream); color: var(--ink-3);">Manual trigger</span>
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #facc1514; color: #b45309;">Approval-gated</span>
+          </div>
+        </a>
+
+        <a href="/agents/inbox-triage" class="qw-card" style="display: block; padding: 22px; color: var(--ink); border-color: var(--rule);">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 7px; background: #52525b1a; color: #52525b; font-weight: 700;">⚡</span>
+            <div style="font-weight: 600; font-size: 16px; letter-spacing: -0.012em;">Inbox Triage</div>
+          </div>
+          <p style="margin-top: 12px; font-size: 13.5px; line-height: 1.55; color: var(--ink-3);">Classifies inbound messages by intent + urgency, drafts routine replies, escalates anything mentioning refund / lawyer / cancel with full context.</p>
+          <div style="margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--cream); color: var(--ink-3);">Every 15 min</span>
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #facc1514; color: #b45309;">Approval-gated</span>
+          </div>
+        </a>
+
+        <a href="/agents/pipeline-curator" class="qw-card" style="display: block; padding: 22px; color: var(--ink); border-color: var(--rule);">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 7px; background: #3b82f61a; color: #3b82f6; font-weight: 700;">⚡</span>
+            <div style="font-weight: 600; font-size: 16px; letter-spacing: -0.012em;">Pipeline Curator</div>
+          </div>
+          <p style="margin-top: 12px; font-size: 13.5px; line-height: 1.55; color: var(--ink-3);">Flags genuinely at-risk deals, suggests the next specific action — not generic "follow up." Weekly forecasts with assessed probabilities.</p>
+          <div style="margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--cream); color: var(--ink-3);">Every 4 h</span>
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #16a34a14; color: #16a34a;">Advisory only</span>
+          </div>
+        </a>
+
+        <a href="/agents/deep-research" class="qw-card" style="display: block; padding: 22px; color: var(--ink); border-color: var(--rule);">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 7px; background: #7c3aed1a; color: #7c3aed; font-weight: 700;">⚡</span>
+            <div style="font-weight: 600; font-size: 16px; letter-spacing: -0.012em;">Deep Research</div>
+          </div>
+          <p style="margin-top: 12px; font-size: 13.5px; line-height: 1.55; color: var(--ink-3);">Multi-step research over the live web — structured briefs with citations. Powered by Tongyi DeepResearch (purpose-built for long-horizon tool chains).</p>
+          <div style="margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--cream); color: var(--ink-3);">Manual trigger</span>
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #7c3aed14; color: #7c3aed;">Tongyi DeepResearch</span>
+          </div>
+        </a>
+
+      </div>
+
+      <div style="margin-top: 28px; text-align: center;">
+        <a href="/agents" class="qw-btn ghost" style="font-size: 13px; padding: 10px 20px;">See all 6 Agents in detail →</a>
+      </div>
+    </div>
+  </section>
+
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* 7 · DEPARTMENTS (the 30 Experts grouped) */}
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
   <section style="padding: 96px 0;">
     <div class="qw-section">
       <div style="max-width: 720px;">
-        <div class="qw-eyebrow qw-eyebrow-accent">For every team</div>
+        <div class="qw-eyebrow qw-eyebrow-accent">○ Experts · 30 chat-driven specialists</div>
         <h2 class="qw-h-display" style="margin-top: 14px; font-size: clamp(36px, 4.6vw, 64px);">
           One workspace.<br/>Every team.
         </h2>
         <p style="margin-top: 22px; font-size: 17px; line-height: 1.55; color: var(--ink-3); max-width: 580px;">
-          Each department gets the right specialists, the right outputs, and the right context — without switching tools.
+          Each department gets the right Expert with the right system prompt, the right outputs, and the right context — without switching tools.
+          Experts advise; they never take real-world action on their own.
         </p>
       </div>
 
