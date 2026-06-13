@@ -32,6 +32,11 @@ export interface Expert {
   // exporter uses this verbatim instead of synthesizing from oneliner+tasks.
   // Used by the 50 agents imported from agency-agents in 2026-06-12.
   system_prompt?: string;
+  // Phase 16.6 · skip the "Respond directly. Do not introduce yourself" line
+  // for personas whose deliverable IS a structured walk-through (audits,
+  // analyses, frameworks). The clause was misread as "be brief" by Gemini
+  // Flash and clipped these personas 6-25× in the post-16.5 Pass B.
+  omit_directness_clause?: boolean;
 }
 
 const TEMPLATE_SAMPLE = (user: string, assistant: string) => ({ user, assistant });
@@ -111,7 +116,7 @@ export const experts: Expert[] = [
       { group: "Closing", items: ["Renewal pitches", "Upgrade asks", "Win-back emails", "Reference asks"] },
     ],
     starters: [
-      { title: "Cold outreach",    tagline: "First touch, not spammy",     prompt: "Write a 90-word cold email to a US CTO at a 200-person SaaS. We help offshore engineering teams ship 2x faster. Lead with a specific insight about their stack, end with a single soft CTA." },
+      { title: "Cold outreach",    tagline: "First touch, not spammy",     prompt: "Write a 90-word cold email opening the conversation.\n\nProspect: Sarah Chen, CTO at Mendica Health (a 200-person Series-C healthcare SaaS based in Austin). They just announced a SOC 2 Type II audit completion last week on LinkedIn and are hiring 8 backend engineers.\n\nOur offer: We help SaaS engineering teams ship 2× faster by embedding 2-4 offshore engineers (India + EU) that integrate into their existing rituals — sprints, retros, on-call. Average ramp time: 3 weeks. Pricing: $42/hr fully loaded.\n\nLead with a specific insight tied to their SOC 2 + hiring spike. End with a single soft CTA (\"worth 15 min next Tuesday?\"). Plain text, no buzzwords." },
       { title: "Follow-up nudge",  tagline: "After 2 weeks silence",       prompt: "Write a polite follow-up to a prospect who's gone quiet for 2 weeks. Reference our last call specifically, add one new piece of value (a relevant case study), ask if timing is wrong." },
       { title: "Proposal summary", tagline: "Three tiers, easy yes",       prompt: "Compose a proposal summary email with three pricing tiers (Essentials, Growth, Enterprise). Show what's included in each, recommend the middle tier, mention the full PDF is attached." },
       { title: "LinkedIn intro",   tagline: "Connect request, no pitch",   prompt: "Write a 280-char LinkedIn connection request to a senior PM at a fintech. Mention one specific reason I want to connect (shared interest, mutual contact, recent post). No pitch." },
@@ -399,6 +404,7 @@ export const experts: Expert[] = [
       "**PRD: Two-way calendar sync (Google + Outlook)**\n\n**Owner.** Anjali (PM) + Vikram (Eng lead)\n**TL;DR.** Today our scheduler reads availability from Google/Outlook but writes back nothing. Users get a calendar invite from us *and* one from their attendee, leading to duplicate events 38% of the time (per support tickets). This PRD is for adding write-back so a single accepted booking creates exactly one calendar event on both sides.\n\n**Problem.** Duplicate events are our #1 support ticket category (24% of inbound). Users perceive it as unreliability and 11% of trial-to-paid churn cites \"calendar issues\" in exit interviews.\n\n**Target users.** Account executives and customer success managers booking 5–15 meetings/week, primarily on Google Workspace (62%) or Microsoft 365 (35%).\n\n**Scope (in).** OAuth-based two-way sync with Google Calendar and Microsoft 365. Writing the event on accept. Updating the event on reschedule. Removing the event on cancel. Time-zone correctness.\n\n**Scope (out, this release).** Three-way sync with Apple iCloud Calendar (4% of users — defer). Conference-bridge auto-creation (Zoom, Teams, Meet) — separate spec.\n\n**Success metrics.**\n  - Duplicate-event support tickets down 80% within 60 days of launch (baseline: 240/month)\n  - Trial-to-paid conversion lift of at least 4pp (baseline 22%)\n  - Less than 1% sync failure rate measured by an end-to-end probe\n\n**Dependencies.** Auth team needs to add Google Calendar + Outlook OAuth scopes to our consent screen (4 days). Infra team needs to provision a separate webhook intake service to handle bidirectional updates (2 weeks).\n\n**Open questions.**\n  - Conflict resolution: if user reschedules in *both* tools before sync, who wins? My recommendation: our system is source-of-truth.\n  - Token revocation: if a user revokes our calendar access mid-cycle, do we cancel or freeze existing events? Need product call by end of week.\n\n**Rollout.** Internal eat-our-own-dogfood for 2 weeks. Then 5% of new signups for 4 weeks. Then 100%."
     ),
     pairs: ["engineering", "designer", "cs"],
+    omit_directness_clause: true,
   },
 
   {
@@ -424,6 +430,7 @@ export const experts: Expert[] = [
       "**Where it's working:**\n  - The headline is short, the verb is strong, and there's no \"unleash the power of.\" Good.\n  - The CTA is solid black, can't miss it.\n  - The constellation logo + wordmark feels confident next to the headline.\n\n**What I'd change, in priority order:**\n\n1. **The subhead is doing too much work.** It's listing 19 things; nobody reads it. Compress to: \"19 expert assistants. One chat. Your files, your site, your work.\" Save the full list for the grid below.\n\n2. **The CTA region needs a secondary action.** Right now it's \"Start free\" alone. Add a quieter secondary: \"See all experts →\" as a text link below. Some visitors want to look before they sign up; right now we force a binary.\n\n3. **The constellation glyph is fighting the headline for attention.** It's the same visual weight as the wordmark. Try shrinking it to 60% size in the hero. The wordmark should be the louder element in the hero; the glyph carries the rest of the site.\n\n4. **The proof strip below is generic.** \"10k+ docs written, 56 office prompts, 14 file formats\" is feature-talk. Replace with a customer logo strip (even 6 logos at low opacity) or one specific quote with a face.\n\n5. **Accessibility:** the white-on-blue \"Start free →\" button passes WCAG AA but only by 0.2 points. Bump to a deeper blue or thicken the font weight to 700 (it's already at 700, so just bump the hue) — gives you headroom for the accessibility-tool audit when you submit for verification.\n\nNet: don't redesign — adjust hierarchy."
     ),
     pairs: ["product", "writer", "marketing"],
+    omit_directness_clause: true,
   },
 
   {
@@ -2782,7 +2789,7 @@ Operating principles:
       { group: "Operations", items: ["Eval harness setup", "A/B prompt experiments", "Cost vs quality tuning", "Versioning + rollback"] },
     ],
     starters: [
-      { title: "Eval harness", tagline: "Score this prompt", prompt: "Build a small eval harness with 20 input/output pairs for this support-routing prompt, then tell me the 3 categories where it most likely fails.\n\nPrompt to test:\n\"You are a support triage agent. Given a customer message, output one of: BILLING, BUG, FEATURE_REQUEST, HOW_TO, OTHER. Output only the label, no other text.\"\n\nGive me the eval pairs as a JSON array of {input, expected_label}." },
+      { title: "Eval harness", tagline: "Score this prompt", prompt: "Build a proper evaluation for this production prompt and give me a concrete reliability report.\n\nPrompt under test:\n```\nYou are a support triage agent at Acme SaaS. Given a customer message, output one of these labels and NOTHING ELSE: BILLING, BUG, FEATURE_REQUEST, HOW_TO, OTHER.\n```\n\nDo all of this in your reply:\n\n1. Build an eval set of 25 realistic customer messages as a JSON array of `{input, expected_label, why}` — span the 5 categories with at least 1 hard/ambiguous case per category.\n2. Predict where the prompt fails. Name the 3 worst failure modes with the exact category-pair confusions you expect (e.g. 'BILLING vs HOW_TO when user asks about pricing tiers').\n3. Rewrite the prompt to address the 3 failure modes. Show the new prompt verbatim in a code block.\n4. Score the rewrite vs. the original on a 5-axis rubric (clarity / coverage / ambiguity handling / brevity / output-format strictness). Mark each axis with the score and one-line rationale.\n5. End with a 'next step' line — what eval would you run on the rewrite before shipping?" },
       { title: "JSON output", tagline: "Reliable schema", prompt: "Tighten this prompt so it returns valid JSON matching a given Zod schema, with a fallback when the model refuses." },
       { title: "Cost cut", tagline: "Same quality", prompt: "Cut tokens on this prompt by 40% without losing accuracy on my eval set. Show the diff." },
       { title: "Jailbreak test", tagline: "Find the holes", prompt: "Adversarially test this customer-support prompt for prompt-injection and refusal-bypass attacks. List concrete fixes." },
@@ -4895,6 +4902,7 @@ Operating principles:
       `Three things, in order: keyboard reachability for every interactive element, visible focus indicators that pass contrast, and form labels tied to inputs. Most other findings come from these three. Confirm with NVDA on Windows and VoiceOver on macOS — automated tools miss screen reader UX entirely.`,
     ),
     pairs: ["frontend-developer", "ui-developer", "performance-benchmarker"],
+    omit_directness_clause: true,
     system_prompt: `# Accessibility Auditor Agent Personality
 
 You are **AccessibilityAuditor**, an expert accessibility specialist who ensures digital products are usable by everyone, including people with disabilities. You audit interfaces against WCAG standards, test with assistive technologies, and catch the barriers that sighted, mouse-using developers never notice.
@@ -5023,7 +5031,6 @@ You are **AccessibilityAuditor**, an expert accessibility specialist who ensures
 
 ---
 Operating principles:
-- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -7483,6 +7490,7 @@ Operating principles:
       `Three filters: frequency (how many users), severity (lost revenue, churned, blocked), and strategic fit (does it move the metric we're betting on). Score each theme, surface the top 3, and show the bottom 5 you're explicitly not doing. The 'no' list is more powerful than the 'yes' list.`,
     ),
     pairs: ["product-manager-expert", "growth-hacker", "customer-success"],
+    omit_directness_clause: true,
     system_prompt: `# Product Feedback Synthesizer Agent
 
 ## Role Definition
@@ -7585,7 +7593,6 @@ Use this agent when you need:
 
 ---
 Operating principles:
-- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -7777,6 +7784,7 @@ Operating principles:
       `Get them in a 30-min meeting, walk the dependency map, and make one team's PM the decider for the contested decision. Document it in writing. Re-meeting them every week is failure. Cross-functional projects fail when nobody is empowered to break ties.`,
     ),
     pairs: ["senior-project-manager", "experiment-tracker", "operations-manager"],
+    omit_directness_clause: true,
     system_prompt: `# Project Shepherd Agent Personality
 
 You are **Project Shepherd**, an expert project manager who specializes in cross-functional project coordination, timeline management, and stakeholder alignment. You shepherd complex projects from conception to completion while masterfully managing resources, risks, and communications across multiple teams and departments.
@@ -7904,7 +7912,6 @@ You are **Project Shepherd**, an expert project manager who specializes in cross
 
 ---
 Operating principles:
-- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -8213,7 +8220,7 @@ Operating principles:
       { group: "Decision support", items: ["Investment ROI", "Hiring plan model", "Pricing impact analysis", "Board-ready summaries"] },
     ],
     starters: [
-      { title: "Model", tagline: "3-statement", prompt: "Build a 3-statement financial model for a SaaS at $5M ARR — assumptions, sensitivities, scenarios." },
+      { title: "Model", tagline: "3-statement", prompt: "Build a 3-statement financial model (P&L + balance sheet + cash flow) for a SaaS at $5M ARR. Use these as starting assumptions:\n\n- ARR: $5M, growing 80% YoY this year, 60% next, 45% the year after\n- ACV: $24K, ICP is 50-500 employee SaaS\n- Gross margin: 78%\n- Sales + marketing: 55% of revenue (CAC payback 14 mo)\n- R&D: 32% of revenue (45 engineers, India + US blend)\n- G&A: 13% of revenue\n- Stripe fees: 2.9% on collected\n- Net retention: 118%, gross retention 88%\n- Cash balance: $14M, $1.2M monthly burn\n\nOutput the model as a markdown table for years 1-3. Then call out 3 sensitivities (NRR ±5pp, S&M efficiency ±20%, churn ±2pp) with their cash-runway impact in months. Finish with one paragraph on the most important number for the board to watch." },
       { title: "Unit econ", tagline: "Honest LTV", prompt: "Pressure-test our LTV/CAC calc — what assumptions are too generous, what should change." },
       { title: "Pricing", tagline: "Impact analysis", prompt: "Model the revenue + retention impact of moving from 3 plans to 5, with churn risk assumptions." },
       { title: "Hiring", tagline: "What we can afford", prompt: "Model our 12-month hiring plan against runway scenarios — base, slow, fast — and tell me what's safe." },
