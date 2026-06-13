@@ -236,7 +236,7 @@ export const experts: Expert[] = [
       { group: "Strategy", items: ["AI-search ranking strategy", "Brand mention monitoring (in LLM outputs)", "Knowledge-graph entity hardening", "Featured-snippet engineering"] },
     ],
     starters: [
-      { title: "Page AEO audit",      tagline: "Score 0–100 + 5 fixes",        prompt: "Audit this page for Answer Engine Optimization. Give me a score 0–100, the top 5 issues, and concrete rewrites for the H1 + first paragraph that would lift the score by 20+ points." },
+      { title: "Page AEO audit",      tagline: "Score 0–100 + 5 fixes",        prompt: "Audit this page for Answer Engine Optimization:\n\nURL: https://acme.com/pricing\nH1: 'Pricing'\nFirst paragraph: 'We offer three plans designed to fit teams of all sizes. Choose the one that works for you.'\n\nGive me a score 0–100, the top 5 issues, and concrete rewrites for the H1 + first paragraph that would lift the score by 20+ points." },
       { title: "Rewrite for citation", tagline: "Make it AI-quotable",         prompt: "Rewrite my page's first 200 words to be highly quotable by ChatGPT and Perplexity. Use direct claims with specific numbers, attribute every claim, add inline citations." },
       { title: "FAQ schema",           tagline: "5 Q&A pairs + JSON-LD",        prompt: "Generate 5 FAQ entries for a page about 'AI sales assistants.' Each answer 2–4 sentences, fact-dense. Then output the FAQPage schema JSON-LD." },
       { title: "LLM-fetch sim",        tagline: "What does ChatGPT see?",      prompt: "Walk me through what ChatGPT's web-fetch agent sees when it visits my homepage. What blocks it, what's missing, what would make it cite us instead of our competitor?" },
@@ -1056,6 +1056,7 @@ You're successful when:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -1244,6 +1245,7 @@ export const DataTable = memo<DataTableProps>(({ data, columns, onRowClick }) =>
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -1264,7 +1266,7 @@ Operating principles:
       { group: "Coaching", items: ["Explain the why", "Suggest, don't demand", "Praise good patterns", "Surface anti-patterns"] },
     ],
     starters: [
-      { title: "Review PR", tagline: "Paste the diff", prompt: "Review this diff for correctness, security, and maintainability. Mark each comment as blocker, suggestion, or nit and explain the reasoning." },
+      { title: "Review PR", tagline: "Paste the diff", prompt: "Review this diff for correctness, security, and maintainability. Mark each comment as 🔴 blocker, 🟡 suggestion, or 💭 nit and explain the reasoning.\n\n```diff\n--- a/server/routes/auth.js\n+++ b/server/routes/auth.js\n@@ -12,7 +12,8 @@ router.post('/login', async (req, res) => {\n-  const { email, password } = req.body;\n-  const user = await db.query(`SELECT * FROM users WHERE email='${email}'`);\n+  const { email, password } = req.body;\n+  const user = await db.query(`SELECT * FROM users WHERE email = $1`, [email]);\n   if (!user) return res.status(401).json({ error: 'invalid' });\n   const ok = await bcrypt.compare(password, user.password_hash);\n+  req.session.userId = user.id;\n   res.json({ token: jwt.sign({ uid: user.id }, process.env.SECRET) });\n });\n```" },
       { title: "Anti-patterns", tagline: "What to watch for", prompt: "List the 10 anti-patterns you flag most in TypeScript/React PRs, with a short example and the fix." },
       { title: "Checklist", tagline: "Team standard", prompt: "Draft a PR review checklist our team can adopt — language-agnostic, fits in a README, tied to merge gates." },
       { title: "Tone fix", tagline: "Make it kinder", prompt: "Rewrite this terse review so it teaches without sounding dismissive. Keep the technical points intact." },
@@ -1345,6 +1347,7 @@ Line 42: User input is interpolated directly into the query.
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -1546,6 +1549,7 @@ Remember and build on:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -1684,6 +1688,7 @@ Avoid DDD when the system is mostly data entry, reporting, or simple CRUD with l
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -1903,6 +1908,7 @@ export function FeedbackForm() {
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -2104,6 +2110,7 @@ Analytical and performance-focused. You show query plans, explain index strategi
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -2243,6 +2250,7 @@ def build_gold_daily_revenue(silver_orders: str, gold_table: str) -> None:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -2636,6 +2644,7 @@ You're successful when:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -2752,6 +2761,7 @@ slos:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -2772,7 +2782,7 @@ Operating principles:
       { group: "Operations", items: ["Eval harness setup", "A/B prompt experiments", "Cost vs quality tuning", "Versioning + rollback"] },
     ],
     starters: [
-      { title: "Eval harness", tagline: "Score this prompt", prompt: "Build a small eval harness with 20 input/output pairs for this support-routing prompt and tell me where it fails." },
+      { title: "Eval harness", tagline: "Score this prompt", prompt: "Build a small eval harness with 20 input/output pairs for this support-routing prompt, then tell me the 3 categories where it most likely fails.\n\nPrompt to test:\n\"You are a support triage agent. Given a customer message, output one of: BILLING, BUG, FEATURE_REQUEST, HOW_TO, OTHER. Output only the label, no other text.\"\n\nGive me the eval pairs as a JSON array of {input, expected_label}." },
       { title: "JSON output", tagline: "Reliable schema", prompt: "Tighten this prompt so it returns valid JSON matching a given Zod schema, with a fallback when the model refuses." },
       { title: "Cost cut", tagline: "Same quality", prompt: "Cut tokens on this prompt by 40% without losing accuracy on my eval set. Show the diff." },
       { title: "Jailbreak test", tagline: "Find the holes", prompt: "Adversarially test this customer-support prompt for prompt-injection and refusal-bypass attacks. List concrete fixes." },
@@ -2977,6 +2987,7 @@ def assemble_prompt(
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -3133,6 +3144,7 @@ You're successful when:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -3752,6 +3764,7 @@ Before deploying a multi-agent pipeline to production:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -3909,6 +3922,7 @@ You are **Codebase Onboarding Engineer**, a specialist in helping new developers
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -4012,6 +4026,7 @@ app.get('/api/users/:id/profile', async (req, res) => {
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -4122,6 +4137,7 @@ resource "aws_organizations_organization" "org" {
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -4243,6 +4259,7 @@ naabu -list "$OUT/subdomains.txt" -top-ports 1000 \
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -4359,6 +4376,7 @@ Get-CimInstance Win32_Process |
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -4484,6 +4502,7 @@ detection:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -4504,7 +4523,7 @@ Operating principles:
       { group: "Quality", items: ["Load + soak runs", "Schema drift detection", "Chaos injection", "Postman/Newman suites"] },
     ],
     starters: [
-      { title: "Contract", tagline: "Vs OpenAPI", prompt: "Generate contract tests from this OpenAPI spec and run them against staging. Flag every drift." },
+      { title: "Contract", tagline: "Vs OpenAPI", prompt: "Generate contract tests for this OpenAPI endpoint. Write the tests in Jest + supertest format. Cover: happy path, missing required field, wrong type, auth missing, 5xx retry.\n\n```yaml\npaths:\n  /v1/users/{userId}/orders:\n    get:\n      summary: List a user's orders\n      parameters:\n        - name: userId\n          in: path\n          required: true\n          schema: { type: string, format: uuid }\n        - name: status\n          in: query\n          schema: { type: string, enum: [pending, shipped, delivered, cancelled] }\n      responses:\n        '200':\n          content:\n            application/json:\n              schema:\n                type: array\n                items:\n                  type: object\n                  required: [id, status, total_cents]\n                  properties:\n                    id: { type: string, format: uuid }\n                    status: { type: string }\n                    total_cents: { type: integer, minimum: 0 }\n        '401': { description: Unauthorized }\n        '404': { description: User not found }\n```" },
       { title: "Load", tagline: "Hit the limit", prompt: "Run a 30-min load test plan for our /search endpoint — target 200 RPS, p95 under 250ms, and report breakpoints." },
       { title: "Security", tagline: "Auth abuse", prompt: "Test our REST API for IDOR, broken auth, mass assignment, and rate-limit bypass. Reproducible cases only." },
       { title: "Suite", tagline: "Postman setup", prompt: "Scaffold a Postman + Newman suite for our 40 endpoints with CI integration and per-env variables." },
@@ -4672,6 +4691,7 @@ describe('User API Comprehensive Testing', () => {
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -4844,6 +4864,7 @@ function generateHTMLReport(data) {
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -5002,6 +5023,7 @@ You are **AccessibilityAuditor**, an expert accessibility specialist who ensures
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -5165,6 +5187,7 @@ class ToolEvaluator:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -5296,6 +5319,7 @@ def fetch_thread(imap_conn, thread_ids):
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -5388,6 +5412,7 @@ Monitor designated Excel file directories for new or updated sales reports. Extr
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -5473,6 +5498,7 @@ Aggregate and consolidate sales metrics from all territories, representatives, a
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -5749,6 +5775,7 @@ You're successful when:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -5910,6 +5937,7 @@ class DelegationVerifier:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -6051,6 +6079,7 @@ Build sustainable organic search visibility through:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -6167,6 +6196,7 @@ Allow: /
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -6299,6 +6329,7 @@ Audit, implement, and measure WebMCP readiness across the sites and web applicat
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -6444,6 +6475,7 @@ Audit, analyze, and improve brand visibility across AI recommendation engines. B
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -6522,6 +6554,7 @@ Use this agent when you need:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -6670,6 +6703,7 @@ Touch 8 (Day 21, Email): New angle — differen
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -6767,6 +6801,7 @@ A proof of concept is not a free trial. It's a structured evaluation with a bina
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -7059,6 +7094,7 @@ You're successful when:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -7150,6 +7186,7 @@ During discovery and qualification, ask questions that surfa
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -7285,6 +7322,7 @@ Core user stories with acceptance criteria:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -7305,7 +7343,7 @@ Operating principles:
       { group: "Delivery", items: ["Definition of done", "Mid-sprint scope guard", "Retro action follow-through", "Velocity calibration"] },
     ],
     starters: [
-      { title: "RICE", tagline: "Score this list", prompt: "Score this backlog with RICE and tell me which 5 items to commit to the next sprint." },
+      { title: "RICE", tagline: "Score this list", prompt: "Score this backlog with RICE (Reach × Impact × Confidence / Effort) and tell me which 5 items to commit to the next 2-week sprint. Team capacity is 30 story points.\n\nBacklog:\n1. Add SSO via SAML for enterprise tier (open since 2 quarters; 3 deals blocked)\n2. Rewrite the search index (P95 latency at 1.8s, target 200ms)\n3. Dark mode for dashboard (43 customer requests; reddit thread with 200 upvotes)\n4. Migrate billing from Stripe to in-house (compliance ask; CFO requested)\n5. Add bulk-import for contacts (top 5 churn-reason quote)\n6. Refactor the onboarding wizard (current drop-off at step 3 is 38%)\n7. Add audit log export (security review requirement)\n8. New 'invite teammate' email template (current open-rate 7%)\n9. Slack integration for notifications (12 requests, vocal champion)\n10. Multi-currency pricing (3 EU prospects asked)" },
       { title: "Capacity", tagline: "Real number", prompt: "Help me calculate honest sprint capacity for a 7-person team accounting for holidays, support load, and meeting tax." },
       { title: "Scope creep", tagline: "Mid-sprint", prompt: "Sales is asking for an urgent feature mid-sprint. Give me the questions that decide whether to swap in or queue." },
       { title: "Retro", tagline: "Real actions", prompt: "Rewrite our retro process so it produces 1-2 commitments that actually ship, not 8 we forget by next sprint." },
@@ -7414,6 +7452,7 @@ Use this agent when you need:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -7546,6 +7585,7 @@ Use this agent when you need:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -7566,7 +7606,7 @@ Operating principles:
       { group: "Execution", items: ["Scope guard", "Status w/o status theater", "Decision log", "Closeout + handoff"] },
     ],
     starters: [
-      { title: "Breakdown", tagline: "Spec to tasks", prompt: "Break this spec into stories with realistic estimates, dependencies, and an honest critical path." },
+      { title: "Breakdown", tagline: "Spec to tasks", prompt: "Break this spec into user stories with realistic estimates (story points), dependencies, and an honest critical path. Output as a table + a Gantt-style block diagram. Team: 4 fullstack engineers + 1 designer, 2-week sprints.\n\nSpec: 'Self-serve trial → paid conversion'\nGoal: A new visitor signs up for a 14-day free trial of our SaaS without sales involvement, gets onboarded by email + in-app, and converts to a paid plan via Stripe before the trial ends. Today this whole flow requires sales.\n\nIncludes:\n- Self-serve signup form (email + password; SSO post-MVP)\n- Workspace auto-provisioning on signup\n- 14-day trial timer + reminder emails on D1, D3, D7, D11, D13\n- In-app onboarding checklist (5 items)\n- Stripe checkout for plan selection on D14 or whenever they click 'upgrade'\n- Admin dashboard: see all trials, days remaining, conversion status\n\nTarget delivery: 8 weeks." },
       { title: "Risk", tagline: "Top 5", prompt: "Build a risk register with the top 5 things likely to slip this project, plus a mitigation for each." },
       { title: "Status", tagline: "No theater", prompt: "Rewrite our weekly status to surface decisions needed and risks moving, not green-yellow-red lights nobody reads." },
       { title: "Closeout", tagline: "Handoff right", prompt: "Design a project closeout checklist that prevents support pain in week 2 after launch." },
@@ -7706,6 +7746,7 @@ Your goal is to become the best PM for web development projects by learning from
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -7863,6 +7904,7 @@ You are **Project Shepherd**, an expert project manager who specializes in cross
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -7883,7 +7925,7 @@ Operating principles:
       { group: "Tracking", items: ["Result dashboards", "Decision log", "Learning library", "Stop rules + holdouts"] },
     ],
     starters: [
-      { title: "Hypothesis", tagline: "Tight", prompt: "Tighten this experiment hypothesis with a single metric, expected effect size, and stop rule." },
+      { title: "Hypothesis", tagline: "Tight", prompt: "Tighten this experiment hypothesis: name a single primary metric, an expected effect size with rationale, a stop rule (sample size + minimum runtime), and one guardrail metric. Then list the 3 most likely confounders.\n\nLoose hypothesis: 'Adding a tooltip on the pricing page that says \"Most teams pick Pro\" will increase Pro-plan signups.'\n\nContext: ~12k pricing page visitors/week. Current Pro signup rate is 3.4% of visitors. We've never run an A/B test on pricing copy before." },
       { title: "Power", tagline: "Sample size", prompt: "Calculate sample size + duration for a checkout A/B test on 8% baseline conversion and a 5% relative lift target." },
       { title: "Decision", tagline: "After result", prompt: "Result came back inconclusive. What's the decision process — extend, kill, ship anyway? Walk me through it." },
       { title: "Library", tagline: "Build memory", prompt: "Set up an experiment learning library so we stop running the same test twice and remember what didn't work." },
@@ -8027,6 +8069,7 @@ You are **Experiment Tracker**, an expert project manager who specializes in exp
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -8149,6 +8192,7 @@ What this looks like in practice:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -8408,6 +8452,7 @@ Remember and build expertise in:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -8522,6 +8567,7 @@ Operating Expenses
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -8637,6 +8683,7 @@ PORTER'S FIVE FORCES SUMMARY
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -8742,6 +8789,7 @@ Physically or digitally trace each step from customer demand to delivery. Captur
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -8858,6 +8906,7 @@ COMMERCIAL SIGNALS (10%)
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
@@ -9118,6 +9167,7 @@ You're successful when:
 
 ---
 Operating principles:
+- Respond directly. Do not introduce yourself, do not start with 'As an AI…', and skip preamble — get to the work.
 - Default tone: US business English, direct, no buzzwords.
 - Markdown output. Use tables, lists, headings as the task demands.
 - When the user needs live data (scraping, audits, market research, citations), call the ollagraph tools. They are wired in.
