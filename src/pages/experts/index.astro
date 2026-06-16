@@ -17,7 +17,7 @@ const grouped = Object.keys(departments).map(key => ({
     <div class="qw-section" style="position: relative;">
       <div class="qw-split">
         <div>
-          <div class="qw-eyebrow qw-eyebrow-accent">Agents · 30 specialists</div>
+          <div class="qw-eyebrow qw-eyebrow-accent">Agents · 80 specialists</div>
           <h1 class="qw-h-display" style="margin-top: 10px;">
             The 30 agents.
           </h1>
@@ -40,7 +40,7 @@ const grouped = Object.keys(departments).map(key => ({
   <div style="position: sticky; top: 57px; z-index: 30;" class="qw-nav-blur">
     <div class="qw-section" style="padding: 12px 0;">
       <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <a href="#all" class="qw-btn primary" style="padding: 6px 12px; font-size: 12px;">All 30</a>
+        <a href="#all" class="qw-btn primary" style="padding: 6px 12px; font-size: 12px;">All 80</a>
         {grouped.map(g => (
           <a href={`#${g.key}`} class="qw-btn ghost" style={`padding: 6px 12px; font-size: 12px;`}
              onmouseover={`this.style.borderColor='${g.color}'; this.style.color='${g.color}';`} onmouseout="this.style.borderColor='var(--rule)'; this.style.color='var(--ink)';">
@@ -84,13 +84,52 @@ const grouped = Object.keys(departments).map(key => ({
     </div>
   </section>
 
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* HOW TO USE AN EXPERT — added 2026-06-15. Five-step flow with the     */}
+  {/* same paper card chrome as the rest of the page.                      */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section class="qw-pad" style="background: var(--bg-elev); border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);">
+    <div class="qw-section">
+      <div style="text-align: center; margin-bottom: 32px;">
+        <div class="qw-eyebrow qw-eyebrow-accent">How to use an Expert</div>
+        <h2 class="qw-h-1" style="margin: 10px auto 12px; max-width: 720px;">Five steps from "I need help with…" to a shippable answer.</h2>
+        <p class="qw-body" style="max-width: 620px; margin: 0 auto; font-size: 14.5px;">
+          Experts are chat-driven specialists. They advise. They don't take real-world actions on their own — that's what <a href="/agents" style="color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule);">Agents</a> are for.
+        </p>
+      </div>
+
+      <div class="qw-grid-5" style="gap: 16px;">
+        {[
+          { n: "1", title: "Browse or search",        body: "Filter by department (People / GTM / Ops / Data / Build / Personal) or type a problem into the ⌘K palette. Each Expert lists their starters so you can preview what kinds of work they're good at." },
+          { n: "2", title: "Open the chat",           body: "One click on an Expert tile lands you in the chat surface with their system prompt already loaded. The badge in the topbar reminds you which Expert you're talking to mid-thread." },
+          { n: "3", title: "Pick a starter (or write your own)", body: "Every Expert ships 4 starter prompts that are the dominant use cases for that role. They're a faster start than a blank page. Or just describe what you need." },
+          { n: "4", title: "Ground in your sources",   body: "Use the source toggle in the composer to attach scans, uploaded files, or text snippets. Replies cite the chunks they used — you can click through to verify." },
+          { n: "5", title: "Iterate, copy, save",      body: "Hover any AI reply for Copy / Regenerate / Save. Save sends a reply into your Documents workspace; Regenerate runs the same prompt for an alternate take." },
+        ].map(s => (
+          <div class="qw-card" style="padding: 20px 18px;">
+            <div class="qw-eyebrow" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.08em;">STEP {s.n}</div>
+            <div style="font-weight: 700; font-size: 14px; letter-spacing: -0.01em; color: var(--ink); margin-top: 8px;">{s.title}</div>
+            <p style="margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--ink-3);">{s.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div style="margin-top: 28px; padding: 18px 20px; background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; display: flex; align-items: flex-start; gap: 14px;">
+        <div style="flex: 0 0 30px; height: 30px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">i</div>
+        <div style="font-size: 13px; line-height: 1.6; color: var(--ink-2);">
+          <strong style="color: var(--ink);">Credits.</strong> Every chat turn spends credits = the LLM tokens the reply used. Free tier = 50,000/month, no card required. Hover the credit chip in the topbar to see a live read of what's left.
+        </div>
+      </div>
+    </div>
+  </section>
+
   {/* CTA */}
   <section class="qw-pad">
     <div class="qw-section">
       <div class="qw-card-pop" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px 26px;">
         <div>
-          <div style="font-weight: 600; font-size: 20px; letter-spacing: -0.02em; color: var(--ink);">30 agents. One subscription.</div>
-          <div style="margin-top: 3px; font-size: 13px; color: var(--ink-3);">All 30 unlocked on the free tier. Upgrade for higher tool-call limits and team workspaces.</div>
+          <div style="font-weight: 600; font-size: 20px; letter-spacing: -0.02em; color: var(--ink);">80 experts. One subscription.</div>
+          <div style="margin-top: 3px; font-size: 13px; color: var(--ink-3);">All 80 unlocked on the free tier. Upgrade for higher tool-call limits and team workspaces.</div>
         </div>
         <a href="/signup" class="qw-btn accent">Start free →</a>
       </div>

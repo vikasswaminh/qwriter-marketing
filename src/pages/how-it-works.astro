@@ -4,7 +4,7 @@ import Logo from "~/components/Logo.astro";
 
 const expertSteps = [
   { n:"01", t:"Pick an Expert",     side:"People · GTM · Ops · Data · Build · Personal",
-    b:"30 chat-driven specialists across six departments. Tap a card, the right system prompt loads and the right tools are wired in. You can switch Experts mid-chat; the new one inherits the conversation and the context. Experts are advisory — they draft, audit, advise. They never take real-world action on their own." },
+    b:"80 chat-driven specialists across six departments. Tap a card, the right system prompt loads and the right tools are wired in. You can switch Experts mid-chat; the new one inherits the conversation and the context. Experts are advisory — they draft, audit, advise. They never take real-world action on their own." },
   { n:"02", t:"Drop the context",   side:"URL · Crawl · Files · Drive",
     b:"Four input modes in one chat: paste a URL (crawled in ~600 ms), upload a file (PDF · DOCX · MD · CSV up to 100 MB), connect a Drive folder, or paste text. The Expert always shows what it's grounded in." },
   { n:"03", t:"Ask in plain English", side:"76 starter prompts · 14 tones",
@@ -17,7 +17,7 @@ const expertSteps = [
 
 const agentSteps = [
   { n:"A1", t:"Pick an Agent",         side:"6 production workers · scheduled · approval-gated",
-    b:"6 ⚡ Agents are different from the 30 ○ Experts. They run on a schedule (every 30 min, every 6 h) or on manual trigger. They call real tools — ollagraph scrapes, WHOIS, AEO audits — and write to a workspace you can read. Outbound SDR, SEO Auditor, Content Publisher, Inbox Triage, Pipeline Curator, Deep Research." },
+    b:"6 ⚡ Agents are different from the 80 ○ Experts. They run on a schedule (every 30 min, every 6 h) or on manual trigger. They call real tools — ollagraph scrapes, WHOIS, AEO audits — and write to a workspace you can read. Outbound SDR, SEO Auditor, Content Publisher, Inbox Triage, Pipeline Curator, Deep Research." },
   { n:"A2", t:"Wire the inputs",       side:"deals.yaml · inbox/ · audit_targets/",
     b:"Each Agent reads from a workspace path: Pipeline Curator wants pipeline/deals.yaml; Inbox Triage scans inbox/unread/; SEO Auditor reads audit_targets.yaml. You drop the data, the Agent picks it up on the next run. Drag and drop from Drive or upload directly." },
   { n:"A3", t:"Watch the schedule",    side:"cron-style · run on demand · pause anytime",
@@ -28,7 +28,7 @@ const agentSteps = [
     b:"Deep Research can drop a brief at handoffs/outbound-sdr/ and Outbound SDR picks it up. Content Publisher hands off to SEO Auditor for post-publish monitoring. Experts can hand off to Agents and vice-versa via shared memory namespaces. The 30 + 6 work as one workforce, not two silos." },
 ];
 ---
-<Layout current="how" title="How OllaSuper Works — Experts + Agents" description="30 chat-driven Experts. 6 scheduled Agents. 200M proxies. 4,000+ tools. Memory across sessions. Approval gates on every outbound action.">
+<Layout current="how" title="How OllaSuper Works — Experts + Agents" description="80 chat-driven Experts. 6 scheduled Agents. 200M proxies. 4,000+ tools. Memory across sessions. Approval gates on every outbound action.">
 
   {/* HERO */}
   <section style="position: relative; padding: 56px 0 32px; overflow: hidden;">
@@ -39,7 +39,7 @@ const agentSteps = [
         Two primitives.<br/><span style="color: var(--ink-3);">One workforce.</span>
       </h1>
       <p class="qw-body" style="max-width: 700px; margin-top: 18px; font-size: 16px;">
-        OllaSuper isn't 19 tools wired together. It's <span style="color: var(--ink); font-weight: 600;">30 chat-driven Experts</span> that advise,
+        OllaSuper isn't 19 tools wired together. It's <span style="color: var(--ink); font-weight: 600;">80 chat-driven Experts</span> that advise,
         and <span style="color: var(--ink); font-weight: 600;">6 scheduled Agents</span> that act with your approval — both running on the same workspace, files, and memory.
       </p>
       <div style="margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap;">
@@ -54,9 +54,9 @@ const agentSteps = [
     <div class="qw-section qw-pad">
       <div style="padding-bottom: 24px; border-bottom: 2px solid var(--ink); margin-bottom: 24px;">
         <div class="qw-eyebrow qw-eyebrow-accent">○ Experts · chat-driven · advisory only</div>
-        <h2 class="qw-h-1" style="margin-top: 8px;">The 30 Experts — pick, ground, ask, ship.</h2>
+        <h2 class="qw-h-1" style="margin-top: 8px;">The 80 Experts — pick, ground, ask, ship.</h2>
         <p style="margin-top: 10px; font-size: 14px; color: var(--ink-3); max-width: 620px;">
-          The default chat surface. 30 specialists across People, GTM, Ops, Data, Build, and Personal.
+          The default chat surface. 80 specialists across People, GTM, Ops, Data, Build, and Personal.
           They draft, audit, advise — they never send a real email or modify a real system on their own.
         </p>
       </div>

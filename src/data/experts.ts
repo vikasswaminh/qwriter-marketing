@@ -1,4 +1,4 @@
-// 30 specialist agent personas. Single source of truth — home grid, /experts index,
+// 80 specialist agent personas. Single source of truth — home grid, /experts index,
 // each /experts/[slug] detail page, all derive from this file.
 //
 // To add a 31st agent: drop another entry + matching glyph branch in

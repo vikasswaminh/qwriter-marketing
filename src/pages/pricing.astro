@@ -5,27 +5,27 @@ import Layout from "~/layouts/Layout.astro";
 const tiers = [
   { name: "Free", price: "₹0", interval: "forever",
     words: "50,000 credits / month", scans: "Unlimited site scans + uploads",
-    experts: "All 30 Experts (chat-driven, advisory)",
+    experts: "All 80 Experts (chat-driven, advisory)",
     agents: "Read-only Agents only (deep-research, SEO auditor reports)",
-    features: ["50,000 credits / month (1 credit = 1 token)", "All 30 ○ Experts — full chat access", "Read-only ⚡ Agents: deep-research + SEO auditor", "200M proxies + 4,000 tools", "1 workspace · 3 projects", "Markdown / PDF / DOCX export"],
+    features: ["50,000 credits / month (1 credit = 1 token)", "All 80 ○ Experts — full chat access", "Read-only ⚡ Agents: deep-research + SEO auditor", "200M proxies + 4,000 tools", "1 workspace · 3 projects", "Markdown / PDF / DOCX export"],
     cta: "Start free", ctaHref: "/signup", emphasis: false },
   { name: "Pro", price: "₹499", interval: "per month",
     words: "1,000,000 credits / month", scans: "Unlimited site scans + uploads",
-    experts: "All 30 Experts",
+    experts: "All 80 Experts",
     agents: "All 6 ⚡ Agents — including action-takers (Outbound SDR, Content Publisher, Inbox Triage)",
-    features: ["1,000,000 credits / month (1 credit = 1 token)", "All 30 ○ Experts — full chat access", "All 6 ⚡ Agents including action-takers", "Outbound SDR runs every 30 min", "Inbox Triage runs every 15 min", "Approval-gate drafts in your outbox", "Multi-channel adapters (email, Slack, WhatsApp — coming)", "Unlimited workspaces + projects", "Memory across sessions", "Priority support"],
+    features: ["1,000,000 credits / month (1 credit = 1 token)", "All 80 ○ Experts — full chat access", "All 6 ⚡ Agents including action-takers", "Outbound SDR runs every 30 min", "Inbox Triage runs every 15 min", "Approval-gate drafts in your outbox", "Multi-channel adapters (email, Slack, WhatsApp — coming)", "Unlimited workspaces + projects", "Memory across sessions", "Priority support"],
     cta: "Upgrade to Pro", ctaHref: "https://app.ollasuper.com/auth?return_to=%2Fbilling%2Fupgrade%3Ftier%3Dpro", emphasis: true },
   { name: "Team", price: "₹1,999", interval: "per month",
     words: "10,000,000 credits / month", scans: "Unlimited everything",
-    experts: "All 30 Experts",
+    experts: "All 80 Experts",
     agents: "All 6 ⚡ Agents · custom Agent slots on request",
     features: ["10,000,000 credits / month (1 credit = 1 token)", "Everything in Pro", "Up to 10 seats", "Shared workspaces + libraries", "Per-agent approval policies", "Audit log + SSO", "Self-serve billing dashboard", "Custom Agent slots (on request)", "API key access (beta)"],
     cta: "Upgrade to Team", ctaHref: "https://app.ollasuper.com/auth?return_to=%2Fbilling%2Fupgrade%3Ftier%3Dteam", emphasis: false },
 ];
 
 const faqs = [
-  { q: "What's the difference between an Expert and an Agent?", a: "Experts are 30 chat-driven specialists (HR, Sales, SEO, Legal, Finance and more). They have their own system prompts and tool catalogues, but they only respond to chat — they never take real-world action on their own. Agents are 6 (and growing) production workers that run on schedules (every 30 min, every 6 h, etc.), call real tools (ollagraph scrapes, WHOIS, AEO audits), and write to a workspace. Every action that could leave the platform — sending an email, publishing a post — is queued for your approval. You pick which Agents are read-only (advisory) vs which can write drafts. See /agents for the full list." },
-  { q: "What's actually different about OllaSuper vs generic chat tools?", a: "Two things. First, 30 Experts with their own system prompts, files + site grounded into every chat, memory across sessions, and real tool use backed by 200M owned proxies and 4,000+ scraping actors via ollagraph. Second, 6 production Agents that run on schedules and take real actions with approval gates — outbound SDR, SEO audits, content drafting, inbox triage, pipeline coaching, deep research. Generic chat tools rent their web access and don't have the scheduled-action layer at all." },
+  { q: "What's the difference between an Expert and an Agent?", a: "Experts are 80 chat-driven specialists (HR, Sales, SEO, Legal, Finance and more). They have their own system prompts and tool catalogues, but they only respond to chat — they never take real-world action on their own. Agents are 6 (and growing) production workers that run on schedules (every 30 min, every 6 h, etc.), call real tools (ollagraph scrapes, WHOIS, AEO audits), and write to a workspace. Every action that could leave the platform — sending an email, publishing a post — is queued for your approval. You pick which Agents are read-only (advisory) vs which can write drafts. See /agents for the full list." },
+  { q: "What's actually different about OllaSuper vs generic chat tools?", a: "Two things. First, 80 Experts with their own system prompts, files + site grounded into every chat, memory across sessions, and real tool use backed by 200M owned proxies and 4,000+ scraping actors via ollagraph. Second, 6 production Agents that run on schedules and take real actions with approval gates — outbound SDR, SEO audits, content drafting, inbox triage, pipeline coaching, deep research. Generic chat tools rent their web access and don't have the scheduled-action layer at all." },
   { q: "Why are some Agents read-only on Free?", a: "Read-only Agents (SEO Auditor, Deep Research, Pipeline Curator) only produce reports — there's no risk surface. Action-taking Agents (Outbound SDR, Content Publisher, Inbox Triage) write to a workspace that's connected to real channels with your credentials. We gate those behind paid plans so we can offer per-workspace audit logging, approval policies, and the support layer customers actually need for action automation." },
   { q: "What counts as a credit?", a: "1 credit = 1 LLM token. Every token in the model's output counts against your monthly credit budget, including Agent reports and chat variants you reject. We track per-generation in the History panel so you can audit. Agent tool calls (scrapes, WHOIS) are unlimited — same as Expert tools." },
   { q: "Do scans or uploads count against my credits?", a: "No. Crawling and file uploads are our infrastructure and are unlimited at every tier. You're only paying for the credits that hit the LLM." },
@@ -35,14 +35,14 @@ const faqs = [
   { q: "Is OllaSuper DPDP-compliant?", a: "Yes. Designed-in. Workspace isolation, per-tenant encryption, delete-means-gone, and a published DPA on the legal page." },
 ];
 ---
-<Layout current="pricing" title="Pricing — OllaSuper" description="One subscription. 30 chat-driven Experts + 6 production Agents that run on schedules. Three tiers. We are Bright Data + Apify + Lindy in one bill.">
+<Layout current="pricing" title="Pricing — OllaSuper" description="One subscription. 80 chat-driven Experts + 6 production Agents that run on schedules. Three tiers. We are Bright Data + Apify + Lindy in one bill.">
 
   {/* HERO */}
   <section style="padding: 48px 0 24px;">
     <div class="qw-section">
       <div class="qw-eyebrow qw-eyebrow-accent">Pricing · one product · three tiers</div>
       <h1 class="qw-h-display" style="margin-top: 10px; max-width: 1080px;">
-        <span style="color: var(--ink);">30 Experts that advise.</span><br/>
+        <span style="color: var(--ink);">80 Experts that advise.</span><br/>
         <span style="color: var(--accent);">6 Agents that act.</span>
       </h1>
       <p class="qw-body" style="max-width: 600px; margin-top: 14px; font-size: 16px;">
@@ -51,7 +51,7 @@ const faqs = [
         Agent tool calls (scrapes, WHOIS, audits) are unlimited too.
       </p>
       <p style="max-width: 600px; margin-top: 12px; font-size: 13px; color: var(--ink-3);">
-        New to the distinction? <a href="/agents" style="color: var(--accent);">See the 6 Agents →</a> · <a href="/experts" style="color: var(--accent);">See the 30 Experts →</a>
+        New to the distinction? <a href="/agents" style="color: var(--accent);">See the 6 Agents →</a> · <a href="/experts" style="color: var(--accent);">See the 80 Experts →</a>
       </p>
     </div>
   </section>

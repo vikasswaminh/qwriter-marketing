@@ -1,38 +1,51 @@
 ---
-// Cycling chat preview — shows 5 real expert exchanges from src/data/experts.ts.
-// Each "scene" runs for ~6.5s before fading to the next. Total cycle ~32.5s.
-// All prompts + responses are the actual sample.user / sample.assistant from
-// our 30 experts — nothing faked.
+// Cycling chat preview — 2 Experts + 2 Agents (4 scenes), real flow from
+// the dashboard. Prompts + responses are the actual sample.user /
+// sample.assistant from src/data/experts.ts and src/data/agents.ts —
+// nothing faked.
 //
-// Animation: pure CSS @keyframes. Five scenes stacked absolutely; each gets
+// Animation: pure CSS @keyframes. Scenes stacked absolutely; each gets
 // its own keyframe that holds opacity 1 only inside its time window.
 // Respects prefers-reduced-motion.
 
 import { experts } from "~/data/experts";
+import { agents } from "~/data/agents";
 import { marked } from "marked";
 
 marked.setOptions({ gfm: true, breaks: false });
 
-// Which 5 specialists to cycle through. Chosen for visual variety — table,
-// audit list, JD copy, deal screen, postmortem. Real capability per scene.
-const SCENE_SLUGS = ["sdr", "seo", "hr", "ma", "devops"] as const;
+// 2 Experts (chat-driven advisors) + 2 Agents (scheduled action-takers).
+// Chosen for visual + role variety so the preview spotlights the dual
+// surface — same chat UI, but distinct affordances per kind.
+const SCENE_REFS: Array<{ kind: "expert" | "agent"; slug: string }> = [
+  { kind: "expert", slug: "seo" },              // audit list — Expert
+  { kind: "agent",  slug: "outbound-sdr" },     // recon + outreach draft — Agent
+  { kind: "expert", slug: "hr" },               // JD copy — Expert
+  { kind: "agent",  slug: "content-publisher" } // content brief draft — Agent
+];
 
-const scenes = SCENE_SLUGS.map(slug => {
-  const e = experts.find(x => x.slug === slug)!;
-  // Trim the user prompt so the chat surface stays balanced
-  const user = e.sample.user.length > 140
-    ? e.sample.user.slice(0, 140).replace(/\s+\S*$/, "") + "…"
-    : e.sample.user;
-  // Take the first ~10 meaningful lines of the response so the preview
-  // shows real depth without overflowing the card.
-  const lines = e.sample.assistant.split("\n");
+const scenes = SCENE_REFS.map(ref => {
+  const source = ref.kind === "expert"
+    ? experts.find(x => x.slug === ref.slug)
+    : agents.find(x  => x.slug === ref.slug);
+  if (!source) throw new Error(`OllaSuperChatLoop: no ${ref.kind} found for slug ${ref.slug}`);
+  const sample = source.sample ?? { user: "", assistant: "" };
+  // Trim user prompt so the chat surface stays balanced
+  const user = sample.user.length > 140
+    ? sample.user.slice(0, 140).replace(/\s+\S*$/, "") + "…"
+    : sample.user;
+  // First ~10 meaningful lines of the response so the preview shows real
+  // depth without overflowing the card.
+  const lines = sample.assistant.split("\n");
   const cutoff = Math.min(lines.length, 11);
   const previewMd = lines.slice(0, cutoff).join("\n");
   return {
-    slug: e.slug,
-    name: e.name,
-    short: e.short,
-    color: e.color,
+    kind: ref.kind,
+    badge: ref.kind === "expert" ? "○ Expert" : "⚡ Agent",
+    slug: source.slug,
+    name: source.name,
+    short: source.short,
+    color: source.color,
     user,
     assistantHtml: marked.parse(previewMd) as string,
   };
@@ -114,10 +127,11 @@ const sceneCss = scenes.map((_, i) => {
           class={`qw-chat-scene scene-${i}`}
           style={`position: ${i === 0 ? 'relative' : 'absolute'}; inset: 0; opacity: ${i === 0 ? 1 : 0};`}
         >
-          {/* Title bar */}
+          {/* Title bar — name + kind badge so the dual surface is visible at a glance */}
           <div style="display: flex; align-items: center; gap: 10px; padding: 11px 16px; border-bottom: 1px solid var(--rule-soft); background: var(--paper-warm);">
             <span style={`width: 8px; height: 8px; border-radius: 999px; background: ${s.color};`}></span>
             <span style="font-weight: 700; font-size: 13px; letter-spacing: -0.01em; color: var(--ink);">{s.name}</span>
+            <span style={`display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 999px; font-size: 10px; font-weight: 600; letter-spacing: 0.02em; background: ${s.kind === 'agent' ? 'rgba(250,204,21,0.14)' : 'rgba(0,102,255,0.10)'}; color: ${s.kind === 'agent' ? '#a16207' : '#0052cc'};`}>{s.badge}</span>
             <span style="margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; color: var(--ink-3);">
               <span style="display: inline-block; width: 6px; height: 6px; border-radius: 999px; background: var(--sage);"></span>
               {i + 1} / {scenes.length}

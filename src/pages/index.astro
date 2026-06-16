@@ -171,8 +171,8 @@ const enterpriseCards = [
 ---
 <Layout
   current=""
-  title="OllaSuper — 30 Experts that advise + 6 Agents that act"
-  description="30 chat-driven Experts (Sales, HR, SEO, Legal, Finance and more) plus 6 production Agents that run on schedules and take real actions with approval gates. One platform. Both primitives."
+  title="OllaSuper — 80 Experts that advise + 6 Agents that act"
+  description="80 chat-driven Experts (Sales, HR, SEO, Legal, Finance and more) plus 6 production Agents that run on schedules and take real actions with approval gates. One platform. Both primitives."
 >
 
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
@@ -196,10 +196,10 @@ const enterpriseCards = [
         </h1>
 
         <p style="margin: 24px auto 0; max-width: 680px; font-size: 18px; line-height: 1.55; color: var(--ink-3);">
-          <span style="color: var(--ink); font-weight: 600;">30 Experts</span> that advise across Sales, HR, SEO, Legal, Finance and 25 more — plus <span style="color: var(--ink); font-weight: 600;">6 Agents</span> that run on schedules and take real actions with your approval.
+          <span style="color: var(--ink); font-weight: 600;">80 Experts</span> that advise across Sales, HR, SEO, Legal, Finance and 25 more — plus <span style="color: var(--ink); font-weight: 600;">6 Agents</span> that run on schedules and take real actions with your approval.
         </p>
         <p style="margin: 8px auto 0; max-width: 600px; font-size: 13px; line-height: 1.5; color: var(--ink-3);">
-          <a href="/experts" style="color: var(--ink-2); text-decoration: underline; text-decoration-color: var(--rule);">○ Browse the 30 Experts →</a>
+          <a href="/experts" style="color: var(--ink-2); text-decoration: underline; text-decoration-color: var(--rule);">○ Browse the 80 Experts →</a>
           &nbsp;&nbsp;
           <a href="/agents" style="color: var(--ink-2); text-decoration: underline; text-decoration-color: var(--rule);">⚡ Meet the 6 Agents →</a>
         </p>
@@ -222,9 +222,14 @@ const enterpriseCards = [
         </div>
       </div>
 
-      {/* Chat preview — centered below the headline */}
-      <div style="margin-top: 64px; display: flex; align-items: center; justify-content: center;">
-        <OllaSuperChatLoop />
+      {/* Chat preview — centered, scaled to 80% per 2026-06-15 ask.
+          transform: scale preserves the card's internal proportions; the
+          margin-top tightens since the visual gap to the buttons above
+          would otherwise feel oversized after scaling. */}
+      <div style="margin-top: 40px; display: flex; align-items: center; justify-content: center;">
+        <div style="transform: scale(0.8); transform-origin: top center;">
+          <OllaSuperChatLoop />
+        </div>
       </div>
     </div>
   </section>
@@ -273,7 +278,7 @@ const enterpriseCards = [
 
       <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
         {[
-          { glyph: "○",  color: "#16a34a", title: "30 Experts",          tag: "Chat-driven specialists across 9 departments.",                  href: "/experts" },
+          { glyph: "○",  color: "#16a34a", title: "80 Experts",          tag: "Chat-driven specialists across 6 departments.",                  href: "/experts" },
           { glyph: "⚡", color: "#c98a1a", title: "6 Agents",             tag: "Run on a cadence. Take real actions with approval gates.",        href: "/agents" },
           { glyph: "◯",  color: "#0066ff", title: "Multi-agent handoff", tag: "Specialists pass work to other specialists, end-to-end.",         href: "#workflow" },
           { glyph: "◈",  color: "#2c8d5e", title: "SEO + AEO audits",    tag: "Crawl any URL, score on 40 signals, return a fix list.",         href: "/experts" },
@@ -327,7 +332,7 @@ const enterpriseCards = [
 
       <div style="margin-top: 28px; text-align: center;">
         <a href="/experts" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--accent);">
-          See all 30 specialists →
+          See all 80 specialists →
         </a>
       </div>
     </div>
@@ -446,7 +451,7 @@ const enterpriseCards = [
           They write to a workspace you can read. Every action that could leave the platform is queued for your approval.
         </p>
         <p style="margin-top: 8px; font-size: 13px; color: var(--ink-3); max-width: 580px;">
-          The 30 Experts are chat-driven and advisory. The 6 Agents take action.
+          The 80 Experts are chat-driven and advisory. The 6 Agents take action.
           <a href="/how-it-works" style="color: var(--accent);">See how the two work together →</a>
         </p>
       </div>
@@ -534,12 +539,12 @@ const enterpriseCards = [
   </section>
 
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-  {/* 7 · DEPARTMENTS (the 30 Experts grouped) */}
+  {/* 7 · DEPARTMENTS (the 80 Experts grouped) */}
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
   <section style="padding: 96px 0;">
     <div class="qw-section">
       <div style="max-width: 720px;">
-        <div class="qw-eyebrow qw-eyebrow-accent">○ Experts · 30 chat-driven specialists</div>
+        <div class="qw-eyebrow qw-eyebrow-accent">○ Experts · 80 chat-driven specialists</div>
         <h2 class="qw-h-display" style="margin-top: 14px; font-size: clamp(36px, 4.6vw, 64px);">
           One workspace.<br/>Every team.
         </h2>

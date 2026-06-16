@@ -27,7 +27,7 @@ const dashboardBase = (import.meta.env.PUBLIC_DASHBOARD_URL as string | undefine
             Every action that could leave the platform is queued for your approval before it ships.
           </p>
           <p class="qw-body" style="max-width: 600px; margin-top: 10px; font-size: 13px; color: var(--ink-3);">
-            Looking for the chat-driven Experts? <a href="/experts" style="color: var(--accent);">See the 30 Experts →</a>
+            Looking for the chat-driven Experts? <a href="/experts" style="color: var(--accent);">See the 80 Experts →</a>
           </p>
         </div>
         <div class="qw-card" style="padding: 14px 16px; font-size: 13px; color: var(--ink-3);">
@@ -87,6 +87,45 @@ const dashboardBase = (import.meta.env.PUBLIC_DASHBOARD_URL as string | undefine
           </div>
         </div>
       ))}
+    </div>
+  </section>
+
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* HOW TO USE AN AGENT — added 2026-06-15. Agents are scheduled +      */}
+  {/* action-taking, so the five-step flow is different from Experts.     */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section class="qw-pad" style="background: var(--bg-elev); border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);">
+    <div class="qw-section">
+      <div style="text-align: center; margin-bottom: 32px;">
+        <div class="qw-eyebrow qw-eyebrow-accent" style="color: #facc15;">⚡ How to use an Agent</div>
+        <h2 class="qw-h-1" style="margin: 10px auto 12px; max-width: 720px;">Five steps from "schedule this" to a real action you sign off on.</h2>
+        <p class="qw-body" style="max-width: 620px; margin: 0 auto; font-size: 14.5px;">
+          Agents run on cron, call tools, draft real outputs (emails, PRs, audits, briefs) — then hold them at an approval gate so nothing ships without your nod.
+        </p>
+      </div>
+
+      <div class="qw-grid-5" style="gap: 16px;">
+        {[
+          { n: "1", title: "Pick the Agent",            body: "Six production Agents auto-spawn at boot: Outbound SDR, Pipeline Curator, SEO Auditor, Content Publisher, Inbox Triage, Deep Research. Pick the one whose tools + role match your job." },
+          { n: "2", title: "Brief it like a teammate",   body: "Natural language. \"Audit ollasuper.com for AEO regressions every Monday.\" The Agent's system prompt is already loaded with its workflow rules — you just hand it the target." },
+          { n: "3", title: "Watch it work",              body: "Agents call real tools: ollagraph scrape, web_fetch, file_write, memory_recall, MCP tools. The dashboard shows the tool-call trace so you can audit what it did and why." },
+          { n: "4", title: "Approve before it ships",    body: "Drafts queue in the approval surface — emails before send, blog posts before publish, PRs before merge. One click approves; one click sends back for a rewrite." },
+          { n: "5", title: "Schedule + hand off",        body: "Once you trust an Agent, turn on a cron schedule (every 15m / hourly / daily). Or have it hand off to another Agent — SDR finds leads, Outbound drafts emails, Inbox triages replies." },
+        ].map(s => (
+          <div class="qw-card" style="padding: 20px 18px;">
+            <div class="qw-eyebrow" style="font-family: var(--font-mono); font-size: 11px; color: #b45309; letter-spacing: 0.08em;">STEP {s.n}</div>
+            <div style="font-weight: 700; font-size: 14px; letter-spacing: -0.01em; color: var(--ink); margin-top: 8px;">{s.title}</div>
+            <p style="margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--ink-3);">{s.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div style="margin-top: 28px; padding: 18px 20px; background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; display: flex; align-items: flex-start; gap: 14px;">
+        <div style="flex: 0 0 30px; height: 30px; border-radius: 50%; background: rgba(250,204,21,0.15); color: #b45309; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">!</div>
+        <div style="font-size: 13px; line-height: 1.6; color: var(--ink-2);">
+          <strong style="color: var(--ink);">Schedules are off by default.</strong> A misconfigured cron loop on content-publisher (gpt-4o, smart tier) burned $27 in 4 days before we caught it. The 6 production Agents now ship queue-fed only — flip the schedule on per Agent when you actually want one. Use a per-day OpenRouter cap as a safety net.
+        </div>
+      </div>
     </div>
   </section>
 

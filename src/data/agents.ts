@@ -2,7 +2,7 @@
 // each /agents/[slug] detail page, all derive from this file.
 //
 // Agents are DIFFERENT from Experts (see src/data/experts.ts). Experts are
-// 30 chat-driven personas that advise; they have no schedule, no tools beyond
+// 80 chat-driven personas that advise; they have no schedule, no tools beyond
 // chat, and cannot take real-world actions. Agents have a recurring schedule,
 // a tool surface (mcp_ollagraph_*), a workspace, approval gates, and run on
 // the openfang sidecar at 172.16.70.25:4201 — they DO things.
