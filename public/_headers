@@ -58,6 +58,6 @@
 # 103 Early Hints frame on the next request, so the browser starts the
 # CSS + font fetches before the HTML body even arrives.
 /
-  Link: </_astro/_slug_.ojnpTv2A.css>; rel=preload; as=style
+  Link: </_astro/_slug_.nOXP7E1L.css>; rel=preload; as=style
   Link: </fonts/Lato-400-latin.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
   Link: </fonts/Lato-700-latin.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
