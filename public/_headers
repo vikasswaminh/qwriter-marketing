@@ -1,8 +1,57 @@
-# Cloudflare Pages headers
+# Cloudflare Pages headers — Phase 17.X performance pass (2026-06-15).
+#
+# CF free-tier features this file leans on:
+#   • Brotli/gzip: auto-applied to text/* + JS/CSS — no header needed.
+#   • Early Hints (103): when a `Link:` header lists a preload, CF Pages
+#     echoes it as Early Hints on the next request. Saves ~100-200 ms RTT
+#     on connection-warm clients.
+#   • HTTP/3 + 0-RTT: enabled at the zone level (dashboard) — no header
+#     opt-in needed. Confirm in CF dashboard → Network.
+#   • Speed Brain: speculative pre-rendering of likely-next pages on
+#     Chrome. Enabled at the zone level (dashboard → Speed → Optimization).
+#   • Cache-Control immutable: lets the CF edge AND the browser cache
+#     fingerprinted assets indefinitely.
+#
+# What's NOT here (because it's deprecated or paid):
+#   • Rocket Loader — interferes with Astro hydration.
+#   • Polish / Mirage — Pro plan only ($25/mo); skip.
+#   • Auto Minify — superseded by Astro's build-time minification.
+
 /*
   X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  # Modern client hints — let CF reuse connections + speculate.
+  Accept-CH: Sec-CH-UA, Sec-CH-UA-Mobile, Sec-CH-UA-Platform
 
+# Astro emits content-hashed assets here — safe to cache forever.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+  # Early Hints / HTTP/2 push preload — main CSS arrives in parallel with HTML.
+  # CF Pages forwards this as a 103 Early Hint on subsequent requests.
+
+# Legacy /assets/ path stays for any hand-uploaded files.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Static media — long cache, since they're versioned by name.
+/favicon.svg
+  Cache-Control: public, max-age=604800
+/og-default.svg
+  Cache-Control: public, max-age=604800
+*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML — short browser cache + must-revalidate so updates land within seconds.
+# CF edge cache still keeps a fresh copy because Pages caches HTML 1 hour by default.
+/*.html
+  Cache-Control: public, max-age=0, s-maxage=3600, must-revalidate
+
+# Homepage gets Early Hints for the critical CSS bundle so first paint
+# happens before the HTML body even finishes parsing.
+/
+  Link: </_astro/_slug_.ojnpTv2A.css>; rel=preload; as=style
+  Link: <https://fonts.googleapis.com>; rel=preconnect
+  Link: <https://fonts.gstatic.com>; rel=preconnect; crossorigin

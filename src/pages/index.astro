@@ -255,6 +255,45 @@ const enterpriseCards = [
   </section>
 
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  {/* 2.5 · CAPABILITY SQUARES                                          */}
+  {/* 8-up grid of square cards — at-a-glance "what can OllaSuper       */}
+  {/* actually do for me?" view. Mirrors the squares pattern from       */}
+  {/* networkershome.com/the wider-monitor reference: white bg, hairline */}
+  {/* border, icon-glyph + title + tagline + small CTA arrow.            */}
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+  <section style="padding: 80px 0;">
+    <div class="qw-section">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 36px; gap: 24px; flex-wrap: wrap;">
+        <div>
+          <div class="qw-eyebrow qw-eyebrow-accent" style="margin-bottom: 12px;">What you can ship</div>
+          <h2 class="qw-h-1" style="margin: 0; max-width: 720px;">Hire one Expert. Or stand up your whole workforce.</h2>
+        </div>
+        <a href="/experts" style="font-size: 13.5px; font-weight: 600; color: var(--ink-2); text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid var(--ink);">Browse all 30 →</a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+        {[
+          { glyph: "○",  color: "#16a34a", title: "30 Experts",          tag: "Chat-driven specialists across 9 departments.",                  href: "/experts" },
+          { glyph: "⚡", color: "#c98a1a", title: "6 Agents",             tag: "Run on a cadence. Take real actions with approval gates.",        href: "/agents" },
+          { glyph: "◯",  color: "#0066ff", title: "Multi-agent handoff", tag: "Specialists pass work to other specialists, end-to-end.",         href: "#workflow" },
+          { glyph: "◈",  color: "#2c8d5e", title: "SEO + AEO audits",    tag: "Crawl any URL, score on 40 signals, return a fix list.",         href: "/experts" },
+          { glyph: "◆",  color: "#c0426a", title: "Sales pipeline",      tag: "Lead research, outbound drafts, CRM notes that stay tidy.",       href: "/experts" },
+          { glyph: "◑",  color: "#7150d4", title: "HR + recruiting",     tag: "Drafted JDs, candidate screening, employee-handbook answers.",    href: "/experts" },
+          { glyph: "◇",  color: "#c2542f", title: "Finance + ops",       tag: "Forecasts, standup summaries, tickets that file themselves.",     href: "/experts" },
+          { glyph: "✓",  color: "#16a34a", title: "Free to start",       tag: "50,000 credits a month. No card. No vendor lock-in.",             href: "/signup" },
+        ].map(c => (
+          <a href={c.href} class="qw-squarecard">
+            <div class="qw-squarecard-glyph" style={`color: ${c.color};`}>{c.glyph}</div>
+            <div class="qw-squarecard-title">{c.title}</div>
+            <div class="qw-squarecard-tag">{c.tag}</div>
+            <div class="qw-squarecard-arrow">Learn more →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
   {/* 3 · MEET YOUR AI TEAM */}
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
   <section style="padding: 96px 0 80px;">

@@ -19,15 +19,18 @@
    Refs: linear.app · claude.ai · vercel.com · cursor.com · raycast.com
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
-  /* Surfaces — warmer, softer than pure white */
+  /* Surfaces — pure white canvas (matches dashboard 2026-06-15).
+     The faintly-warm hover/sunken tints are kept for visual layering
+     against the white bg; sidebar/footer surfaces use the off-white
+     family so they don't visually fuse with the main column. */
   --white:       #ffffff;
-  --paper:       #fcfcfc;
-  --paper-warm:  #fafaf9;
-  --bg-elev:     #f7f8f9;
-  --bg-sunken:   #f4f4f5;
-  --bg-deep:     #efeff1;
+  --paper:       #ffffff;
+  --paper-warm:  #f8f8f7;
+  --bg-elev:     #fafafa;
+  --bg-sunken:   #f5f5f4;
+  --bg-deep:     #efeff0;
   --cream:       #f5f5f4;
-  --bone:        #f0f0f1;
+  --bone:        #efefef;
 
   /* Ink — softened black + cool grays (Linear hierarchy) */
   --ink:         #08090a;   /* near-black, not pure */
@@ -74,10 +77,14 @@
   --radius-lg:   12px;
   --radius-xl:   16px;
 
-  --maxw:        1440px;
+  /* Container widths — bumped 2026-06-15 for a wider hero/nav feel.
+     1640 lands inside common ~16:10 desktop viewports (1920, 1728)
+     without going full-bleed; 1040 for content-dense pages stays the
+     same so prose pages keep their existing reading width. */
+  --maxw:        1640px;
   --maxw-narrow: 1040px;
   --maxw-tight:  720px;
-  --pad-x:       clamp(16px, 2vw, 32px);
+  --pad-x:       clamp(16px, 2.4vw, 48px);
   --section-y:   clamp(40px, 5vh, 64px);
   --gutter:      16px;
 
@@ -396,12 +403,78 @@ kbd.qw-kbd {
 .qw-pad-tight  { padding-top: calc(var(--section-y) * 0.6); padding-bottom: calc(var(--section-y) * 0.6); }
 .qw-pad-loose  { padding-top: calc(var(--section-y) * 1.4); padding-bottom: calc(var(--section-y) * 1.4); }
 
-/* ━━━ Sticky nav with frosted-glass backdrop ━━━ */
+/* ━━━ Sticky nav with frosted-glass backdrop — wider variant 2026-06-15 ━━━ */
 .qw-nav-blur {
-  background: rgba(252,252,252,0.78);
-  backdrop-filter: saturate(180%) blur(10px);
-  -webkit-backdrop-filter: saturate(180%) blur(10px);
-  border-bottom: 1px solid var(--rule-soft);
+  background: rgba(255,255,255,0.86);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+/* Nav container override — push out closer to the page edges than the
+   regular qw-section so the navigation feels like the page's own chrome,
+   not a centered narrow strip on a 1920px screen. */
+.qw-nav-wide {
+  max-width: min(1880px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 0 clamp(20px, 3vw, 56px);
+}
+
+/* ━━━ Capability squares (homepage 4-up grid, 2026-06-15) ━━━
+   White-bg cards, hairline border, lifted on hover. Each card is a link
+   so the whole tile is clickable; the arrow line at the bottom slides
+   right by 4px on hover for affordance without a button. */
+.qw-squarecard {
+  display: flex; flex-direction: column;
+  padding: 26px 24px 22px;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: inherit;
+  min-height: 220px;
+  transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out), transform 160ms var(--ease-out);
+}
+.qw-squarecard:hover {
+  border-color: var(--rule-2);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.qw-squarecard-glyph {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1;
+  margin-bottom: 18px;
+}
+.qw-squarecard-title {
+  font-size: 16.5px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.qw-squarecard-tag {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-3);
+  flex: 1;
+}
+.qw-squarecard-arrow {
+  margin-top: 16px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--accent-deep);
+  letter-spacing: -0.005em;
+  transition: transform 160ms var(--ease-out);
+}
+.qw-squarecard:hover .qw-squarecard-arrow {
+  transform: translateX(4px);
+}
+@media (max-width: 1024px) {
+  .qw-squarecard { min-height: 200px; padding: 22px 20px 18px; }
+}
+@media (max-width: 720px) {
+  /* Stack to 2 columns on tablet, 1 column on phone is handled by an outer
+     responsive override in the page itself if needed. */
 }
 
 /* ━━━ Subtle hairline divider ━━━ */

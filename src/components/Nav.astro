@@ -9,20 +9,20 @@ const links = [
   { href: "/changelog",     label: "Changelog",      key: "changelog" },
 ];
 ---
-<header class="qw-nav-blur" style="position: sticky; top: 0; z-index: 50; height: 57px;">
-  <div class="qw-section" style="display: flex; align-items: center; justify-content: space-between; padding: 0; height: 100%;">
+<header class="qw-nav-blur" style="position: sticky; top: 0; z-index: 50; height: 72px;">
+  <div class="qw-nav-wide" style="display: flex; align-items: center; justify-content: space-between; padding-top: 0; padding-bottom: 0; height: 100%;">
     <a href="/" style="display: inline-flex; align-items: center;">
-      <Logo size={26} wordmark={true} />
+      <Logo size={30} wordmark={true} />
     </a>
-    <nav style="display: flex; gap: 24px; align-items: center;">
+    <nav style="display: flex; gap: 32px; align-items: center;">
       <span class="qw-nav-mobile-hide" style="display: contents;">
         {links.map(l => (
-          <a href={l.href} style={`font-size: 13px; color: ${current === l.key ? 'var(--ink)' : 'var(--ink-3)'}; font-weight: ${current === l.key ? 600 : 400};`}>{l.label}</a>
+          <a href={l.href} style={`font-size: 14px; color: ${current === l.key ? 'var(--ink)' : 'var(--ink-3)'}; font-weight: ${current === l.key ? 600 : 500}; letter-spacing: -0.005em;`}>{l.label}</a>
         ))}
-        <span style="width: 1px; height: 16px; background: var(--rule);"></span>
-        <a href="https://app.ollasuper.com/auth" style="font-size: 13px; color: var(--ink-3); font-weight: 400;">Sign in</a>
+        <span style="width: 1px; height: 18px; background: var(--rule);"></span>
+        <a href="https://app.ollasuper.com/auth" style="font-size: 14px; color: var(--ink-3); font-weight: 500;">Sign in</a>
       </span>
-      <a href="/signup" class="qw-btn primary" style="padding: 7px 14px; font-size: 12.5px;">
+      <a href="/signup" class="qw-btn primary" style="padding: 9px 18px; font-size: 13.5px;">
         Start free →
       </a>
     </nav>

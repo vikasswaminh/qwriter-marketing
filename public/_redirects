@@ -1,3 +1,4 @@
 # Dashboard lives on a different subdomain.
-/dashboard*  https://app.qwriter.com/:splat  302
-/app*        https://app.qwriter.com/:splat  302
+# Brand-leak fix 2026-06-15 — was app.qwriter.com which 404'd post-rebrand.
+/dashboard*  https://app.ollasuper.com/:splat  302
+/app*        https://app.ollasuper.com/:splat  302

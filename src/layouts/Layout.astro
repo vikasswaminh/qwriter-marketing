@@ -50,6 +50,12 @@ const {
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
+    {/* Perf — open the TLS handshake to Google Fonts hosts in parallel with
+        HTML parsing so the @font-face fetches don't block first paint. CF
+        Pages echoes any preconnect/preload links as Early Hints (103). */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     {/* Structured data — Organization + WebSite */}
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
