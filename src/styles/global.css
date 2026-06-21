@@ -1,402 +1,264 @@
-/* Design tokens — fully self-contained for OllaSuper.
+/* Design tokens — OllaSuper marketing site.
  *
- * IMPORTANT: do NOT re-import qwriter-tokens.pages.dev/v1/tokens.css here.
- * That CDN file is from the editorial-brutalist qwriter era and ships:
- *   - terracotta --accent (#d24a1a, not our OllaSuper blue #0066ff)
- *   - Geist font (we use Lato)
- *   - .qw-eyebrow { font-family: mono; text-transform: uppercase; letter-spacing: 0.14em }
- *     which overrides our sentence-case Linear eyebrow rule because the CDN
- *     sets font-family explicitly and ours didn't.
+ * 2026-06-21 — switched from Linear-style cool-gray + blue to Mews-style
+ * warm-cream + candy-pink + black. Class names preserved (qw-card, qw-btn,
+ * qw-h-1, etc.) so component templates don't need touching — only the
+ * CSS variables and a few utility classes were rewritten.
  *
- * When the dashboard moves to its own tokens, it should consume from here
- * (or a forked OllaSuper v2 tokens file), not the old qwriter-tokens CDN.
+ * Reference brief: Mews style guide. Signature moves:
+ *   1. Candy-pink #ff83da pill CTA against pure white
+ *   2. Display headlines at weight 900 with -0.025em letter-spacing
+ *   3. Warm-cream #fffcf6 card surfaces (vs cool gray)
  */
-/* Self-hosted Lato + Geist Mono (latin + latin-ext subsets).
- * Generated 2026-06-15 from Google Fonts CSS API. Saves ~200-300 ms LCP
- * by removing the two cross-origin DNS+TLS+CSS+font fetch legs.
- * Files live under public/fonts/, served from the CF Pages origin with
- * a year-long immutable Cache-Control.
- */
+
+/* ─────────────── Inter Variable — single woff2 covers 100–900 ─────────────── */
 @font-face {
-  font-family: 'Geist Mono';
+  font-family: 'Inter Variable';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/GeistMono-400-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Geist Mono';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/GeistMono-400-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Geist Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/GeistMono-500-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Geist Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/GeistMono-500-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Geist Mono';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('/fonts/GeistMono-600-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Geist Mono';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('/fonts/GeistMono-600-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/Lato-400-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/Lato-400-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/Lato-700-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/Lato-700-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: url('/fonts/Lato-900-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: url('/fonts/Lato-900-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: url('/fonts/InterVariable.woff2') format('woff2-variations');
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   OllaSuper — Linear-style refined modern.
-   Soft shadows, hairline borders, cool grays, gentle gradients.
-   Refs: linear.app · claude.ai · vercel.com · cursor.com · raycast.com
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
-  /* Surfaces — pure white canvas (matches dashboard 2026-06-15).
-     The faintly-warm hover/sunken tints are kept for visual layering
-     against the white bg; sidebar/footer surfaces use the off-white
-     family so they don't visually fuse with the main column. */
-  --white:       #ffffff;
-  --paper:       #ffffff;
-  --paper-warm:  #f8f8f7;
-  --bg-elev:     #fafafa;
-  --bg-sunken:   #f5f5f4;
-  --bg-deep:     #efeff0;
-  --cream:       #f5f5f4;
-  --bone:        #efefef;
+  /* ─── Mews colors ─── */
+  --canvas-white: #ffffff;
+  --warm-cream:   #fffcf6;
+  --ink-black:    #000000;
+  --charcoal:     #333333;
+  --deep-panel:   #161616;
+  --fog-gray:     #8c8c8c;
+  --mist-gray:    #cccccc;
+  --lilac-mist:   #c4c9dd;
+  --bubblegum:    #ff83da;
+  --cotton-pink:  #ffc5ee;
+  --blush-mist:   #f7e1f7;
+  --ice-blue:     #d2f4ff;
+  --voltage-lime: #e8ff5b;
 
-  /* Ink — softened black + cool grays (Linear hierarchy) */
-  --ink:         #08090a;   /* near-black, not pure */
-  --ink-2:       #28282c;   /* secondary heading */
-  --ink-3:       #62626b;   /* body, descriptions */
-  --mute:        #8a8a93;   /* meta, captions */
+  /* ─── Aliases mapped to the OLD token names so existing components
+         (qw-card, qw-btn, etc.) cascade with new visual values.
+         Anything referencing var(--paper), var(--accent) etc. picks
+         these up automatically. ─── */
+  --white:       var(--canvas-white);
+  --paper:       var(--canvas-white);
+  --paper-warm:  var(--warm-cream);
+  --bg-elev:     var(--warm-cream);
+  --bg-sunken:   #f4f1e8;       /* slightly deeper warm */
+  --bg-deep:     #ebe7da;
+  --cream:       var(--warm-cream);
+  --bone:        #f4f1e8;
 
-  /* Rules — feather-soft, never a hard frame */
-  --rule:        #ececec;
-  --rule-2:      #e0e0e3;
-  --rule-soft:   #f1f1f3;
-  --rule-strong: #28282c;   /* reserved for emphasis only */
+  --ink:         var(--ink-black);
+  --ink-2:       var(--charcoal);
+  --ink-3:       var(--charcoal);
+  --mute:        var(--fog-gray);
 
-  /* Accent — same OllaSuper blue but with softer companions */
-  --accent:      #0066ff;
-  --accent-2:    #4a85ff;
-  --accent-deep: #0052cc;
-  --accent-soft: #eff4ff;
-  --accent-tint: rgba(0,102,255,0.08);
+  --rule:        var(--mist-gray);
+  --rule-2:      #b8b8b8;
+  --rule-soft:   #e5e5e5;
+  --rule-strong: var(--ink-black);
+
+  --accent:      var(--bubblegum);
+  --accent-2:    var(--cotton-pink);
+  --accent-deep: #e670c5;        /* deeper bubblegum for hover */
+  --accent-soft: var(--blush-mist);
+  --accent-tint: rgba(255, 131, 218, 0.10);
 
   --sage:        #16a34a;
-  --gold:        #facc15;
+  --gold:        var(--voltage-lime);
 
-  /* Expert palette — unchanged (department colors) */
+  /* Expert palette — unchanged structurally; department colors stay so
+     existing category visualizations don't go monochrome. */
   --c-people:    #ff6b4a;
   --c-gtm:       #16a34a;
   --c-ops:       #52525b;
   --c-data:      #7c3aed;
-  --c-build:     #0066ff;
-  --c-personal:  #facc15;
+  --c-build:     var(--bubblegum);
+  --c-personal:  var(--voltage-lime);
 
-  --font-sans:   "Lato", -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, system-ui, sans-serif;
-  --font-display:"Lato", -apple-system, BlinkMacSystemFont, "Inter Display", system-ui, sans-serif;
-  --font-mono:   "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  /* ─── Typography — Inter Variable, full weight range ─── */
+  --font-sans:   'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+  --font-display:'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+  --font-mono:   ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
-  /* Type weights — capped at 700; 900 retired. */
+  /* Weights — 900 restored for Mews display */
   --fw-regular:  400;
   --fw-medium:   500;
   --fw-semibold: 600;
   --fw-bold:     700;
+  --fw-black:    900;
 
-  --radius-sm:   6px;
-  --radius:      8px;
-  --radius-lg:   12px;
-  --radius-xl:   16px;
+  /* ─── Radius scale — Mews ladder: 4 / 8 / 9999 ─── */
+  --radius-sm:   4px;
+  --radius:      4px;
+  --radius-lg:   4px;
+  --radius-xl:   8px;
+  --radius-input:8px;
+  --radius-pill: 9999px;
 
-  /* Container widths — bumped 2026-06-15 for a wider hero/nav feel.
-     1640 lands inside common ~16:10 desktop viewports (1920, 1728)
-     without going full-bleed; 1040 for content-dense pages stays the
-     same so prose pages keep their existing reading width. */
-  --maxw:        1640px;
-  --maxw-narrow: 1040px;
+  /* ─── Layout — 1280px cap per Mews; nav stays slightly wider ─── */
+  --maxw:        1280px;
+  --maxw-narrow: 960px;
   --maxw-tight:  720px;
   --pad-x:       clamp(16px, 2.4vw, 48px);
-  --section-y:   clamp(40px, 5vh, 64px);
+  --section-y:   clamp(48px, 6vh, 80px);
   --gutter:      16px;
 
-  /* Mobile breakpoints — exposed as custom props so responsive utilities can
-     reference them once. Kept as comments because @media queries can't read
-     CSS custom properties yet (CSSWG draft only). */
-  /* --bp-mobile:  640px;  */
-  /* --bp-tablet:  1024px; */
+  /* ─── Flat surfaces — NO shadows per Mews "Don't" — hairline only ─── */
+  --shadow-xs:   0 0 0 0 transparent;
+  --shadow-sm:   0 0 0 0 transparent;
+  --shadow-md:   0 0 0 0 transparent;
+  --shadow-lg:   0 0 0 0 transparent;
+  --shadow-pop:  0 0 0 0 transparent;
+  --shadow-card-premium: 0 0 0 0 transparent;
+  --shadow-card-premium-hover: 0 0 0 0 transparent;
 
-  /* Soft elevation — Linear-style layered shadows */
-  --shadow-xs:   0 1px 2px rgba(10,10,10,0.04);
-  --shadow-sm:   0 1px 2px rgba(10,10,10,0.04), 0 1px 1px rgba(10,10,10,0.03);
-  --shadow-md:   0 4px 12px rgba(10,10,10,0.06), 0 1px 2px rgba(10,10,10,0.04);
-  --shadow-lg:   0 16px 40px rgba(10,10,10,0.08), 0 4px 12px rgba(10,10,10,0.04);
-  --shadow-pop:  0 24px 56px rgba(10,10,10,0.10), 0 4px 12px rgba(10,10,10,0.04);
-
-  /* Subtle gradients */
-  --grad-hero:   radial-gradient(80% 60% at 50% -10%, rgba(0,102,255,0.07), transparent 70%);
-  --grad-card:   linear-gradient(180deg, #ffffff 0%, #fafaf9 100%);
-  --grad-soft:   linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);
-
-  /* ━━━ Premium tokens (2026 polished-SaaS aesthetic) ━━━
-     Mesh hero gradient: 5 soft color blobs at very low opacity, blending into
-     the page bg. Looks alive without being noisy. */
+  /* Soft hero gradient — single radial wash of blush pink */
+  --grad-hero:   radial-gradient(60% 50% at 50% 0%, rgba(255, 131, 218, 0.10), transparent 70%);
+  --grad-card:   none;
+  --grad-soft:   none;
   --grad-mesh:
-    radial-gradient(48% 42% at 12% 18%,  rgba(0,102,255,0.11),  transparent 70%),
-    radial-gradient(40% 38% at 88% 8%,   rgba(124,58,237,0.09), transparent 72%),
-    radial-gradient(60% 55% at 50% 92%,  rgba(22,163,74,0.06),  transparent 72%),
-    radial-gradient(42% 36% at 95% 75%,  rgba(255,107,74,0.06), transparent 70%),
-    radial-gradient(38% 34% at 5% 78%,   rgba(250,204,21,0.05), transparent 70%);
+    radial-gradient(45% 40% at 18% 12%,  rgba(255, 131, 218, 0.10), transparent 70%),
+    radial-gradient(40% 38% at 85% 8%,   rgba(210, 244, 255, 0.18), transparent 72%),
+    radial-gradient(55% 50% at 50% 95%,  rgba(232, 255, 91, 0.08),  transparent 72%);
+  --grad-mesh-dark: var(--grad-mesh);
+  --grain-svg:   none;
 
-  --grad-mesh-dark:
-    radial-gradient(48% 42% at 12% 18%,  rgba(0,102,255,0.18),  transparent 70%),
-    radial-gradient(40% 38% at 88% 8%,   rgba(124,58,237,0.14), transparent 72%),
-    radial-gradient(50% 45% at 50% 100%, rgba(22,163,74,0.10),  transparent 72%);
-
-  /* Subtle SVG noise — adds film-grain feel, hides gradient banding */
-  --grain-svg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/></svg>");
-
-  /* Soft ring shadows — used on hover / focus / glowing badges */
-  --ring-accent-soft:  0 0 0 3px rgba(0,102,255,0.14);
-  --ring-accent-glow:  0 0 0 4px rgba(0,102,255,0.10), 0 0 16px rgba(0,102,255,0.18);
-  --ring-sage-glow:    0 0 0 3px rgba(22,163,74,0.18);
-  --halo-blue:         0 0 0 1px rgba(0,102,255,0.10), 0 8px 24px rgba(0,102,255,0.10);
-
-  /* Layered premium card shadow (inset highlight + soft drop) */
-  --shadow-card-premium:
-    0 0 0 1px rgba(10,10,10,0.04),
-    0 1px 2px rgba(10,10,10,0.04),
-    0 4px 12px rgba(10,10,10,0.04),
-    inset 0 1px 0 rgba(255,255,255,0.6);
-  --shadow-card-premium-hover:
-    0 0 0 1px rgba(10,10,10,0.06),
-    0 2px 4px rgba(10,10,10,0.04),
-    0 12px 32px rgba(10,10,10,0.08),
-    inset 0 1px 0 rgba(255,255,255,0.7);
+  --ring-accent-soft: 0 0 0 3px rgba(255, 131, 218, 0.18);
+  --ring-accent-glow: 0 0 0 3px rgba(255, 131, 218, 0.18);
+  --ring-sage-glow:   0 0 0 3px rgba(22, 163, 74, 0.18);
+  --halo-blue:        0 0 0 1px rgba(255, 131, 218, 0.10);
 
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
-/* Slightly warmer alt-bg per BuildBetter-style paper hierarchy.
-   Override the cool defaults that were set earlier in this file. */
-:root {
-  --bg-elev:     #fafaf9;
-  --bg-sunken:   #f5f5f4;
-  --paper-warm:  #fafaf9;
-}
+/* Brand-tinted selection */
+::selection { background: rgba(255, 131, 218, 0.28); color: var(--ink-black); }
 
-/* Brand-tinted selection color */
-::selection { background: rgba(0,102,255,0.18); color: var(--ink); }
-
-/* No italics — global rule retained from prior brand spec */
+/* No italics — preserve prior brand rule */
 em, i, cite, address, var, dfn { font-style: normal; }
 
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
 }
 body {
   margin: 0;
   font-family: var(--font-sans);
   font-weight: var(--fw-regular);
-  color: var(--ink-2);
-  background: var(--paper);
-  font-size: 14px;
-  line-height: 1.55;
-  letter-spacing: -0.005em;
+  color: var(--charcoal);
+  background: var(--canvas-white);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
 }
 *, *::before, *::after { box-sizing: border-box; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
-/* Containers — 2026-06-15 round 2: user requested a literal 10% margin
-   on each side of every content section. Implemented as width:80% (10%
-   margin on each side via margin:auto) with a max-width cap so 4K+
-   monitors don't stretch a single line of body copy across the screen.
-   On phones the floor is 88% width / 6% margin per side so the content
-   doesn't collapse to a thin column. */
-.qw-section       { width: min(80%, var(--maxw));        max-width: var(--maxw);        margin: 0 auto; }
-.qw-section-narrow{ width: min(80%, var(--maxw-narrow)); max-width: var(--maxw-narrow); margin: 0 auto; }
-.qw-section-tight { width: min(80%, var(--maxw-tight));  max-width: var(--maxw-tight);  margin: 0 auto; }
+/* ─── Sections — 1280px cap, generous side padding ─── */
+.qw-section        { width: min(92%, var(--maxw));        max-width: var(--maxw);        margin: 0 auto; }
+.qw-section-narrow { width: min(92%, var(--maxw-narrow)); max-width: var(--maxw-narrow); margin: 0 auto; }
+.qw-section-tight  { width: min(92%, var(--maxw-tight));  max-width: var(--maxw-tight);  margin: 0 auto; }
 @media (max-width: 768px) {
-  .qw-section, .qw-section-narrow, .qw-section-tight { width: 88%; }
+  .qw-section, .qw-section-narrow, .qw-section-tight { width: 92%; }
 }
 
-/* ━━━ Typography — Linear-tier weights + tracking ━━━
-   Weight ladder: display 600, h1 600, h2 600, h3 600.
-   Never 900. Tracking -0.018 to -0.022.
-   Body 400, color cool-gray ink-3. */
+/* ━━━ Typography — Mews ladder with 900 display, -0.025em headline tracking ━━━ */
 .qw-h-display {
   font-family: var(--font-display);
-  font-size: clamp(40px, 5.4vw, 80px);
-  font-weight: var(--fw-semibold);
-  letter-spacing: -0.022em;
-  line-height: 1.02;
-  color: var(--ink);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: var(--fw-black);
+  letter-spacing: -0.025em;
+  line-height: 0.92;
+  color: var(--ink-black);
 }
 .qw-h-1 {
   font-family: var(--font-display);
-  font-size: clamp(30px, 3.4vw, 48px);
-  font-weight: var(--fw-semibold);
-  letter-spacing: -0.02em;
-  line-height: 1.08;
-  color: var(--ink);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: var(--fw-black);
+  letter-spacing: -0.022em;
+  line-height: 1.03;
+  color: var(--ink-black);
 }
 .qw-h-2 {
-  font-size: clamp(20px, 2vw, 26px);
-  font-weight: var(--fw-semibold);
-  letter-spacing: -0.018em;
-  line-height: 1.2;
-  color: var(--ink);
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: var(--ink-black);
 }
 .qw-h-3 {
-  font-size: 16px;
-  font-weight: var(--fw-semibold);
+  font-size: 18px;
+  font-weight: var(--fw-bold);
   letter-spacing: -0.012em;
   line-height: 1.3;
-  color: var(--ink);
+  color: var(--ink-black);
 }
-.qw-body  { font-size: 14px; line-height: 1.6; color: var(--ink-3); font-weight: var(--fw-regular); }
-.qw-mono  { font-family: var(--font-mono); }
+.qw-body { font-size: 16px; line-height: 1.5; color: var(--charcoal); font-weight: var(--fw-regular); }
+.qw-mono { font-family: var(--font-mono); font-feature-settings: 'tnum' on; }
 
-/* Eyebrows — softer, lowercase-tracking style, less SHOUTING.
-   Explicitly sets font-family + text-transform + letter-spacing so nothing
-   else can leak the brutalist mono-uppercase variant onto us. */
+/* Eyebrow — small caps label above headings (Mews "CATEGORY LABEL") */
 .qw-eyebrow {
   font-family: var(--font-sans);
-  font-size: 11.5px;
-  font-weight: var(--fw-semibold);
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: var(--ink-3);
-}
-.qw-eyebrow-accent { color: var(--accent); }
-.qw-eyebrow-caps {
-  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 10.5px;
+  color: var(--ink-black);
+}
+.qw-eyebrow-accent { color: var(--ink-black); }
+.qw-eyebrow-caps   {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 12px;
 }
 
-/* ━━━ Marquee — neutralised; no SHOUTING dot strip ━━━
-   Kept as a thin transparent ribbon if used, but mono-uppercase styling
-   moved to opt-in qw-eyebrow-caps. */
+/* ━━━ Marquee — flat strip with mist-gray hairlines ━━━ */
 .qw-marquee {
   border-top: 1px solid var(--rule-soft);
   border-bottom: 1px solid var(--rule-soft);
   padding: 10px 0;
   display: flex; gap: 28px; align-items: center; justify-content: center;
-  font-size: 12px;
-  color: var(--ink-3); font-weight: var(--fw-medium);
+  font-size: 13px;
+  color: var(--charcoal); font-weight: var(--fw-medium);
   overflow: hidden; white-space: nowrap;
-  background: var(--paper);
+  background: var(--canvas-white);
 }
 .qw-marquee .dot {
-  display: inline-block; width: 5px; height: 5px; border-radius: 999px;
-  background: var(--sage); margin-right: 8px; opacity: 0.6;
+  display: inline-block; width: 5px; height: 5px; border-radius: var(--radius-pill);
+  background: var(--bubblegum); margin-right: 8px; opacity: 0.8;
 }
 
-/* ━━━ Cards — soft elevation, no border rings ━━━
-   .qw-card     = the default card shape (soft shadow, no border)
-   .qw-card-hair = with optional hairline (only when truly needed)
-   .qw-card-pop  = elevated card (hero callouts) */
-.qw-card {
-  background: var(--paper);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--rule-soft);
-  transition: box-shadow 200ms var(--ease-out), transform 200ms var(--ease-out), border-color 200ms var(--ease-out);
+/* ━━━ Cards — flat warm-cream with 1px lilac hairline (no shadows) ━━━ */
+.qw-card,
+.qw-card-flat,
+.qw-card-pop,
+.qw-card-premium {
+  background: var(--warm-cream);
+  border: 1px solid var(--lilac-mist);
+  border-radius: var(--radius);
+  box-shadow: none;
+  transition: border-color 200ms var(--ease-out);
 }
-.qw-card:hover { box-shadow: var(--shadow-md); }
-.qw-card-pop {
-  background: var(--paper);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--rule-soft);
-}
-.qw-card-flat {
-  background: var(--paper);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--rule);
+.qw-card:hover,
+.qw-card-pop:hover,
+.qw-card-premium:hover {
+  border-color: var(--ink-black);
+  box-shadow: none;
+  transform: none;
 }
 
-/* ━━━ Bento — no outer border ring; cells are individual cards on a soft bg ━━━
-   The old data-cols pattern is preserved so existing markup still aligns, but
-   visually each cell is its own soft-shadowed card on a paper-warm tray. */
+/* Bento — cells are individual cream cards on the canvas */
 .qw-bento {
   display: grid;
-  gap: 12px;
+  gap: 16px;
   padding: 0;
   background: transparent;
   border: 0;
@@ -404,73 +266,94 @@ img { max-width: 100%; display: block; }
   overflow: visible;
 }
 .qw-bento-cell {
-  background: var(--paper);
-  border: 1px solid var(--rule-soft);
+  background: var(--warm-cream);
+  border: 1px solid var(--lilac-mist);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-xs);
-  transition: box-shadow 200ms var(--ease-out), transform 200ms var(--ease-out), border-color 200ms var(--ease-out);
+  box-shadow: none;
+  transition: border-color 200ms var(--ease-out);
 }
 .qw-bento-cell:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-1px);
-  border-color: var(--rule);
+  border-color: var(--ink-black);
+  box-shadow: none;
+  transform: none;
 }
 
-/* ━━━ Buttons — Linear-style soft pills ━━━ */
+/* ━━━ Buttons — Mews pill family ━━━
+   .qw-btn.accent     -> primary CTA: candy-pink pill, white text, the signature
+   .qw-btn.primary    -> dark ink pill (used where pink would be too much)
+   .qw-btn.ghost      -> white bg, 1px ink border, NOT a pill (8px radius)
+   .qw-btn.subtle     -> cream tint, no border  */
 .qw-btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 9px 16px;
-  border-radius: var(--radius);
-  font-weight: var(--fw-semibold);
-  font-size: 13.5px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: 14px;
   letter-spacing: -0.005em;
   border: 1px solid transparent;
-  transition: background 160ms var(--ease-out), box-shadow 160ms var(--ease-out), transform 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+  transition: background 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 160ms var(--ease-out);
   cursor: pointer;
   line-height: 1.2;
 }
 .qw-btn:hover { transform: translateY(-1px); }
-.qw-btn.primary {
-  background: var(--ink);
-  color: var(--paper);
-  box-shadow: var(--shadow-sm);
+.qw-btn.accent,
+.qw-btn.accent-premium {
+  background: var(--bubblegum);
+  color: var(--canvas-white);
+  box-shadow: none;
 }
-.qw-btn.primary:hover { background: var(--ink-2); box-shadow: var(--shadow-md); }
-.qw-btn.accent {
-  background: var(--accent);
-  color: #fff;
-  box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, var(--shadow-sm);
+.qw-btn.accent:hover,
+.qw-btn.accent-premium:hover {
+  background: var(--accent-deep);
+  box-shadow: none;
 }
-.qw-btn.accent:hover { background: var(--accent-deep); box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset, var(--shadow-md); }
-.qw-btn.ghost {
+.qw-btn.primary,
+.qw-btn.premium {
+  background: var(--ink-black);
+  color: var(--canvas-white);
+  box-shadow: none;
+}
+.qw-btn.primary:hover,
+.qw-btn.premium:hover {
+  background: #1a1a1a;
+  box-shadow: none;
+}
+.qw-btn.ghost,
+.qw-btn.ghost-premium {
   background: transparent;
-  color: var(--ink);
-  border-color: var(--rule);
+  color: var(--ink-black);
+  border: 1px solid var(--ink-black);
+  border-radius: var(--radius-input);
+  padding: 11px 22px;
 }
-.qw-btn.ghost:hover { background: var(--bg-elev); border-color: var(--rule-2); }
+.qw-btn.ghost:hover,
+.qw-btn.ghost-premium:hover {
+  background: var(--warm-cream);
+}
 .qw-btn.subtle {
-  background: var(--bg-elev);
-  color: var(--ink-2);
+  background: var(--warm-cream);
+  color: var(--ink-black);
   border-color: transparent;
 }
-.qw-btn.subtle:hover { background: var(--bg-sunken); }
+.qw-btn.subtle:hover { background: var(--blush-mist); }
 
-/* ━━━ Keyboard hint ━━━ */
+/* Keyboard hint */
 kbd.qw-kbd {
-  display: inline-block; padding: 2px 6px;
-  border: 1px solid var(--rule);
+  display: inline-block; padding: 3px 7px;
+  border: 1px solid var(--mist-gray);
   border-bottom-width: 2px;
   border-radius: 4px;
-  font-family: var(--font-mono); font-size: 10.5px; font-weight: var(--fw-semibold);
-  background: var(--paper); color: var(--ink-2);
+  font-family: var(--font-mono); font-size: 11px; font-weight: var(--fw-semibold);
+  background: var(--canvas-white); color: var(--charcoal);
   line-height: 1;
-  box-shadow: var(--shadow-xs);
+  box-shadow: none;
 }
 
 /* ━━━ Animation primitives (HeroChat etc) ━━━ */
 .qw-typing { display: inline-flex; gap: 4px; align-items: center; }
 .qw-typing span {
-  width: 5px; height: 5px; border-radius: 999px; background: var(--ink-3);
+  width: 5px; height: 5px; border-radius: var(--radius-pill); background: var(--charcoal);
   animation: typing 1.4s ease-in-out infinite; opacity: 0.45;
 }
 .qw-typing span:nth-child(2) { animation-delay: 0.2s; }
@@ -482,7 +365,7 @@ kbd.qw-kbd {
 
 .qw-stream-line {
   height: 8px; border-radius: 4px;
-  background: linear-gradient(90deg, var(--bg-sunken) 0%, var(--bg-elev) 50%, var(--bg-sunken) 100%);
+  background: linear-gradient(90deg, var(--bg-sunken) 0%, var(--warm-cream) 50%, var(--bg-sunken) 100%);
   background-size: 200% 100%;
   animation: shimmer 2.4s ease-in-out infinite;
   margin-bottom: 8px;
@@ -500,340 +383,203 @@ kbd.qw-kbd {
   50%      { opacity: 1; }
 }
 
-/* ━━━ Metric pill bar — quieter ━━━ */
+/* ━━━ Metric pill bar ━━━ */
 .qw-metric-row {
   display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
-  font-size: 12px; color: var(--ink-3);
+  font-size: 13px; color: var(--charcoal);
 }
-.qw-metric-row .sep { color: var(--rule-2); }
+.qw-metric-row .sep { color: var(--mist-gray); }
 
 /* ━━━ Section spacing ━━━ */
 .qw-pad        { padding-top: var(--section-y); padding-bottom: var(--section-y); }
 .qw-pad-tight  { padding-top: calc(var(--section-y) * 0.6); padding-bottom: calc(var(--section-y) * 0.6); }
 .qw-pad-loose  { padding-top: calc(var(--section-y) * 1.4); padding-bottom: calc(var(--section-y) * 1.4); }
 
-/* ━━━ Sticky nav with frosted-glass backdrop — wider variant 2026-06-15 ━━━ */
+/* ━━━ Sticky nav — white solid (no frosted-glass blur, Mews stays flat) ━━━ */
 .qw-nav-blur {
-  background: rgba(255,255,255,0.86);
-  backdrop-filter: saturate(180%) blur(12px);
-  -webkit-backdrop-filter: saturate(180%) blur(12px);
-  border-bottom: 1px solid var(--rule);
+  background: var(--canvas-white);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid var(--mist-gray);
 }
-/* Nav container override — push out closer to the page edges than the
-   regular qw-section so the navigation feels like the page's own chrome,
-   not a centered narrow strip on a 1920px screen. */
 .qw-nav-wide {
-  /* 2026-06-15 round 2 — match the 10%-margin rule used by .qw-section.
-     Same 80% width, just with a higher max-width cap so the nav still
-     feels wider than the body content sections do. */
-  width: min(80%, 1880px);
-  max-width: 1880px;
+  width: min(92%, 1280px);
+  max-width: 1280px;
   margin: 0 auto;
 }
-@media (max-width: 768px) {
-  .qw-nav-wide { width: 88%; }
-}
+@media (max-width: 768px) { .qw-nav-wide { width: 92%; } }
 
-/* ━━━ Capability squares (homepage 4-up grid, 2026-06-15) ━━━
-   White-bg cards, hairline border, lifted on hover. Each card is a link
-   so the whole tile is clickable; the arrow line at the bottom slides
-   right by 4px on hover for affordance without a button. */
+/* ━━━ Capability squares — flat cream + lilac hairline, no shadow lift ━━━ */
 .qw-squarecard {
   display: flex; flex-direction: column;
-  padding: 26px 24px 22px;
-  background: var(--white);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-lg);
+  padding: 32px 28px 26px;
+  background: var(--warm-cream);
+  border: 1px solid var(--lilac-mist);
+  border-radius: var(--radius);
   text-decoration: none;
   color: inherit;
   min-height: 220px;
-  transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out), transform 160ms var(--ease-out);
+  transition: border-color 160ms var(--ease-out), transform 160ms var(--ease-out);
 }
 .qw-squarecard:hover {
-  border-color: var(--rule-2);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  border-color: var(--ink-black);
+  box-shadow: none;
+  transform: none;
 }
 .qw-squarecard-glyph {
   font-family: var(--font-display);
   font-size: 28px;
   line-height: 1;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
+  color: var(--ink-black);
 }
 .qw-squarecard-title {
-  font-size: 16.5px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: var(--fw-bold);
   letter-spacing: -0.012em;
-  color: var(--ink);
-  margin-bottom: 6px;
+  color: var(--ink-black);
+  margin-bottom: 8px;
 }
 .qw-squarecard-tag {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.5;
-  color: var(--ink-3);
+  color: var(--charcoal);
   flex: 1;
 }
 .qw-squarecard-arrow {
-  margin-top: 16px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--accent-deep);
-  letter-spacing: -0.005em;
+  margin-top: 18px;
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+  color: var(--ink-black);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   transition: transform 160ms var(--ease-out);
 }
-.qw-squarecard:hover .qw-squarecard-arrow {
-  transform: translateX(4px);
-}
+.qw-squarecard:hover .qw-squarecard-arrow { transform: translateX(4px); }
 @media (max-width: 1024px) {
-  .qw-squarecard { min-height: 200px; padding: 22px 20px 18px; }
-}
-@media (max-width: 720px) {
-  /* Stack to 2 columns on tablet, 1 column on phone is handled by an outer
-     responsive override in the page itself if needed. */
+  .qw-squarecard { min-height: 200px; padding: 26px 22px 22px; }
 }
 
-/* ━━━ Subtle hairline divider ━━━ */
-.qw-rule { height: 1px; background: var(--rule-soft); width: 100%; }
+/* ━━━ Hairline divider ━━━ */
+.qw-rule { height: 1px; background: var(--mist-gray); width: 100%; }
 
-/* ━━━ Hero-glow helper — a soft radial behind hero content ━━━ */
+/* ━━━ Hero glow — soft pink wash ━━━ */
 .qw-hero-bg {
   position: absolute; inset: 0; pointer-events: none;
   background: var(--grad-hero);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   PREMIUM UTILITIES
-   These are the "very premium feel" classes. Each is opt-in.
+   PREMIUM UTILITIES — kept as no-op aliases so legacy markup compiles.
+   Mews aesthetic is flat: no mesh, no grain, no dotgrid, no glowing badges.
+   Classes still resolve but resolve to nothing extra.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-/* Multi-blob mesh gradient — sits behind hero / section content as backdrop.
-   Apply to a positioned ancestor's ::before or to a dedicated wrapper div. */
-.qw-mesh {
-  position: absolute; inset: 0; pointer-events: none;
-  background: var(--grad-mesh);
-  z-index: 0;
+.qw-mesh, .qw-mesh.dark, .qw-grain, .qw-grain.subtle, .qw-grain.dark, .qw-dotgrid {
+  display: none;
 }
-.qw-mesh.dark {
-  background: var(--grad-mesh-dark);
-  mix-blend-mode: screen;
-}
-
-/* SVG film-grain overlay. Very subtle — adds depth without dirtying.
-   At 2% opacity it hides gradient banding and gives a "rendered" feel. */
-.qw-grain {
-  position: absolute; inset: 0; pointer-events: none;
-  background-image: var(--grain-svg);
-  background-repeat: repeat;
-  background-size: 160px 160px;
-  opacity: 0.04;
-  mix-blend-mode: multiply;
-  z-index: 1;
-}
-.qw-grain.subtle { opacity: 0.025; }
-.qw-grain.dark   { opacity: 0.08; mix-blend-mode: overlay; }
-
-/* Soft dot-grid backdrop — useful in CTA/enterprise sections for depth */
-.qw-dotgrid {
-  position: absolute; inset: 0; pointer-events: none;
-  background-image: radial-gradient(rgba(10,10,10,0.06) 1px, transparent 1px);
-  background-size: 22px 22px;
-  background-position: 0 0;
-  mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 80%);
-  -webkit-mask-image: radial-gradient(80% 60% at 50% 30%, #000 30%, transparent 80%);
-  z-index: 0;
-}
-
-/* Premium glowing badge pill — replaces the plain hairline eyebrow pill */
 .qw-badge-premium {
   display: inline-flex; align-items: center; gap: 10px;
-  padding: 6px 14px 6px 10px;
-  background: linear-gradient(180deg, #ffffff 0%, #fafaf9 100%);
-  border: 1px solid rgba(10,10,10,0.06);
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--ink-2);
-  letter-spacing: -0.005em;
-  box-shadow:
-    0 1px 2px rgba(10,10,10,0.04),
-    0 0 0 1px rgba(0,102,255,0.03),
-    inset 0 1px 0 rgba(255,255,255,0.7);
+  padding: 6px 14px;
+  background: var(--canvas-white);
+  border: 1px solid var(--mist-gray);
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+  color: var(--ink-black);
+  letter-spacing: 0;
+  box-shadow: none;
   position: relative;
 }
 .qw-badge-premium .dot {
-  position: relative;
   display: inline-block;
-  width: 7px; height: 7px; border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 0 3px rgba(0,102,255,0.18);
+  width: 7px; height: 7px; border-radius: var(--radius-pill);
+  background: var(--bubblegum);
+  box-shadow: none;
   animation: pulse-glow 2.6s ease-in-out infinite;
 }
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(0,102,255,0.18), 0 0 8px rgba(0,102,255,0.18); }
-  50%      { box-shadow: 0 0 0 4px rgba(0,102,255,0.24), 0 0 14px rgba(0,102,255,0.30); }
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; }
 }
 
-/* Premium card — replaces .qw-card with multi-layer shadow + inset highlight */
-.qw-card-premium {
-  background: var(--paper);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card-premium);
-  border: 0;
-  transition: box-shadow 240ms var(--ease-out), transform 240ms var(--ease-out);
-}
-.qw-card-premium:hover {
-  box-shadow: var(--shadow-card-premium-hover);
-  transform: translateY(-2px);
-}
-
-/* Premium primary button — gradient ink + inner highlight */
-.qw-btn.premium {
-  background: linear-gradient(180deg, #1a1a1d 0%, #08090a 100%);
-  color: var(--paper);
-  border: 1px solid rgba(255,255,255,0.06);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.12) inset,
-    0 1px 2px rgba(10,10,10,0.20),
-    0 4px 12px rgba(10,10,10,0.12);
-}
-.qw-btn.premium:hover {
-  background: linear-gradient(180deg, #28282c 0%, #18181b 100%);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.16) inset,
-    0 1px 2px rgba(10,10,10,0.24),
-    0 8px 20px rgba(10,10,10,0.16);
-}
-
-/* Premium accent button — gradient blue with inner highlight + halo */
-.qw-btn.accent-premium {
-  background: linear-gradient(180deg, #2a7aff 0%, #0066ff 100%);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.10);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.30) inset,
-    0 1px 2px rgba(0,82,204,0.30),
-    0 8px 24px rgba(0,102,255,0.24);
-}
-.qw-btn.accent-premium:hover {
-  background: linear-gradient(180deg, #4a90ff 0%, #1a72ff 100%);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.36) inset,
-    0 1px 2px rgba(0,82,204,0.40),
-    0 12px 32px rgba(0,102,255,0.34);
-}
-
-/* Premium ghost button — refined hairline + soft hover */
-.qw-btn.ghost-premium {
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: var(--ink);
-  border: 1px solid rgba(10,10,10,0.08);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
-}
-.qw-btn.ghost-premium:hover {
-  background: rgba(255,255,255,0.92);
-  border-color: rgba(10,10,10,0.16);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 4px 12px rgba(10,10,10,0.06);
-}
-
-/* Refined focus ring — soft glow instead of hard outline */
+/* Focus ring — soft bubblegum halo */
 :focus-visible {
   outline: 0;
   box-shadow: var(--ring-accent-soft);
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
-/* Smooth scroll across the document */
-html { scroll-behavior: smooth; }
-
-/* Light decorative orbit ring — used on enterprise / multi-agent visuals */
+/* Decorative orbit ring (kept for backwards compat, recolored) */
 .qw-orbit-ring {
   position: absolute;
-  border-radius: 999px;
-  border: 1px solid rgba(10,10,10,0.05);
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   pointer-events: none;
 }
 
-/* ━━━ Subtle focus ring (Linear-style) ━━━ */
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   Chat body — rendered-markdown styling
-   Used by the worked-sample assistant bubble on /experts/[slug].
-   Rules normalize <strong>, <h2/h3/h4>, <ul>/<ol>, <table>, <p>, <code>
-   so the markdown source renders as clean Linear-style typography
-   instead of literal **asterisks**.
+   Chat body — rendered-markdown styling for /experts/[slug] worked-sample.
+   Tuned for warm-cream surfaces, ink-black body, bubblegum links.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.qw-chat-body { color: var(--ink); }
+.qw-chat-body { color: var(--ink-black); }
 .qw-chat-body > *:first-child { margin-top: 0; }
 .qw-chat-body > *:last-child  { margin-bottom: 0; }
-.qw-chat-body p { margin: 0 0 12px; line-height: 1.6; color: var(--ink); }
-.qw-chat-body strong { font-weight: 700; color: var(--ink); }
-.qw-chat-body h1, .qw-chat-body h2 { font-size: 16px; font-weight: 700; letter-spacing: -0.012em; margin: 22px 0 10px; color: var(--ink); }
-.qw-chat-body h3 { font-size: 14.5px; font-weight: 700; letter-spacing: -0.01em; margin: 18px 0 8px; color: var(--ink); }
-.qw-chat-body h4 { font-size: 13.5px; font-weight: 700; margin: 14px 0 6px; color: var(--ink); }
-.qw-chat-body ul, .qw-chat-body ol { margin: 0 0 12px; padding-left: 22px; }
-.qw-chat-body li { margin-bottom: 4px; line-height: 1.55; color: var(--ink); }
-.qw-chat-body li::marker { color: var(--ink-3); }
-.qw-chat-body a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.qw-chat-body p { margin: 0 0 14px; line-height: 1.6; color: var(--ink-black); }
+.qw-chat-body strong { font-weight: var(--fw-bold); color: var(--ink-black); }
+.qw-chat-body h1, .qw-chat-body h2 { font-size: 18px; font-weight: var(--fw-bold); letter-spacing: -0.015em; margin: 24px 0 10px; color: var(--ink-black); }
+.qw-chat-body h3 { font-size: 16px; font-weight: var(--fw-bold); letter-spacing: -0.012em; margin: 20px 0 8px; color: var(--ink-black); }
+.qw-chat-body h4 { font-size: 14px; font-weight: var(--fw-bold); margin: 16px 0 6px; color: var(--ink-black); }
+.qw-chat-body ul, .qw-chat-body ol { margin: 0 0 14px; padding-left: 22px; }
+.qw-chat-body li { margin-bottom: 4px; line-height: 1.55; color: var(--ink-black); }
+.qw-chat-body li::marker { color: var(--charcoal); }
+.qw-chat-body a { color: var(--bubblegum); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
 .qw-chat-body code {
   font-family: var(--font-mono);
-  font-size: 12px;
-  background: var(--bg-elev);
+  font-size: 13px;
+  background: var(--warm-cream);
   padding: 1px 6px;
   border-radius: 4px;
-  color: var(--ink-2);
+  color: var(--ink-black);
 }
 .qw-chat-body pre {
-  background: var(--bg-elev);
-  border: 1px solid var(--rule-soft);
+  background: var(--warm-cream);
+  border: 1px solid var(--lilac-mist);
   border-radius: var(--radius);
-  padding: 12px 14px;
+  padding: 14px;
   overflow-x: auto;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
 }
-.qw-chat-body pre code { background: transparent; padding: 0; font-size: 12.5px; }
+.qw-chat-body pre code { background: transparent; padding: 0; font-size: 13px; }
 .qw-chat-body blockquote {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   padding: 4px 0 4px 14px;
-  border-left: 3px solid var(--rule-2);
-  color: var(--ink-3);
+  border-left: 3px solid var(--lilac-mist);
+  color: var(--charcoal);
 }
-.qw-chat-body hr { border: 0; border-top: 1px solid var(--rule-soft); margin: 18px 0; }
+.qw-chat-body hr { border: 0; border-top: 1px solid var(--mist-gray); margin: 20px 0; }
 .qw-chat-body table {
   width: 100%;
   margin: 0 0 14px;
   border-collapse: collapse;
-  font-size: 12.5px;
-  border: 1px solid var(--rule-soft);
+  font-size: 13px;
+  border: 1px solid var(--lilac-mist);
   border-radius: var(--radius);
   overflow: hidden;
 }
-.qw-chat-body thead { background: var(--paper-warm); }
+.qw-chat-body thead { background: var(--warm-cream); }
 .qw-chat-body th, .qw-chat-body td {
   padding: 8px 12px;
   text-align: left;
-  border-bottom: 1px solid var(--rule-soft);
-  border-right: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--lilac-mist);
+  border-right: 1px solid var(--lilac-mist);
   vertical-align: top;
 }
-.qw-chat-body th { font-weight: 700; color: var(--ink); }
-.qw-chat-body td { color: var(--ink-2); }
+.qw-chat-body th { font-weight: var(--fw-bold); color: var(--ink-black); }
+.qw-chat-body td { color: var(--charcoal); }
 .qw-chat-body th:last-child, .qw-chat-body td:last-child { border-right: 0; }
 .qw-chat-body tr:last-child td { border-bottom: 0; }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   RESPONSIVE GRID UTILITIES
-   Replaces inline `style="grid-template-columns: repeat(N, 1fr)"` so we can
-   collapse columns at tablet (≤1024) and mobile (≤640) breakpoints.
-   Override the column count by passing inline style only if you really need
-   to — but prefer these classes for the bento + cards.
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ━━━ Responsive grids — unchanged structurally ━━━ */
 .qw-grid     { display: grid; gap: var(--gutter); }
 .qw-grid-2   { display: grid; gap: var(--gutter); grid-template-columns: repeat(2, 1fr); }
 .qw-grid-3   { display: grid; gap: var(--gutter); grid-template-columns: repeat(3, 1fr); }
@@ -842,24 +588,20 @@ html { scroll-behavior: smooth; }
 .qw-grid-6   { display: grid; gap: var(--gutter); grid-template-columns: repeat(6, 1fr); }
 .qw-grid-7   { display: grid; gap: var(--gutter); grid-template-columns: repeat(7, 1fr); }
 
-/* When .qw-bento is also present, swap gap to 12px to keep cells tight. */
 .qw-bento.qw-grid-2,
 .qw-bento.qw-grid-3,
 .qw-bento.qw-grid-4,
 .qw-bento.qw-grid-5,
 .qw-bento.qw-grid-6,
-.qw-bento.qw-grid-7 { gap: 12px; }
+.qw-bento.qw-grid-7 { gap: 16px; }
 
-/* Asymmetric hero/section splits */
+/* Splits */
 .qw-split          { display: grid; gap: 48px; grid-template-columns: 1.25fr 1fr; align-items: center; }
 .qw-split-wide     { display: grid; gap: 56px; grid-template-columns: 1.5fr 1fr; align-items: center; }
 .qw-split-narrow   { display: grid; gap: 56px; grid-template-columns: 1fr 1.5fr; align-items: start; }
 .qw-split-even     { display: grid; gap: 32px; grid-template-columns: 1fr 1fr; align-items: start; }
 .qw-split-bias-r   { display: grid; gap: 56px; grid-template-columns: 1fr 2fr; align-items: start; }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   TABLET — collapse to 2-3 cols, splits become stacked
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 1024px) {
   .qw-grid-5, .qw-grid-6, .qw-grid-7 { grid-template-columns: repeat(3, 1fr); }
   .qw-grid-4                          { grid-template-columns: repeat(2, 1fr); }
@@ -869,41 +611,29 @@ html { scroll-behavior: smooth; }
     gap: 32px;
   }
 
-  /* Heading scale steps down */
-  .qw-h-display { font-size: clamp(36px, 6vw, 56px); }
-  .qw-h-1       { font-size: clamp(26px, 4vw, 36px); }
+  .qw-h-display { font-size: clamp(40px, 7vw, 64px); }
+  .qw-h-1       { font-size: clamp(28px, 4.5vw, 40px); }
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   MOBILE — single column / 2 cols for dense bento
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 640px) {
   .qw-grid-2, .qw-grid-3, .qw-grid-4 { grid-template-columns: 1fr; }
   .qw-grid-5, .qw-grid-6, .qw-grid-7 { grid-template-columns: repeat(2, 1fr); }
 
-  .qw-h-display { font-size: clamp(30px, 9vw, 44px); line-height: 1.04; }
-  .qw-h-1       { font-size: clamp(22px, 6vw, 30px); }
-  .qw-h-2       { font-size: 19px; }
+  .qw-h-display { font-size: clamp(36px, 10vw, 56px); line-height: 0.96; }
+  .qw-h-1       { font-size: clamp(26px, 7vw, 36px); }
+  .qw-h-2       { font-size: 22px; }
 
-  :root { --section-y: 28px; --pad-x: 16px; }
+  :root { --section-y: 40px; --pad-x: 16px; }
 
-  /* Hide non-essential decorations on mobile */
-  .qw-hide-mobile { display: none !important; }
-
-  /* Buttons stretch to full width when in a stack */
+  .qw-hide-mobile     { display: none !important; }
   .qw-btn-block-mobile { width: 100%; justify-content: center; }
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   NAV — collapse links on mobile, keep brand + CTA
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 768px) {
   .qw-nav-mobile-hide { display: none !important; }
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   HORIZONTAL SCROLLER (used by WeekStrip on small screens)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ━━━ Horizontal scroller ━━━ */
 .qw-hscroll {
   display: grid; gap: 8px; grid-template-columns: repeat(7, 1fr);
 }

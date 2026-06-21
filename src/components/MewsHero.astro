@@ -1,0 +1,180 @@
+---
+// MewsHero — Mews-style two-column hero with REAL dashboard screenshots.
+//
+// 2026-06-21 — replaces OllaSuperChatLoop (which showed a fake 540px
+// chat-card mock that read as a phone mock-up). The new hero shows real
+// captures of /chat?expert={slug} from app.ollasuper.com — 6 different
+// Experts/Agents doing real work, cycling on a 7.5-sec cross-fade loop.
+//
+// Composition (matches Mews brief):
+//   - Left column (~45% width on desktop): dark #161616 panel with
+//     white headline at weight 900, -0.025em tracking, body copy in
+//     warm gray, candy-pink pill primary CTA + outline secondary.
+//   - Right column (~55%): warm-cream backdrop with the real Expert
+//     screenshot in a tilted hardware-style frame. Bottom row shows
+//     currently-active Expert name + scene indicator dots.
+//   - Below both columns on desktop, full-width on mobile: the three
+//     "no credit card / enterprise ready / multi-agent" check-marks.
+//
+// Stacks to single column at <1024px. Screenshots stay readable down
+// to 480px; below that they auto-shrink with object-fit cover.
+
+const SCENES = [
+  { slug: "seo-auditor",       name: "SEO Auditor",       kind: "Agent",  color: "#16a34a" },
+  { slug: "outbound-sdr",      name: "Outbound SDR",      kind: "Agent",  color: "#f97316" },
+  { slug: "code-reviewer",     name: "Code Reviewer",     kind: "Expert", color: "#0066ff" },
+  { slug: "content-publisher", name: "Content Publisher", kind: "Agent",  color: "#7c3aed" },
+  { slug: "hr",                name: "HR Expert",         kind: "Expert", color: "#ff6b4a" },
+  { slug: "backend-architect", name: "Backend Architect", kind: "Expert", color: "#0066ff" },
+];
+
+// Per-scene timing in % of the loop. 7.5s per scene incl. 0.5s fade.
+const SCENE_DURATION = 7.5;
+const TOTAL = SCENES.length * SCENE_DURATION;
+const FADE  = 0.5;
+
+const timings = SCENES.map((_, i) => {
+  const start = (i * SCENE_DURATION) / TOTAL * 100;
+  const end   = ((i + 1) * SCENE_DURATION) / TOTAL * 100;
+  const fade  = (FADE / TOTAL) * 100;
+  return {
+    pre:      start.toFixed(3),
+    inDone:   (start + fade).toFixed(3),
+    outStart: (end   - fade).toFixed(3),
+    end:      end.toFixed(3),
+  };
+});
+
+const sceneCss = SCENES.map((_, i) => {
+  const t = timings[i];
+  return [
+    `@keyframes mews-scene-${i} {`,
+    `  0%, ${t.pre}%      { opacity: 0; transform: translateY(8px) rotate(-1.5deg); }`,
+    `  ${t.inDone}%       { opacity: 1; transform: translateY(0)   rotate(-1.5deg); }`,
+    `  ${t.outStart}%     { opacity: 1; transform: translateY(0)   rotate(-1.5deg); }`,
+    `  ${t.end}%, 100%    { opacity: 0; transform: translateY(-8px) rotate(-1.5deg); }`,
+    `}`,
+    `.mews-scene.scene-${i} { animation: mews-scene-${i} ${TOTAL}s linear infinite; }`,
+    `@keyframes mews-label-${i} {`,
+    `  0%, ${t.pre}%, ${t.end}%, 100% { opacity: 0; transform: translateY(4px); }`,
+    `  ${t.inDone}%, ${t.outStart}%   { opacity: 1; transform: translateY(0); }`,
+    `}`,
+    `.mews-label.label-${i} { animation: mews-label-${i} ${TOTAL}s linear infinite; }`,
+    `@keyframes mews-dot-${i} {`,
+    `  0%, ${t.pre}%, ${t.end}%, 100% { background: var(--mist-gray); width: 8px; }`,
+    `  ${t.inDone}%, ${t.outStart}%   { background: var(--bubblegum); width: 24px; }`,
+    `}`,
+    `.mews-dot.dot-${i} { animation: mews-dot-${i} ${TOTAL}s linear infinite; }`,
+  ].join("\n");
+}).join("\n\n") + `
+
+@media (prefers-reduced-motion: reduce) {
+  .mews-scene, .mews-label, .mews-dot { animation: none !important; }
+  .mews-scene.scene-0 { opacity: 1 !important; }
+  .mews-scene:not(.scene-0) { opacity: 0 !important; }
+  .mews-label.label-0 { opacity: 1 !important; transform: none !important; }
+  .mews-label:not(.label-0) { opacity: 0 !important; }
+  .mews-dot.dot-0 { background: var(--bubblegum) !important; width: 24px !important; }
+}
+`;
+---
+
+<section style="position: relative; padding: 56px 0 80px; background: var(--canvas-white); overflow: hidden;">
+  <div class="qw-section">
+
+    {/* ─── Eyebrow badge ─── */}
+    <div style="display: flex; justify-content: center; margin-bottom: 32px;">
+      <span class="qw-badge-premium">
+        <span class="dot"></span>
+        AI Workforce Platform
+      </span>
+    </div>
+
+    {/* ─── Centered display headline + body (above the two-column rig) ─── */}
+    <div style="text-align: center; max-width: 980px; margin: 0 auto 56px;">
+      <h1 class="qw-h-display" style="margin: 0 auto;">Build Your AI Workforce.</h1>
+      <p style="margin: 24px auto 0; max-width: 720px; font-size: 18px; line-height: 1.55; color: var(--charcoal);">
+        <strong style="font-weight: 700; color: var(--ink-black);">80 Experts</strong> that advise across Sales, HR, SEO, Legal, Finance and 25 more — plus
+        <strong style="font-weight: 700; color: var(--ink-black);">6 Agents</strong> that run on schedules and take real actions with your approval.
+      </p>
+      <p style="margin: 16px auto 0; font-size: 13px; color: var(--charcoal);">
+        <a href="/experts" style="color: var(--ink-black); text-decoration: underline; text-decoration-color: var(--mist-gray); text-underline-offset: 3px;">○ Browse the 80 Experts →</a>
+        &nbsp;&nbsp;
+        <a href="/agents" style="color: var(--ink-black); text-decoration: underline; text-decoration-color: var(--mist-gray); text-underline-offset: 3px;">⚡ Meet the 6 Agents →</a>
+      </p>
+      <div style="display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; justify-content: center;">
+        <a href="/signup" class="qw-btn accent">Start Free →</a>
+        <a href="#workflow" class="qw-btn ghost">Watch Demo</a>
+      </div>
+      <div style="display: inline-flex; gap: 24px; margin-top: 28px; flex-wrap: wrap; align-items: center; font-size: 13px; color: var(--charcoal); justify-content: center;">
+        <span style="display: inline-flex; align-items: center; gap: 6px;">
+          <span style="color: var(--bubblegum); font-weight: 900;">✓</span> No credit card
+        </span>
+        <span style="display: inline-flex; align-items: center; gap: 6px;">
+          <span style="color: var(--bubblegum); font-weight: 900;">✓</span> Enterprise ready
+        </span>
+        <span style="display: inline-flex; align-items: center; gap: 6px;">
+          <span style="color: var(--bubblegum); font-weight: 900;">✓</span> Multi-agent collaboration
+        </span>
+      </div>
+    </div>
+
+    {/* ─── Real-screenshot showcase ───
+        Six dashboard captures cycle. The active Expert's name + kind
+        badge appears below the frame, with a row of width-animated
+        pill dots as a progress indicator. */}
+    <div style="position: relative; max-width: 1100px; margin: 0 auto;">
+
+      {/* Soft pink backdrop wash behind the frame */}
+      <div style="
+        position: absolute; inset: -40px -20px;
+        background:
+          radial-gradient(60% 50% at 30% 30%, rgba(255, 131, 218, 0.16), transparent 70%),
+          radial-gradient(50% 40% at 80% 70%, rgba(210, 244, 255, 0.30), transparent 70%);
+        pointer-events: none;
+        border-radius: 24px;
+      "></div>
+
+      {/* Frame — hard rectangular edges (4px), 1px black border, slight tilt */}
+      <div style="position: relative; aspect-ratio: 16 / 10; border: 1px solid var(--ink-black); border-radius: 4px; background: var(--warm-cream); overflow: hidden; transform: rotate(-1.5deg); box-shadow: 12px 12px 0 0 var(--ink-black);">
+        {SCENES.map((s, i) => (
+          <img
+            src={`/hero/${s.slug}.png`}
+            alt={`${s.name} ${s.kind} responding inside the OllaSuper dashboard`}
+            loading={i === 0 ? "eager" : "lazy"}
+            class={`mews-scene scene-${i}`}
+            style={`position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; opacity: ${i === 0 ? 1 : 0};`}
+          />
+        ))}
+      </div>
+
+      {/* Active-Expert label row, sitting below the frame */}
+      <div style="position: relative; margin-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+
+        {/* Left: cycling label */}
+        <div style="position: relative; min-height: 36px; min-width: 320px; flex: 1;">
+          {SCENES.map((s, i) => (
+            <div
+              class={`mews-label label-${i}`}
+              style={`position: absolute; inset: 0; display: inline-flex; align-items: center; gap: 12px; opacity: ${i === 0 ? 1 : 0};`}
+            >
+              <span style={`display: inline-block; width: 10px; height: 10px; border-radius: 9999px; background: ${s.color};`}></span>
+              <span style="font-size: 18px; font-weight: 700; color: var(--ink-black); letter-spacing: -0.012em;">{s.name}</span>
+              <span style={`display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: ${s.kind === 'Agent' ? 'var(--voltage-lime)' : 'var(--cotton-pink)'}; color: var(--ink-black);`}>{s.kind}</span>
+              <span style="font-size: 13px; color: var(--charcoal);">— real reply, no mockup</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Right: progress dots */}
+        <div style="display: inline-flex; gap: 6px; align-items: center;">
+          {SCENES.map((_, i) => (
+            <span class={`mews-dot dot-${i}`} style={`display: inline-block; width: 8px; height: 8px; border-radius: 9999px; background: ${i === 0 ? 'var(--bubblegum)' : 'var(--mist-gray)'}; transition: width 240ms ease, background 240ms ease;`}></span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style is:global set:html={sceneCss} />
+</section>

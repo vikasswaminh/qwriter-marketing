@@ -28,7 +28,7 @@ const {
     <meta name="description" content={description} />
     <link rel="canonical" href={Astro.url.href} />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#0066ff" />
+    <meta name="theme-color" content="#ff83da" />
 
     {/* Open Graph */}
     <meta property="og:title" content={title} />
@@ -50,13 +50,11 @@ const {
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
-    {/* Perf — preload the two font weights actually used above-the-fold
-        (Lato 400 + 700) so they're requested in parallel with the CSS.
-        Subsetted to latin (English only) to keep the per-weight file ~23 KB.
-        Removed Google Fonts preconnects 2026-06-15 — fonts are self-hosted
-        under /fonts/ on the same origin now. */}
-    <link rel="preload" href="/fonts/Lato-400-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/Lato-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+    {/* Perf — preload Inter Variable. One file covers all weights 100-900
+        via woff2-variations. 344 KB total (vs ~120 KB for 6 static Lato
+        weights). Self-hosted under /fonts/ so the CSS, the font, and the
+        HTML all come from the same origin — no extra DNS / TLS legs. */}
+    <link rel="preload" href="/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
 
     {/* Structured data — Organization + WebSite */}
     <script type="application/ld+json" set:html={JSON.stringify({
