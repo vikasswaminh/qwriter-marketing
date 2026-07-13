@@ -9,7 +9,7 @@ const grouped = Object.keys(departments).map(key => ({
   experts: experts.filter(e => e.department === key),
 }));
 ---
-<Layout current="experts" title="The 19 Experts — OllaSuper" description="Meet every expert: HR, Sales, Operations, SEO, AEO, Data, Engineering, Product, Finance, Legal and 9 more. Each with their own prompts, glyph, and detail page.">
+<Layout current="experts" title="The 22 Assistants — OllaSuper" description="Meet every Assistant: HR, Sales, Operations, SEO, AEO, Data, Engineering, Product, Finance, Legal and 9 more. Each with their own prompts, glyph, and detail page.">
 
   {/* HERO */}
   <section style="position: relative; padding: 56px 0 28px; overflow: hidden;">
@@ -17,12 +17,12 @@ const grouped = Object.keys(departments).map(key => ({
     <div class="qw-section" style="position: relative;">
       <div class="qw-split">
         <div>
-          <div class="qw-eyebrow qw-eyebrow-accent">Experts · 22 specialists</div>
+          <div class="qw-eyebrow qw-eyebrow-accent">Assistants · 22 specialists</div>
           <h1 class="qw-h-display" style="margin-top: 10px;">
-            The 22 experts.
+            The 22 Assistants.
           </h1>
           <p class="qw-body" style="max-width: 560px; margin-top: 14px; font-size: 16px;">
-            Every expert ships with its own system prompt, four starter chips, and a worked sample.
+            Every Assistant ships with its own system prompt, four starter chips, and a worked sample.
           </p>
         </div>
         <div class="qw-card" style="padding: 14px 16px; font-size: 13px; color: var(--ink-3);">
@@ -40,7 +40,7 @@ const grouped = Object.keys(departments).map(key => ({
   <div style="position: sticky; top: 57px; z-index: 30;" class="qw-nav-blur">
     <div class="qw-section" style="padding: 12px 0;">
       <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <a href="#all" class="qw-btn primary" style="padding: 6px 12px; font-size: 12px;">All 80</a>
+        <a href="#all" class="qw-btn primary" style="padding: 6px 12px; font-size: 12px;">All 22</a>
         {grouped.map(g => (
           <a href={`#${g.key}`} class="qw-btn ghost" style={`padding: 6px 12px; font-size: 12px;`}
              onmouseover={`this.style.borderColor='${g.color}'; this.style.color='${g.color}';`} onmouseout="this.style.borderColor='var(--rule)'; this.style.color='var(--ink)';">
@@ -60,7 +60,7 @@ const grouped = Object.keys(departments).map(key => ({
           <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--rule);">
             <span style={`width: 12px; height: 12px; border-radius: 999px; background: ${group.color};`}></span>
             <h2 class="qw-h-2" style="margin: 0;">{group.label}</h2>
-            <span style="font-size: 12px; color: var(--ink-3);">{group.experts.length} experts</span>
+            <span style="font-size: 12px; color: var(--ink-3);">{group.experts.length} Assistants</span>
           </div>
 
           <div class="qw-bento qw-grid-3">
@@ -85,24 +85,24 @@ const grouped = Object.keys(departments).map(key => ({
   </section>
 
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-  {/* HOW TO USE AN EXPERT — added 2026-06-15. Five-step flow with the     */}
+  {/* HOW TO USE AN ASSISTANT — added 2026-06-15. Five-step flow with the     */}
   {/* same paper card chrome as the rest of the page.                      */}
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
   <section class="qw-pad" style="background: var(--bg-elev); border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);">
     <div class="qw-section">
       <div style="text-align: center; margin-bottom: 32px;">
-        <div class="qw-eyebrow qw-eyebrow-accent">How to use an Expert</div>
+        <div class="qw-eyebrow qw-eyebrow-accent">How to use an Assistant</div>
         <h2 class="qw-h-1" style="margin: 10px auto 12px; max-width: 720px;">Five steps from "I need help with…" to a shippable answer.</h2>
         <p class="qw-body" style="max-width: 620px; margin: 0 auto; font-size: 14.5px;">
-          Experts are chat-driven specialists. They advise. They don't take real-world actions on their own — that's what <a href="/agents" style="color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule);">Agents</a> are for.
+          Assistants are chat-driven specialists. They advise. They don't take real-world actions on their own — that's what <a href="/agents" style="color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule);">Agents</a> are for.
         </p>
       </div>
 
       <div class="qw-grid-5" style="gap: 16px;">
         {[
-          { n: "1", title: "Browse or search",        body: "Filter by department (People / GTM / Ops / Data / Build / Personal) or type a problem into the ⌘K palette. Each Expert lists their starters so you can preview what kinds of work they're good at." },
-          { n: "2", title: "Open the chat",           body: "One click on an Expert tile lands you in the chat surface with their system prompt already loaded. The badge in the topbar reminds you which Expert you're talking to mid-thread." },
-          { n: "3", title: "Pick a starter (or write your own)", body: "Every Expert ships 4 starter prompts that are the dominant use cases for that role. They're a faster start than a blank page. Or just describe what you need." },
+          { n: "1", title: "Browse or search",        body: "Filter by department (People / GTM / Ops / Data / Build / Personal) or type a problem into the ⌘K palette. Each Assistant lists their starters so you can preview what kinds of work they're good at." },
+          { n: "2", title: "Open the chat",           body: "One click on an Assistant tile lands you in the chat surface with their system prompt already loaded. The badge in the topbar reminds you which Assistant you're talking to mid-thread." },
+          { n: "3", title: "Pick a starter (or write your own)", body: "Every Assistant ships 4 starter prompts that are the dominant use cases for that role. They're a faster start than a blank page. Or just describe what you need." },
           { n: "4", title: "Ground in your sources",   body: "Use the source toggle in the composer to attach scans, uploaded files, or text snippets. Replies cite the chunks they used — you can click through to verify." },
           { n: "5", title: "Iterate, copy, save",      body: "Hover any AI reply for Copy / Regenerate / Save. Save sends a reply into your Documents workspace; Regenerate runs the same prompt for an alternate take." },
         ].map(s => (
@@ -128,8 +128,8 @@ const grouped = Object.keys(departments).map(key => ({
     <div class="qw-section">
       <div class="qw-card-pop" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px 26px;">
         <div>
-          <div style="font-weight: 600; font-size: 20px; letter-spacing: -0.02em; color: var(--ink);">80 experts. One subscription.</div>
-          <div style="margin-top: 3px; font-size: 13px; color: var(--ink-3);">All 80 unlocked on the free tier. Upgrade for higher tool-call limits and team workspaces.</div>
+          <div style="font-weight: 600; font-size: 20px; letter-spacing: -0.02em; color: var(--ink);">22 Assistants. One subscription.</div>
+          <div style="margin-top: 3px; font-size: 13px; color: var(--ink-3);">All 22 unlocked on the free tier. Upgrade for higher tool-call limits and team workspaces.</div>
         </div>
         <a href="/signup" class="qw-btn accent">Start free →</a>
       </div>

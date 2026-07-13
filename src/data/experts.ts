@@ -53,7 +53,7 @@ export const departments: Record<Department, { label: string; color: string }> =
 export const experts: Expert[] = [
   {
     slug: "hr",
-    name: "HR Expert",
+    name: "HR Assistant",
     short: "HR",
     department: "people",
     color: "#ff6b4a",
@@ -77,7 +77,7 @@ export const experts: Expert[] = [
   },
   {
     slug: "recruiter",
-    name: "Recruiter Expert",
+    name: "Recruiter Assistant",
     short: "Recruiter",
     department: "people",
     color: "#ff8866",
@@ -101,7 +101,7 @@ export const experts: Expert[] = [
   },
   {
     slug: "marketing",
-    name: "Marketing Expert",
+    name: "Marketing Assistant",
     short: "Marketing",
     department: "gtm",
     color: "#22c55e",
@@ -125,7 +125,7 @@ export const experts: Expert[] = [
   },
   {
     slug: "seo",
-    name: "SEO Expert",
+    name: "SEO Assistant",
     short: "SEO",
     department: "gtm",
     color: "#10b981",
@@ -149,7 +149,7 @@ export const experts: Expert[] = [
   },
   {
     slug: "aeo",
-    name: "AEO Expert",
+    name: "AEO Assistant",
     short: "AEO",
     department: "gtm",
     color: "#0066ff",
@@ -173,7 +173,7 @@ export const experts: Expert[] = [
   },
   {
     slug: "legal",
-    name: "Legal & Compliance Expert",
+    name: "Legal & Compliance Assistant",
     short: "Legal",
     department: "ops",
     color: "#7f1d1d",
@@ -197,7 +197,7 @@ export const experts: Expert[] = [
   },
   {
     slug: "designer",
-    name: "Designer Expert",
+    name: "Designer Assistant",
     short: "Designer",
     department: "build",
     color: "#6366f1",
@@ -222,7 +222,7 @@ export const experts: Expert[] = [
   },
   {
     slug: "pm",
-    name: "Project Manager Expert",
+    name: "Project Manager Assistant",
     short: "PM",
     department: "build",
     color: "#2563eb",
@@ -246,7 +246,7 @@ export const experts: Expert[] = [
   },
   {
     slug: "writer",
-    name: "Writer Expert",
+    name: "Writer Assistant",
     short: "Writer",
     department: "personal",
     color: "#eab308",
@@ -270,7 +270,7 @@ export const experts: Expert[] = [
   },
   {
     slug: "sdr",
-    name: "SDR Agent",
+    name: "SDR Assistant",
     short: "SDR",
     department: "gtm",
     color: "#14b87a",
@@ -294,7 +294,7 @@ export const experts: Expert[] = [
   },
   {
     slug: "devops",
-    name: "DevOps / SRE Agent",
+    name: "DevOps / SRE Assistant",
     short: "DevOps",
     department: "build",
     color: "#1d4ed8",
@@ -318,7 +318,7 @@ export const experts: Expert[] = [
   },
   {
     slug: "backend-architect",
-    name: "Backend Architect Expert",
+    name: "Backend Architect Assistant",
     short: "Backend",
     department: "build",
     color: "#0066ff",
@@ -580,7 +580,7 @@ Operating principles:
   },
   {
     slug: "frontend-developer",
-    name: "Frontend Developer Expert",
+    name: "Frontend Developer Assistant",
     short: "Frontend",
     department: "build",
     color: "#0066ff",
@@ -767,7 +767,7 @@ Operating principles:
   },
   {
     slug: "code-reviewer",
-    name: "Code Reviewer Expert",
+    name: "Code Reviewer Assistant",
     short: "CodeReview",
     department: "build",
     color: "#0066ff",
@@ -868,7 +868,7 @@ Operating principles:
   },
   {
     slug: "database-optimizer",
-    name: "Database Optimizer Expert",
+    name: "Database Optimizer Assistant",
     short: "DBOptim",
     department: "build",
     color: "#0066ff",
@@ -1069,7 +1069,7 @@ Operating principles:
   },
   {
     slug: "data-engineer",
-    name: "Data Engineer Expert",
+    name: "Data Engineer Assistant",
     short: "DataEng",
     department: "data",
     color: "#7c3aed",
@@ -1208,7 +1208,7 @@ Operating principles:
   },
   {
     slug: "ai-engineer",
-    name: "AI Engineer Expert",
+    name: "AI Engineer Assistant",
     short: "AIEng",
     department: "build",
     color: "#0066ff",
@@ -1363,7 +1363,7 @@ Operating principles:
   },
   {
     slug: "appsec-engineer",
-    name: "Application Security Expert",
+    name: "Application Security Assistant",
     short: "AppSec",
     department: "build",
     color: "#0066ff",
@@ -1466,7 +1466,7 @@ Operating principles:
   },
   {
     slug: "deal-strategist",
-    name: "Deal Strategist Expert",
+    name: "Deal Strategist Assistant",
     short: "Deal",
     department: "gtm",
     color: "#16a34a",
@@ -1556,7 +1556,7 @@ Operating principles:
   },
   {
     slug: "chief-of-staff",
-    name: "Chief of Staff Expert",
+    name: "Chief of Staff Assistant",
     short: "ChiefStaff",
     department: "personal",
     color: "#facc15",
@@ -1678,7 +1678,7 @@ Operating principles:
   },
   {
     slug: "financial-officer",
-    name: "Chief Financial Officer Expert",
+    name: "Chief Financial Officer Assistant",
     short: "CFOExec",
     department: "ops",
     color: "#52525b",
@@ -1791,7 +1791,7 @@ Operating principles:
   },
   {
     slug: "customer-success",
-    name: "Customer Success Expert",
+    name: "Customer Success Assistant",
     short: "CSucc",
     department: "gtm",
     color: "#16a34a",
