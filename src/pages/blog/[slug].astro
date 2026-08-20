@@ -119,8 +119,8 @@ const PostContent = contentComponents[post.slug];
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; width: 100%;">
-          {post.tableOfContents.map((toc) => (
-            <a href={`#${toc.id}`} class="os-toc-link" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); border-radius: 8px; color: var(--ink-black); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.15s ease;">
+          {post.tableOfContents.map((toc, index) => (
+            <a href={`#${toc.id}`} class={`os-toc-link ${index === 0 ? 'active' : ''}`} style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); border-radius: 8px; color: var(--ink-black); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.15s ease;">
               <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 6px; background: var(--candy-pink-soft); color: #a81c85; font-size: 0.75rem; font-weight: 800; flex-shrink: 0;">
                 {toc.num}
               </span>
@@ -132,11 +132,11 @@ const PostContent = contentComponents[post.slug];
       </nav>
 
       {/* ─── 3. TL;DR CALLOUT BOX ─── */}
-      <section style="background: #ffffff; border-left: 5px solid var(--candy-pink); border-radius: 10px; border-top: 1px solid var(--border-light); border-right: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 28px; margin-bottom: var(--spacing-32); box-shadow: var(--shadow-sm);">
+      <section style="background: var(--candy-pink-soft); border-left: 5px solid var(--candy-pink); border-radius: 10px; border-top: 1px solid var(--candy-pink); border-right: 1px solid var(--candy-pink); border-bottom: 1px solid var(--candy-pink); padding: 28px; margin-bottom: var(--spacing-32); box-shadow: var(--shadow-sm);">
         <h3 id="tldr" style="font-size: 1.2rem; font-weight: 800; color: #a81c85; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
           <span>⚡</span> TL;DR
         </h3>
-        <p style="font-size: 1.1rem; line-height: 1.7; color: var(--ink-secondary); margin: 0;">
+        <p style="font-size: 1.1rem; line-height: 1.7; color: var(--ink-black); margin: 0;">
           {post.tldr}
         </p>
       </section>
@@ -146,23 +146,43 @@ const PostContent = contentComponents[post.slug];
         {PostContent ? <PostContent /> : <p>Content coming soon...</p>}
 
         {/* ─── 5. FAQ SECTION ─── */}
-        <section class="os-card" style="background: #ffffff; border: 1px solid var(--border-medium); padding: 48px;">
-          <h2 id="faq" class="os-h2" style="margin-bottom: 28px; color: var(--ink-black);">
+        <section class="os-card" style="background: #ffffff; border: 1px solid var(--border-medium); padding: 48px; border-radius: var(--radius-lg);">
+          <h2 id="faq" class="os-h2" style="margin-bottom: 32px; color: var(--ink-black); font-size: 1.75rem; font-weight: 800;">
             Frequently Asked Questions (FAQ)
           </h2>
 
-          <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div style="display: flex; flex-direction: column; gap: 16px;">
             {post.faqs.map((faq) => (
-              <div style="border-bottom: 1px solid var(--border-light); padding-bottom: 20px;">
-                <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--ink-black); margin-bottom: 8px;">
+              <details class="os-faq-item" style="border: 1px solid var(--candy-pink); border-radius: var(--radius-md); background: var(--bg-cream-alt); overflow: hidden;">
+                <summary style="padding: 20px 24px; font-size: 1.1rem; font-weight: 700; color: var(--ink-black); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none;">
                   {faq.question}
-                </h3>
-                <p style="font-size: 1rem; line-height: 1.65; color: var(--ink-secondary); margin: 0;">
-                  {faq.answer}
-                </p>
-              </div>
+                  <span class="os-faq-icon" style="color: var(--candy-pink); font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease;">+</span>
+                </summary>
+                <div style="padding: 24px; background: var(--candy-pink-soft); font-size: 1.05rem; line-height: 1.7; color: var(--ink-secondary); border-top: 1px solid var(--candy-pink);">
+                  <p style="margin: 0;">
+                    {faq.answer}
+                  </p>
+                </div>
+              </details>
             ))}
           </div>
+
+          <style>
+            /* Hide the default details marker (triangle) in webkit/blink */
+            .os-faq-item summary::-webkit-details-marker {
+              display: none;
+            }
+            
+            /* Rotate the '+' to an 'x' when open */
+            .os-faq-item[open] .os-faq-icon {
+              transform: rotate(45deg);
+              color: var(--ink-black);
+            }
+
+            .os-faq-item summary:hover {
+              background: #f8fafc;
+            }
+          </style>
         </section>
 
         {/* ─── 6. BOTTOM ACTION CTA ─── */}
@@ -190,29 +210,9 @@ const PostContent = contentComponents[post.slug];
   </article>
 </Layout>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          document.querySelectorAll('.os-toc-link').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${id}`) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    }, { rootMargin: '-120px 0px -40% 0px' });
 
-    document.querySelectorAll('.blog-content :is(h2, h3, h4)[id], #tldr').forEach((heading) => {
-      observer.observe(heading);
-    });
-  });
-</script>
 
-<style>
+<style is:global>
   .os-toc-link.active {
     background: var(--candy-pink-soft) !important;
     border-color: var(--candy-pink-border) !important;
@@ -229,5 +229,18 @@ const PostContent = contentComponents[post.slug];
     background: #ffffff !important;
     border-color: var(--candy-pink) !important;
     transform: translateY(-1px);
+  }
+
+  /* Reference Blog Overrides */
+  .blog-content p {
+    font-size: 1.15rem !important;
+    line-height: 1.8 !important;
+    margin-bottom: 24px !important;
+  }
+  .blog-content h2 {
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 24px !important;
+    margin-top: 48px !important;
   }
 </style>
