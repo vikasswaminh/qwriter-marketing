@@ -1,118 +1,200 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 
-// 1 credit = 1 token. Customer-visible unit everywhere is "credits".
 const tiers = [
-  { name: "Free", price: "₹0", interval: "forever",
-    words: "50,000 credits / month", scans: "Unlimited site scans + uploads",
-    experts: "All 22 Assistants (chat-driven, advisory)",
-    agents: "Read-only Agents only (deep-research, SEO auditor reports)",
-    features: ["50,000 credits / month (1 credit = 1 token)", "All 22 ○ Assistants — full chat access", "Read-only ⚡ Agents: deep-research + SEO auditor", "200M proxies + 4,000 tools", "1 workspace · 3 projects", "Markdown / PDF / DOCX export"],
-    cta: "Start free", ctaHref: "/signup", emphasis: false },
-  { name: "Pro", price: "₹499", interval: "per month",
-    words: "1,000,000 credits / month", scans: "Unlimited site scans + uploads",
-    experts: "All 22 Assistants",
-    agents: "All 6 ⚡ Agents — including action-takers (Outbound SDR, Content Publisher, Inbox Triage)",
-    features: ["1,000,000 credits / month (1 credit = 1 token)", "All 22 ○ Assistants — full chat access", "All 6 ⚡ Agents including action-takers", "Outbound SDR runs every 30 min", "Inbox Triage runs every 15 min", "Approval-gate drafts in your outbox", "Multi-channel adapters (email, Slack, WhatsApp — coming)", "Unlimited workspaces + projects", "Memory across sessions", "Priority support"],
-    cta: "Upgrade to Pro", ctaHref: "https://app.ollasuper.com/auth?return_to=%2Fbilling%2Fupgrade%3Ftier%3Dpro", emphasis: true },
-  { name: "Team", price: "₹1,999", interval: "per month",
-    words: "10,000,000 credits / month", scans: "Unlimited everything",
-    experts: "All 22 Assistants",
-    agents: "All 6 ⚡ Agents · custom Agent slots on request",
-    features: ["10,000,000 credits / month (1 credit = 1 token)", "Everything in Pro", "Up to 10 seats", "Shared workspaces + libraries", "Per-agent approval policies", "Audit log + SSO", "Self-serve billing dashboard", "Custom Agent slots (on request)", "API key access (beta)"],
-    cta: "Upgrade to Team", ctaHref: "https://app.ollasuper.com/auth?return_to=%2Fbilling%2Fupgrade%3Ftier%3Dteam", emphasis: false },
+  {
+    name: "Starter",
+    price: "$0",
+    interval: "forever free",
+    badge: "Free Tier",
+    tagline: "For individual founders and small teams exploring AI employees.",
+    features: [
+      "1 Active AI Employee (Research or Support)",
+      "50,000 credits / month included",
+      "Read-only autonomous execution",
+      "Web scraping & public registry MCP tools",
+      "Basic execution trace logs (7-day retention)",
+      "Community Discord & Documentation support"
+    ],
+    cta: "Start Free",
+    ctaHref: "/signup",
+    isPrimary: false,
+  },
+  {
+    name: "Growth",
+    price: "$49",
+    interval: "per month",
+    badge: "Most Popular",
+    tagline: "For high-velocity revenue, marketing, and operations squads.",
+    features: [
+      "Up to 5 Active AI Employees (Sales, Marketing, Research)",
+      "1,500,000 credits / month included",
+      "Human-in-the-Loop Slack & Dashboard approval gates",
+      "Full CRM two-way sync (Salesforce & HubSpot)",
+      "Deep Observability traces (30-day retention)",
+      "Continuous event & cron schedule automation",
+      "Priority email & chat support"
+    ],
+    cta: "Deploy Growth Squad →",
+    ctaHref: "/signup?plan=growth",
+    isPrimary: true,
+  },
+  {
+    name: "Scale",
+    price: "$199",
+    interval: "per month",
+    badge: "High Autonomy",
+    tagline: "For scaling companies deploying full autonomous departments.",
+    features: [
+      "Unlimited AI Employees across all 6 departments",
+      "10,000,000 credits / month included",
+      "Custom MCP Tool Server registration",
+      "Deterministic golden dataset test runner",
+      "Team RBAC & workspace isolation",
+      "Full Observability with 90-day retention",
+      "Dedicated Slack channel with solutions architect"
+    ],
+    cta: "Upgrade to Scale →",
+    ctaHref: "/signup?plan=scale",
+    isPrimary: false,
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    interval: "billed annually",
+    badge: "Private VPC",
+    tagline: "For regulated organizations requiring sovereign data isolation.",
+    features: [
+      "Single-Tenant Private VPC or On-Prem deployment",
+      "Zero-Data Retention cryptographic SLA",
+      "Custom fine-tuned domain models & private adapters",
+      "SOC2 Type II & HIPAA compliance attestation",
+      "Custom ERP / mainframe connector development",
+      "24/7/365 Dedicated SRE support with 15-min SLA"
+    ],
+    cta: "Talk to Enterprise Sales",
+    ctaHref: "/demo",
+    isPrimary: false,
+  }
 ];
 
 const faqs = [
-  { q: "What's the difference between an Assistant and an Agent?", a: "Assistants are 22 chat-driven specialists (HR, Sales, SEO, Legal, Finance and more). They have their own system prompts and tool catalogues, but they only respond to chat — they never take real-world action on their own. Agents are 6 (and growing) production workers that run on schedules (every 30 min, every 6 h, etc.), call real tools (ollagraph scrapes, WHOIS, AEO audits), and write to a workspace. Every action that could leave the platform — sending an email, publishing a post — is queued for your approval. You pick which Agents are read-only (advisory) vs which can write drafts. See /agents for the full list." },
-  { q: "What's actually different about OllaSuper vs generic chat tools?", a: "Two things. First, 22 Assistants with their own system prompts, files + site grounded into every chat, memory across sessions, and real tool use backed by 200M owned proxies and 4,000+ scraping actors via ollagraph. Second, 6 production Agents that run on schedules and take real actions with approval gates — outbound SDR, SEO audits, content drafting, inbox triage, pipeline coaching, deep research. Generic chat tools rent their web access and don't have the scheduled-action layer at all." },
-  { q: "Why are some Agents read-only on Free?", a: "Read-only Agents (SEO Auditor, Deep Research, Pipeline Curator) only produce reports — there's no risk surface. Action-taking Agents (Outbound SDR, Content Publisher, Inbox Triage) write to a workspace that's connected to real channels with your credentials. We gate those behind paid plans so we can offer per-workspace audit logging, approval policies, and the support layer customers actually need for action automation." },
-  { q: "What counts as a credit?", a: "1 credit = 1 LLM token. Every token in the model's output counts against your monthly credit budget, including Agent reports and chat variants you reject. We track per-generation in the History panel so you can audit. Agent tool calls (scrapes, WHOIS) are unlimited — same as Assistant tools." },
-  { q: "Do scans or uploads count against my credits?", a: "No. Crawling and file uploads are our infrastructure and are unlimited at every tier. You're only paying for the credits that hit the LLM." },
-  { q: "Which models power the Assistants and Agents?", a: "All inference is routed through OpenRouter — never Anthropic. Assistants use a mix of OpenAI GPT-4o-mini / GPT-4o / Google Gemini / Mistral Large based on task. Agents pin specific models: outbound-sdr / inbox-triage / pipeline-curator on GPT-4o-mini, content-publisher on GPT-4o, and seo-auditor + deep-research on Tongyi DeepResearch 30B A3B (purpose-built for multi-step tool chains). You don't pick. You don't tune." },
-  { q: "Do you train on my content?", a: "No. We send your prompts and selected source markdown to the LLM for inference only. We don't fine-tune on customer data and our vendors' APIs don't train on it either." },
-  { q: "Can I cancel anytime?", a: "Yes. Cancel from your billing dashboard. Your plan stays active until the end of the billing period. Billing is handled by Dodo Payments." },
-  { q: "Is OllaSuper DPDP-compliant?", a: "Yes. Designed-in. Workspace isolation, per-tenant encryption, delete-means-gone, and a published DPA on the legal page." },
+  {
+    q: "What is an AI Employee and how does it differ from traditional software?",
+    a: "An AI Employee is an autonomous agent with persistent memory, tool-calling capabilities (via Model Context Protocol), and the ability to execute multi-step business goals without continuous human prompting. Unlike simple bots, they can browse the web, query databases, draft communications, and request human approval for high-risk actions."
+  },
+  {
+    q: "How does Human-in-the-Loop approval work?",
+    a: "You define approval policies per employee or per action type. Read-only actions (research, data extraction, analysis) run autonomously. High-risk write actions (sending emails, publishing articles, updating database records, or initiating financial transactions) trigger 1-click approval cards in Slack or your OllaSuper dashboard."
+  },
+  {
+    q: "What is Model Context Protocol (MCP)?",
+    a: "MCP is the open standard for connecting AI models to external tools, databases, and APIs. OllaSuper provides 100+ native MCP servers (Salesforce, HubSpot, Stripe, PostgreSQL, Notion, GitHub) and allows you to attach your own internal private MCP servers."
+  },
+  {
+    q: "Do you train on customer proprietary data?",
+    a: "Never. OllaSuper enforces a strict Zero-Data Retention policy for model training. Customer prompts, files, and tool execution payloads are processed ephemerally in isolated sandboxes and are never used to train foundation models."
+  },
+  {
+    q: "Can I cancel or change plans anytime?",
+    a: "Yes. You can upgrade, downgrade, or cancel your subscription at any time directly from your billing dashboard with zero lock-in."
+  }
 ];
 ---
-<Layout current="pricing" title="Pricing — OllaSuper" description="One subscription. 22 chat-driven Assistants + 6 production Agents that run on schedules. Three tiers. We are Bright Data + Apify + Lindy in one bill.">
 
-  {/* HERO */}
-  <section style="padding: 48px 0 24px;">
-    <div class="qw-section">
-      <div class="qw-eyebrow qw-eyebrow-accent">Pricing · one product · three tiers</div>
-      <h1 class="qw-h-display" style="margin-top: 10px; max-width: 1080px;">
-        <span style="color: var(--ink);">22 Assistants that advise.</span><br/>
-        <span style="color: var(--accent);">6 Agents that act.</span>
-      </h1>
-      <p class="qw-body" style="max-width: 600px; margin-top: 14px; font-size: 16px;">
-        Crawling and uploads are unlimited at every tier — that's our infrastructure.
-        You only pay for the generation tokens that hit the model.
-        Agent tool calls (scrapes, WHOIS, audits) are unlimited too.
-      </p>
-      <p style="max-width: 600px; margin-top: 12px; font-size: 13px; color: var(--ink-3);">
-        New to the distinction? <a href="/agents" style="color: var(--accent);">See the 6 Agents →</a> · <a href="/experts" style="color: var(--accent);">See the 22 Assistants →</a>
-      </p>
-    </div>
-  </section>
+<Layout
+  title="Pricing & Plans — OllaSuper AI Workforce Platform"
+  description="Transparent, value-driven pricing. Deploy specialized AI employees with full observability, human oversight, and Model Context Protocol."
+  current="pricing"
+>
+  <article class="os-section" style="background: var(--warm-cream); padding-top: 64px; padding-bottom: 100px;">
+    <div class="os-container">
+      
+      {/* Header */}
+      <div class="os-section-header">
+        <div class="os-eyebrow" style="margin-bottom: var(--spacing-12);">
+          <span class="os-live-dot"></span> TRANSPARENT PRICING
+        </div>
+        <h1 class="os-h1" style="margin-bottom: var(--spacing-16);">
+          Predictable pricing for your AI workforce.
+        </h1>
+        <p class="os-lead">
+          Start free with no credit card required. Upgrade as your autonomous employee fleet expands across departments.
+        </p>
+      </div>
 
-  {/* TIERS */}
-  <section class="qw-pad">
-    <div class="qw-section">
-      <div class="qw-grid-3" style="gap: 16px;">
-        {tiers.map((t) => (
-          <div class={t.emphasis ? "qw-card-pop" : "qw-card"} style={`padding: 24px 24px 24px; position: relative; ${t.emphasis ? "border: 1px solid var(--accent-soft);" : ""}`}>
-            {t.emphasis && <div style="position: absolute; top: 12px; right: 12px; padding: 3px 9px; background: var(--accent-soft); color: var(--accent); border-radius: 999px; font-size: 11px; font-weight: 600;">Most picked</div>}
-            <div class="qw-eyebrow" style={`color: ${t.emphasis ? "var(--accent)" : "var(--ink-3)"};`}>{t.name}</div>
-            <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 12px;">
-              <span style="font-size: 40px; font-weight: 600; letter-spacing: -0.025em; color: var(--ink);">{t.price}</span>
-              <span style="font-size: 13px; color: var(--ink-3);">{t.interval}</span>
+      {/* Pricing Cards Grid */}
+      <div class="os-grid-4" style="margin-bottom: var(--spacing-80);">
+        {tiers.map((tier) => (
+          <div class={`os-card os-card-symmetric ${tier.isPrimary ? 'os-card-cream' : ''}`} style={`border: ${tier.isPrimary ? '2px solid var(--candy-pink)' : '1px solid var(--border-medium)'}; background: #ffffff; position: relative; padding: var(--spacing-32);`}>
+            
+            {tier.isPrimary && (
+              <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--candy-pink); color: var(--ink-black); font-size: var(--text-caption); font-weight: 700; padding: 3px 12px; border-radius: var(--radius-pill); text-transform: uppercase;">
+                Recommended
+              </div>
+            )}
+
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-12);">
+                <h2 class="os-h3" style="font-weight: 800; color: var(--ink-black);">{tier.name}</h2>
+                <span class="os-badge os-badge-pink" style="font-size: 10px;">{tier.badge}</span>
+              </div>
+
+              <p class="os-small" style="margin-bottom: var(--spacing-20);">
+                {tier.tagline}
+              </p>
+
+              <div style="margin-bottom: var(--spacing-24); padding-bottom: var(--spacing-20); border-bottom: 1px solid var(--border-light);">
+                <div style="font-size: 38px; font-weight: 900; color: var(--ink-black); letter-spacing: -0.03em;">
+                  {tier.price}
+                </div>
+                <div class="os-caption">{tier.interval}</div>
+              </div>
+
+              {/* Feature Checklist */}
+              <div style="margin-bottom: var(--spacing-24);">
+                <div class="os-caption" style="font-weight: 700; text-transform: uppercase; margin-bottom: 10px;">What's Included</div>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: var(--text-small); color: var(--ink-secondary);">
+                  {tier.features.map((feat) => (
+                    <li style="display: flex; align-items: flex-start; gap: 8px;">
+                      <span style="color: var(--status-green); font-weight: 700;">✓</span>
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--rule-soft);">
-              <div style="font-size: 13px; color: var(--ink-2); font-weight: 600;">{t.words}</div>
-              <div style="font-size: 12px; color: var(--ink-3); margin-top: 2px;">{t.scans}</div>
+
+            <div style="padding-top: var(--spacing-16);">
+              <a href={tier.ctaHref} class={`os-btn ${tier.isPrimary ? 'os-btn-primary' : 'os-btn-secondary'}`} style="width: 100%; padding: 12px;">
+                {tier.cta}
+              </a>
             </div>
-            <ul style="list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-direction: column; gap: 8px;">
-              {t.features.map((f) => (
-                <li style="display: flex; gap: 8px; font-size: 13px; line-height: 1.45; color: var(--ink-2);">
-                  <span style="color: var(--accent); flex-shrink: 0;">✓</span>
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-            <a href={t.ctaHref}
-               class={t.emphasis ? "qw-btn accent" : "qw-btn ghost"}
-               style="width: 100%; justify-content: center; margin-top: 24px;">
-              {t.cta} →
-            </a>
+
           </div>
         ))}
       </div>
 
-      <div style="text-align: center; margin-top: 28px; color: var(--ink-3); font-size: 12.5px;">
-        Need higher limits, SSO, or a custom workspace?
-        <a href="mailto:hello@ollasuper.com" style="color: var(--ink); border-bottom: 1px solid var(--ink-3); font-weight: 700;">Email us</a>.
-      </div>
-    </div>
-  </section>
+      {/* FAQ Section */}
+      <div style="max-width: 800px; margin: 0 auto;">
+        <h2 class="os-h2" style="text-align: center; margin-bottom: var(--spacing-40);">
+          Frequently Asked Questions
+        </h2>
 
-  {/* FAQ */}
-  <section class="qw-pad">
-    <div class="qw-section-narrow">
-      <div class="qw-eyebrow qw-eyebrow-accent">FAQ</div>
-      <h2 class="qw-h-1" style="margin-top: 8px; margin-bottom: 22px;">Common questions.</h2>
-      <div style="display: flex; flex-direction: column; gap: 8px;">
-        {faqs.map((f) => (
-          <details style="padding: 14px 18px; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px;">
-            <summary style="font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 14px;">
-              <span>{f.q}</span>
-              <span style="color: var(--ink-3); font-size: 18px; font-weight: 400;">+</span>
-            </summary>
-            <p style="margin-top: 10px; color: var(--ink-2); font-size: 13.5px; line-height: 1.6;">{f.a}</p>
-          </details>
-        ))}
+        <div style="display: flex; flex-direction: column; gap: var(--spacing-16);">
+          {faqs.map((faq) => (
+            <div class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-24);">
+              <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">
+                {faq.q}
+              </h3>
+              <p class="os-body">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
 
+    </div>
+  </article>
 </Layout>

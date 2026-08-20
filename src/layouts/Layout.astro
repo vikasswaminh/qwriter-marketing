@@ -7,14 +7,12 @@ interface Props {
   title?: string;
   description?: string;
   current?: string;
-  /** Set to false on pages where the marketing nav/footer would feel out of
-   *  place (e.g. the auth pages). */
   chrome?: boolean;
 }
 
 const {
-  title = "OllaSuper — Build Your AI Workforce",
-  description = "Deploy AI specialists across Sales, Marketing, HR, Operations, Finance, Support and Engineering from a single workspace. 80 specialists. 6 departments. Free tier.",
+  title = "OllaSuper — Your company. Powered by AI employees.",
+  description = "Deploy intelligent AI employees that research, analyze, execute and automate real business workflows with enterprise observability and human governance.",
   current,
   chrome = true,
 } = Astro.props;
@@ -39,9 +37,8 @@ const {
     <meta property="og:image" content="https://ollasuper.com/og-default.svg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="en_IN" />
 
-    {/* Twitter */}
+    {/* Twitter Card */}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -50,13 +47,13 @@ const {
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
-    {/* Perf — preload Inter Variable. One file covers all weights 100-900
-        via woff2-variations. 344 KB total (vs ~120 KB for 6 static Lato
-        weights). Self-hosted under /fonts/ so the CSS, the font, and the
-        HTML all come from the same origin — no extra DNS / TLS legs. */}
+    {/* Preload Inter Variable Font */}
     <link rel="preload" href="/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
 
-    {/* Structured data — Organization + WebSite */}
+    {/* Machine-Readable Agentic Discoverability Link */}
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="Agent Readability Spec" />
+
+    {/* Structured Data: JSON-LD */}
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@graph": [
@@ -66,8 +63,20 @@ const {
           "name": "OllaSuper",
           "url": "https://ollasuper.com",
           "logo": "https://ollasuper.com/favicon.svg",
-          "description": "AI Workforce Platform. Deploy AI specialists across Sales, Marketing, HR, Operations, Finance, Support and Engineering from a single workspace. 80 specialists. 6 departments. Multi-agent collaboration.",
-          "sameAs": []
+          "description": "AI Workforce Platform. Deploy intelligent AI employees that research, analyze, execute, and automate business workflows with full observability.",
+          "knowsAbout": ["AI Employees", "Model Context Protocol", "Autonomous Agents", "Workflow Automation"]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://ollasuper.com/#software",
+          "name": "OllaSuper AI Workforce Platform",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web, Cloud VPC",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
         },
         {
           "@type": "WebSite",
@@ -80,8 +89,9 @@ const {
     })} />
   </head>
   <body>
+    <a href="#main-content" class="os-skip-link">Skip to main content</a>
     {chrome && <Nav current={current} />}
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     {chrome && <Footer />}

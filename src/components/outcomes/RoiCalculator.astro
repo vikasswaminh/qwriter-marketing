@@ -1,0 +1,133 @@
+---
+---
+
+<section class="os-section" style="padding: 100px 0; background: var(--bg-cream-alt); border-top: 1px solid var(--border-cream); border-bottom: 1px solid var(--border-cream);">
+  <div class="os-container">
+    
+    <div class="os-section-header">
+      <div class="os-eyebrow">
+        <span class="os-live-dot"></span> QUANTIFIED BUSINESS IMPACT
+      </div>
+      <h2 class="os-h2">
+        Calculate your enterprise ROI with OllaSuper.
+      </h2>
+      <p class="os-lead">
+        See how much time and operational budget your organization can save by deploying AI employees across Sales, Marketing, Operations, and Support.
+      </p>
+    </div>
+
+    {/* Calculator Card */}
+    <div style="max-width: 960px; margin: 0 auto; background: #ffffff; border: 1px solid var(--border-medium); border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); padding: 48px;">
+      
+      <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center;">
+        
+        {/* Left: Interactive Controls */}
+        <div>
+          <div style="margin-bottom: 32px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <label for="os-team-slider" style="font-size: 15px; font-weight: 700; color: var(--ink-black);">
+                Company Team Size
+              </label>
+              <span id="os-team-val" style="font-size: 20px; font-weight: 800; color: var(--ink-black); background: var(--candy-pink-soft); padding: 4px 14px; border-radius: var(--radius-pill); border: 1px solid var(--candy-pink-border);">
+                25 People
+              </span>
+            </div>
+            
+            <input 
+              type="range" 
+              id="os-team-slider" 
+              min="5" 
+              max="250" 
+              step="5" 
+              value="25" 
+              style="width: 100%; height: 8px; border-radius: 999px; accent-color: var(--candy-pink); cursor: pointer;"
+            />
+            <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-muted); margin-top: 6px;">
+              <span>5 people (Seed)</span>
+              <span>100 people (Growth)</span>
+              <span>250+ (Enterprise)</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px; font-size: 13px; color: var(--ink-secondary);">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--status-green); font-weight: 700;">✓</span>
+              <span>Based on <strong>22.5 hours saved</strong> per employee / month</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--status-green); font-weight: 700;">✓</span>
+              <span>Calculated at standard $65/hr fully burdened knowledge worker cost</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--status-green); font-weight: 700;">✓</span>
+              <span>Includes 24/7 autonomous background task execution</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Calculated Metrics Board */}
+        <div style="background: var(--bg-cream-alt); border: 1px solid var(--border-medium); border-radius: var(--radius-lg); padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+          
+          <div>
+            <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 4px;">
+              Estimated Monthly Hours Saved
+            </div>
+            <div id="os-hours-saved" style="font-size: 38px; font-weight: 900; color: var(--ink-black); letter-spacing: -0.03em;">
+              562 hrs / mo
+            </div>
+          </div>
+
+          <div style="padding-top: 16px; border-top: 1px solid var(--border-light);">
+            <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 4px;">
+              Estimated Annual Cost Savings
+            </div>
+            <div id="os-dollar-saved" style="font-size: 38px; font-weight: 900; color: var(--status-green); letter-spacing: -0.03em;">
+              $438,750 / yr
+            </div>
+          </div>
+
+          <div style="padding-top: 16px; border-top: 1px solid var(--border-light);">
+            <a href="/signup" class="os-btn os-btn-primary" style="width: 100%; padding: 14px; font-size: 14px;">
+              Deploy Your Custom Workforce Squad →
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media (max-width: 800px) {
+    section div[style*="grid-template-columns: 1.1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+  }
+</style>
+
+<script>
+  const slider = document.getElementById('os-team-slider') as HTMLInputElement;
+  const teamVal = document.getElementById('os-team-val');
+  const hoursSaved = document.getElementById('os-hours-saved');
+  const dollarSaved = document.getElementById('os-dollar-saved');
+
+  function updateRoi() {
+    if (!slider) return;
+    const teamSize = parseInt(slider.value, 10);
+    const monthlyHours = Math.round(teamSize * 22.5);
+    const annualDollars = Math.round(monthlyHours * 12 * 65);
+
+    if (teamVal) teamVal.innerText = `${teamSize} People`;
+    if (hoursSaved) hoursSaved.innerText = `${monthlyHours.toLocaleString()} hrs / mo`;
+    if (dollarSaved) dollarSaved.innerText = `$${annualDollars.toLocaleString()} / yr`;
+  }
+
+  if (slider) {
+    slider.addEventListener('input', updateRoi);
+  }
+</script>

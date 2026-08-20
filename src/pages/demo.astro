@@ -1,0 +1,137 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import { AI_EMPLOYEES } from "~/data/employees";
+---
+
+<Layout
+  title="Book a Demo & Live Simulation — OllaSuper AI Workforce"
+  description="Experience a live demonstration of OllaSuper AI employees executing real business workflows."
+  current="demo"
+>
+  <section class="os-section" style="background: var(--warm-cream); padding-top: 64px;">
+    <div class="os-container">
+      
+      <div class="os-grid-2" style="gap: var(--spacing-48); align-items: flex-start;">
+        
+        {/* Left Info Column */}
+        <div>
+          <div class="os-eyebrow" style="margin-bottom: var(--spacing-12);">
+            <span class="os-live-dot"></span> LIVE 1:1 ARCHITECTURE DEMO
+          </div>
+          <h1 class="os-h1" style="margin-bottom: var(--spacing-20);">
+            See OllaSuper AI employees in action.
+          </h1>
+          <p class="os-lead" style="margin-bottom: var(--spacing-32);">
+            Schedule a 25-minute live technical walkthrough with an AI systems architect. We’ll simulate your company’s exact workflow using our autonomous employee fleet.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: var(--spacing-20); margin-bottom: var(--spacing-32);">
+            <div style="display: flex; gap: var(--spacing-12); align-items: flex-start;">
+              <div style="width: 36px; height: 36px; border-radius: 10px; background: #ffffff; border: 1px solid var(--border-medium); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">🎯</div>
+              <div>
+                <div class="os-h4">Custom Workflow Simulation</div>
+                <div class="os-small" style="color: var(--ink-secondary);">Watch an AI employee research, enrich leads, or reconcile transactions against your specific schema.</div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: var(--spacing-12); align-items: flex-start;">
+              <div style="width: 36px; height: 36px; border-radius: 10px; background: #ffffff; border: 1px solid var(--border-medium); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">🔌</div>
+              <div>
+                <div class="os-h4">Model Context Protocol Integration</div>
+                <div class="os-small" style="color: var(--ink-secondary);">Learn how to connect your private APIs, databases, and Salesforce/HubSpot instances securely.</div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: var(--spacing-12); align-items: flex-start;">
+              <div style="width: 36px; height: 36px; border-radius: 10px; background: #ffffff; border: 1px solid var(--border-medium); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">🛡️</div>
+              <div>
+                <div class="os-h4">Security & Governance Audit</div>
+                <div class="os-small" style="color: var(--ink-secondary);">Review our SOC2 Type II controls, Human-in-the-Loop policies, and private VPC deployment options.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-cream-alt); border: 1px solid var(--border-medium); border-radius: var(--radius-lg); padding: var(--spacing-20);">
+            <div class="os-caption" style="font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">Available AI Employees for Simulation</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              {AI_EMPLOYEES.map((e) => (
+                <span class="os-badge os-badge-pink" style="font-size: var(--text-caption);">{e.avatarIcon} {e.name}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Right Form Card */}
+        <div class="os-card" style="background: #ffffff; border: 1px solid var(--border-medium); border-radius: var(--radius-xl); padding: var(--spacing-40); box-shadow: var(--shadow-lg);">
+          <h2 class="os-h3" style="margin-bottom: var(--spacing-8);">
+            Request a Technical Demo
+          </h2>
+          <p class="os-small" style="color: var(--ink-muted); margin-bottom: var(--spacing-24);">
+            Fill out your details to receive an instant calendar invite.
+          </p>
+
+          <form id="os-demo-form" style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <label for="name" style="display: block; font-size: 13px; font-weight: 600; color: var(--ink-black); margin-bottom: 6px;">Work Email *</label>
+              <input type="email" id="email" required placeholder="alex@company.com" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 14px; background: var(--bg-cream-alt);" />
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div>
+                <label for="first_name" style="display: block; font-size: 13px; font-weight: 600; color: var(--ink-black); margin-bottom: 6px;">First Name *</label>
+                <input type="text" id="first_name" required placeholder="Alex" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 14px; background: var(--bg-cream-alt);" />
+              </div>
+              <div>
+                <label for="last_name" style="display: block; font-size: 13px; font-weight: 600; color: var(--ink-black); margin-bottom: 6px;">Last Name *</label>
+                <input type="text" id="last_name" required placeholder="Rivera" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 14px; background: var(--bg-cream-alt);" />
+              </div>
+            </div>
+
+            <div>
+              <label for="company" style="display: block; font-size: 13px; font-weight: 600; color: var(--ink-black); margin-bottom: 6px;">Company Name *</label>
+              <input type="text" id="company" required placeholder="Acme Global Inc." style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 14px; background: var(--bg-cream-alt);" />
+            </div>
+
+            <div>
+              <label for="use_case" style="display: block; font-size: 13px; font-weight: 600; color: var(--ink-black); margin-bottom: 6px;">Primary Workflow of Interest</label>
+              <select id="use_case" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 14px; background: var(--bg-cream-alt);">
+                <option value="research">Market & Competitor Research</option>
+                <option value="sales">Autonomous Outbound SDR & Pipeline</option>
+                <option value="marketing">Technical Content & SEO Strategy</option>
+                <option value="support">Tier-1/2 Technical Customer Support</option>
+                <option value="operations">Financial Reconciliation & BizOps</option>
+                <option value="custom">Custom Enterprise MCP Fleet</option>
+              </select>
+            </div>
+
+            <button type="submit" class="os-btn os-btn-primary" style="padding: 14px; font-size: 15px; margin-top: 8px;">
+              Schedule Live Technical Walkthrough →
+            </button>
+
+            <div id="os-demo-success" style="display: none; padding: 12px; background: var(--status-green-bg); color: var(--status-green); border: 1px solid rgba(22, 163, 74, 0.3); border-radius: 8px; font-size: 13px; text-align: center; font-weight: 600;">
+              ✓ Demo request received! An invitation has been sent to your work email.
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('os-demo-form');
+  const success = document.getElementById('os-demo-success');
+
+  if (form && success) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      success.style.display = 'block';
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      if (submitBtn) {
+        submitBtn.style.display = 'none';
+      }
+    });
+  }
+</script>

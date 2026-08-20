@@ -1,0 +1,106 @@
+---
+---
+
+<section class="os-section" style="padding: 100px 0; background: #0c0f17; color: #ffffff; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b;">
+  <div class="os-container">
+    
+    <div class="os-section-header" style="color: #ffffff;">
+      <div class="os-eyebrow" style="color: #38bdf8;">
+        <span class="os-live-dot" style="background: #38bdf8; box-shadow: 0 0 8px #38bdf8;"></span> OBSERVABILITY & GOVERNANCE
+      </div>
+      <h2 class="os-h2" style="color: #ffffff;">
+        See everything your AI employees do in real time.
+      </h2>
+      <p class="os-lead" style="color: #94a3b8;">
+        Deterministic execution graphs, token cost audits, and human-in-the-loop sign-off gates provide enterprise-grade peace of mind.
+      </p>
+    </div>
+
+    {/* Live Telemetry Metrics Strip */}
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px;">
+      <div style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 20px; text-align: center;">
+        <div style="font-size: 32px; font-weight: 800; color: #ffffff; margin-bottom: 4px;">24</div>
+        <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em;">AI Employees Active</div>
+      </div>
+      <div style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 20px; text-align: center;">
+        <div style="font-size: 32px; font-weight: 800; color: #4ade80; margin-bottom: 4px;">1,429</div>
+        <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em;">Tasks Completed Today</div>
+      </div>
+      <div style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 20px; text-align: center;">
+        <div style="font-size: 32px; font-weight: 800; color: var(--candy-pink); margin-bottom: 4px;">98.2%</div>
+        <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em;">Autonomous Success Rate</div>
+      </div>
+      <div style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 20px; text-align: center;">
+        <div style="font-size: 32px; font-weight: 800; color: #38bdf8; margin-bottom: 4px;">2,850 hrs</div>
+        <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em;">Human Time Saved</div>
+      </div>
+    </div>
+
+    {/* Execution Trace Timeline Visualizer */}
+    <div style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-xl); padding: 32px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #1e293b;">
+        <div>
+          <h3 style="font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Live Execution Trace</h3>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: #64748b;">Session ID: sess_9481ad • Agent: Research Analyst v2 • Runtime: 1.4s</div>
+        </div>
+        <span class="os-badge os-badge-green" style="background: rgba(22, 163, 74, 0.2); color: #4ade80;">
+          Audit Trail Verified
+        </span>
+      </div>
+
+      {/* Trace Timeline Steps */}
+      <div style="display: flex; flex-direction: column; gap: 14px; font-family: var(--font-mono); font-size: 13px;">
+        
+        <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #38bdf8;">
+          <span style="color: #64748b; font-size: 11px;">00:00.00</span>
+          <span style="color: #38bdf8; font-weight: 600;">AGENT_STARTED</span>
+          <span style="color: #cbd5e1;">Initialized context memory & loaded brand guidelines</span>
+          <span style="margin-left: auto; color: #64748b; font-size: 11px;">+12ms</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #a855f7;">
+          <span style="color: #64748b; font-size: 11px;">00:00.12</span>
+          <span style="color: #a855f7; font-weight: 600;">TOOL_SELECT</span>
+          <span style="color: #cbd5e1;">Invoked tool 'mcp_web_scrape' targeting domain cluster</span>
+          <span style="margin-left: auto; color: #64748b; font-size: 11px;">+280ms</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #eab308;">
+          <span style="color: #64748b; font-size: 11px;">00:00.40</span>
+          <span style="color: #eab308; font-weight: 600;">DATA_COLLECTED</span>
+          <span style="color: #cbd5e1;">Extracted 118 records; PII scrubber redacted 4 emails</span>
+          <span style="margin-left: auto; color: #64748b; font-size: 11px;">+410ms</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid var(--candy-pink);">
+          <span style="color: #64748b; font-size: 11px;">00:00.81</span>
+          <span style="color: var(--candy-pink); font-weight: 600;">DECISION_MADE</span>
+          <span style="color: #cbd5e1;">Filtered top 25 high-confidence entities matching criteria</span>
+          <span style="margin-left: auto; color: #64748b; font-size: 11px;">+180ms</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #4ade80;">
+          <span style="color: #64748b; font-size: 11px;">00:00.99</span>
+          <span style="color: #4ade80; font-weight: 600;">ACTION_PERFORMED</span>
+          <span style="color: #cbd5e1;">Synchronized structured dataset into Notion & Salesforce</span>
+          <span style="margin-left: auto; color: #4ade80; font-weight: 700; font-size: 11px;">TOTAL: 1.4s</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media (max-width: 900px) {
+    section div[style*="grid-template-columns: repeat(4, 1fr)"] {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+  @media (max-width: 500px) {
+    section div[style*="grid-template-columns: repeat(4, 1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

@@ -31,77 +31,80 @@ const agentSteps = [
 <Layout current="how" title="How OllaSuper Works — Assistants + Agents" description="22 chat-driven Assistants. 6 scheduled Agents. 200M proxies. 4,000+ tools. Memory across sessions. Approval gates on every outbound action.">
 
   {/* HERO */}
-  <section style="position: relative; padding: 56px 0 32px; overflow: hidden;">
+  <section class="os-section" style="position: relative; overflow: hidden; background: linear-gradient(180deg, var(--warm-cream) 0%, #fffbf2 100%);">
     <div class="qw-hero-bg"></div>
-    <div class="qw-section" style="position: relative;">
-      <div class="qw-eyebrow qw-eyebrow-accent">How it works</div>
-      <h1 class="qw-h-display" style="margin-top: 10px; max-width: 1000px;">
-        Two primitives.<br/><span style="color: var(--ink-3);">One workforce.</span>
+    <div class="os-container" style="position: relative; text-align: center;">
+      <div class="os-eyebrow" style="margin-bottom: var(--spacing-24);">
+        <span class="os-badge os-badge-pink" style="padding: 4px 12px;">How it works</span>
+      </div>
+      <h1 class="os-display" style="margin-bottom: var(--spacing-24); max-width: 1000px; margin-inline: auto;">
+        Two primitives.<br/><span style="color: var(--ink-secondary);">One workforce.</span>
       </h1>
-      <p class="qw-body" style="max-width: 700px; margin-top: 18px; font-size: 16px;">
-        OllaSuper isn't 19 tools wired together. It's <span style="color: var(--ink); font-weight: 600;">22 chat-driven Assistants</span> that advise,
-        and <span style="color: var(--ink); font-weight: 600;">6 scheduled Agents</span> that act with your approval — both running on the same workspace, files, and memory.
+      <p class="os-lead" style="max-width: 700px; margin-bottom: var(--spacing-48); margin-inline: auto;">
+        OllaSuper isn't 19 tools wired together. It's <span style="color: var(--ink-black); font-weight: 600;">22 chat-driven Assistants</span> that advise,
+        and <span style="color: var(--ink-black); font-weight: 600;">6 scheduled Agents</span> that act with your approval — both running on the same workspace, files, and memory.
       </p>
-      <div style="margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap;">
-        <a href="#experts-flow" class="qw-btn ghost" style="padding: 8px 14px; font-size: 13px;">○ How Assistants work</a>
-        <a href="#agents-flow" class="qw-btn ghost" style="padding: 8px 14px; font-size: 13px;">⚡ How Agents work</a>
+      <div style="display: flex; gap: var(--spacing-16); justify-content: center; flex-wrap: wrap;">
+        <a href="#experts-flow" class="os-btn os-btn-secondary" style="padding: 12px 20px; font-size: var(--text-small);">○ How Assistants work</a>
+        <a href="#agents-flow" class="os-btn os-btn-secondary" style="padding: 12px 20px; font-size: var(--text-small);">⚡ How Agents work</a>
       </div>
     </div>
   </section>
 
   {/* EXPERTS FLOW — 5 stages */}
-  <section id="experts-flow" style="border-top: 1px solid var(--rule-soft);">
-    <div class="qw-section qw-pad">
-      <div style="padding-bottom: 24px; border-bottom: 2px solid var(--ink); margin-bottom: 24px;">
-        <div class="qw-eyebrow qw-eyebrow-accent">○ Assistants · chat-driven · advisory only</div>
-        <h2 class="qw-h-1" style="margin-top: 8px;">The 22 Assistants — pick, ground, ask, ship.</h2>
-        <p style="margin-top: 10px; font-size: 14px; color: var(--ink-3); max-width: 620px;">
+  <section id="experts-flow" class="os-section" style="border-top: 1px solid var(--border-light); background: #ffffff;">
+    <div class="os-container">
+      <div class="os-section-header" style="border-bottom: 2px solid var(--border-medium); padding-bottom: var(--spacing-24); margin-bottom: var(--spacing-32); text-align: left; align-items: flex-start; max-width: 100%; margin-inline: 0;">
+        <div class="os-eyebrow">○ Assistants · chat-driven · advisory only</div>
+        <h2 class="os-h2">The 22 Assistants — pick, ground, ask, ship.</h2>
+        <p class="os-lead" style="max-width: 620px;">
           The default chat surface. 22 Assistants across People, GTM, Ops, Data, Build, and Personal.
           They draft, audit, advise — they never send a real email or modify a real system on their own.
         </p>
       </div>
       {expertSteps.map(s => (
-        <div class="qw-split-bias-r" style="padding: 32px 0; border-bottom: 1px solid var(--rule-soft);">
+        <div class="os-grid-2" style="padding: var(--spacing-32) 0; border-bottom: 1px solid var(--border-light); align-items: flex-start;">
           <div>
-            <div style="display: inline-flex; align-items: center; gap: 12px;">
-              <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-family: var(--font-mono); font-weight: 600; font-size: 11px;">{s.n}</span>
-              <span style="font-size: 12px; color: var(--ink-3); font-weight: 500;">Step {s.n}</span>
+            <div style="display: inline-flex; align-items: center; gap: var(--spacing-12);">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; background: rgba(255, 131, 218, 0.15); color: var(--candy-pink); font-family: var(--font-mono); font-weight: 700; font-size: var(--text-caption);">{s.n}</span>
+              <span class="os-caption" style="font-weight: 600;">Step {s.n}</span>
             </div>
-            <div style="margin-top: 12px; font-size: 12.5px; color: var(--ink-3); line-height: 1.5;">{s.side}</div>
+            <div class="os-small" style="margin-top: var(--spacing-12); font-weight: 600;">{s.side}</div>
           </div>
           <div>
-            <h2 class="qw-h-2" style="margin: 0;">{s.t}</h2>
-            <p class="qw-body" style="margin-top: 10px; font-size: 15px; max-width: 720px;">{s.b}</p>
+            <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">{s.t}</h3>
+            <p class="os-small" style="max-width: 720px;">{s.b}</p>
+          </div>
+        </div>
+      ))}
+   <section id="agents-flow" class="os-section" style="border-top: 1px solid var(--border-light); background: var(--warm-cream);">
+    <div class="os-container">
+      <div class="os-section-header" style="border-bottom: 2px solid var(--border-medium); padding-bottom: var(--spacing-24); margin-bottom: var(--spacing-32); text-align: left; align-items: flex-start; max-width: 100%; margin-inline: 0;">
+        <div class="os-eyebrow" style="color: #d97706;">⚡ Agents · scheduled · action-taking · approval-gated</div>
+        <h2 class="os-h2">The 6 Agents — schedule, wire, watch, approve, hand off.</h2>
+        <p class="os-lead" style="max-width: 640px;">
+          Agents go where Assistants can't — they run on cron-style schedules, call real tools (ollagraph + memory + filesystem),
+          write to a workspace you can read, and queue every outbound action for your approval before it leaves the platform.
+          See <a href="/agents" style="color: var(--candy-pink); font-weight: 600;">/agents</a> for the full list.
+        </p>
+      </div>
+      {agentSteps.map(s => (
+        <div class="os-grid-2" style="padding: var(--spacing-32) 0; border-bottom: 1px solid var(--border-light); align-items: flex-start;">
+          <div>
+            <div style="display: inline-flex; align-items: center; gap: var(--spacing-12);">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; background: rgba(217, 119, 6, 0.1); color: #d97706; font-family: var(--font-mono); font-weight: 700; font-size: var(--text-caption);">{s.n}</span>
+              <span class="os-caption" style="font-weight: 600;">Step {s.n}</span>
+            </div>
+            <div class="os-small" style="margin-top: var(--spacing-12); font-weight: 600;">{s.side}</div>
+          </div>
+          <div>
+            <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">{s.t}</h3>
+            <p class="os-small" style="max-width: 720px;">{s.b}</p>
           </div>
         </div>
       ))}
     </div>
-  </section>
-
-  {/* AGENTS FLOW — 5 stages */}
-  <section id="agents-flow" style="border-top: 1px solid var(--rule-soft); background: var(--bg-elev);">
-    <div class="qw-section qw-pad">
-      <div style="padding-bottom: 24px; border-bottom: 2px solid var(--ink); margin-bottom: 24px;">
-        <div class="qw-eyebrow qw-eyebrow-accent" style="color: #b45309;">⚡ Agents · scheduled · action-taking · approval-gated</div>
-        <h2 class="qw-h-1" style="margin-top: 8px;">The 6 Agents — schedule, wire, watch, approve, hand off.</h2>
-        <p style="margin-top: 10px; font-size: 14px; color: var(--ink-3); max-width: 640px;">
-          Agents go where Assistants can't — they run on cron-style schedules, call real tools (ollagraph + memory + filesystem),
-          write to a workspace you can read, and queue every outbound action for your approval before it leaves the platform.
-          See <a href="/agents" style="color: var(--accent);">/agents</a> for the full list.
-        </p>
-      </div>
-      {agentSteps.map(s => (
-        <div class="qw-split-bias-r" style="padding: 32px 0; border-bottom: 1px solid var(--rule-soft);">
-          <div>
-            <div style="display: inline-flex; align-items: center; gap: 12px;">
-              <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; background: #facc1521; color: #b45309; font-family: var(--font-mono); font-weight: 600; font-size: 11px;">{s.n}</span>
-              <span style="font-size: 12px; color: var(--ink-3); font-weight: 500;">Step {s.n}</span>
-            </div>
-            <div style="margin-top: 12px; font-size: 12.5px; color: var(--ink-3); line-height: 1.5;">{s.side}</div>
-          </div>
-          <div>
-            <h2 class="qw-h-2" style="margin: 0;">{s.t}</h2>
-            <p class="qw-body" style="margin-top: 10px; font-size: 15px; max-width: 720px;">{s.b}</p>
+  </section>p>
           </div>
         </div>
       ))}
@@ -109,31 +112,31 @@ const agentSteps = [
   </section>
 
   {/* INTELLIGENCE ROUTING — model-agnostic */}
-  <section style="background: var(--bg-elev); border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);">
-    <div class="qw-section qw-pad">
-      <div class="qw-split-bias-r">
+  <section class="os-section" style="background: var(--bg-cream-alt); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+    <div class="os-container">
+      <div class="os-grid-2" style="align-items: center;">
         <div>
-          <div class="qw-eyebrow qw-eyebrow-accent">Intelligence routing</div>
-          <h2 class="qw-h-1" style="margin-top: 10px;">
+          <div class="os-eyebrow">Intelligence routing</div>
+          <h2 class="os-h2">
             Right model.<br/>Every task.
           </h2>
-          <p class="qw-body" style="margin-top: 14px; max-width: 420px;">
+          <p class="os-lead" style="max-width: 420px;">
             All inference is routed through OpenRouter — never Anthropic.
             Assistants mix OpenAI, Gemini, and Mistral based on the task.
             Agents pin specific models (Tongyi DeepResearch for the SEO and research workloads; GPT-4o-mini and GPT-4o for the rest).
             You don't pick. You don't tune.
           </p>
         </div>
-        <div class="qw-grid-3" style="gap: 12px;">
+        <div class="os-grid-1" style="gap: var(--spacing-16);">
           {[
             {n:"Long-form",  v:"Drafting + code",      w:"Frontier model tuned for sustained output and structured generation."},
             {n:"Reasoning",  v:"Editing + analysis",   w:"Frontier model tuned for long-context reasoning and judgment."},
             {n:"Research",   v:"Vision + summarisation", w:"Frontier model tuned for multimodal research and grounded summaries."},
           ].map((m) => (
-            <div class="qw-card" style="padding: 20px 22px;">
-              <div style="font-size: 11px; color: var(--ink-3); font-weight: 600;">{m.n}</div>
-              <div style="margin-top: 8px; font-weight: 600; font-size: 17px; letter-spacing: -0.018em; color: var(--ink);">{m.v}</div>
-              <div style="margin-top: 10px; font-size: 12.5px; color: var(--ink-3); line-height: 1.55;">{m.w}</div>
+            <div class="os-card os-card-cream os-card-symmetric" style="padding: var(--spacing-24);">
+              <div class="os-caption" style="font-weight: 700; text-transform: uppercase;">{m.n}</div>
+              <div class="os-h4" style="margin-top: var(--spacing-8);">{m.v}</div>
+              <div class="os-small" style="margin-top: var(--spacing-12);">{m.w}</div>
             </div>
           ))}
         </div>
@@ -142,26 +145,24 @@ const agentSteps = [
   </section>
 
   {/* SECURITY — 4-col soft cards */}
-  <section class="qw-pad">
-    <div class="qw-section">
-      <div style="display: flex; align-items: end; justify-content: space-between; margin-bottom: 22px;">
-        <div>
-          <div class="qw-eyebrow qw-eyebrow-accent">Your data</div>
-          <h2 class="qw-h-1" style="margin-top: 8px;">
-            Your files don't train anyone's model. <span style="color: var(--ink-3);">Including ours.</span>
-          </h2>
-        </div>
+  <section class="os-section">
+    <div class="os-container">
+      <div class="os-section-header" style="align-items: flex-start; text-align: left; margin-bottom: var(--spacing-32); max-width: 100%; margin-inline: 0;">
+        <div class="os-eyebrow">Your data</div>
+        <h2 class="os-h2">
+          Your files don't train anyone's model. <span style="color: var(--ink-secondary);">Including ours.</span>
+        </h2>
       </div>
-      <div class="qw-bento qw-grid-4">
+      <div class="os-grid-4">
         {[
           {t:"DPDP-aligned",            d:"India's Digital Personal Data Protection Act — designed-in, not bolted on."},
           {t:"Per-workspace isolation", d:"Files and chats scoped to your workspace. Nobody else sees them."},
           {t:"No training on your data",d:"Not our vendors'. Not ours. Inference only, per contract."},
           {t:"Delete = gone",           d:"Hit delete and it's purged from storage and the LLM's logs within 30 days."},
         ].map(c => (
-          <div class="qw-bento-cell" style="padding: 18px;">
-            <div style="font-weight: 600; font-size: 14.5px; letter-spacing: -0.012em; color: var(--ink);">{c.t}</div>
-            <p style="margin-top: 6px; font-size: 12.5px; line-height: 1.55; color: var(--ink-3);">{c.d}</p>
+          <div class="os-card os-card-cream os-card-symmetric" style="padding: var(--spacing-24);">
+            <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">{c.t}</h3>
+            <p class="os-small">{c.d}</p>
           </div>
         ))}
       </div>
@@ -169,19 +170,19 @@ const agentSteps = [
   </section>
 
   {/* CTA — soft card */}
-  <section class="qw-pad">
-    <div class="qw-section">
-      <div class="qw-card-pop" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 26px 28px;">
-        <div style="display: flex; align-items: center; gap: 18px;">
-          <Logo size={40} />
+  <section class="os-section" style="padding-top: 0;">
+    <div class="os-container">
+      <div class="os-card os-card-cream os-card-symmetric" style="display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-24); padding: var(--spacing-32) var(--spacing-48); flex-direction: row; border: 1px solid var(--border-medium); flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: var(--spacing-24); flex-wrap: wrap;">
+          <Logo size={48} />
           <div>
-            <div style="font-weight: 600; font-size: 22px; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink);">
-              Open a chat. Pick an Assistant or an Agent. <span style="color: var(--accent);">Ship the work.</span>
-            </div>
-            <div style="margin-top: 3px; font-size: 13px; color: var(--ink-3);">No card · Free tier · 30 ○ Assistants + 6 ⚡ Agents · 200M proxies · 4,000+ tools</div>
+            <h2 class="os-h2" style="margin-bottom: 4px;">
+              Open a chat. Pick an Assistant or an Agent. <span style="color: var(--candy-pink);">Ship the work.</span>
+            </h2>
+            <div class="os-small" style="font-weight: 500;">No card · Free tier · 30 ○ Assistants + 6 ⚡ Agents · 200M proxies · 4,000+ tools</div>
           </div>
         </div>
-        <a href="/signup" class="qw-btn accent">Start free →</a>
+        <a href="/signup" class="os-btn os-btn-primary" style="white-space: nowrap;">Start free →</a>
       </div>
     </div>
   </section>

@@ -1,0 +1,29 @@
+# OllaSuper — AI Workforce Platform
+> Your company. Powered by AI employees.
+
+OllaSuper is an enterprise AI Workforce Platform that enables businesses to deploy autonomous AI employees across Market Research, Outbound Sales, Technical Marketing, Tier-2 Customer Support, and Business Operations.
+
+## Core Capabilities
+- **Autonomous AI Employees**: Specialized personas with persistent memory, tool-calling capabilities, and deterministic execution pipelines.
+- **Model Context Protocol (MCP)**: Universal connector framework supporting 100+ integrations (Salesforce, HubSpot, Stripe, PostgreSQL, Notion, GitHub, Slack).
+- **Human-in-the-Loop Governance**: Granular policy gates requiring 1-click human authorization for high-risk write actions.
+- **Deep Observability**: Millisecond-level flamegraph tracing, token cost accounting, and PII redaction.
+- **Deterministic Evaluation**: Golden dataset benchmarking with 250+ assertions before production deployment.
+
+## Available AI Employees
+- **Research Employee** (`/ai-employees/research`): Autonomous Market & Competitor Intelligence Analyst.
+- **Sales Employee** (`/ai-employees/sales`): Autonomous Outbound SDR & Pipeline Specialist.
+- **Marketing Employee** (`/ai-employees/marketing`): Autonomous Content Strategist & Growth Operator.
+- **Customer Support Employee** (`/ai-employees/customer-support`): Autonomous Tier-1/2 Technical Support Specialist.
+- **Operations Employee** (`/ai-employees/operations`): Autonomous Business Operations & Ledger Orchestrator.
+- **Custom Employee** (`/ai-employees/custom`): User-defined autonomous agent with private MCP server support.
+
+## Canonical Endpoints & URLs
+- Home: https://ollasuper.com/
+- AI Employees: https://ollasuper.com/ai-employees
+- Platform Architecture: https://ollasuper.com/platform
+- Solutions: https://ollasuper.com/solutions
+- Pricing: https://ollasuper.com/pricing
+- Resources & Guides: https://ollasuper.com/resources
+- Book a Demo: https://ollasuper.com/demo
+- Full Agentic Specification: https://ollasuper.com/llms-full.txt

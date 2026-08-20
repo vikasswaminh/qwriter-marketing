@@ -1,0 +1,85 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import { BLOG_POSTS } from "~/data/blog";
+---
+
+<Layout
+  title="Blog & Engineering Insights — OllaSuper AI Workforce"
+  description="Explore technical deep dives, architecture guides, evaluation benchmarks, and customer stories on building autonomous AI employees."
+  current="blog"
+>
+  <article class="os-section" style="background: var(--warm-cream); padding-top: 64px; padding-bottom: 100px; min-height: 70vh;">
+    <div class="os-container">
+      
+      {/* Header */}
+      <div class="os-section-header" style="text-align: left; margin-bottom: var(--spacing-48); max-width: 860px; margin-inline: 0;">
+        <div class="os-eyebrow" style="margin-bottom: var(--spacing-12);">
+          <span class="os-live-dot"></span> THE OLLASUPER JOURNAL
+        </div>
+        <h1 class="os-h1" style="margin-bottom: var(--spacing-16);">
+          Engineering, architecture, and the future of AI work.
+        </h1>
+        <p class="os-lead">
+          Technical guides, Model Context Protocol implementations, agent evaluation benchmarks, and case studies published regularly.
+        </p>
+      </div>
+
+      {/* When Posts Exist */}
+      {BLOG_POSTS.length > 0 ? (
+        <>
+          <div style="display: flex; flex-direction: column; gap: var(--spacing-48);">
+            {BLOG_POSTS.map((post) => (
+              <article class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-48); box-shadow: var(--shadow-md);">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-16); flex-wrap: wrap; gap: 12px;">
+                  <div style="display: flex; gap: 8px; align-items: center;">
+                    <span class="os-badge" style="background: var(--bg-cream-alt); border: 1px solid var(--border-light); color: var(--ink-secondary);">
+                      {post.category}
+                    </span>
+                  </div>
+                  <span class="os-small">{post.publishDate} • {post.readTime}</span>
+                </div>
+
+                <h2 class="os-h2" style="margin-bottom: var(--spacing-16);">
+                  <a href={`/blog/${post.slug}`} style="color: inherit; text-decoration: none;">
+                    {post.title}
+                  </a>
+                </h2>
+
+                <p class="os-body" style="max-width: 860px; margin-bottom: var(--spacing-24);">
+                  {post.description}
+                </p>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; border-top: 1px solid var(--border-light); padding-top: var(--spacing-24);">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 34px; height: 34px; border-radius: 50%; background: var(--candy-pink-soft); display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                      {post.author.avatar}
+                    </div>
+                    <div>
+                      <div class="os-small" style="font-weight: 700; color: var(--ink-black);">{post.author.name}</div>
+                      <div class="os-caption">{post.author.role}</div>
+                    </div>
+                  </div>
+
+                  <a href={`/blog/${post.slug}`} class="os-btn os-btn-primary" style="padding: 10px 22px; font-size: var(--text-small);">
+                    Read Full Guide →
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </>
+      ) : (
+        <div class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-64) var(--spacing-32); text-align: center; max-width: 680px; margin: 40px auto 0; box-shadow: var(--shadow-sm);">
+          <div style="width: 56px; height: 56px; border-radius: 16px; background: var(--candy-pink-soft); border: 1px solid var(--candy-pink-border); display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 20px;">
+            ✍️
+          </div>
+          <h2 class="os-h3" style="margin-bottom: var(--spacing-12);">Articles Coming Soon</h2>
+          <p class="os-body" style="margin-bottom: var(--spacing-32); max-width: 480px; margin-left: auto; margin-right: auto;">
+            We are preparing our daily engineering deep dives, architecture blueprints, and AI workforce case studies.
+          </p>
+        </div>
+      )}
+
+    </div>
+  </article>
+</Layout>

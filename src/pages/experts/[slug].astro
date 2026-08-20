@@ -48,41 +48,41 @@ const structuredData = {
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
   {/* BREADCRUMB */}
-  <div style="border-bottom: 1px solid var(--rule-soft);">
-    <div class="qw-section" style="padding: 12px 0; font-size: 12px; color: var(--ink-3);">
-      <a href="/" style="color: var(--ink-3);">Home</a>
-      <span style="margin: 0 6px; color: var(--rule-2);">/</span>
-      <a href="/experts" style="color: var(--ink-3);">Experts</a>
-      <span style="margin: 0 6px; color: var(--rule-2);">/</span>
-      <span style="color: var(--ink); font-weight: 600;">{expert.name}</span>
+  <div style="border-bottom: 1px solid var(--border-light); background: #ffffff;">
+    <div class="os-container os-small" style="padding: var(--spacing-16) 0; font-weight: 500;">
+      <a href="/" style="color: var(--ink-secondary); text-decoration: none;">Home</a>
+      <span style="margin: 0 var(--spacing-8); color: var(--border-medium);">/</span>
+      <a href="/experts" style="color: var(--ink-secondary); text-decoration: none;">Experts</a>
+      <span style="margin: 0 var(--spacing-8); color: var(--border-medium);">/</span>
+      <span style="color: var(--ink-black); font-weight: 700;">{expert.name}</span>
     </div>
   </div>
 
   {/* HERO */}
-  <section style="position: relative; padding: 56px 0 40px; overflow: hidden;">
+  <section class="os-section" style="position: relative; overflow: hidden; background: linear-gradient(180deg, var(--warm-cream) 0%, #fffbf2 100%);">
     <div class="qw-hero-bg"></div>
-    <div class="qw-section" style="position: relative;">
-      <div class="qw-split-wide">
+    <div class="os-container" style="position: relative;">
+      <div class="os-grid-2" style="align-items: center;">
         <div>
-          <div style="display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px 5px 8px; background: var(--paper); border: 1px solid var(--rule-soft); border-radius: 999px; font-size: 12px; font-weight: 500; color: var(--ink-3); margin-bottom: 18px; box-shadow: var(--shadow-xs);">
-            <span style={`width: 7px; height: 7px; border-radius: 999px; background: ${expert.color};`}></span>
-            {dept.label} <span style="color: var(--rule-2);">·</span> Expert
+          <div class="os-small" style="display: inline-flex; align-items: center; gap: var(--spacing-8); padding: 6px 12px; background: #ffffff; border: 1px solid var(--border-medium); border-radius: 999px; font-weight: 600; color: var(--ink-secondary); margin-bottom: var(--spacing-24); box-shadow: var(--shadow-sm);">
+            <span style={`width: 8px; height: 8px; border-radius: 999px; background: ${expert.color};`}></span>
+            {dept.label} <span style="color: var(--border-medium);">·</span> Expert
           </div>
-          <h1 class="qw-h-display">{expert.name}</h1>
-          <p class="qw-body" style="max-width: 540px; margin-top: 18px; font-size: 17px;">
+          <h1 class="os-display">{expert.name}</h1>
+          <p class="os-lead" style="max-width: 540px; margin-top: var(--spacing-24);">
             {expert.oneliner}
           </p>
-          <div style="display: flex; gap: 10px; margin-top: 26px; flex-wrap: wrap;">
-            <a href="/signup" class="qw-btn accent">
+          <div style="display: flex; gap: var(--spacing-16); margin-top: var(--spacing-32); flex-wrap: wrap;">
+            <a href="/signup" class="os-btn os-btn-primary">
               Hire {expert.short} — Start free →
             </a>
-            <a href="/experts" class="qw-btn ghost">All 80 agents</a>
+            <a href="/experts" class="os-btn os-btn-secondary">All 80 agents</a>
           </div>
         </div>
 
         <div style="display: flex; align-items: center; justify-content: center; position: relative;">
           <div style={`position: absolute; inset: -24px; background: radial-gradient(60% 60% at 50% 50%, ${expert.color}22, transparent 70%); filter: blur(24px);`}></div>
-          <div class="qw-card-pop" style="position: relative; padding: 32px; background: var(--grad-card);">
+          <div class="os-card os-card-cream os-card-symmetric" style="position: relative; padding: var(--spacing-48); border: 1px solid var(--border-medium);">
             <ExpertGlyph slug={expert.slug} color={expert.color} size={200} flat={true} />
           </div>
         </div>
@@ -91,26 +91,28 @@ const structuredData = {
   </section>
 
   {/* STARTER PROMPTS */}
-  <section style="background: var(--bg-elev); border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);">
-    <div class="qw-section qw-pad">
-      <div style="display: flex; align-items: end; justify-content: space-between; margin-bottom: 22px;">
-        <div>
-          <div class="qw-eyebrow qw-eyebrow-accent">Starter prompts</div>
-          <h2 class="qw-h-1" style="margin-top: 8px;">4 ways to start with {expert.short}.</h2>
+  <section class="os-section" style="background: var(--bg-cream-alt); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+    <div class="os-container">
+      <div class="os-section-header" style="align-items: flex-start; text-align: left;">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; width: 100%; gap: 24px;">
+          <div>
+            <div class="os-eyebrow">Starter prompts</div>
+            <h2 class="os-h2">4 ways to start with {expert.short}.</h2>
+          </div>
+          <span style="font-size: 13px; color: var(--ink-secondary); font-weight: 500;">Click any → opens in app with prompt pre-loaded</span>
         </div>
-        <span style="font-size: 12.5px; color: var(--ink-3);">Click any → opens in app with prompt pre-loaded</span>
       </div>
-      <div class="qw-bento qw-grid-4">
+      <div class="os-grid-4">
         {expert.starters.map(c => (
-          <a href={promptUrl(c.prompt)} class="qw-bento-cell" style="display: flex; flex-direction: column; padding: 18px; color: var(--ink);">
+          <a href={promptUrl(c.prompt)} class="os-card os-card-cream os-card-symmetric" style="display: flex; flex-direction: column; padding: 24px; color: var(--ink-black); text-decoration: none; border: 1px solid var(--border-medium);">
             <div style="display: flex; justify-content: space-between; gap: 8px; align-items: flex-start;">
-              <div style="font-weight: 600; font-size: 14.5px; letter-spacing: -0.012em; line-height: 1.25; color: var(--ink);">{c.title}</div>
-              <span style={`color: ${expert.color}; font-weight: 600; font-size: 14px;`}>→</span>
+              <div style="font-weight: 700; font-size: 15px; letter-spacing: -0.012em; line-height: 1.3; color: var(--ink-black);">{c.title}</div>
+              <span style={`color: ${expert.color}; font-weight: 700; font-size: 16px;`}>→</span>
             </div>
-            <div style="margin-top: 6px; font-size: 12px; color: var(--ink-3); line-height: 1.45;">{c.tagline}</div>
-            <details style="margin-top: 14px;">
-              <summary style="cursor: pointer; list-style: none; font-size: 11.5px; font-weight: 500; color: var(--ink-3);">▸ Preview prompt</summary>
-              <div style="margin-top: 8px; padding: 10px 12px; background: var(--bg-elev); border-radius: 6px; font-family: var(--font-mono); font-size: 10.5px; line-height: 1.55; color: var(--ink-2);">{c.prompt}</div>
+            <div style="margin-top: 10px; font-size: 13px; color: var(--ink-secondary); line-height: 1.5;">{c.tagline}</div>
+            <details style="margin-top: 20px;">
+              <summary style="cursor: pointer; list-style: none; font-size: 12px; font-weight: 600; color: var(--ink-secondary);">▸ Preview prompt</summary>
+              <div style="margin-top: 12px; padding: 12px 16px; background: #ffffff; border: 1px solid var(--border-light); border-radius: 8px; font-family: var(--font-mono); font-size: 11px; line-height: 1.6; color: var(--ink-muted);">{c.prompt}</div>
             </details>
           </a>
         ))}
@@ -119,21 +121,19 @@ const structuredData = {
   </section>
 
   {/* WHAT IT DOES */}
-  <section class="qw-pad">
-    <div class="qw-section">
-      <div style="display: flex; align-items: end; justify-content: space-between; margin-bottom: 22px;">
-        <div>
-          <div class="qw-eyebrow qw-eyebrow-accent">What it does</div>
-          <h2 class="qw-h-1" style="margin-top: 8px;">Tasks {expert.short} ships every week.</h2>
-        </div>
+  <section class="os-section">
+    <div class="os-container">
+      <div class="os-section-header" style="align-items: flex-start; text-align: left; margin-bottom: 32px;">
+        <div class="os-eyebrow">What it does</div>
+        <h2 class="os-h2">Tasks {expert.short} ships every week.</h2>
       </div>
-      <div class={`qw-bento qw-grid-${expert.tasks.length}`}>
+      <div style={`display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;`}>
         {expert.tasks.map(group => (
-          <div class="qw-bento-cell" style="padding: 20px;">
-            <div style={`display: inline-block; padding: 3px 8px; border-radius: 4px; background: ${expert.color}1a; color: ${expert.color}; font-weight: 600; font-size: 11px; letter-spacing: 0;`}>{group.group}</div>
-            <ul style="list-style: none; padding: 0; margin: 14px 0 0;">
+          <div class="os-card os-card-cream os-card-symmetric" style="padding: 24px; border: 1px solid var(--border-medium);">
+            <div style={`display: inline-block; padding: 4px 10px; border-radius: 6px; background: ${expert.color}1a; color: ${expert.color}; font-weight: 700; font-size: 12px; letter-spacing: 0;`}>{group.group}</div>
+            <ul style="list-style: none; padding: 0; margin: 16px 0 0;">
               {group.items.map(item => (
-                <li style="padding: 9px 0; border-top: 1px solid var(--rule-soft); font-size: 13px; line-height: 1.5; color: var(--ink-2);">{item}</li>
+                <li style="padding: 12px 0; border-top: 1px solid var(--border-light); font-size: 14px; line-height: 1.5; color: var(--ink-secondary);">{item}</li>
               ))}
             </ul>
           </div>
@@ -143,31 +143,33 @@ const structuredData = {
   </section>
 
   {/* SAMPLE CHAT */}
-  <section style="background: var(--bg-elev); border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);">
-    <div class="qw-section-narrow qw-pad">
-      <div style="display: flex; align-items: end; justify-content: space-between; margin-bottom: 18px;">
-        <div>
-          <div class="qw-eyebrow qw-eyebrow-accent">Worked sample</div>
-          <h2 class="qw-h-1" style="margin-top: 8px;">A real {expert.short} chat.</h2>
+  <section class="os-section" style="background: var(--bg-cream-alt); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+    <div class="os-container" style="max-width: 900px;">
+      <div class="os-section-header" style="align-items: flex-start; text-align: left; margin-bottom: 32px;">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; width: 100%;">
+          <div>
+            <div class="os-eyebrow">Worked sample</div>
+            <h2 class="os-h2">A real {expert.short} chat.</h2>
+          </div>
+          <span style="font-size: 13px; color: var(--ink-secondary); font-weight: 500;">No edits · no cherry-picks</span>
         </div>
-        <span style="font-size: 12px; color: var(--ink-3);">No edits · no cherry-picks</span>
       </div>
 
-      <div class="qw-card-pop" style="overflow: hidden;">
-        <div style="display: flex; gap: 12px; padding: 20px 22px; border-bottom: 1px solid var(--rule-soft);">
-          <div style="flex: 0 0 28px; height: 28px; border-radius: 999px; background: var(--ink); color: var(--paper); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 10px;">You</div>
-          <div style="flex: 1; padding-top: 4px; font-size: 13.5px; line-height: 1.6; color: var(--ink-2);">{expert.sample.user}</div>
+      <div class="os-card os-card-cream os-card-symmetric" style="overflow: hidden; padding: 0; border: 1px solid var(--border-medium);">
+        <div style="display: flex; gap: 16px; padding: 24px 32px; border-bottom: 1px solid var(--border-light); background: #ffffff;">
+          <div style="flex: 0 0 32px; height: 32px; border-radius: 999px; background: var(--ink-black); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px;">You</div>
+          <div style="flex: 1; padding-top: 6px; font-size: 15px; line-height: 1.6; color: var(--ink-black);">{expert.sample.user}</div>
         </div>
-        <div style="display: flex; gap: 12px; padding: 20px 22px;">
-          <div style={`flex: 0 0 28px; height: 28px; border-radius: 999px; background: ${expert.color}; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 10px;`}>{expert.short.slice(0,2)}</div>
-          <div class="qw-chat-body" style="flex: 1; padding-top: 4px; font-size: 13.5px; line-height: 1.65; color: var(--ink);" set:html={assistantHtml} />
+        <div style="display: flex; gap: 16px; padding: 32px;">
+          <div style={`flex: 0 0 32px; height: 32px; border-radius: 999px; background: ${expert.color}; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px;`}>{expert.short.slice(0,2)}</div>
+          <div class="os-chat-body" style="flex: 1; padding-top: 6px; font-size: 15px; line-height: 1.65; color: var(--ink-black);" set:html={assistantHtml} />
         </div>
-        <div style="padding: 10px 22px; background: var(--paper-warm); display: flex; gap: 10px; align-items: center; font-size: 11px; color: var(--ink-3); border-top: 1px solid var(--rule-soft);">
+        <div style="padding: 16px 32px; background: #ffffff; display: flex; gap: 12px; align-items: center; font-size: 12px; font-weight: 600; color: var(--ink-secondary); border-top: 1px solid var(--border-light);">
           <span style={`color: ${expert.color};`}>✦</span>
           <span>grounded in your files + site</span>
-          <span style="color: var(--rule-2);">·</span>
+          <span style="color: var(--border-medium);">·</span>
           <span>memory on</span>
-          <span style="color: var(--rule-2);">·</span>
+          <span style="color: var(--border-medium);">·</span>
           <span>200M proxies + 4,000 tools</span>
         </div>
       </div>
@@ -176,21 +178,19 @@ const structuredData = {
 
   {/* RELATED EXPERTS */}
   {related.length > 0 && (
-    <section class="qw-pad">
-      <div class="qw-section">
-        <div style="display: flex; align-items: end; justify-content: space-between; margin-bottom: 18px;">
-          <div>
-            <div class="qw-eyebrow qw-eyebrow-accent">Pairs well with</div>
-            <h2 class="qw-h-2" style="margin-top: 6px;">{expert.short} works best alongside these {related.length}.</h2>
-          </div>
+    <section class="os-section">
+      <div class="os-container">
+        <div class="os-section-header" style="align-items: flex-start; text-align: left; margin-bottom: 24px;">
+          <div class="os-eyebrow">Pairs well with</div>
+          <h2 class="os-h2">{expert.short} works best alongside these {related.length}.</h2>
         </div>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           {related.map(r => (
-            <a href={`/experts/${r.slug}`} class="qw-card" style="display: inline-flex; align-items: center; gap: 12px; padding: 10px 16px 10px 10px; color: var(--ink); border-radius: 999px;">
-              <ExpertGlyph slug={r.slug} color={r.color} size={32} flat={true} />
+            <a href={`/experts/${r.slug}`} class="os-card os-card-cream os-card-symmetric" style="display: inline-flex; align-items: center; gap: 16px; padding: 12px 24px 12px 16px; color: var(--ink-black); text-decoration: none; border-radius: 999px; border: 1px solid var(--border-medium);">
+              <ExpertGlyph slug={r.slug} color={r.color} size={40} flat={true} />
               <span>
-                <span style="display: block; font-weight: 600; font-size: 13px; letter-spacing: -0.012em; line-height: 1.1; color: var(--ink);">{r.name}</span>
-                <span style="display: block; font-size: 11.5px; color: var(--ink-3); line-height: 1.35; max-width: 320px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{r.oneliner}</span>
+                <span style="display: block; font-weight: 700; font-size: 15px; letter-spacing: -0.012em; line-height: 1.1; color: var(--ink-black);">{r.name}</span>
+                <span style="display: block; font-size: 13px; color: var(--ink-secondary); line-height: 1.35; max-width: 320px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 4px;">{r.oneliner}</span>
               </span>
             </a>
           ))}
@@ -200,16 +200,16 @@ const structuredData = {
   )}
 
   {/* CTA — soft card, accent only on button */}
-  <section class="qw-pad">
-    <div class="qw-section">
-      <div class="qw-card-pop" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 26px 28px; background: var(--grad-card); position: relative; overflow: hidden;">
+  <section class="os-section" style="padding-top: 0;">
+    <div class="os-container">
+      <div class="os-card os-card-cream os-card-symmetric" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 48px; border: 1px solid var(--border-medium); position: relative; overflow: hidden;">
         {/* expert-color accent on the left edge — subtle */}
-        <div style={`position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: ${expert.color};`}></div>
+        <div style={`position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: ${expert.color};`}></div>
         <div>
-          <div style="font-weight: 600; font-size: 24px; letter-spacing: -0.022em; line-height: 1.15; color: var(--ink);">Put {expert.short} on your team.</div>
-          <div style="margin-top: 4px; font-size: 13px; color: var(--ink-3);">Plus 18 other experts. One subscription. No setup.</div>
+          <div style="font-weight: 800; font-size: 28px; letter-spacing: -0.022em; line-height: 1.15; color: var(--ink-black);">Put {expert.short} on your team.</div>
+          <div style="margin-top: 8px; font-size: 15px; color: var(--ink-secondary); font-weight: 500;">Plus 18 other experts. One subscription. No setup.</div>
         </div>
-        <a href="/signup" class="qw-btn accent" style={`background: ${expert.color};`}>Start free →</a>
+        <a href="/signup" class="os-btn" style={`background: ${expert.color}; color: #ffffff; border: none; white-space: nowrap;`}>Start free →</a>
       </div>
     </div>
   </section>

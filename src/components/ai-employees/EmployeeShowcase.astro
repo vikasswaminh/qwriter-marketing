@@ -1,0 +1,151 @@
+---
+import { AI_EMPLOYEES } from "~/data/employees";
+---
+
+<section id="employees" class="os-section" style="padding: 64px 0; background: var(--warm-cream);">
+  <div class="os-container">
+    
+    {/* Section Header */}
+    <div class="os-section-header">
+      <div class="os-eyebrow">
+        YOUR AI TEAM
+      </div>
+      <h2 class="os-h2">
+        Meet Your AI Team.
+      </h2>
+      <p class="os-lead">
+        Not chatbots. Specialists. Each one with their own role, voice, and tools — ready to ship real work from day one.
+      </p>
+    </div>
+
+    {/* Filter Buttons */}
+    <div class="os-filter-bar" style="display: flex; justify-content: center; gap: 8px; margin-bottom: 48px; flex-wrap: wrap;">
+      <button class="os-filter-btn active" data-category="all">All Employees</button>
+      <button class="os-filter-btn" data-category="research">Research</button>
+      <button class="os-filter-btn" data-category="sales">Sales</button>
+      <button class="os-filter-btn" data-category="marketing">Marketing</button>
+      <button class="os-filter-btn" data-category="support">Support</button>
+      <button class="os-filter-btn" data-category="operations">Operations</button>
+      <button class="os-filter-btn" data-category="custom">Custom</button>
+    </div>
+
+    {/* Employee Grid */}
+    <div class="os-employee-grid os-grid-3">
+      {AI_EMPLOYEES.map((emp) => (
+        <article class="os-employee-card" data-category={emp.category}>
+          
+          {/* Card Top */}
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 44px; height: 44px; border-radius: 12px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 22px;">
+                  {emp.avatarIcon}
+                </div>
+                <div>
+                  <h3 style="font-size: 17px; font-weight: 700; color: var(--ink-black); margin-bottom: 2px;">{emp.name}</h3>
+                  <div style="font-size: 12px; color: var(--ink-muted); font-weight: 500;">{emp.role}</div>
+                </div>
+              </div>
+              <span class="os-badge os-badge-pink" style="font-size: 11px;">{emp.badge}</span>
+            </div>
+
+            <p style="font-size: 14px; line-height: 1.5; color: var(--ink-secondary); margin-bottom: 20px;">
+              {emp.purpose}
+            </p>
+
+            {/* Capabilities List */}
+            <div style="margin-bottom: 20px;">
+              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 8px;">Key Capabilities</div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--ink-primary);">
+                {emp.capabilities.slice(0, 3).map((cap) => (
+                  <li style="display: flex; align-items: flex-start; gap: 6px;">
+                    <span style="color: var(--status-green); font-weight: 700;">✓</span>
+                    <span>{cap}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Supported Tools Badges */}
+            <div style="margin-bottom: 24px;">
+              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 8px;">Supported MCP Tools</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                {emp.tools.map((t) => (
+                  <span style="font-family: var(--font-mono); font-size: 11px; padding: 3px 8px; border-radius: 4px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); color: var(--ink-secondary);">
+                    {t.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Card Bottom / Footer */}
+          <div class="os-employee-card__footer" style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div class="os-caption">Average Time Saved</div>
+              <div class="os-small" style="font-weight: 700; color: var(--ink-black);">{emp.stats.avgTimeSaved}</div>
+            </div>
+            <a href={`/ai-employees/${emp.slug}`} class="os-btn os-btn-secondary" style="padding: 8px 16px; font-size: var(--text-caption);">
+              Deploy Employee →
+            </a>
+          </div>
+
+        </article>
+      ))}
+    </div>
+
+    {/* Bottom Discovery Prompt */}
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="/ai-employees" class="os-btn os-btn-dark" style="padding: 12px 28px; font-size: 14px;">
+        Explore All AI Employee Specs & Capabilities →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .os-filter-btn {
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-medium);
+    background: #ffffff;
+    color: var(--ink-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .os-filter-btn:hover {
+    background: var(--bg-cream-alt);
+    border-color: var(--ink-black);
+    color: var(--ink-black);
+  }
+  .os-filter-btn.active {
+    background: var(--ink-black) !important;
+    color: #ffffff !important;
+    border-color: var(--ink-black) !important;
+  }
+</style>
+
+<script>
+  const filterBtns = document.querySelectorAll('.os-filter-btn');
+  const cards = document.querySelectorAll('.os-emp-card');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const category = btn.getAttribute('data-category');
+      cards.forEach((card) => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          (card as HTMLElement).style.display = 'flex';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

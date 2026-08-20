@@ -1,0 +1,63 @@
+# OllaSuper — Full Machine-Readable Agentic Knowledge Base (2026 Spec)
+
+## Organization Identity
+Name: OllaSuper Technologies Inc.
+Website: https://ollasuper.com
+Positioning: "Your company. Powered by AI employees."
+Security & Compliance: SOC2 Type II, HIPAA-ready, Zero Data Retention for Model Training.
+
+## Detailed AI Employees Matrix
+
+### 1. Research Employee
+- Category: Market Intelligence
+- URL: https://ollasuper.com/ai-employees/research
+- Purpose: Automate multi-source web intelligence, competitive product audits, lead discovery, and data synthesis.
+- Inputs: Research objective, target competitor domains, output format specification.
+- Outputs: Comprehensive competitive audit, structured CSV/JSON account dataset, executive summary.
+- Supported MCP Tools: mcp_web_scrape, mcp_diff_engine, mcp_notion_sync, mcp_sec_filings.
+- Governance Mode: Autonomous with audit log.
+
+### 2. Sales Employee
+- Category: Revenue Engine
+- URL: https://ollasuper.com/ai-employees/sales
+- Purpose: 24/7 outbound prospecting, hyper-personalized email sequencing, CRM pipeline hygiene.
+- Inputs: ICP definitions, buyer persona titles, value proposition, CRM credentials.
+- Outputs: Enriched CRM contacts, personalized draft sequences, pipeline progression reports.
+- Supported MCP Tools: mcp_salesforce_crm, mcp_linkedin_search, mcp_email_draft, mcp_slack_alert.
+- Governance Mode: Human approval required for email dispatch.
+
+### 3. Marketing Employee
+- Category: Brand & Content
+- URL: https://ollasuper.com/ai-employees/marketing
+- Purpose: Transform technical changelogs and documentation into SEO guides, social threads, and newsletters.
+- Inputs: Product changelogs, brand tone guidelines, target SEO keyword clusters.
+- Outputs: Ready-to-publish Markdown articles, multi-channel social distribution packs.
+- Supported MCP Tools: mcp_content_cms, mcp_seo_auditor, mcp_social_scheduler.
+- Governance Mode: Human approval required for publishing.
+
+### 4. Customer Support Employee
+- Category: Customer Care
+- URL: https://ollasuper.com/ai-employees/customer-support
+- Purpose: Resolve complex technical support tickets, diagnose API errors from telemetry logs.
+- Inputs: Inbound Zendesk/Intercom ticket stream, API schemas, live service health endpoints.
+- Outputs: Context-aware resolutions, ticket priority tags, weekly documentation bug reports.
+- Supported MCP Tools: mcp_zendesk_api, mcp_log_diagnostics, mcp_kb_updater.
+- Governance Mode: Autonomous resolution for Tier-1 with human escalation for edge cases.
+
+### 5. Operations Employee
+- Category: Operations & Finance
+- URL: https://ollasuper.com/ai-employees/operations
+- Purpose: Reconcile payment discrepancies, audit vendor contracts, automate onboarding tasks.
+- Inputs: Stripe transactions, bank exports, vendor contracts, HR change events.
+- Outputs: Reconciled general ledger entries, compliance audit reports, provisioning checklists.
+- Supported MCP Tools: mcp_stripe_billing, mcp_sql_query, mcp_slack_approval.
+- Governance Mode: Strict human-in-the-loop for financial modifications.
+
+### 6. Custom Employee
+- Category: Modular Intelligence
+- URL: https://ollasuper.com/ai-employees/custom
+- Purpose: User-defined AI employee configured with private MCP tool servers and custom SOPs.
+- Inputs: Custom system prompt, OpenAPI 3.0 / MCP schema, trigger schedule.
+- Outputs: Automated enterprise workflows in proprietary microservices.
+- Supported MCP Tools: mcp_custom_server, mcp_eval_suite, mcp_vault_secrets.
+- Governance Mode: Configurable by enterprise policy.

@@ -1,0 +1,113 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import { PLATFORM_MODULES } from "~/data/platform";
+---
+
+<Layout
+  title="Platform Architecture — OllaSuper AI Workforce Operating System"
+  description="Orchestrate, observe, evaluate, automate, and integrate your enterprise AI employee fleet from a single mission control."
+  current="platform"
+>
+  <article class="os-section" style="background: var(--warm-cream); padding-top: 64px; padding-bottom: 100px;">
+    <div class="os-container">
+      
+      {/* Header */}
+      <div class="os-section-header" style="text-align: left; margin-bottom: var(--spacing-56); max-width: 860px; margin-inline: 0;">
+        <div class="os-eyebrow" style="margin-bottom: var(--spacing-12);">
+          <span class="os-live-dot"></span> PLATFORM CORE ARCHITECTURE
+        </div>
+        <h1 class="os-h1" style="margin-bottom: var(--spacing-16);">
+          The enterprise operating system for autonomous AI employees.
+        </h1>
+        <p class="os-lead">
+          Built from the ground up for high reliability, deterministic evaluation, deep execution observability, and native Model Context Protocol (MCP) tool connectivity.
+        </p>
+      </div>
+
+      {/* Modules Deep Dive */}
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-48);">
+        {PLATFORM_MODULES.map((mod, i) => (
+          <section id={mod.slug} class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-48);">
+            
+            <div class="os-grid-2" style="gap: var(--spacing-40); align-items: center;">
+              
+              <div>
+                <div class="os-eyebrow" style="margin-bottom: var(--spacing-8);">{mod.eyebrow}</div>
+                <h2 class="os-h2" style="margin-bottom: var(--spacing-12);">
+                  {mod.title}
+                </h2>
+                <p class="os-small" style="font-weight: 600; color: var(--ink-primary); margin-bottom: var(--spacing-12);">
+                  {mod.tagline}
+                </p>
+                <p class="os-small" style="margin-bottom: var(--spacing-24);">
+                  {mod.description}
+                </p>
+
+                {/* Features */}
+                <div style="margin-bottom: var(--spacing-24);">
+                  <div class="os-caption" style="font-weight: 700; text-transform: uppercase; margin-bottom: 10px;">Key Architectural Features</div>
+                  <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: var(--text-small); color: var(--ink-secondary);">
+                    {mod.features.map((feat) => (
+                      <li style="display: flex; align-items: flex-start; gap: 8px;">
+                        <span style="color: var(--status-green); font-weight: 700;">✓</span>
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Metrics */}
+                <div style="display: flex; gap: var(--spacing-24); padding-top: var(--spacing-16); border-top: 1px solid var(--border-light); flex-wrap: wrap;">
+                  {mod.metrics.map((m) => (
+                    <div>
+                      <div class="os-caption" style="font-weight: 700; text-transform: uppercase;">{m.label}</div>
+                      <div class="os-h4">{m.value}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right: Visual or Code Preview */}
+              <div>
+                {mod.codeSample ? (
+                  <div class="os-terminal">
+                    <div class="os-terminal-header">
+                      <div class="os-terminal-dots">
+                        <div class="os-terminal-dot red"></div>
+                        <div class="os-terminal-dot yellow"></div>
+                        <div class="os-terminal-dot green"></div>
+                      </div>
+                      <span class="os-caption">telemetry_trace.json</span>
+                    </div>
+                    <pre class="os-terminal-body" style="font-size: var(--text-caption); color: #38bdf8; margin: 0;">{mod.codeSample}</pre>
+                  </div>
+                ) : (
+                  <div style="background: var(--bg-cream-alt); border: 1px solid var(--border-medium); border-radius: var(--radius-lg); padding: var(--spacing-32); text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: var(--spacing-16);">
+                      {mod.slug === 'workforce' && '⚡'}
+                      {mod.slug === 'evaluate' && '🎯'}
+                      {mod.slug === 'automate' && '⚙️'}
+                      {mod.slug === 'integrations' && '🔌'}
+                    </div>
+                    <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">
+                      {mod.title}
+                    </h3>
+                    <p class="os-small" style="max-width: 320px; margin: 0 auto 20px;">
+                      {mod.tagline}
+                    </p>
+                    <a href="/signup" class="os-btn os-btn-primary" style="padding: 10px 22px; font-size: var(--text-small);">
+                      Deploy Module →
+                    </a>
+                  </div>
+                )}
+              </div>
+
+            </div>
+
+          </section>
+        ))}
+      </div>
+
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,192 @@
+---
+---
+
+<div class="os-hero-mockup" style="width: 100%; max-width: 620px; background: #0c0f17; border: 1px solid #1e293b; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); overflow: hidden;">
+  {/* Top Window Bar */}
+  <div style="background: #131926; padding: 14px 20px; border-bottom: 1px solid #1e293b; display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></div>
+      <div style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b;"></div>
+      <div style="width: 10px; height: 10px; border-radius: 50%; background: #10b981;"></div>
+      <span style="font-family: var(--font-mono); font-size: 11px; color: #64748b; margin-left: 8px;">ollasuper-agent-daemon :: cluster-us-east-1</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 6px;">
+      <span class="os-live-dot"></span>
+      <span style="font-family: var(--font-mono); font-size: 11px; color: #4ade80; font-weight: 600;">ACTIVE</span>
+    </div>
+  </div>
+
+  {/* Interactive Employee Switcher Tabs */}
+  <div style="background: #0f1420; padding: 8px 16px; border-bottom: 1px solid #1e293b; display: flex; gap: 8px; overflow-x: auto;">
+    <button class="os-hero-tab active" data-tab="research" style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: #1e293b; border: 1px solid #334155; border-radius: var(--radius-pill); color: #f8fafc; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s ease;">
+      <span>🔍</span> Research Employee
+    </button>
+    <button class="os-hero-tab" data-tab="sales" style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: transparent; border: 1px solid transparent; border-radius: var(--radius-pill); color: #94a3b8; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.15s ease;">
+      <span>⚡</span> Sales Employee
+    </button>
+    <button class="os-hero-tab" data-tab="support" style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: transparent; border: 1px solid transparent; border-radius: var(--radius-pill); color: #94a3b8; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.15s ease;">
+      <span>🛡️</span> Support Employee
+    </button>
+  </div>
+
+  {/* Main Live Interface Panel */}
+  <div style="padding: 24px;">
+    
+    {/* Dynamic Content Views */}
+    {/* 1. Research View */}
+    <div id="os-view-research" class="os-hero-view">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+        <div>
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--candy-pink); margin-bottom: 4px;">Active Objective</div>
+          <div style="font-size: 16px; font-weight: 600; color: #ffffff;">"Analyze competitor pricing shifts & feature matrices across 8 SaaS peers"</div>
+        </div>
+        <span class="os-badge os-badge-pink" style="font-size: 11px; background: rgba(255, 131, 218, 0.15); color: #ff83da; border: 1px solid rgba(255, 131, 218, 0.3);">
+          Auto-Autonomous
+        </span>
+      </div>
+
+      {/* Progress & Steps */}
+      <div style="background: #141a29; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 16px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <span style="font-size: 12px; font-weight: 600; color: #cbd5e1;">Execution Pipeline</span>
+          <span style="font-family: var(--font-mono); font-size: 12px; color: #38bdf8; font-weight: 700;">87% Complete</span>
+        </div>
+        
+        {/* Progress Bar */}
+        <div style="height: 6px; width: 100%; background: #1e293b; border-radius: 999px; overflow: hidden; margin-bottom: 14px;">
+          <div style="height: 100%; width: 87%; background: linear-gradient(90deg, #ff83da, #38bdf8); border-radius: 999px; transition: width 0.3s ease;"></div>
+        </div>
+
+        {/* Step List */}
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; font-family: var(--font-mono);">
+          <div style="display: flex; align-items: center; gap: 8px; color: #4ade80;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>✓ Deconstructed 8 target URLs and pricing tiers</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; color: #4ade80;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>✓ Extracted hidden enterprise feature caps via DOM diff</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; color: #38bdf8;">
+            <span class="os-live-dot" style="width: 6px; height: 6px; background: #38bdf8; box-shadow: 0 0 6px #38bdf8;"></span>
+            <span>→ Generating structured Markdown dossier & Notion sync</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Live Tool Telemetry Stream */}
+      <div style="background: #090c13; border: 1px solid #1e293b; border-radius: var(--radius-sm); padding: 12px 14px; font-family: var(--font-mono); font-size: 11px; color: #94a3b8; display: flex; flex-direction: column; gap: 4px;">
+        <div style="display: flex; justify-content: space-between; color: #64748b; border-bottom: 1px solid #1a2234; padding-bottom: 4px; margin-bottom: 4px;">
+          <span>TOOL: mcp_web_diff_engine</span>
+          <span>LATENCY: 142ms</span>
+        </div>
+        <div>[04:22:18] GET /pricing :: 200 OK (2,840 tokens)</div>
+        <div style="color: #4ade80;">[04:22:19] Extracted 4 pricing anomalies into structured table</div>
+      </div>
+    </div>
+
+    {/* 2. Sales View (Hidden by default) */}
+    <div id="os-view-sales" class="os-hero-view" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+        <div>
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #10b981; margin-bottom: 4px;">Active Objective</div>
+          <div style="font-size: 16px; font-weight: 600; color: #ffffff;">"Prospect 15 Series-B VP Engineering leads & draft custom icebreakers"</div>
+        </div>
+        <span class="os-badge" style="font-size: 11px; background: rgba(22, 163, 74, 0.2); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3);">
+          Human Sign-Off Gate
+        </span>
+      </div>
+
+      <div style="background: #141a29; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 16px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <span style="font-size: 12px; font-weight: 600; color: #cbd5e1;">Execution Pipeline</span>
+          <span style="font-family: var(--font-mono); font-size: 12px; color: #10b981; font-weight: 700;">100% Ready</span>
+        </div>
+        <div style="height: 6px; width: 100%; background: #1e293b; border-radius: 999px; overflow: hidden; margin-bottom: 14px;">
+          <div style="height: 100%; width: 100%; background: #10b981; border-radius: 999px;"></div>
+        </div>
+
+        {/* Human in the loop card simulation */}
+        <div style="background: #1a2336; border: 1px solid #334155; border-radius: var(--radius-sm); padding: 12px; margin-top: 8px;">
+          <div style="font-size: 12px; color: #f8fafc; font-weight: 600; margin-bottom: 4px;">Approval Requested: Dispatch 15 Personalized Emails</div>
+          <div style="font-size: 11px; color: #94a3b8; margin-bottom: 10px;">Target accounts: Stripe, Retool, Vercel, Supabase. Zero hallucinated claims.</div>
+          <div style="display: flex; gap: 8px;">
+            <button class="os-btn os-btn-primary" style="padding: 6px 14px; font-size: 11px; height: auto;">✓ Approve & Send (15)</button>
+            <button class="os-btn os-btn-secondary" style="padding: 6px 12px; font-size: 11px; height: auto; background: transparent; color: #cbd5e1; border-color: #475569;">Inspect Drafts</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #090c13; border: 1px solid #1e293b; border-radius: var(--radius-sm); padding: 12px 14px; font-family: var(--font-mono); font-size: 11px; color: #94a3b8;">
+        <div style="color: #4ade80;">[04:21:44] Salesforce CRM synced: 15 contacts created under #Q3-Enterprise-ICP</div>
+      </div>
+    </div>
+
+    {/* 3. Support View (Hidden by default) */}
+    <div id="os-view-support" class="os-hero-view" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+        <div>
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #818cf8; margin-bottom: 4px;">Active Objective</div>
+          <div style="font-size: 16px; font-weight: 600; color: #ffffff;">"Diagnose Ticket #49102: 401 Unauthorized on Webhook Ingestion"</div>
+        </div>
+        <span class="os-badge" style="font-size: 11px; background: rgba(99, 102, 241, 0.2); color: #a5b4fc; border: 1px solid rgba(129, 140, 248, 0.3);">
+          Resolved in 14s
+        </span>
+      </div>
+
+      <div style="background: #141a29; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 16px; margin-bottom: 16px;">
+        <div style="font-size: 12px; font-weight: 600; color: #cbd5e1; margin-bottom: 8px;">Telemetry Root Cause Analysis</div>
+        <div style="font-family: var(--font-mono); font-size: 11px; color: #e2e8f0; background: #0c101a; padding: 10px; border-radius: 6px; border-left: 3px solid #f59e0b; margin-bottom: 10px;">
+          Datadog log match: Header 'Authorization: Bearer' was missing string token suffix in POST /v1/webhooks.
+        </div>
+        <div style="font-size: 11px; color: #4ade80; font-family: var(--font-mono);">
+          ✓ Resolution snippet drafted & dispatched to customer. Rating: 5/5 ⭐
+        </div>
+      </div>
+
+      <div style="background: #090c13; border: 1px solid #1e293b; border-radius: var(--radius-sm); padding: 12px 14px; font-family: var(--font-mono); font-size: 11px; color: #94a3b8;">
+        <div style="color: #a5b4fc;">[04:20:10] Zendesk Ticket #49102 status -> CLOSED. Time to resolve: 14.2s</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .os-hero-tab.active {
+    background-color: #1e293b !important;
+    border-color: #475569 !important;
+    color: #ffffff !important;
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll('.os-hero-tab');
+  const views = {
+    research: document.getElementById('os-view-research'),
+    sales: document.getElementById('os-view-sales'),
+    support: document.getElementById('os-view-support')
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-tab');
+      tabs.forEach((t) => {
+        t.classList.remove('active');
+        t.style.background = 'transparent';
+        t.style.borderColor = 'transparent';
+        t.style.color = '#94a3b8';
+      });
+      tab.classList.add('active');
+      tab.style.background = '#1e293b';
+      tab.style.borderColor = '#475569';
+      tab.style.color = '#ffffff';
+
+      Object.keys(views).forEach((k) => {
+        if (views[k]) {
+          views[k].style.display = k === target ? 'block' : 'none';
+        }
+      });
+    });
+  });
+</script>

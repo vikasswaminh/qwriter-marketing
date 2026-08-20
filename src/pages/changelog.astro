@@ -56,22 +56,22 @@ const categoryStyle = {
 <Layout current="changelog" title="Changelog — OllaSuper" description="What we've shipped. Big launches, small improvements, real bug fixes — in plain English, dated, no hype.">
 
   {/* HERO */}
-  <section style="padding: 48px 0 24px;">
-    <div class="qw-section">
-      <div class="qw-split">
+  <section class="os-section">
+    <div class="os-container">
+      <div class="os-grid-2" style="align-items: flex-end; border-bottom: 2px solid var(--border-medium); padding-bottom: var(--spacing-32); margin-bottom: var(--spacing-32);">
         <div>
-          <div class="qw-eyebrow qw-eyebrow-accent">Changelog · updated weekly</div>
-          <h1 class="qw-h-display" style="margin-top: 10px;">
+          <div class="os-eyebrow">Changelog · updated weekly</div>
+          <h1 class="os-display" style="margin-top: var(--spacing-12);">
             Every week,<br/>something new.
           </h1>
-          <p class="qw-body" style="max-width: 540px; margin-top: 14px; font-size: 16px;">
+          <p class="os-lead" style="max-width: 540px; margin-top: var(--spacing-16);">
             What we shipped, improved, and fixed. No marketing copy — if it broke and we fixed it,
             you'll see "Fixed" below.
           </p>
         </div>
-        <div style="display: flex; gap: 8px;">
+        <div style="display: flex; gap: var(--spacing-12); flex-wrap: wrap;">
           {Object.entries(categoryStyle).map(([key, c]) => (
-            <span style={`display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px; background: ${c.color}14; color: ${c.color}; font-weight: 600; font-size: 12px;`}>
+            <span style={`display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; background: ${c.color}14; color: ${c.color}; font-weight: 700; font-size: 12px;`}>
               <span style={`width: 6px; height: 6px; border-radius: 999px; background: ${c.color};`}></span>
               {c.label} · {entries.filter(e => e.category === key).length}
             </span>
@@ -82,21 +82,21 @@ const categoryStyle = {
   </section>
 
   {/* TIMELINE */}
-  <section style="padding: 16px 0 64px; border-top: 1px solid var(--rule);">
-    <div class="qw-section-narrow">
+  <section class="os-section" style="padding-top: 0;">
+    <div class="os-container" style="max-width: 800px; margin: 0;">
       <ol style="list-style: none; padding: 0; margin: 0; position: relative;">
-        <div style="position: absolute; left: 7px; top: 24px; bottom: 24px; width: 2px; background: var(--rule);"></div>
+        <div style="position: absolute; left: 7px; top: 24px; bottom: 24px; width: 2px; background: var(--border-medium);"></div>
         {entries.map(e => {
           const cat = categoryStyle[e.category];
           return (
-            <li style="position: relative; padding: 22px 0 22px 32px; border-bottom: 1px solid var(--rule);">
-              <div style={`position: absolute; left: 0; top: 30px; width: 16px; height: 16px; border-radius: 999px; background: ${cat.color}; border: 3px solid var(--paper); box-shadow: 0 0 0 1px ${cat.color};`}></div>
-              <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
-                <span class="qw-mono" style="font-size: 11px; color: var(--ink-3);">{e.date}</span>
-                <span style={`display: inline-block; padding: 2px 8px; border-radius: 4px; background: ${cat.color}14; color: ${cat.color}; font-weight: 600; font-size: 11px;`}>{cat.label}</span>
+            <li style="position: relative; padding: var(--spacing-32) 0 var(--spacing-32) var(--spacing-40); border-bottom: 1px solid var(--border-light);">
+              <div style={`position: absolute; left: 0; top: 38px; width: 16px; height: 16px; border-radius: 999px; background: ${cat.color}; border: 3px solid #ffffff; box-shadow: 0 0 0 1px ${cat.color};`}></div>
+              <div style="display: flex; gap: 10px; align-items: center; margin-bottom: var(--spacing-8);">
+                <span class="os-caption" style="font-family: var(--font-mono); font-weight: 700; color: var(--ink-secondary);">{e.date}</span>
+                <span style={`display: inline-block; padding: 2px 8px; border-radius: 4px; background: ${cat.color}14; color: ${cat.color}; font-weight: 700; font-size: var(--text-caption);`}>{cat.label}</span>
               </div>
-              <h2 class="qw-h-2" style="margin: 0;">{e.title}</h2>
-              <p class="qw-body" style="margin-top: 8px; max-width: 720px; font-size: 14px;">{e.body}</p>
+              <h2 class="os-h3" style="margin-bottom: var(--spacing-12);">{e.title}</h2>
+              <p class="os-small" style="max-width: 720px; margin: 0;">{e.body}</p>
             </li>
           );
         })}
@@ -105,14 +105,14 @@ const categoryStyle = {
   </section>
 
   {/* CTA */}
-  <section class="qw-pad">
-    <div class="qw-section">
-      <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 24px; border: 1px solid var(--rule); border-radius: 12px;">
+  <section class="os-section" style="padding-top: 0;">
+    <div class="os-container">
+      <div class="os-card os-card-cream os-card-symmetric" style="display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-24); padding: var(--spacing-24) var(--spacing-32); flex-direction: row; border: 1px solid var(--border-medium); flex-wrap: wrap;">
         <div>
-          <div style="font-weight: 900; font-size: 18px; letter-spacing: -0.02em;">Want a feature? Tell us.</div>
-          <div style="margin-top: 2px; font-size: 12px; color: var(--ink-3);">We read every email, respond within a business day.</div>
+          <h2 class="os-h4" style="margin-bottom: 4px;">Want a feature? Tell us.</h2>
+          <div class="os-small" style="color: var(--ink-secondary); font-weight: 500;">We read every email, respond within a business day.</div>
         </div>
-        <a href="mailto:hello@ollasuper.com" class="qw-btn primary">hello@ollasuper.com</a>
+        <a href="mailto:hello@ollasuper.com" class="os-btn os-btn-primary" style="white-space: nowrap;">hello@ollasuper.com</a>
       </div>
     </div>
   </section>

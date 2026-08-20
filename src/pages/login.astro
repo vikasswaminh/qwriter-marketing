@@ -8,53 +8,52 @@ import Logo from "~/components/Logo.astro";
 const APP_BASE = import.meta.env.PUBLIC_APP_BASE ?? "https://app.ollasuper.com";
 ---
 <Layout current="" chrome={false} title="Sign in to OllaSuper">
-  <section class="qw-split-even" style="min-height: 100vh; gap: 0;">
+  <section class="os-grid-2" style="min-height: 100vh; gap: 0;">
 
     {/* Left — form */}
-    <div style="display: flex; flex-direction: column; padding: 32px 48px; min-height: 100vh;">
+    <div style="display: flex; flex-direction: column; padding: var(--spacing-32) var(--spacing-48); min-height: 100vh;">
       <a href="/" style="display: inline-flex; align-items: center;">
         <Logo size={28} wordmark={true} />
       </a>
 
       <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 380px;">
-        <div class="qw-eyebrow qw-eyebrow-accent">SIGN IN</div>
-        <h1 class="qw-h-1" style="margin-top: 12px;">Welcome back.</h1>
-        <p style="color: var(--ink-3); margin-top: 8px;">Pick up where you left off.</p>
+        <div class="os-eyebrow">SIGN IN</div>
+        <h1 class="os-h2" style="margin-top: var(--spacing-12);">Welcome back.</h1>
+        <p class="os-lead" style="margin-top: var(--spacing-8);">Pick up where you left off.</p>
 
-        <form method="post" action={`${APP_BASE}/auth/login`} style="margin-top: 28px;">
-          <div style="margin-bottom: 16px;">
-            <label for="email" style="display: block; font-size: 13px; color: var(--ink-2); font-weight: 700; margin-bottom: 6px;">Email</label>
+        <form method="post" action={`${APP_BASE}/auth/login`} style="margin-top: var(--spacing-24);">
+          <div style="margin-bottom: var(--spacing-16);">
+            <label for="email" class="os-caption" style="display: block; color: var(--ink-secondary); font-weight: 700; margin-bottom: 6px;">Email</label>
             <input id="email" name="email" type="email" required autocomplete="email"
-                   style="width: 100%; padding: 12px 14px; border: 1px solid var(--rule); border-radius: 8px; background: var(--white); font-family: inherit; font-size: 14px;">
+                   style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-medium); border-radius: 8px; background: #ffffff; font-family: inherit; font-size: 14px;">
           </div>
-          <div style="margin-bottom: 20px;">
-            <label for="password" style="display: block; font-size: 13px; color: var(--ink-2); font-weight: 700; margin-bottom: 6px;">Password</label>
+          <div style="margin-bottom: var(--spacing-20);">
+            <label for="password" class="os-caption" style="display: block; color: var(--ink-secondary); font-weight: 700; margin-bottom: 6px;">Password</label>
             <input id="password" name="password" type="password" required autocomplete="current-password"
-                   style="width: 100%; padding: 12px 14px; border: 1px solid var(--rule); border-radius: 8px; background: var(--white); font-family: inherit; font-size: 14px;">
+                   style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-medium); border-radius: 8px; background: #ffffff; font-family: inherit; font-size: 14px;">
           </div>
-          <button type="submit"
-                  style="width: 100%; padding: 14px 22px; border-radius: 8px; background: var(--ink); color: var(--paper); font-weight: 700; font-size: 15px; border: 0; cursor: pointer;">
+          <button type="submit" class="os-btn os-btn-primary" style="width: 100%; padding: 14px 22px; font-size: 15px; border-radius: 8px;">
             Sign in →
           </button>
         </form>
 
-        <div style="margin-top: 18px; font-size: 14px; color: var(--ink-3);">
-          New to OllaSuper? <a href="/signup" style="color: var(--ink); font-weight: 700; border-bottom: 1px solid var(--ink-3);">Create an account</a>
+        <div class="os-small" style="margin-top: var(--spacing-16); color: var(--ink-secondary);">
+          New to OllaSuper? <a href="/signup" style="color: var(--ink-black); font-weight: 700; border-bottom: 1px solid var(--ink-secondary);">Create an account</a>
         </div>
       </div>
     </div>
 
     {/* Right — editorial side */}
-    <div style="background: var(--ink); color: var(--paper); padding: 48px; display: flex; flex-direction: column; justify-content: space-between;">
-      <span class="qw-mono" style="font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em;">OLLASUPER · 19 EXPERTS · ONE CHAT</span>
+    <div style="background: var(--ink-black); color: #ffffff; padding: var(--spacing-48); display: flex; flex-direction: column; justify-content: space-between;">
+      <span class="os-caption" style="font-family: var(--font-mono); color: rgba(255,255,255,0.5); letter-spacing: 0.08em; font-weight: 700;">OLLASUPER · 19 EXPERTS · ONE CHAT</span>
       <div>
-        <p style="font-size: 36px; line-height: 1.1; font-weight: 900; letter-spacing: -0.025em; max-width: 460px;">
+        <p class="os-h1" style="color: #ffffff; max-width: 460px;">
           HR. Sales. Ops. SEO. AEO.<br/>
-          <span style="color: var(--accent);">Plus 14 more experts.</span>
+          <span style="color: var(--candy-pink);">Plus 14 more experts.</span>
         </p>
-        <div style="margin-top: 24px; padding: 14px 18px; background: rgba(255,255,255,0.06); border-radius: 8px; max-width: 460px;">
-          <span style="color: var(--accent);">✦</span>
-          <span class="qw-mono" style="font-size: 12px; color: rgba(255,255,255,0.7); letter-spacing: 0.04em;">76 STARTER PROMPTS · INDIAN OFFICE ENGLISH · DPDP-ALIGNED</span>
+        <div style="margin-top: var(--spacing-24); padding: 14px 18px; background: rgba(255,255,255,0.06); border-radius: 8px; max-width: 460px;">
+          <span style="color: var(--candy-pink);">✦</span>
+          <span class="os-caption" style="font-family: var(--font-mono); color: rgba(255,255,255,0.7); letter-spacing: 0.04em; font-weight: 700;">76 STARTER PROMPTS · US BUSINESS ENGLISH · DPDP-ALIGNED</span>
         </div>
       </div>
       <div></div>

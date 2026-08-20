@@ -1,0 +1,98 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import { AI_EMPLOYEES } from "~/data/employees";
+---
+
+<Layout
+  title="AI Employees Directory — OllaSuper"
+  description="Explore the full catalog of autonomous AI employees for Market Research, Outbound Sales, Technical Marketing, Tier-2 Support, and Business Operations."
+  current="ai-employees"
+>
+  <section class="os-section" style="background: var(--warm-cream); padding-top: 64px;">
+    <div class="os-container">
+      
+      {/* Page Header */}
+      <div class="os-section-header" style="text-align: left; margin-bottom: var(--spacing-48); max-width: 860px; margin-inline: 0;">
+        <div class="os-eyebrow" style="margin-bottom: var(--spacing-12);">
+          <span class="os-live-dot"></span> AUTONOMOUS WORKFORCE CATALOG
+        </div>
+        <h1 class="os-h1" style="margin-bottom: var(--spacing-16);">
+          Deploy specialized AI employees across your organization.
+        </h1>
+        <p class="os-lead">
+          Each AI employee is engineered for specific business workflows, equipped with validated Model Context Protocol (MCP) tool sets, and protected by strict human governance gates.
+        </p>
+      </div>
+
+      {/* Employee List Grid */}
+      <div class="os-grid-2">
+        {AI_EMPLOYEES.map((emp) => (
+          <article class="os-employee-card">
+            
+            <div>
+              {/* Header */}
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-24);">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                  <div style="width: 48px; height: 48px; border-radius: 14px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                    {emp.avatarIcon}
+                  </div>
+                  <div>
+                    <h2 class="os-h4" style="margin-bottom: 2px;">
+                      <a href={`/ai-employees/${emp.slug}`} style="text-decoration: none; color: inherit;">
+                        {emp.name}
+                      </a>
+                    </h2>
+                    <span class="os-caption">{emp.role}</span>
+                  </div>
+                </div>
+                <span class="os-badge os-badge-pink">{emp.badge}</span>
+              </div>
+
+              <p class="os-small" style="margin-bottom: var(--spacing-24);">
+                {emp.purpose}
+              </p>
+
+              {/* Capabilities */}
+              <div style="margin-bottom: var(--spacing-24);">
+                <div class="os-caption" style="font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px;">Capabilities & Skills</div>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: var(--text-small);">
+                  {emp.capabilities.map((cap) => (
+                    <li style="display: flex; align-items: flex-start; gap: 8px;">
+                      <span style="color: var(--status-green); font-weight: 700;">✓</span>
+                      <span>{cap}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Tools */}
+              <div style="margin-bottom: var(--spacing-24);">
+                <div class="os-caption" style="font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;">MCP Tools</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                  {emp.tools.map((t) => (
+                    <span style="font-family: var(--font-mono); font-size: var(--text-caption); padding: 4px 8px; border-radius: 4px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); color: var(--ink-secondary);">
+                      {t.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Actions */}
+            <div class="os-employee-card__footer" style="display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <div class="os-caption">Governance Mode</div>
+                <div class="os-small" style="font-weight: 600; color: var(--ink-black);">{emp.approvalMode}</div>
+              </div>
+              <a href={`/ai-employees/${emp.slug}`} class="os-btn os-btn-primary" style="padding: 9px 18px; font-size: var(--text-small);">
+                View Full Spec →
+              </a>
+            </div>
+
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</Layout>

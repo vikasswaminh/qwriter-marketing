@@ -1,65 +1,138 @@
 ---
 import Logo from "~/components/Logo.astro";
-const year = 2026;
+import { AI_EMPLOYEES } from "~/data/employees";
+import { PLATFORM_MODULES } from "~/data/platform";
+import { SOLUTIONS } from "~/data/solutions";
 ---
-<footer style="border-top: 1px solid var(--rule); margin-top: 0; background: var(--bg-sunken);">
-  <div class="qw-section" style="display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 40px; padding: 64px 0;">
-    <div>
-      <Logo size={32} wordmark={true} />
-      <p style="color: var(--ink-3); margin-top: 16px; max-width: 300px; font-size: 14px; line-height: 1.6;">
-        The AI Workforce Platform. 80 chat-driven Experts that advise, plus 6 Agents that take
-        scheduled actions with approval gates — all on infrastructure we own.
-      </p>
+
+<footer class="os-footer" style="background-color: #0b0d13; color: #94a3b8; padding: 80px 0 40px; border-top: 1px solid #1e293b; margin-top: auto;">
+  <div class="os-container">
+    {/* Main 5-Column Grid */}
+    <div style="display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 48px; margin-bottom: 64px;">
+      
+      {/* Brand Column */}
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <a href="/" style="display: inline-flex; align-items: center; filter: invert(1) hue-rotate(180deg);">
+          <Logo size={32} wordmark={true} />
+        </a>
+        <p style="font-size: 14px; line-height: 1.6; color: #94a3b8; max-width: 300px;">
+          The enterprise AI Workforce Platform. Deploy specialized AI employees that research, analyze, execute, and automate business workflows with full human governance.
+        </p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span class="os-badge os-badge-green" style="background: rgba(22, 163, 74, 0.15); color: #4ade80; border-color: rgba(74, 222, 128, 0.3);">
+            <span class="os-live-dot"></span> All Systems Operational
+          </span>
+          <span style="font-size: 12px; color: #64748b;">SOC2 Type II</span>
+        </div>
+      </div>
+
+      {/* Platform Column */}
+      <div>
+        <h4 style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff; margin-bottom: 20px;">
+          Platform
+        </h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
+          {PLATFORM_MODULES.map((mod) => (
+            <li>
+              <a href={`/platform#${mod.slug}`} style="color: #cbd5e1; text-decoration: none; transition: color 0.15s ease;" class="os-footer-link">
+                {mod.title}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="/platform" style="color: var(--candy-pink); font-weight: 600; text-decoration: none;" class="os-footer-link">
+              MCP Architecture →
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {/* AI Employees Column */}
+      <div>
+        <h4 style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff; margin-bottom: 20px;">
+          AI Employees
+        </h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
+          {AI_EMPLOYEES.map((emp) => (
+            <li>
+              <a href={`/ai-employees/${emp.slug}`} style="color: #cbd5e1; text-decoration: none; transition: color 0.15s ease;" class="os-footer-link">
+                {emp.name}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="/ai-employees" style="color: var(--candy-pink); font-weight: 600; text-decoration: none;" class="os-footer-link">
+              Explore All Employees →
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {/* Solutions Column */}
+      <div>
+        <h4 style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff; margin-bottom: 20px;">
+          Solutions
+        </h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
+          {SOLUTIONS.map((sol) => (
+            <li>
+              <a href={`/solutions#${sol.slug}`} style="color: #cbd5e1; text-decoration: none; transition: color 0.15s ease;" class="os-footer-link">
+                {sol.department}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="/solutions#enterprise" style="color: #cbd5e1; text-decoration: none;" class="os-footer-link">
+              Enterprise VPC
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {/* Resources & Machine Agent Spec */}
+      <div>
+        <h4 style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff; margin-bottom: 20px;">
+          Resources & Agentic
+        </h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
+          <li><a href="/resources" style="color: #cbd5e1; text-decoration: none;" class="os-footer-link">Knowledge Hub</a></li>
+          <li><a href="/blog" style="color: #cbd5e1; text-decoration: none;" class="os-footer-link">Blog & Insights</a></li>
+          <li><a href="/resources#guides" style="color: #cbd5e1; text-decoration: none;" class="os-footer-link">Deployment Guides</a></li>
+          <li><a href="/pricing" style="color: #cbd5e1; text-decoration: none;" class="os-footer-link">Pricing & Plans</a></li>
+          <li><a href="/demo" style="color: #cbd5e1; text-decoration: none;" class="os-footer-link">Book a Demo</a></li>
+          <li style="padding-top: 8px; border-top: 1px solid #1e293b;">
+            <a href="/llms.txt" style="color: #38bdf8; font-family: var(--font-mono); font-size: 12px; text-decoration: none;" class="os-footer-link" target="_blank" rel="noopener">
+              📄 /llms.txt (Agent Spec)
+            </a>
+          </li>
+        </ul>
+      </div>
+
     </div>
-    <div>
-      <div class="qw-eyebrow qw-eyebrow-caps" style="margin-bottom: 16px;">○ EXPERTS</div>
-      <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-        <li><a href="/experts" style="color: var(--ink-2);">All 80 Experts</a></li>
-        <li><a href="/experts/hr" style="color: var(--ink-2);">HR</a></li>
-        <li><a href="/experts/sales" style="color: var(--ink-2);">Sales</a></li>
-        <li><a href="/experts/seo" style="color: var(--ink-2);">SEO</a></li>
-        <li><a href="/experts/aeo" style="color: var(--ink-2);">AEO</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="qw-eyebrow qw-eyebrow-caps" style="margin-bottom: 16px;">⚡ AGENTS</div>
-      <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-        <li><a href="/agents" style="color: var(--ink-2);">All 6 Agents</a></li>
-        <li><a href="/agents/outbound-sdr" style="color: var(--ink-2);">Outbound SDR</a></li>
-        <li><a href="/agents/seo-auditor" style="color: var(--ink-2);">SEO Auditor</a></li>
-        <li><a href="/agents/inbox-triage" style="color: var(--ink-2);">Inbox Triage</a></li>
-        <li><a href="/agents/deep-research" style="color: var(--ink-2);">Deep Research</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="qw-eyebrow qw-eyebrow-caps" style="margin-bottom: 16px;">PRODUCT</div>
-      <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-        <li><a href="/how-it-works" style="color: var(--ink-2);">How it works</a></li>
-        <li><a href="/pricing" style="color: var(--ink-2);">Pricing</a></li>
-        <li><a href="/changelog" style="color: var(--ink-2);">Changelog</a></li>
-        <li><a href="https://app.ollasuper.com/auth" style="color: var(--ink-2);">Sign in</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="qw-eyebrow qw-eyebrow-caps" style="margin-bottom: 16px;">COMPANY</div>
-      <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-        <li><a href="mailto:hello@ollasuper.com" style="color: var(--ink-2);">Contact</a></li>
-        <li><a href="mailto:support@ollasuper.com" style="color: var(--ink-2);">Support</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="qw-eyebrow qw-eyebrow-caps" style="margin-bottom: 16px;">LEGAL</div>
-      <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-        <li><a href="/legal/privacy" style="color: var(--ink-2);">Privacy</a></li>
-        <li><a href="/legal/terms" style="color: var(--ink-2);">Terms</a></li>
-        <li><a href="/legal/dpa" style="color: var(--ink-2);">DPDP / DPA</a></li>
-      </ul>
-    </div>
-  </div>
-  <div style="border-top: 1px solid var(--rule-soft);">
-    <div class="qw-section" style="padding: 18px 0; display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-3);">
-      <span>© {year} OllaSuper · Made in India</span>
-      <span>ollasuper.com</span>
+
+    {/* Bottom Bar */}
+    <div style="padding-top: 32px; border-top: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: #64748b;">
+      <div>
+        © {new Date().getFullYear()} OllaSuper Technologies Inc. All rights reserved.
+      </div>
+      <div style="display: flex; gap: 24px;">
+        <a href="/privacy" style="color: #64748b; text-decoration: none;">Privacy Policy</a>
+        <a href="/terms" style="color: #64748b; text-decoration: none;">Terms of Service</a>
+        <a href="/security" style="color: #64748b; text-decoration: none;">Security & Trust</a>
+        <a href="/sitemap.xml" style="color: #64748b; text-decoration: none;">Sitemap</a>
+      </div>
     </div>
   </div>
 </footer>
+
+<style>
+  .os-footer-link:hover {
+    color: #ffffff !important;
+  }
+  @media (max-width: 900px) {
+    footer div[style*="grid-template-columns"] {
+      grid-template-columns: 1fr !important;
+      gap: 36px !important;
+    }
+  }
+</style>

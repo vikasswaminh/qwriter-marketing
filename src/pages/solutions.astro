@@ -1,0 +1,106 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import { SOLUTIONS } from "~/data/solutions";
+---
+
+<Layout
+  title="Solutions by Department — OllaSuper AI Workforce"
+  description="Deploy tailored AI employee squads across Sales, Marketing, Business Operations, Customer Experience, and Enterprise."
+  current="solutions"
+>
+  <article class="os-section" style="background: var(--warm-cream); padding-top: 64px; padding-bottom: 100px;">
+    <div class="os-container">
+      
+      {/* Header */}
+      <div class="os-section-header" style="text-align: left; margin-bottom: var(--spacing-56); max-width: 860px; margin-inline: 0;">
+        <div class="os-eyebrow" style="margin-bottom: var(--spacing-12);">
+          <span class="os-live-dot"></span> TAILORED WORKFORCE SQUADS
+        </div>
+        <h1 class="os-h1" style="margin-bottom: var(--spacing-16);">
+          Built for every high-impact department in your company.
+        </h1>
+        <p class="os-lead">
+          Assemble pre-configured AI employee squads that collaborate seamlessly to achieve departmental revenue, content, operations, and support objectives.
+        </p>
+      </div>
+
+      {/* Solutions List */}
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-48);">
+        {SOLUTIONS.map((sol) => (
+          <section id={sol.slug} class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-48);">
+            
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-24); flex-wrap: wrap; gap: var(--spacing-16);">
+              <div>
+                <span class="os-badge os-badge-pink" style="margin-bottom: var(--spacing-8);">{sol.department}</span>
+                <h2 class="os-h2" style="margin-bottom: 6px;">{sol.title}</h2>
+                <p class="os-small" style="font-weight: 600; color: var(--ink-primary);">{sol.tagline}</p>
+              </div>
+              <span class="os-badge os-badge-green" style="padding: 6px 14px;">{sol.badge}</span>
+            </div>
+
+            <p class="os-small" style="margin-bottom: var(--spacing-32); max-width: 840px;">
+              {sol.heroText}
+            </p>
+
+            {/* Squad & Outcomes Split */}
+            <div class="os-grid-2" style="gap: var(--spacing-32); margin-bottom: var(--spacing-32);">
+              
+              {/* Recommended Squad */}
+              <div style="background: var(--bg-cream-alt); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--spacing-24);">
+                <div class="os-caption" style="font-weight: 700; text-transform: uppercase; margin-bottom: 14px;">
+                  Recommended AI Employee Squad
+                </div>
+                <div style="display: flex; flex-direction: column; gap: var(--spacing-12);">
+                  {sol.recommendedSquad.map((member) => (
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+                      <div>
+                        <div class="os-small" style="font-weight: 700; color: var(--ink-black);">{member.role}</div>
+                        <div class="os-caption">{member.duty}</div>
+                      </div>
+                      <a href={`/ai-employees/${member.slug}`} class="os-caption" style="font-weight: 600; color: var(--candy-pink); text-decoration: none;">
+                        Inspect →
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Key Outcomes */}
+              <div style="background: var(--bg-cream-alt); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--spacing-24);">
+                <div class="os-caption" style="font-weight: 700; text-transform: uppercase; margin-bottom: 14px;">
+                  Quantified Impact
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 14px;">
+                  {sol.keyOutcomes.map((out) => (
+                    <div>
+                      <div class="os-h3" style="font-weight: 900; color: var(--status-green); margin-bottom: 2px;">{out.metric}</div>
+                      <div class="os-small">{out.description}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+            {/* Testimonial Quote */}
+            <div style="border-top: 1px solid var(--border-light); padding-top: var(--spacing-24); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--spacing-16);">
+              <div>
+                <blockquote class="os-small" style="font-style: italic; margin-bottom: 6px;">
+                  "{sol.caseStudyHighlight.quote}"
+                </blockquote>
+                <div class="os-caption" style="font-weight: 600; color: var(--ink-black);">
+                  — {sol.caseStudyHighlight.author} ({sol.caseStudyHighlight.company})
+                </div>
+              </div>
+              <a href="/signup" class="os-btn os-btn-primary" style="padding: 10px 22px; font-size: var(--text-small);">
+                Deploy {sol.department} Squad →
+              </a>
+            </div>
+
+          </section>
+        ))}
+      </div>
+
+    </div>
+  </article>
+</Layout>
