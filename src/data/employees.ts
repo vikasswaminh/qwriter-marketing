@@ -58,7 +58,10 @@ export const AI_EMPLOYEES: AIEmployee[] = [
       "Real-time competitor pricing and product feature diff tracking",
       "Executive dossier generation with cited references",
       "B2B account discovery and firmographic enrichment",
-      "Automated patent, funding, and hiring signal monitoring"
+      "Automated patent, funding, and hiring signal monitoring",
+      "Cross-lingual intelligence synthesis across 40+ languages",
+      "Unstructured data normalization into JSON/CSV schemas",
+      "Semantic trend analysis of industry thought leadership"
     ],
     inputs: [
       "Target industry or competitor domain list",
@@ -74,7 +77,10 @@ export const AI_EMPLOYEES: AIEmployee[] = [
       { name: "mcp_web_scrape", category: "Intelligence", description: "Headless deep DOM extraction with anti-bot resilience" },
       { name: "mcp_diff_engine", category: "Analysis", description: "Temporal webpage diffing for pricing & feature change logs" },
       { name: "mcp_notion_sync", category: "Output", description: "Direct export into corporate Notion databases" },
-      { name: "mcp_sec_filings", category: "Finance", description: "Structured parsing of 10-K, 10-Q, and annual reports" }
+      { name: "mcp_sec_filings", category: "Finance", description: "Structured parsing of 10-K, 10-Q, and annual reports" },
+      { name: "mcp_crunchbase", category: "Data Enrichment", description: "Firmographic data, funding rounds, and key personnel" },
+      { name: "mcp_linkedin_graph", category: "Networking", description: "Organizational mapping and hiring trend extraction" },
+      { name: "mcp_hubspot_crm", category: "Output", description: "Direct lead and account creation in HubSpot" }
     ],
     targetUsers: ["Strategy Teams", "Founders & Execs", "Product Managers", "Corporate Development"],
     stats: {

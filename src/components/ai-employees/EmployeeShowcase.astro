@@ -32,7 +32,16 @@ import { AI_EMPLOYEES } from "~/data/employees";
     {/* Employee Grid */}
     <div class="os-employee-grid os-grid-3">
       {AI_EMPLOYEES.map((emp) => (
-        <article class="os-employee-card" data-category={emp.category}>
+        <article 
+          class="os-employee-card" 
+          data-category={emp.category}
+          style={
+            emp.slug === 'research' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/research_bg.png); background-size: cover; background-position: center;' : 
+            emp.slug === 'sales' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/sales_bg.png); background-size: cover; background-position: center;' : 
+            emp.slug === 'marketing' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/marketing_bg.png); background-size: cover; background-position: center;' : 
+            ''
+          }
+        >
           
           {/* Card Top */}
           <div>

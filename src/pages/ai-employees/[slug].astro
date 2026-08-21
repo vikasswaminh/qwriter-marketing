@@ -50,7 +50,12 @@ const { employee } = Astro.props;
       </nav>
 
       {/* Hero Header */}
-      <div class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-48); box-shadow: var(--shadow-sm); margin-bottom: var(--spacing-48);">
+      <div class="os-card os-card-cream os-card-symmetric" style={
+        employee.slug === 'research' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/research_bg.png); background-size: cover; background-position: center; border: 1px solid var(--candy-pink); padding: var(--spacing-48); box-shadow: var(--shadow-sm); margin-bottom: var(--spacing-48);' : 
+        employee.slug === 'sales' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/sales_bg.png); background-size: cover; background-position: center; border: 1px solid var(--candy-pink); padding: var(--spacing-48); box-shadow: var(--shadow-sm); margin-bottom: var(--spacing-48);' : 
+        employee.slug === 'marketing' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/marketing_bg.png); background-size: cover; background-position: center; border: 1px solid var(--candy-pink); padding: var(--spacing-48); box-shadow: var(--shadow-sm); margin-bottom: var(--spacing-48);' : 
+        'background: #ffffff; border: 1px solid var(--candy-pink); padding: var(--spacing-48); box-shadow: var(--shadow-sm); margin-bottom: var(--spacing-48);'
+      }>
         <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: var(--spacing-24); margin-bottom: var(--spacing-24);">
           <div style="display: flex; align-items: center; gap: 20px;">
             <div style="width: 64px; height: 64px; border-radius: 18px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 32px;">
@@ -97,115 +102,121 @@ const { employee } = Astro.props;
       </div>
 
       {/* Main Grid: Details & Specifications */}
-      <div class="os-grid-2">
+      <div class="os-grid-2" style="margin-bottom: 32px;">
         
-        {/* Left Column: Capabilities & Workflow */}
-        <div style="display: flex; flex-direction: column; gap: 32px;">
+        {/* Capabilities */}
+        <section class="os-card os-card-cream" style="background: #ffffff; border: 1px solid var(--candy-pink); height: 100%; display: flex; flex-direction: column;">
+          <h2 style="font-size: 18px; font-weight: 700; color: var(--ink-black); margin-bottom: 8px;">
+            Core Capabilities
+          </h2>
+          <p style="font-size: 14px; color: var(--ink-secondary); margin-bottom: 24px; line-height: 1.5;">
+            This AI employee is pre-configured with a specialized skill set designed to execute complex, multi-step workflows autonomously.
+          </p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: var(--ink-secondary);">
+            {employee.capabilities.map((cap) => (
+              <li style="display: flex; align-items: flex-start; gap: 10px;">
+                <span style="color: var(--status-green); font-weight: 700;">✓</span>
+                <span>{cap}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Inputs & Outputs */}
+        <section class="os-card os-card-cream" style="background: #ffffff; border: 1px solid var(--candy-pink); height: 100%; display: flex; flex-direction: column;">
+          <h2 style="font-size: 18px; font-weight: 700; color: var(--ink-black); margin-bottom: 8px;">
+            Inputs & Deliverables
+          </h2>
+          <p style="font-size: 14px; color: var(--ink-secondary); margin-bottom: 24px; line-height: 1.5;">
+            Provide the necessary context and watch the employee generate ready-to-use, production-grade assets.
+          </p>
           
-          {/* Capabilities */}
-          <section class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium);">
-            <h2 style="font-size: 18px; font-weight: 700; color: var(--ink-black); margin-bottom: 16px;">
-              Core Capabilities
-            </h2>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: var(--ink-secondary);">
-              {employee.capabilities.map((cap) => (
-                <li style="display: flex; align-items: flex-start; gap: 10px;">
-                  <span style="color: var(--status-green); font-weight: 700;">✓</span>
-                  <span>{cap}</span>
+          <div style="margin-bottom: 18px;">
+            <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px;">Accepted Inputs</div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--ink-secondary);">
+              {employee.inputs.map((inp) => (
+                <li style="display: flex; align-items: center; gap: 6px;">
+                  <span>→</span> <span>{inp}</span>
                 </li>
               ))}
             </ul>
-          </section>
+          </div>
 
-          {/* Workflow Execution Pipeline */}
-          <section class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium);">
-            <h2 style="font-size: 18px; font-weight: 700; color: var(--ink-black); margin-bottom: 16px;">
-              Autonomous Execution Sequence
-            </h2>
-            <div style="display: flex; flex-direction: column; gap: 16px;">
-              {employee.workflowSteps.map((step) => (
-                <div style="border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 16px; background: var(--bg-cream-alt);">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                    <span style="font-weight: 700; font-size: 14px; color: var(--ink-black);">
-                      Step {step.stepNumber}: {step.name}
-                    </span>
-                    <span style="font-family: var(--font-mono); font-size: 11px; color: #2563eb; background: #eff6ff; padding: 2px 6px; border-radius: 4px;">
-                      {step.toolUsed}
-                    </span>
-                  </div>
-                  <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 8px;">{step.action}</p>
-                  {step.outputPreview && (
-                    <div style="font-family: var(--font-mono); font-size: 11px; color: #059669; background: #ecfdf5; padding: 6px 10px; border-radius: 4px;">
-                      ↳ {step.outputPreview}
-                    </div>
-                  )}
-                </div>
+          <div style="border-top: 1px solid var(--border-light); padding-top: 14px;">
+            <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px;">Produced Deliverables</div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--ink-secondary);">
+              {employee.outputs.map((out) => (
+                <li style="display: flex; align-items: center; gap: 6px;">
+                  <span style="color: var(--status-green);">✓</span> <span>{out}</span>
+                </li>
               ))}
-            </div>
-          </section>
+            </ul>
+          </div>
+        </section>
 
+        {/* Workflow Execution Pipeline */}
+        <section class="os-card os-card-cream" style="background: #ffffff; border: 1px solid var(--candy-pink); height: 100%; display: flex; flex-direction: column;">
+          <h2 style="font-size: 18px; font-weight: 700; color: var(--ink-black); margin-bottom: 8px;">
+            Autonomous Execution Sequence
+          </h2>
+          <p style="font-size: 14px; color: var(--ink-secondary); margin-bottom: 24px; line-height: 1.5;">
+            Watch how this employee breaks down a high-level goal into a deterministic sequence of actions, tool calls, and verifications.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            {employee.workflowSteps.map((step) => (
+              <div style="border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 16px; background: var(--bg-cream-alt);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-weight: 700; font-size: 14px; color: var(--ink-black);">
+                    Step {step.stepNumber}: {step.name}
+                  </span>
+                  <span style="font-family: var(--font-mono); font-size: 11px; color: #2563eb; background: #eff6ff; padding: 2px 6px; border-radius: 4px;">
+                    {step.toolUsed}
+                  </span>
+                </div>
+                <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 8px;">{step.action}</p>
+                {step.outputPreview && (
+                  <div style="font-family: var(--font-mono); font-size: 11px; color: #059669; background: #ecfdf5; padding: 6px 10px; border-radius: 4px;">
+                    ↳ {step.outputPreview}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Supported MCP Tools */}
+        <section class="os-card os-card-cream" style="background: #ffffff; border: 1px solid var(--candy-pink); height: 100%; display: flex; flex-direction: column;">
+          <h2 style="font-size: 18px; font-weight: 700; color: var(--ink-black); margin-bottom: 8px;">
+            Connected MCP Tools
+          </h2>
+          <p style="font-size: 14px; color: var(--ink-secondary); margin-bottom: 20px; line-height: 1.5;">
+            This employee has native access to the following integrations via the open Model Context Protocol.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            {employee.tools.map((t) => (
+              <div style="padding: 10px 12px; border-radius: var(--radius-sm); background: var(--bg-cream-alt); border: 1px solid var(--border-light);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                  <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--ink-black);">{t.name}</span>
+                  <span class="os-badge" style="font-size: 10px; background: #ffffff; border: 1px solid var(--border-light);">{t.category}</span>
+                </div>
+                <div style="font-size: 12px; color: var(--ink-muted);">{t.description}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+      </div>
+
+      {/* Sample Production Run Box */}
+      <section class="os-card os-card-dark" style="border: 1px solid var(--candy-pink); width: 100%;">
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--candy-pink); margin-bottom: 8px;">
+          Verified Sample Run
         </div>
-
-        {/* Right Column: Inputs, Outputs, Tools, and Sample Run */}
-        <div style="display: flex; flex-direction: column; gap: 32px;">
-          
-          {/* Inputs & Outputs */}
-          <section class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium);">
-            <h2 style="font-size: 18px; font-weight: 700; color: var(--ink-black); margin-bottom: 16px;">
-              Inputs & Deliverables
-            </h2>
-            
-            <div style="margin-bottom: 18px;">
-              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px;">Accepted Inputs</div>
-              <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--ink-secondary);">
-                {employee.inputs.map((inp) => (
-                  <li style="display: flex; align-items: center; gap: 6px;">
-                    <span>→</span> <span>{inp}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div style="border-top: 1px solid var(--border-light); padding-top: 14px;">
-              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px;">Produced Deliverables</div>
-              <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--ink-secondary);">
-                {employee.outputs.map((out) => (
-                  <li style="display: flex; align-items: center; gap: 6px;">
-                    <span style="color: var(--status-green);">✓</span> <span>{out}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-
-          {/* Supported MCP Tools */}
-          <section class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium);">
-            <h2 style="font-size: 18px; font-weight: 700; color: var(--ink-black); margin-bottom: 16px;">
-              Connected MCP Tools
-            </h2>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-              {employee.tools.map((t) => (
-                <div style="padding: 10px 12px; border-radius: var(--radius-sm); background: var(--bg-cream-alt); border: 1px solid var(--border-light);">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
-                    <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--ink-black);">{t.name}</span>
-                    <span class="os-badge" style="font-size: 10px; background: #ffffff; border: 1px solid var(--border-light);">{t.category}</span>
-                  </div>
-                  <div style="font-size: 12px; color: var(--ink-muted);">{t.description}</div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Sample Production Run Box */}
-          <section class="os-card os-card-dark os-card-symmetric" style="border: 1px solid #262626;">
-            <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--candy-pink); margin-bottom: 8px;">
-              Verified Sample Run
-            </div>
-            <div style="font-size: 13px; color: #ffffff; font-weight: 600; margin-bottom: 12px;">
-              "{employee.sampleRun.prompt}"
-            </div>
-            <div style="font-size: 12px; color: #4ade80; line-height: 1.5; background: #131926; padding: 12px; border-radius: 8px; margin-bottom: 12px;">
-              ✓ {employee.sampleRun.resultSummary}
+        <div style="font-size: 13px; color: #ffffff; font-weight: 600; margin-bottom: 12px;">
+          "{employee.sampleRun.prompt}"
+        </div>
+        <div style="font-size: 12px; color: #4ade80; line-height: 1.5; background: #131926; padding: 12px; border-radius: 8px; margin-bottom: 12px;">
+          ✓ {employee.sampleRun.resultSummary}
             </div>
             <div style="display: flex; justify-content: space-between; font-size: 11px; color: #94a3b8; font-family: var(--font-mono);">
               <span>Time: {employee.sampleRun.executionTime}</span>
