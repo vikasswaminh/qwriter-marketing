@@ -50,17 +50,7 @@ export const PLATFORM_MODULES: PlatformModule[] = [
       { label: "Telemetry Overhead", value: "< 2ms" },
       { label: "PII Detection", value: "Real-Time Regex & NER" }
     ],
-    codeSample: `{
-  "trace_id": "tr_89a1f2b4",
-  "employee": "research_analyst_v2",
-  "step": 3,
-  "action": "mcp_web_scrape",
-  "target": "https://competitor.com/pricing",
-  "status": "success",
-  "duration_ms": 342,
-  "tokens_used": 1420,
-  "human_gate": "bypassed_read_only"
-}`,
+
     previewType: "trace"
   },
   {

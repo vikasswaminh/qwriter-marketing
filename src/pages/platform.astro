@@ -12,14 +12,14 @@ import { PLATFORM_MODULES } from "~/data/platform";
     <div class="os-container">
       
       {/* Header */}
-      <div class="os-section-header" style="text-align: left; margin-bottom: var(--spacing-56); max-width: 860px; margin-inline: 0;">
-        <div class="os-eyebrow" style="margin-bottom: var(--spacing-12);">
+      <div class="os-section-header" style="display: flex; flex-direction: column; gap: var(--spacing-24); text-align: left; margin-bottom: var(--spacing-64); max-width: 860px; margin-inline: 0;">
+        <div class="os-eyebrow">
           <span class="os-live-dot"></span> PLATFORM CORE ARCHITECTURE
         </div>
-        <h1 class="os-h1" style="margin-bottom: var(--spacing-16);">
+        <h1 class="os-h1">
           The enterprise operating system for autonomous AI employees.
         </h1>
-        <p class="os-lead">
+        <p class="os-lead" style="margin: 0;">
           Built from the ground up for high reliability, deterministic evaluation, deep execution observability, and native Model Context Protocol (MCP) tool connectivity.
         </p>
       </div>
@@ -29,24 +29,25 @@ import { PLATFORM_MODULES } from "~/data/platform";
         {PLATFORM_MODULES.map((mod, i) => (
           <section id={mod.slug} class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-48);">
             
-            <div class="os-grid-2" style="gap: var(--spacing-40); align-items: center;">
+            <div class="os-grid-2" style="gap: var(--spacing-48); align-items: center;">
               
-              <div>
-                <div class="os-eyebrow" style="margin-bottom: var(--spacing-8);">{mod.eyebrow}</div>
-                <h2 class="os-h2" style="margin-bottom: var(--spacing-12);">
-                  {mod.title}
-                </h2>
-                <p class="os-small" style="font-weight: 600; color: var(--ink-primary); margin-bottom: var(--spacing-12);">
-                  {mod.tagline}
-                </p>
-                <p class="os-small" style="margin-bottom: var(--spacing-24);">
-                  {mod.description}
-                </p>
+              <div style="display: flex; flex-direction: column; gap: var(--spacing-32);">
+                
+                <div style="display: flex; flex-direction: column; gap: var(--spacing-16);">
+                  <div class="os-eyebrow">{mod.eyebrow}</div>
+                  <h2 class="os-h2">{mod.title}</h2>
+                  <p class="os-small" style="font-weight: 600; color: var(--ink-primary); margin: 0;">
+                    {mod.tagline}
+                  </p>
+                  <p class="os-small" style="margin: 0;">
+                    {mod.description}
+                  </p>
+                </div>
 
                 {/* Features */}
-                <div style="margin-bottom: var(--spacing-24);">
-                  <div class="os-caption" style="font-weight: 700; text-transform: uppercase; margin-bottom: 10px;">Key Architectural Features</div>
-                  <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: var(--text-small); color: var(--ink-secondary);">
+                <div>
+                  <div class="os-caption" style="font-weight: 700; text-transform: uppercase; margin-bottom: var(--spacing-16);">Key Architectural Features</div>
+                  <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: var(--text-small); color: var(--ink-secondary);">
                     {mod.features.map((feat) => (
                       <li style="display: flex; align-items: flex-start; gap: 8px;">
                         <span style="color: var(--status-green); font-weight: 700;">✓</span>
@@ -57,9 +58,9 @@ import { PLATFORM_MODULES } from "~/data/platform";
                 </div>
 
                 {/* Metrics */}
-                <div style="display: flex; gap: var(--spacing-24); padding-top: var(--spacing-16); border-top: 1px solid var(--border-light); flex-wrap: wrap;">
+                <div style="display: flex; gap: var(--spacing-32); padding-top: var(--spacing-24); border-top: 1px solid var(--border-light); flex-wrap: wrap;">
                   {mod.metrics.map((m) => (
-                    <div>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
                       <div class="os-caption" style="font-weight: 700; text-transform: uppercase;">{m.label}</div>
                       <div class="os-h4">{m.value}</div>
                     </div>
@@ -70,34 +71,46 @@ import { PLATFORM_MODULES } from "~/data/platform";
               {/* Right: Visual or Code Preview */}
               <div>
                 {mod.codeSample ? (
-                  <div class="os-terminal">
-                    <div class="os-terminal-header">
-                      <div class="os-terminal-dots">
-                        <div class="os-terminal-dot red"></div>
-                        <div class="os-terminal-dot yellow"></div>
-                        <div class="os-terminal-dot green"></div>
+                  <div class="os-terminal" style="position: relative; overflow: hidden; background: transparent; border-color: rgba(255,255,255,0.1);">
+                    <img src="/images/observe-bg.jpg" alt="Telemetry Trace Background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.8;" />
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 13, 19, 0.7); z-index: 1;"></div>
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(1.5px); z-index: 1;"></div>
+                    <div style="position: relative; z-index: 2;">
+                      <div class="os-terminal-header" style="background: rgba(18, 24, 36, 0.85); backdrop-filter: blur(4px); border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <div class="os-terminal-dots">
+                          <div class="os-terminal-dot red"></div>
+                          <div class="os-terminal-dot yellow"></div>
+                          <div class="os-terminal-dot green"></div>
+                        </div>
+                        <span class="os-caption" style="color: #cbd5e1; font-weight: 500;">telemetry_trace.json</span>
                       </div>
-                      <span class="os-caption">telemetry_trace.json</span>
+                      <pre class="os-terminal-body" style="font-size: var(--text-caption); color: #7dd3fc; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.9); font-weight: 500;">{mod.codeSample}</pre>
                     </div>
-                    <pre class="os-terminal-body" style="font-size: var(--text-caption); color: #38bdf8; margin: 0;">{mod.codeSample}</pre>
                   </div>
                 ) : (
-                  <div style="background: var(--bg-cream-alt); border: 1px solid var(--border-medium); border-radius: var(--radius-lg); padding: var(--spacing-32); text-align: center;">
-                    <div style="font-size: 48px; margin-bottom: var(--spacing-16);">
-                      {mod.slug === 'workforce' && '⚡'}
-                      {mod.slug === 'evaluate' && '🎯'}
-                      {mod.slug === 'automate' && '⚙️'}
-                      {mod.slug === 'integrations' && '🔌'}
+                  <div style="position: relative; overflow: hidden; border: 1px solid var(--border-medium); border-radius: var(--radius-lg); padding: var(--spacing-48); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; color: white; border-color: rgba(255,255,255,0.2);">
+                    <img src={`/images/${mod.slug}-bg.${(mod.slug === 'observe' || mod.slug === 'evaluate') ? 'jpg' : 'png'}`} alt={mod.title} style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;" />
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.65) 100%); z-index: 1;"></div>
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(1.5px); z-index: 1;"></div>
+                    
+                    <div style="position: relative; z-index: 2; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                      <div style="font-size: 48px; margin-bottom: var(--spacing-16);">
+                        {mod.slug === 'workforce' && '⚡'}
+                        {mod.slug === 'observe' && '👁️'}
+                        {mod.slug === 'evaluate' && '🎯'}
+                        {mod.slug === 'automate' && '⚙️'}
+                        {mod.slug === 'integrations' && '🔌'}
+                      </div>
+                      <h3 style="margin-bottom: var(--spacing-8); font-family: var(--font-sans); font-weight: 600; font-size: var(--text-h4); color: white;">
+                        {mod.title}
+                      </h3>
+                      <p class="os-small" style="max-width: 320px; margin: 0 auto 20px; color: rgba(255,255,255,0.9); font-weight: 500;">
+                        {mod.tagline}
+                      </p>
+                      <a href="/signup" class="os-btn os-btn-primary" style="padding: 10px 22px; font-size: var(--text-small); box-shadow: 0 4px 15px rgba(255, 131, 218, 0.4); text-shadow: none;">
+                        Deploy Module →
+                      </a>
                     </div>
-                    <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">
-                      {mod.title}
-                    </h3>
-                    <p class="os-small" style="max-width: 320px; margin: 0 auto 20px;">
-                      {mod.tagline}
-                    </p>
-                    <a href="/signup" class="os-btn os-btn-primary" style="padding: 10px 22px; font-size: var(--text-small);">
-                      Deploy Module →
-                    </a>
                   </div>
                 )}
               </div>
