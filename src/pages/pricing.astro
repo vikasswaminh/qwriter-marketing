@@ -176,23 +176,43 @@ const faqs = [
       </div>
 
       {/* FAQ Section */}
-      <div style="max-width: 1000px; margin: 0 auto;">
+      <div style="max-width: 800px; margin: 0 auto;">
         <h2 class="os-h2" style="text-align: center; margin-bottom: var(--spacing-40);">
           Frequently Asked Questions
         </h2>
 
-        <div class="os-grid-2" style="gap: var(--spacing-24); align-items: stretch;">
+        <div style="display: flex; flex-direction: column; gap: 16px;">
           {faqs.map((faq) => (
-            <div class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-32); display: flex; flex-direction: column; height: 100%;">
-              <h3 class="os-h4" style="margin-bottom: var(--spacing-12);">
+            <details class="os-faq-item" style="border: 1px solid var(--candy-pink); border-radius: var(--radius-md); background: var(--bg-cream-alt); overflow: hidden;">
+              <summary style="padding: 20px 24px; font-size: 1.1rem; font-weight: 700; color: var(--ink-black); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none;">
                 {faq.q}
-              </h3>
-              <p class="os-body" style="margin: 0; color: var(--ink-secondary);">
-                {faq.a}
-              </p>
-            </div>
+                <span class="os-faq-icon" style="color: var(--candy-pink); font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease;">+</span>
+              </summary>
+              <div style="padding: 24px; background: var(--candy-pink-soft); font-size: 1.05rem; line-height: 1.7; color: var(--ink-secondary); border-top: 1px solid var(--candy-pink);">
+                <p style="margin: 0;">
+                  {faq.a}
+                </p>
+              </div>
+            </details>
           ))}
         </div>
+
+        <style>
+          /* Hide the default details marker (triangle) in webkit/blink */
+          .os-faq-item summary::-webkit-details-marker {
+            display: none;
+          }
+          
+          /* Rotate the '+' to an 'x' when open */
+          .os-faq-item[open] .os-faq-icon {
+            transform: rotate(45deg);
+            color: var(--ink-black);
+          }
+
+          .os-faq-item summary:hover {
+            background: #f8fafc;
+          }
+        </style>
       </div>
 
     </div>
