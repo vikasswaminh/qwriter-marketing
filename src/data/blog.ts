@@ -103,7 +103,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "ai-agents-vs-ai-assistants-whats-the-difference",
-    title: "AI Agents vs AI Assistants: What's the Difference? (And Why It's Not Just Semantics)",
+    title: "AI Agents vs AI Assistants: What's the Difference?",
     description: "AI agent and AI assistant get used interchangeably in almost every product pitch — and that's a problem, because they do fundamentally different jobs. Here's the real distinction, explained without the marketing haze.",
     category: "AI Workforce / Applied AI Fundamentals",
     readTime: "21 min read",
