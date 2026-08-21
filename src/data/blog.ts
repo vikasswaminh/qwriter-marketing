@@ -107,8 +107,8 @@ export const BLOG_POSTS: BlogPost[] = [
     description: "AI agent and AI assistant get used interchangeably in almost every product pitch — and that's a problem, because they do fundamentally different jobs. Here's the real distinction, explained without the marketing haze.",
     category: "AI Workforce / Applied AI Fundamentals",
     readTime: "21 min read",
-    publishDate: "2026-08-20",
-    updatedDate: "2026-08-20",
+    publishDate: "2026-08-21",
+    updatedDate: "2026-08-21",
     keywords: [
       "AI agents vs AI assistants", 
       "what is an AI agent", 
