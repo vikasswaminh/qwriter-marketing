@@ -10,6 +10,7 @@ import RoiCalculator from "~/components/outcomes/RoiCalculator.astro";
 import HowItWorks from "~/components/home/HowItWorks.astro";
 import PlatformOverview from "~/components/home/PlatformOverview.astro";
 import TrustFooter from "~/components/home/TrustFooter.astro";
+import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
 ---
 
 <Layout 
@@ -21,11 +22,11 @@ import TrustFooter from "~/components/home/TrustFooter.astro";
   {/* ─── 1. HERO SECTION ─── */}
   <section class="os-section" style="padding: 32px 0 48px; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--warm-cream) 0%, #fffbf2 100%);">
     
-    {/* Subtle Glow Backdrop */}
-    <div style="position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(circle, rgba(255, 131, 218, 0.3) 0%, rgba(255, 252, 246, 0) 70%); pointer-events: none; z-index: 0; animation: floatOrb 12s ease-in-out infinite;"></div>
+    {/* Stripe-Style Particle Swarm */}
+    <ParticleSwarm />
 
     <div class="os-container-wide" style="position: relative; z-index: 1;">
-      <div class="os-hero-box" style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 860px; margin: 0 auto;">
+      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 860px; margin: 0 auto; padding-top: 48px;">
         
         {/* Value Proposition & CTAs */}
         <div class="os-eyebrow os-reveal" style="margin-bottom: var(--spacing-24);">
@@ -77,9 +78,9 @@ import TrustFooter from "~/components/home/TrustFooter.astro";
   </section>
 
   {/* ─── 2. METRICS STRIP ─── */}
-  <section class="os-section-light" style="padding: 24px 0; border-top: 1px solid var(--candy-pink); border-bottom: 1px solid var(--candy-pink);">
+  <section class="os-section-light" style="padding: 16px 0; border-top: 1px solid var(--candy-pink); border-bottom: 1px solid var(--candy-pink);">
     <div class="os-container">
-      <div style="text-align: center; font-size: 0.75rem; color: var(--ink-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;">
+      <div style="text-align: center; font-size: 0.75rem; color: var(--ink-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">
         Built for the next generation of operating teams
       </div>
       <div class="os-grid-4">
@@ -237,7 +238,7 @@ import TrustFooter from "~/components/home/TrustFooter.astro";
   </section>
 
   {/* ─── 5. THE WORK THAT SHIPS ─── */}
-  <section class="os-section" style="padding: 100px 0; background: var(--warm-cream);">
+  <section class="os-section" style="padding: 48px 0; background: var(--warm-cream);">
     <div class="os-container">
       
       <div class="os-section-header">

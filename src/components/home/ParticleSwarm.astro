@@ -1,0 +1,171 @@
+---
+// ParticleSwarm.astro
+---
+<div class="os-swarm-container">
+  <canvas id="hero-swarm"></canvas>
+</div>
+
+<style>
+  .os-swarm-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140vw; /* Bleed out beyond the edges */
+    height: 140vh;
+    pointer-events: none;
+    z-index: 0; /* Behind the hero box */
+    overflow: hidden;
+    opacity: 0.8;
+  }
+  #hero-swarm {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>
+
+<script>
+  let animationId;
+
+  function initSwarm() {
+    const canvas = document.getElementById('hero-swarm') as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = canvas.offsetWidth;
+    let height = canvas.offsetHeight;
+    
+    // Handle High DPI displays for crisp rendering
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.scale(dpr, dpr);
+
+    // Mouse Tracking for Parallax
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetOffsetX = 0;
+    let targetOffsetY = 0;
+    let currentOffsetX = 0;
+    let currentOffsetY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      // Calculate mouse position relative to the center of the screen, normalized from -1 to 1
+      mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+      
+      // Maximum pixel offset for the entire swarm
+      const maxOffset = 60; 
+      targetOffsetX = mouseX * maxOffset;
+      targetOffsetY = mouseY * maxOffset;
+    });
+
+    const particles = [];
+    const particleCount = 600; // Dense swirl
+
+    // OllaSuper Candy Pink variants
+    const colors = [
+      'rgba(255, 131, 218, 0.8)', // Primary Pink
+      'rgba(255, 131, 218, 0.4)',
+      'rgba(255, 179, 230, 0.6)', // Lighter Pink
+      'rgba(216, 75, 175, 0.7)',  // Deeper Pink
+    ];
+
+    class Particle {
+      angle: number;
+      radius: number;
+      speed: number;
+      size: number;
+      color: string;
+      wobble: number;
+      wobbleSpeed: number;
+
+      constructor() {
+        this.angle = Math.random() * Math.PI * 2;
+        
+        // Create an exclusion zone in the center so particles orbit *around* the text
+        const minRadius = 380; // Minimum distance from center (clears the text block)
+        const maxRadius = (width / 2) + 200; 
+        
+        // Concentrate particles near the inner ring (using Math.random() squared) and disperse outwards
+        this.radius = minRadius + (Math.pow(Math.random(), 1.5) * (maxRadius - minRadius));
+        this.speed = (Math.random() * 0.001) + 0.0005; // Very slow majestic swirl
+        // Reverse direction for some particles
+        if (Math.random() > 0.5) this.speed *= -1;
+        this.size = Math.random() * 2 + 0.5;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Give each particle a slight vertical/horizontal wobble
+        this.wobble = Math.random() * Math.PI * 2;
+        this.wobbleSpeed = (Math.random() * 0.02) + 0.01;
+      }
+
+      update() {
+        this.angle += this.speed;
+        this.wobble += this.wobbleSpeed;
+      }
+
+      draw() {
+        // Apply the dynamic mouse offset to the center point
+        const centerX = (width / 2) + currentOffsetX;
+        const centerY = (height / 2) + currentOffsetY;
+
+        const x = centerX + Math.cos(this.angle) * this.radius + Math.cos(this.wobble) * 10;
+        const y = centerY + Math.sin(this.angle) * (this.radius * 0.6) + Math.sin(this.wobble) * 10; // Squish y to create 3D tilt perspective
+
+        if (!ctx) return;
+        ctx.beginPath();
+        ctx.arc(x, y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    // Initialize particles
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      if (!ctx) return;
+      
+      // Smoothly lerp current offset towards target offset for fluid physics
+      currentOffsetX += (targetOffsetX - currentOffsetX) * 0.05;
+      currentOffsetY += (targetOffsetY - currentOffsetY) * 0.05;
+
+      // Slight motion blur by not fully clearing the canvas, matching the background color of the hero
+      // Background is #fffbf2 at the bottom, var(--warm-cream) at top. 
+      // We'll use a very transparent off-white to clear it.
+      ctx.fillStyle = 'rgba(255, 252, 246, 0.3)';
+      ctx.fillRect(0, 0, width, height);
+
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      animationId = requestAnimationFrame(animate);
+    }
+
+    // Cleanup previous animation if navigating
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+    }
+    animate();
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+      width = canvas.offsetWidth;
+      height = canvas.offsetHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
+    });
+  }
+
+  // Hook into Astro's View Transitions
+  document.addEventListener('astro:page-load', initSwarm);
+</script>
