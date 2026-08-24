@@ -1,5 +1,6 @@
 ---
 import Layout from "~/layouts/Layout.astro";
+import RibbonBackground from "~/components/shared/RibbonBackground.astro";
 
 const tiers = [
   {
@@ -107,22 +108,29 @@ const faqs = [
   description="Transparent, value-driven pricing. Deploy specialized AI employees with full observability, human oversight, and Model Context Protocol."
   current="pricing"
 >
-  <article class="os-section" style="background: var(--warm-cream); padding-top: 64px; padding-bottom: 100px;">
-    <div class="os-container">
+  <article class="os-section" style="background: var(--warm-cream); padding-top: 0;">
+    
+    {/* HERO SECTION WITH RIBBON */}
+    <div style="position: relative; overflow: hidden; padding-top: 24px; padding-bottom: 48px; border-bottom: 1px solid var(--border-light);">
       
-      {/* Header */}
-      <div class="os-section-header">
-        <div class="os-eyebrow" style="margin-bottom: var(--spacing-12);">
-          <span class="os-live-dot"></span> TRANSPARENT PRICING
-        </div>
-        <h1 class="os-h1" style="margin-bottom: var(--spacing-16);">
-          Predictable pricing for your AI workforce.
-        </h1>
-        <p class="os-lead">
-          Start free with no credit card required. Upgrade as your autonomous employee fleet expands across departments.
-        </p>
-      </div>
+      <RibbonBackground id="stripe-ribbon-pricing" lines={40} opacity={0.6} />
 
+      <div class="os-container" style="position: relative; z-index: 1;">
+        <div class="os-section-header">
+          <div class="os-eyebrow" style="margin-bottom: var(--spacing-12);">
+            <span class="os-live-dot"></span> TRANSPARENT PRICING
+          </div>
+          <h1 class="os-h1" style="margin-bottom: var(--spacing-16);">
+            Predictable pricing for your AI workforce.
+          </h1>
+          <p class="os-lead">
+            Start free with no credit card required. Upgrade as your autonomous employee fleet expands across departments.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="os-container" style="padding-top: 48px; padding-bottom: 100px;">
       {/* Pricing Cards Grid */}
       <div class="os-grid-4" style="margin-bottom: var(--spacing-80); align-items: stretch;">
         {tiers.map((tier) => (

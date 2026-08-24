@@ -1,6 +1,7 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import { AI_EMPLOYEES } from "~/data/employees";
+import RibbonBackground from "~/components/shared/RibbonBackground.astro";
 ---
 
 <Layout
@@ -8,22 +9,29 @@ import { AI_EMPLOYEES } from "~/data/employees";
   description="Explore the full catalog of autonomous AI employees for Market Research, Outbound Sales, Technical Marketing, Tier-2 Support, and Business Operations."
   current="ai-employees"
 >
-  <section class="os-section" style="background: var(--warm-cream); padding-top: 64px;">
-    <div class="os-container">
+  <section class="os-section" style="background: var(--warm-cream); padding-top: 0;">
+    
+    {/* HERO SECTION WITH RIBBON */}
+    <div style="position: relative; overflow: hidden; padding-top: 24px; padding-bottom: 48px; border-bottom: 1px solid var(--border-light);">
       
-      {/* Page Header */}
-      <div class="os-section-header" style="text-align: center; margin-bottom: var(--spacing-48); max-width: 860px; margin-inline: auto; display: flex; flex-direction: column; align-items: center;">
-        <div class="os-eyebrow" style="margin-bottom: var(--spacing-12); display: flex; align-items: center; justify-content: center; gap: 8px;">
-          <span class="os-live-dot"></span> AUTONOMOUS WORKFORCE CATALOG
-        </div>
-        <h1 class="os-h1" style="margin-bottom: var(--spacing-16);">
-          Deploy specialized AI employees across your organization.
-        </h1>
-        <p class="os-lead">
-          Each AI employee is engineered for specific business workflows, equipped with validated Model Context Protocol (MCP) tool sets, and protected by strict human governance gates.
-        </p>
-      </div>
+      <RibbonBackground id="stripe-ribbon-employees" lines={40} opacity={0.6} />
 
+      <div class="os-container" style="position: relative; z-index: 1;">
+        <div class="os-section-header" style="text-align: center; max-width: 860px; margin-inline: auto; display: flex; flex-direction: column; align-items: center;">
+          <div class="os-eyebrow" style="margin-bottom: var(--spacing-12); display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <span class="os-live-dot"></span> AUTONOMOUS WORKFORCE CATALOG
+          </div>
+          <h1 class="os-h1" style="margin-bottom: var(--spacing-16);">
+            Deploy specialized AI employees across your organization.
+          </h1>
+          <p class="os-lead">
+            Each AI employee is engineered for specific business workflows, equipped with validated Model Context Protocol (MCP) tool sets, and protected by strict human governance gates.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="os-container" style="padding-top: 48px; padding-bottom: 48px;">
       {/* Employee List Grid */}
       <div class="os-grid-2">
         {AI_EMPLOYEES.map((emp) => (

@@ -1,0 +1,107 @@
+---
+// src/components/shared/RibbonBackground.astro
+export interface Props {
+  id?: string;
+  opacity?: number;
+  lines?: number;
+}
+const { id = "stripe-ribbon", opacity = 0.8, lines = 35 } = Astro.props;
+---
+
+<canvas id={id} class="os-ribbon-canvas" data-lines={lines} style={`position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: ${opacity};`}></canvas>
+
+<script>
+  function initRibbons() {
+    const canvases = document.querySelectorAll('canvas.os-ribbon-canvas');
+    
+    canvases.forEach((canvasEl) => {
+      const canvas = canvasEl as HTMLCanvasElement;
+      if (!canvas) return;
+      
+      // Prevent multiple initializations on the same canvas
+      if (canvas.dataset.initialized === 'true') return;
+      canvas.dataset.initialized = 'true';
+
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let width = canvas.clientWidth || canvas.offsetWidth || canvas.parentElement?.clientWidth || window.innerWidth;
+      let height = canvas.clientHeight || canvas.offsetHeight || canvas.parentElement?.clientHeight || 400;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
+
+      let time = 0;
+      const lines = parseInt(canvas.dataset.lines || "35", 10);
+      // Give each canvas a slightly different initial time to desynchronize them
+      const timeOffset = Math.random() * 1000;
+      
+      let animationFrameId: number;
+
+      function draw() {
+        if (!ctx) return;
+        
+        // Dynamically handle canvas resizing (fixes initial 0px height issues)
+        const currentWidth = canvas.clientWidth || canvas.parentElement?.clientWidth || window.innerWidth;
+        const currentHeight = canvas.clientHeight || canvas.parentElement?.clientHeight || 400;
+        
+        if (width !== currentWidth || height !== currentHeight || canvas.width === 0) {
+          width = currentWidth;
+          height = currentHeight;
+          canvas.width = width * dpr;
+          canvas.height = height * dpr;
+          ctx.scale(dpr, dpr);
+        }
+
+        ctx.clearRect(0, 0, width, height);
+        
+        for (let i = 0; i < lines; i++) {
+          ctx.beginPath();
+          
+          const gradient = ctx.createLinearGradient(0, 0, width, 0);
+          gradient.addColorStop(0, `rgba(219, 39, 119, 0)`);
+          gradient.addColorStop(0.5, `rgba(219, 39, 119, ${0.3 + (i/lines)*0.5})`); // Stronger pink
+          gradient.addColorStop(1, `rgba(219, 39, 119, 0)`);
+          
+          ctx.strokeStyle = gradient;
+          ctx.lineWidth = 1.2;
+          
+          const localTime = time + timeOffset;
+
+          for (let x = 0; x <= width; x += 15) {
+            const yOffset = Math.sin((x * 0.002) + localTime + (i * 0.1)) * 40;
+            const yOffset2 = Math.sin((x * 0.004) - localTime * 1.5 + (i * 0.05)) * 25;
+            const yOffset3 = Math.sin((x * 0.001) + localTime * 0.5) * 60;
+            
+            const y = (height / 2) - 50 + yOffset + yOffset2 + yOffset3 + (i - lines/2) * 6;
+            
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+        
+        time += 0.012;
+        animationFrameId = requestAnimationFrame(draw);
+      }
+      
+      draw();
+
+      // Cleanup when page unloads
+      document.addEventListener('astro:before-swap', () => {
+        cancelAnimationFrame(animationFrameId);
+      });
+    });
+  }
+  
+  // Initialize when the DOM is fully ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRibbons);
+  } else {
+    initRibbons();
+  }
+  
+  // Re-initialize on ViewTransitions page load (if enabled)
+  document.addEventListener('astro:page-load', initRibbons);
+</script>

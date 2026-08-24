@@ -1,6 +1,7 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import { AI_EMPLOYEES } from "~/data/employees";
+import RibbonBackground from "~/components/shared/RibbonBackground.astro";
 ---
 
 <Layout
@@ -8,28 +9,31 @@ import { AI_EMPLOYEES } from "~/data/employees";
   description="Experience a live demonstration of OllaSuper AI employees executing real business workflows."
   current="demo"
 >
-  <section class="os-section" style="padding: 64px 0; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--warm-cream) 0%, #fffbf2 100%);">
+  <section class="os-section" style="padding-top: 0; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--warm-cream) 0%, #fffbf2 100%);">
     
-    {/* Subtle Glow Backdrop */}
-    <div style="position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(circle, rgba(255, 131, 218, 0.12) 0%, rgba(255, 252, 246, 0) 70%); pointer-events: none; z-index: 0;"></div>
-
-    <div class="os-container" style="position: relative; z-index: 1;">
+    {/* HERO SECTION WITH RIBBON */}
+    <div style="position: relative; overflow: hidden; padding-top: 24px; padding-bottom: 48px; border-bottom: 1px solid var(--border-light);">
       
-      {/* Main Header */}
-      <div class="os-section-header">
-        <div class="os-eyebrow" style="margin-bottom: var(--spacing-24);">
-          <span class="os-badge" style="background: var(--candy-pink); color: var(--ink-black); font-size: var(--text-caption); padding: 4px 12px; border-radius: var(--radius-pill); font-weight: 700;">
-            <span class="os-live-dot"></span> Live 1:1 Architecture Demo
-          </span>
-        </div>
-        <h1 class="os-display" style="margin-bottom: var(--spacing-24);">
-          See OllaSuper AI employees in action.
-        </h1>
-        <p class="os-lead" style="max-width: 640px; margin: 0 auto;">
-          Schedule a 25-minute live technical walkthrough with an AI systems architect. We’ll simulate your company’s exact workflow using our autonomous employee fleet.
-        </p>
-      </div>
+      <RibbonBackground id="stripe-ribbon-demo" lines={40} opacity={0.6} />
 
+      <div class="os-container" style="position: relative; z-index: 1;">
+        {/* Main Header */}
+        <div class="os-section-header">
+          <div class="os-eyebrow" style="margin-bottom: var(--spacing-12);">
+            <span class="os-live-dot"></span> LIVE 1:1 ARCHITECTURE DEMO
+          </div>
+          <h1 class="os-h1" style="margin-bottom: var(--spacing-16);">
+            See OllaSuper AI employees in action.
+          </h1>
+          <p class="os-lead">
+            Schedule a 25-minute live technical walkthrough with an AI systems architect. We’ll simulate your company’s exact workflow using our autonomous employee fleet.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="os-container" style="position: relative; z-index: 1; padding-top: 48px; padding-bottom: 64px;">
+      
       {/* Two Column Layout for Features and Form */}
       <div class="os-grid-2" style="gap: var(--spacing-32); align-items: stretch; max-width: 1200px; margin: 0 auto;">
         

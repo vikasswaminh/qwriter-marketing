@@ -1,6 +1,7 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import { PLATFORM_MODULES } from "~/data/platform";
+import RibbonBackground from "~/components/shared/RibbonBackground.astro";
 ---
 
 <Layout
@@ -8,22 +9,29 @@ import { PLATFORM_MODULES } from "~/data/platform";
   description="Orchestrate, observe, evaluate, automate, and integrate your enterprise AI employee fleet from a single mission control."
   current="platform"
 >
-  <article class="os-section" style="background: var(--warm-cream); padding-top: 64px; padding-bottom: 100px;">
-    <div class="os-container">
+  <article class="os-section" style="background: var(--warm-cream); padding-top: 0;">
+    
+    {/* HERO SECTION WITH RIBBON */}
+    <div style="position: relative; overflow: hidden; padding-top: 24px; padding-bottom: 48px; border-bottom: 1px solid var(--border-light);">
       
-      {/* Header */}
-      <div class="os-section-header" style="display: flex; flex-direction: column; gap: var(--spacing-24); text-align: left; margin-bottom: var(--spacing-64); max-width: 860px; margin-inline: 0;">
-        <div class="os-eyebrow">
-          <span class="os-live-dot"></span> PLATFORM CORE ARCHITECTURE
-        </div>
-        <h1 class="os-h1">
-          The enterprise operating system for autonomous AI employees.
-        </h1>
-        <p class="os-lead" style="margin: 0;">
-          Built from the ground up for high reliability, deterministic evaluation, deep execution observability, and native Model Context Protocol (MCP) tool connectivity.
-        </p>
-      </div>
+      <RibbonBackground id="stripe-ribbon-platform" lines={40} opacity={0.6} />
 
+      <div class="os-container" style="position: relative; z-index: 1;">
+        <div class="os-section-header" style="display: flex; flex-direction: column; gap: var(--spacing-24); text-align: left; max-width: 860px; margin-inline: 0;">
+          <div class="os-eyebrow">
+            <span class="os-live-dot"></span> PLATFORM CORE ARCHITECTURE
+          </div>
+          <h1 class="os-h1">
+            The enterprise operating system for autonomous AI employees.
+          </h1>
+          <p class="os-lead" style="margin: 0;">
+            Built from the ground up for high reliability, deterministic evaluation, deep execution observability, and native Model Context Protocol (MCP) tool connectivity.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="os-container" style="padding-top: 48px; padding-bottom: 48px;">
       {/* Modules Deep Dive */}
       <div style="display: flex; flex-direction: column; gap: var(--spacing-48);">
         {PLATFORM_MODULES.map((mod, i) => (
