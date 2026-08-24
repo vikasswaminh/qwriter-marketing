@@ -1,0 +1,168 @@
+---
+// PlatformOverview.astro
+---
+<section class="os-section" style="padding: 100px 0; background: #ffffff;">
+  <div class="os-container">
+    <div style="background: var(--bg-cream-alt); border: 1px solid var(--border-medium); border-radius: 32px; padding: 64px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: center; overflow: hidden; position: relative;">
+      
+      {/* Subtle Glow */}
+      <div style="position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,131,218,0.15) 0%, rgba(255,255,255,0) 70%); pointer-events: none;"></div>
+
+      {/* Left Content */}
+      <div style="position: relative; z-index: 2;">
+        <div class="os-eyebrow" style="margin-bottom: 12px; color: var(--candy-pink);">
+          <span class="os-badge" style="background: var(--candy-pink-soft); color: var(--candy-pink); border: 1px solid rgba(244,114,182,0.2);">PLATFORM OVERVIEW</span>
+        </div>
+        <h2 class="os-h2" style="font-size: 2.5rem; line-height: 1.1; margin-bottom: 40px; color: var(--ink-black); letter-spacing: -0.02em;">
+          Everything you need to build and scale your AI workforce
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 48px;">
+          
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="color: var(--candy-pink);">👁️</span>
+              <h4 style="font-weight: 700; font-size: 1rem; color: var(--ink-black);">Observe</h4>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--ink-secondary); line-height: 1.5; margin: 0;">Monitor AI employees in real-time</p>
+          </div>
+
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="color: var(--candy-pink);">✅</span>
+              <h4 style="font-weight: 700; font-size: 1rem; color: var(--ink-black);">Evaluate</h4>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--ink-secondary); line-height: 1.5; margin: 0;">Evaluate performance and ensure quality</p>
+          </div>
+
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="color: var(--candy-pink);">⚡</span>
+              <h4 style="font-weight: 700; font-size: 1rem; color: var(--ink-black);">Automate</h4>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--ink-secondary); line-height: 1.5; margin: 0;">Automate workflows and processes</p>
+          </div>
+
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="color: var(--candy-pink);">🔗</span>
+              <h4 style="font-weight: 700; font-size: 1rem; color: var(--ink-black);">Integrations</h4>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--ink-secondary); line-height: 1.5; margin: 0;">Connect with 100+ tools and platforms</p>
+          </div>
+
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="color: var(--candy-pink);">🛡️</span>
+              <h4 style="font-weight: 700; font-size: 1rem; color: var(--ink-black);">Security</h4>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--ink-secondary); line-height: 1.5; margin: 0;">Enterprise-grade security & privacy</p>
+          </div>
+
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="color: var(--candy-pink);">📊</span>
+              <h4 style="font-weight: 700; font-size: 1rem; color: var(--ink-black);">Analytics</h4>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--ink-secondary); line-height: 1.5; margin: 0;">Advanced analytics and insights</p>
+          </div>
+
+        </div>
+        
+        <a href="/features" class="os-btn os-btn-secondary" style="color: var(--candy-pink); border-color: var(--candy-pink-soft); font-weight: 600; padding: 12px 24px;">
+          Explore Platform Features →
+        </a>
+      </div>
+
+      {/* Right Content: HTML/CSS Dashboard Mockup */}
+      <div style="position: relative; z-index: 2;">
+        <div style="background: #ffffff; border: 1px solid var(--border-medium); border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column;">
+          
+          {/* Header */}
+          <div style="padding: 16px 24px; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 24px; height: 24px; border-radius: 6px; background: linear-gradient(135deg, var(--candy-pink), #a81c85);"></div>
+              <span style="font-weight: 700; font-size: 0.9rem; color: var(--ink-black);">OllaSuper Workforce Dashboard</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--bg-cream-alt); border: 1px solid var(--border-medium);"></div>
+              <span style="font-size: 0.8rem; font-weight: 600; color: var(--ink-secondary);">Admin</span>
+            </div>
+          </div>
+
+          {/* Body */}
+          <div style="display: grid; grid-template-columns: 200px 1fr; background: #fafbfc;">
+            
+            {/* Sidebar */}
+            <div style="padding: 20px 16px; border-right: 1px solid var(--border-light); display: flex; flex-direction: column; gap: 12px;">
+              <div style="padding: 8px 12px; background: var(--candy-pink-soft); color: var(--candy-pink); border-radius: 6px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                <span>📊</span> Overview
+              </div>
+              <div style="padding: 8px 12px; color: var(--ink-secondary); font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; gap: 8px;">
+                <span>🤖</span> AI Employees
+              </div>
+              <div style="padding: 8px 12px; color: var(--ink-secondary); font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; gap: 8px;">
+                <span>✅</span> Tasks
+              </div>
+              <div style="padding: 8px 12px; color: var(--ink-secondary); font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; gap: 8px;">
+                <span>⚡</span> Workflows
+              </div>
+            </div>
+
+            {/* Main Dashboard Area */}
+            <div style="padding: 24px; background: #ffffff;">
+              
+              {/* Stats Row */}
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                <div style="padding: 16px; border: 1px solid var(--border-light); border-radius: 12px;">
+                  <div style="font-size: 0.75rem; color: var(--ink-muted); font-weight: 600; text-transform: uppercase; margin-bottom: 8px;">Tasks Completed</div>
+                  <div style="font-size: 1.5rem; font-weight: 800; color: var(--ink-black); margin-bottom: 4px;">1,429</div>
+                  <div style="font-size: 0.75rem; color: var(--status-green); font-weight: 600;">+23% this week</div>
+                </div>
+                <div style="padding: 16px; border: 1px solid var(--border-light); border-radius: 12px;">
+                  <div style="font-size: 0.75rem; color: var(--ink-muted); font-weight: 600; text-transform: uppercase; margin-bottom: 8px;">Success Rate</div>
+                  <div style="font-size: 1.5rem; font-weight: 800; color: var(--ink-black); margin-bottom: 4px;">98.2%</div>
+                  <div style="font-size: 0.75rem; color: var(--status-green); font-weight: 600;">+2.1% this week</div>
+                </div>
+                <div style="padding: 16px; border: 1px solid var(--border-light); border-radius: 12px;">
+                  <div style="font-size: 0.75rem; color: var(--ink-muted); font-weight: 600; text-transform: uppercase; margin-bottom: 8px;">Time Saved</div>
+                  <div style="font-size: 1.5rem; font-weight: 800; color: var(--ink-black); margin-bottom: 4px;">2,850h</div>
+                  <div style="font-size: 0.75rem; color: var(--status-green); font-weight: 600;">+41% this week</div>
+                </div>
+              </div>
+
+              {/* Chart Mockup */}
+              <div style="padding: 20px; border: 1px solid var(--border-light); border-radius: 12px;">
+                <div style="font-size: 0.85rem; font-weight: 700; color: var(--ink-black); margin-bottom: 16px;">Activity Overview</div>
+                {/* CSS SVG Wave */}
+                <div style="height: 120px; width: 100%; position: relative;">
+                  <svg viewBox="0 0 400 100" preserveAspectRatio="none" style="width:100%; height:100%;">
+                    <path d="M0,80 C50,100 100,20 150,60 C200,100 250,20 300,50 C350,80 400,20 400,20 L400,100 L0,100 Z" fill="url(#pink-grad)" opacity="0.2"/>
+                    <path d="M0,80 C50,100 100,20 150,60 C200,100 250,20 300,50 C350,80 400,20 400,20" fill="none" stroke="var(--candy-pink)" stroke-width="3"/>
+                    <defs>
+                      <linearGradient id="pink-grad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="var(--candy-pink)" />
+                        <stop offset="100%" stop-color="#ffffff" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 960px) {
+    section > div > div {
+      grid-template-columns: 1fr !important;
+      padding: 32px !important;
+    }
+  }
+</style>

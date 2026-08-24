@@ -1,0 +1,139 @@
+---
+// HowItWorks.astro
+---
+<section class="os-section" style="padding: 100px 0; background: #ffffff; border-top: 1px solid var(--border-light);">
+  <div class="os-container">
+    
+    <div style="text-align: center; margin-bottom: 64px;">
+      <div class="os-eyebrow" style="margin-bottom: 8px; color: var(--ink-secondary); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.85rem;">
+        HOW AN AI EMPLOYEE WORKS
+      </div>
+    </div>
+
+    <div class="hiw-flow">
+      {/* Step 1 */}
+      <div class="hiw-step">
+        <div class="hiw-icon" style="background: var(--candy-pink-soft); color: var(--candy-pink);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+        </div>
+        <div class="hiw-content">
+          <h4 style="font-size: 1.1rem; font-weight: 800; color: var(--ink-black); margin-bottom: 8px;">1. Understand</h4>
+          <p style="font-size: 0.95rem; color: var(--ink-secondary); line-height: 1.5; margin: 0;">Understands your goal and requirements</p>
+        </div>
+      </div>
+
+      <div class="hiw-arrow">→</div>
+
+      {/* Step 2 */}
+      <div class="hiw-step">
+        <div class="hiw-icon" style="background: var(--candy-pink-soft); color: var(--candy-pink);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+        </div>
+        <div class="hiw-content">
+          <h4 style="font-size: 1.1rem; font-weight: 800; color: var(--ink-black); margin-bottom: 8px;">2. Plan</h4>
+          <p style="font-size: 0.95rem; color: var(--ink-secondary); line-height: 1.5; margin: 0;">Creates a plan and chooses the best tools</p>
+        </div>
+      </div>
+
+      <div class="hiw-arrow">→</div>
+
+      {/* Step 3 */}
+      <div class="hiw-step">
+        <div class="hiw-icon" style="background: var(--candy-pink-soft); color: var(--candy-pink);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        </div>
+        <div class="hiw-content">
+          <h4 style="font-size: 1.1rem; font-weight: 800; color: var(--ink-black); margin-bottom: 8px;">3. Execute</h4>
+          <p style="font-size: 0.95rem; color: var(--ink-secondary); line-height: 1.5; margin: 0;">Takes action using trusted tools</p>
+        </div>
+      </div>
+
+      <div class="hiw-arrow">→</div>
+
+      {/* Step 4 */}
+      <div class="hiw-step">
+        <div class="hiw-icon" style="background: var(--candy-pink); color: #ffffff;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <div class="hiw-content">
+          <h4 style="font-size: 1.1rem; font-weight: 800; color: var(--ink-black); margin-bottom: 8px;">4. Deliver</h4>
+          <p style="font-size: 0.95rem; color: var(--ink-secondary); line-height: 1.5; margin: 0;">Delivers results with full transparency</p>
+        </div>
+      </div>
+
+      <div class="hiw-arrow">→</div>
+
+      {/* Step 5 */}
+      <div class="hiw-step">
+        <div class="hiw-icon" style="background: var(--candy-pink-soft); color: var(--candy-pink);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+        </div>
+        <div class="hiw-content">
+          <h4 style="font-size: 1.1rem; font-weight: 800; color: var(--ink-black); margin-bottom: 8px;">5. Improve</h4>
+          <p style="font-size: 0.95rem; color: var(--ink-secondary); line-height: 1.5; margin: 0;">Learns and improves over time</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hiw-flow {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  
+  .hiw-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hiw-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    transition: transform 0.3s ease;
+  }
+  
+  .hiw-step:hover .hiw-icon {
+    transform: translateY(-4px) scale(1.05);
+  }
+
+  .hiw-arrow {
+    color: var(--border-medium);
+    font-size: 24px;
+    font-weight: 300;
+    margin-top: 20px; /* Align with icons */
+  }
+
+  @media (max-width: 900px) {
+    .hiw-flow {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+    .hiw-arrow {
+      transform: rotate(90deg);
+      margin-top: -10px;
+      margin-bottom: -10px;
+    }
+    .hiw-step {
+      max-width: 300px;
+    }
+  }
+</style>

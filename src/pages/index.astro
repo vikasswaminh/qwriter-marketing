@@ -7,6 +7,9 @@ import PlatformBento from "~/components/platform/PlatformBento.astro";
 import TraceVisualizer from "~/components/observability/TraceVisualizer.astro";
 import HumanInTheLoopCard from "~/components/governance/HumanInTheLoopCard.astro";
 import RoiCalculator from "~/components/outcomes/RoiCalculator.astro";
+import HowItWorks from "~/components/home/HowItWorks.astro";
+import PlatformOverview from "~/components/home/PlatformOverview.astro";
+import TrustFooter from "~/components/home/TrustFooter.astro";
 ---
 
 <Layout 
@@ -102,6 +105,9 @@ import RoiCalculator from "~/components/outcomes/RoiCalculator.astro";
 
   {/* ─── 3. AI EMPLOYEES SHOWCASE ─── */}
   <EmployeeShowcase />
+
+  <HowItWorks />
+  <PlatformOverview />
 
   {/* ─── 4. WHAT YOU CAN SHIP ─── */}
   <section class="os-section" style="padding: 100px 0; background: #ffffff; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
@@ -310,118 +316,8 @@ import RoiCalculator from "~/components/outcomes/RoiCalculator.astro";
   {/* ─── 9. HUMAN-IN-THE-LOOP CONTROL ─── */}
   <HumanInTheLoopCard />
 
-  {/* ─── 10. ENTERPRISE TRUST & SECURITY ARCHITECTURE ─── */}
-  <section class="os-section" style="padding: 100px 0; background: #ffffff; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
-    <div class="os-container">
-      
-      <div class="os-section-header">
-        <div class="os-eyebrow">
-          ENTERPRISE TRUST & SECURITY
-        </div>
-        <h2 class="os-h2">
-          Secure by default. Built for scale.
-        </h2>
-        <p class="os-lead">
-          Deploy your AI workforce with confidence. OllaSuper provides zero-data-retention sandboxes and cryptographic security guarantees.
-        </p>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-        
-        <div class="os-card os-card-cream" style="border: 1px solid var(--border-medium);">
-          <div style="font-size: 24px; margin-bottom: 14px;">🔒</div>
-          <h3 style="font-size: 17px; font-weight: 700; color: var(--ink-black); margin-bottom: 8px;">Zero Data Retention</h3>
-          <p style="font-size: 13px; color: var(--ink-secondary); line-height: 1.5;">
-            Customer prompts, internal data, and API payloads are never stored beyond task runtime, and are never used to train foundation models.
-          </p>
-        </div>
-
-        <div class="os-card os-card-cream" style="border: 1px solid var(--border-medium);">
-          <div style="font-size: 24px; margin-bottom: 14px;">🛡️</div>
-          <h3 style="font-size: 17px; font-weight: 700; color: var(--ink-black); margin-bottom: 8px;">SOC2 Type II & HIPAA Ready</h3>
-          <p style="font-size: 13px; color: var(--ink-secondary); line-height: 1.5;">
-            Independently audited controls across encryption at rest (AES-256), in-transit (TLS 1.3), and continuous vulnerability monitoring.
-          </p>
-        </div>
-
-        <div class="os-card os-card-cream" style="border: 1px solid var(--border-medium);">
-          <div style="font-size: 24px; margin-bottom: 14px;">📦</div>
-          <h3 style="font-size: 17px; font-weight: 700; color: var(--ink-black); margin-bottom: 8px;">Sandboxed Tool Execution</h3>
-          <p style="font-size: 13px; color: var(--ink-secondary); line-height: 1.5;">
-            All MCP tool calls run in isolated gVisor container environments with strict egress network policies and zero-host access.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  {/* ─── 11. QUANTIFIED BUSINESS OUTCOMES & ROI CALCULATOR ─── */}
-  <RoiCalculator />
-
-  {/* ─── 12. VERIFIED CASE STUDY & TESTIMONIAL ─── */}
-  <section class="os-section" style="padding: 100px 0; background: var(--warm-cream);">
-    <div class="os-container">
-      <div style="max-width: 900px; margin: 0 auto; background: #ffffff; border: 1px solid var(--border-medium); border-radius: var(--radius-xl); padding: 48px; box-shadow: var(--shadow-md);">
-        
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-          <span class="os-badge os-badge-green">Verified Case Study</span>
-          <span style="font-size: 13px; font-weight: 700; color: var(--ink-black);">Rampify Global</span>
-        </div>
-
-        <blockquote style="font-size: 22px; font-weight: 600; line-height: 1.4; color: var(--ink-black); margin-bottom: 28px; letter-spacing: -0.02em;">
-          "OllaSuper’s Sales and Research employees generate 45% of our qualified pipeline each month. Our Account Executives now spend 90% of their time on live customer conversations rather than manual scraping and CRM hygiene."
-        </blockquote>
-
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; border-top: 1px solid var(--border-light); padding-top: 20px;">
-          <div>
-            <div style="font-weight: 700; color: var(--ink-black);">Elena Rostova</div>
-            <div style="font-size: 13px; color: var(--ink-muted);">VP of Global Revenue, Rampify</div>
-          </div>
-          <div style="text-align: right;">
-            <div style="font-size: 20px; font-weight: 800; color: var(--status-green);">+$3.4M ARR</div>
-            <div style="font-size: 12px; color: var(--ink-muted);">Generated in 6 Months</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  {/* ─── 13. FINAL FOCUSED CALL TO ACTION ─── */}
-  <section class="os-section" style="padding: 120px 0; background: #0c0f17; color: #ffffff; text-align: center; position: relative; overflow: hidden;">
-    
-    {/* Glow */}
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 300px; background: radial-gradient(circle, rgba(255, 131, 218, 0.15) 0%, rgba(12, 15, 23, 0) 70%); pointer-events: none;"></div>
-
-    <div class="os-container-narrow" style="position: relative; z-index: 1;">
-      <div class="os-eyebrow" style="color: var(--candy-pink); margin-bottom: 16px;">
-        <span class="os-live-dot"></span> READY TO DEPLOY
-      </div>
-
-      <h2 class="os-h1" style="color: #ffffff; margin-bottom: 20px;">
-        Ready to build your AI workforce?
-      </h2>
-
-      <p class="os-lead" style="color: #94a3b8; margin-bottom: 40px;">
-        Deploy intelligent AI employees that work alongside your team today. Start free in under 60 seconds.
-      </p>
-
-      <div style="display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap;">
-        <a href="/signup" class="os-btn os-btn-primary" style="padding: 16px 36px; font-size: 16px;">
-          Build Your AI Workforce →
-        </a>
-        <a href="/demo" class="os-btn os-btn-secondary" style="padding: 16px 30px; font-size: 16px; background: #1a2234; color: #ffffff; border-color: #334155;">
-          Book a 1:1 Demo
-        </a>
-      </div>
-
-      <div style="margin-top: 32px; font-size: 13px; color: #64748b;">
-        Free Tier Available • No Credit Card Required • Instant Setup
-      </div>
-    </div>
-  </section>
+  {/* ─── 10. AI YOU CAN TRUST & GET STARTED TODAY ─── */}
+  <TrustFooter />
 
 </Layout>
 
