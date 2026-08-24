@@ -637,6 +637,74 @@ img, svg, video {
   transform: translateY(0);
 }
 
+/* ─── Premium UI Animations ─── */
+.os-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.os-reveal.os-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.os-reveal-delay-1 { transition-delay: 100ms; }
+.os-reveal-delay-2 { transition-delay: 200ms; }
+.os-reveal-delay-3 { transition-delay: 300ms; }
+.os-reveal-delay-4 { transition-delay: 400ms; }
+
+.os-magnetic {
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: inline-block;
+  will-change: transform;
+}
+
+.os-tilt {
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* ─── Premium Hero Box ─── */
+.os-hero-box {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 32px;
+  padding: 64px 48px;
+  box-shadow: 0 32px 64px -12px rgba(255, 131, 218, 0.15), 0 0 0 1px rgba(255,131,218,0.05) inset;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.os-hero-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 40px 80px -12px rgba(255, 131, 218, 0.25), 0 0 0 1px rgba(255,131,218,0.1) inset;
+}
+
+.os-text-gradient-animate {
+  background: linear-gradient(to right, var(--ink-black), var(--candy-pink), var(--ink-black));
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
 /* ─── Backwards Compatibility Helpers ─── */
 .qw-card { @apply os-card; }
 .qw-btn { @apply os-btn; }

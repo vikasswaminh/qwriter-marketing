@@ -22,30 +22,30 @@ import TrustFooter from "~/components/home/TrustFooter.astro";
   <section class="os-section" style="padding: 64px 0 48px; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--warm-cream) 0%, #fffbf2 100%);">
     
     {/* Subtle Glow Backdrop */}
-    <div style="position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(circle, rgba(255, 131, 218, 0.12) 0%, rgba(255, 252, 246, 0) 70%); pointer-events: none; z-index: 0;"></div>
+    <div style="position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(circle, rgba(255, 131, 218, 0.3) 0%, rgba(255, 252, 246, 0) 70%); pointer-events: none; z-index: 0; animation: floatOrb 12s ease-in-out infinite;"></div>
 
     <div class="os-container-wide" style="position: relative; z-index: 1;">
-      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 800px; margin: 0 auto;">
+      <div class="os-hero-box" style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 860px; margin: 0 auto;">
         
         {/* Value Proposition & CTAs */}
-        <div class="os-eyebrow" style="margin-bottom: var(--spacing-24);">
+        <div class="os-eyebrow os-reveal" style="margin-bottom: var(--spacing-24);">
           <span class="os-badge" style="background: var(--candy-pink); color: var(--ink-black); font-size: var(--text-caption); padding: 4px 12px; border-radius: var(--radius-pill); font-weight: 700;">
             <span class="os-live-dot"></span> AI Workforce Platform
           </span>
           <span class="os-caption">Production-Ready 2026</span>
         </div>
 
-        <h1 class="os-display" style="margin-bottom: var(--spacing-24);">
-          Build Your AI Workforce.
+        <h1 class="os-display os-reveal os-reveal-delay-1" style="margin-bottom: var(--spacing-24);">
+          <span class="os-text-gradient-animate">Build Your AI Workforce.</span>
         </h1>
 
-        <p class="os-lead" style="margin-bottom: var(--spacing-48); max-width: 640px;">
+        <p class="os-lead os-reveal os-reveal-delay-2" style="margin-bottom: var(--spacing-48); max-width: 640px;">
           <strong style="font-weight: 700; color: var(--ink-black);">80 Experts</strong> that advise across Sales, HR, SEO, Legal, Finance and 25 more — plus <strong style="font-weight: 700; color: var(--ink-black);">6 Agents</strong> that run on schedules and take real actions with your approval.
         </p>
 
         {/* Primary Action Buttons */}
-        <div style="display: flex; gap: 16px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
-          <a href="/signup" class="os-btn os-btn-primary" style="padding: 14px 28px; font-size: 15px;">
+        <div class="os-reveal os-reveal-delay-3" style="display: flex; gap: 16px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
+          <a href="/signup" class="os-btn os-btn-primary os-magnetic" style="padding: 14px 28px; font-size: 15px;">
             Build Your AI Workforce →
           </a>
           <a href="#employees" class="os-btn os-btn-secondary" style="padding: 14px 24px; font-size: 15px;">
