@@ -185,7 +185,8 @@ export const BLOG_POSTS: BlogPost[] = [
       { num: "11", id: "market-confusion", title: "The Confusion the Market Keeps Creating" },
       { num: "12", id: "building-a-workforce", title: "Building an AI Workforce That Actually Uses Both Correctly" },
       { num: "13", id: "where-this-is-headed", title: "Where This Is Headed" },
-      { num: "14", id: "conclusion", title: "Wrapping Up" }
+      { num: "14", id: "faq", title: "Frequently Asked Questions (FAQ)" },
+      { num: "15", id: "conclusion", title: "Wrapping Up" }
     ],
     keyTakeaways: [
       {
@@ -277,6 +278,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { num: "08", id: "security-compliance", title: "Security, Compliance, and the Question Everyone Eventually Asks" },
       { num: "09", id: "future-outlook", title: "Where This Is Heading" },
       { num: "10", id: "across-business-types", title: "What This Looks Like Across Different Kinds of Businesses" },
+      { num: "11", id: "faq", title: "Frequently Asked Questions (FAQ)" },
       { num: "12", id: "conclusion", title: "Bringing It Together" }
     ],
     keyTakeaways: [
