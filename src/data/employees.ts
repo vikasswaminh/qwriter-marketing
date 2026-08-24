@@ -135,7 +135,9 @@ export const AI_EMPLOYEES: AIEmployee[] = [
       { name: "mcp_salesforce_crm", category: "CRM", description: "Direct read/write object sync with validation rules" },
       { name: "mcp_linkedin_search", category: "Prospecting", description: "Profile verification and recent post topic extraction" },
       { name: "mcp_email_draft", category: "Outreach", description: "Synthesizes contextual email bodies with anti-spam check" },
-      { name: "mcp_slack_alert", category: "Notifications", description: "Instant alert to Account Executive when meeting requested" }
+      { name: "mcp_slack_alert", category: "Notifications", description: "Instant alert to Account Executive when meeting requested" },
+      { name: "mcp_gong_analysis", category: "Intelligence", description: "Analyzes call transcripts for prospect objections and sentiment" },
+      { name: "mcp_zoominfo_enrich", category: "Data", description: "Pulls direct dial phone numbers and corporate hierarchies" }
     ],
     targetUsers: ["VP of Sales", "Head of Growth", "SDR Teams", "Account Executives"],
     stats: {
@@ -189,7 +191,9 @@ export const AI_EMPLOYEES: AIEmployee[] = [
     tools: [
       { name: "mcp_content_cms", category: "CMS", description: "Direct publish / draft insertion into Astro, Webflow, or Ghost" },
       { name: "mcp_seo_auditor", category: "SEO", description: "Analyzes heading hierarchy, keyword density, and internal links" },
-      { name: "mcp_social_scheduler", category: "Social", description: "Schedules approved posts across X and LinkedIn" }
+      { name: "mcp_social_scheduler", category: "Social", description: "Schedules approved posts across X and LinkedIn" },
+      { name: "mcp_google_analytics", category: "Analytics", description: "Pulls live traffic reports and conversion metrics for attribution tracking" },
+      { name: "mcp_canva_generator", category: "Design", description: "Auto-generates branded social media graphics and featured images" }
     ],
     targetUsers: ["Content Marketers", "Growth Leads", "Founders", "SEO Directors"],
     stats: {
@@ -243,7 +247,9 @@ export const AI_EMPLOYEES: AIEmployee[] = [
     tools: [
       { name: "mcp_zendesk_api", category: "Helpdesk", description: "Reads tickets, replies, tags, and manages status" },
       { name: "mcp_log_diagnostics", category: "Engineering", description: "Queries Datadog/Sentry logs to correlate user error timestamps" },
-      { name: "mcp_kb_updater", category: "Knowledge", description: "Proposes new FAQ articles for unanswered queries" }
+      { name: "mcp_kb_updater", category: "Knowledge", description: "Proposes new FAQ articles for unanswered queries" },
+      { name: "mcp_linear_tracker", category: "Engineering", description: "Automatically files and links bug reports directly in Linear" },
+      { name: "mcp_refund_processor", category: "Billing", description: "Securely processes partial or full Stripe refunds under strict policy gates" }
     ],
     targetUsers: ["Support Operations", "Customer Success", "Technical Support Engineers"],
     stats: {
@@ -297,7 +303,9 @@ export const AI_EMPLOYEES: AIEmployee[] = [
     tools: [
       { name: "mcp_stripe_billing", category: "Finance", description: "Fetches payouts, dispute statuses, and invoice line items" },
       { name: "mcp_sql_query", category: "Data", description: "Read-only SQL queries to verify production record consistency" },
-      { name: "mcp_slack_approval", category: "Governance", description: "Dispatches interactive approval buttons to Finance Slack channel" }
+      { name: "mcp_slack_approval", category: "Governance", description: "Dispatches interactive approval buttons to Finance Slack channel" },
+      { name: "mcp_workday_hris", category: "HR", description: "Syncs employee status changes and automates offboarding protocols" },
+      { name: "mcp_aws_billing", category: "Infrastructure", description: "Monitors cloud spend anomalies and flags orphaned infrastructure" }
     ],
     targetUsers: ["COO", "Finance Directors", "BizOps Managers", "IT Administrators"],
     stats: {
@@ -351,7 +359,9 @@ export const AI_EMPLOYEES: AIEmployee[] = [
     tools: [
       { name: "mcp_custom_server", category: "Bespoke", description: "Connects to any internal HTTP/gRPC/SSE tool server" },
       { name: "mcp_eval_suite", category: "Evaluation", description: "Runs 50+ deterministic golden tests before production deployment" },
-      { name: "mcp_vault_secrets", category: "Security", description: "Zero-knowledge injection of API keys and database credentials" }
+      { name: "mcp_vault_secrets", category: "Security", description: "Zero-knowledge injection of API keys and database credentials" },
+      { name: "mcp_docker_runner", category: "Compute", description: "Spins up ephemeral containers for untrusted script execution" },
+      { name: "mcp_webhook_receiver", category: "Events", description: "Listens for custom payloads to trigger asynchronous workflows" }
     ],
     targetUsers: ["AI Engineers", "Enterprise Architects", "Technical Founders", "Systems Integrators"],
     stats: {

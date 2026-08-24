@@ -36,9 +36,12 @@ import { AI_EMPLOYEES } from "~/data/employees";
           class="os-employee-card" 
           data-category={emp.category}
           style={
-            emp.slug === 'research' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/research_bg.png); background-size: cover; background-position: center;' : 
+            emp.slug === 'research' ? 'background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url(/images/research_bg.png); background-size: cover; background-position: center;' : 
             emp.slug === 'sales' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/sales_bg.png); background-size: cover; background-position: center;' : 
             emp.slug === 'marketing' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/marketing_bg.png); background-size: cover; background-position: center;' : 
+            emp.slug === 'customer-support' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/support_bg.png); background-size: cover; background-position: center;' : 
+            emp.slug === 'operations' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/operations_bg.png); background-size: cover; background-position: center;' : 
+            emp.slug === 'custom' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/custom_bg.png); background-size: cover; background-position: center;' : 
             ''
           }
         >
@@ -139,7 +142,7 @@ import { AI_EMPLOYEES } from "~/data/employees";
 
 <script>
   const filterBtns = document.querySelectorAll('.os-filter-btn');
-  const cards = document.querySelectorAll('.os-emp-card');
+  const cards = document.querySelectorAll('.os-employee-card');
 
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {

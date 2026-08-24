@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
 
 // Pure static output — Cloudflare Pages serves /dist as flat HTML.
 // No SSR adapter needed; the only server-side calls in the marketing site
@@ -11,6 +12,7 @@ export default defineConfig({
   build: {
     inlineStylesheets: "auto",
   },
+  integrations: [sitemap()],
   // Old IA (qwriter copywriter-era) → new OllaSuper IA.
   // These produce meta-refresh stubs in static output so external links keep working.
   redirects: {
