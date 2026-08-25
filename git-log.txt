@@ -1,0 +1,27 @@
+Commit: 860346a - feat(blog): update layouts, add internal linking, style backlinks, and inject CTAs
+
+ src/components/blog/posts/post-1.astro |  98 +++++++++---------
+ src/components/blog/posts/post-2.astro |  92 ++++++++---------
+ src/components/blog/posts/post-3.astro | 102 +++++++++----------
+ src/components/blog/posts/post-4.astro | 127 ++++++++++++++++++++++++
+ src/data/blog.ts                       | 176 +++++++++++++++++++++++++--------
+ src/pages/blog/[slug].astro            |  41 +++++---
+ 6 files changed, 438 insertions(+), 198 deletions(-)
+Commit: 7c6d97d - feat: design and UX improvements for premium feel
+
+ src/components/ExpertGlyph.astro                   | 128 ++++++++
+ src/components/ai-employees/EmployeeShowcase.astro | 132 ++++----
+ src/components/home/PlatformOverview.astro         |   2 +-
+ src/pages/ai-employees/[slug].astro                |  20 +-
+ src/pages/ai-employees/index.astro                 | 131 ++++----
+ src/pages/experts/index.astro                      |  17 +-
+ src/pages/index.astro                              | 335 +++++++++++++++------
+ src/styles/global.css                              |  53 ++++
+ 8 files changed, 590 insertions(+), 228 deletions(-)
+Commit: 120f492 - feat(ui): update typography, layout, and colors on demo and platform pages
+
+ src/pages/demo.astro     | 4 ++--
+ src/pages/platform.astro | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+ src/pages/blog/index.astro | 336 ++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 284 insertions(+), 52 deletions(-)
