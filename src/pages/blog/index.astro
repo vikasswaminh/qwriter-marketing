@@ -2,6 +2,15 @@
 import Layout from "~/layouts/Layout.astro";
 import { BLOG_POSTS } from "~/data/blog";
 import RibbonBackground from "~/components/shared/RibbonBackground.astro";
+
+// For the placeholders in the sidebars, we can just randomly distribute the 4 posts we have, 
+// or use hardcoded subsets if we want.
+const platformPosts = BLOG_POSTS.filter(p => p.category === "Product Updates" || p.category === "Customer Story");
+// fallback if empty
+const strategyPosts = platformPosts.length > 0 ? platformPosts : BLOG_POSTS; 
+
+const engineeringPosts = BLOG_POSTS.filter(p => p.category === "Engineering" || p.category === "Architecture");
+const techPosts = engineeringPosts.length > 0 ? engineeringPosts : BLOG_POSTS;
 ---
 
 <Layout
@@ -13,9 +22,7 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
     
     {/* HERO SECTION WITH RIBBON */}
     <div style="position: relative; overflow: hidden; padding-top: 24px; padding-bottom: 48px; border-bottom: 1px solid var(--border-light);">
-      
       <RibbonBackground id="stripe-ribbon-blog" lines={40} opacity={0.6} />
-
       <div class="os-container" style="position: relative; z-index: 1;">
         <div class="os-section-header" style="text-align: center; max-width: 860px; margin-inline: auto; display: flex; flex-direction: column; align-items: center;">
           <div class="os-eyebrow" style="margin-bottom: var(--spacing-12); display: flex; align-items: center; justify-content: center; gap: 8px;">
@@ -32,62 +39,287 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
     </div>
 
     <div class="os-container" style="padding-top: 48px; padding-bottom: 100px;">
-      {/* When Posts Exist */}
-      {BLOG_POSTS.length > 0 ? (
-        <>
-          <div style="display: flex; flex-direction: column; gap: var(--spacing-48);">
-            {BLOG_POSTS.map((post) => (
-              <article class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-48); box-shadow: var(--shadow-md);">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-16); flex-wrap: wrap; gap: 12px;">
-                  <div style="display: flex; gap: 8px; align-items: center;">
-                    <span class="os-badge" style="background: var(--bg-cream-alt); border: 1px solid var(--border-light); color: var(--ink-secondary);">
-                      {post.category}
-                    </span>
-                  </div>
-                  <span class="os-small">{post.publishDate} • {post.readTime}</span>
-                </div>
 
-                <h2 class="os-h2" style="margin-bottom: var(--spacing-16);">
-                  <a href={`/blog/${post.slug}`} style="color: inherit; text-decoration: none;">
-                    {post.title}
-                  </a>
-                </h2>
-
-                <p class="os-body" style="max-width: 860px; margin-bottom: var(--spacing-24);">
-                  {post.description}
-                </p>
-
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; border-top: 1px solid var(--border-light); padding-top: var(--spacing-24);">
-                  <div style="display: flex; align-items: center; gap: 10px;">
-                    <div style="width: 34px; height: 34px; border-radius: 50%; background: var(--candy-pink-soft); display: flex; align-items: center; justify-content: center; font-size: 16px;">
-                      {post.author.avatar}
-                    </div>
-                    <div>
-                      <div class="os-small" style="font-weight: 700; color: var(--ink-black);">{post.author.name}</div>
-                      <div class="os-caption">{post.author.role}</div>
-                    </div>
-                  </div>
-
-                  <a href={`/blog/${post.slug}`} class="os-btn os-btn-primary" style="padding: 10px 22px; font-size: var(--text-small);">
-                    Read Full Guide →
-                  </a>
-                </div>
-              </article>
+      {/* MOBILE SCROLLING SNAPSHOT CARDS (Hidden on Desktop) */}
+      <div class="mobile-only-scroll-sections" style="margin-bottom: 32px;">
+        <!-- Strategy / Platform Special -->
+        <div style="margin-bottom: 32px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+            <span style="padding: 4px 10px; font-size: 10px; font-weight: 800; color: #ffffff; background: linear-gradient(to right, #f472b6, #a81c85); border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">PLATFORM & STRATEGY</span>
+          </div>
+          <div class="horizontal-snap-scroll">
+            {strategyPosts.map((post) => (
+              <a href={`/blog/${post.slug}`} class="snap-card">
+                <h3 style="font-size: 14px; font-weight: 600; color: var(--ink-black); margin: 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{post.title}</h3>
+              </a>
             ))}
           </div>
-        </>
-      ) : (
-        <div class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-64) var(--spacing-32); text-align: center; max-width: 680px; margin: 40px auto 0; box-shadow: var(--shadow-sm);">
-          <div style="width: 56px; height: 56px; border-radius: 16px; background: var(--candy-pink-soft); border: 1px solid var(--candy-pink-border); display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 20px;">
-            ✍️
-          </div>
-          <h2 class="os-h3" style="margin-bottom: var(--spacing-12);">Articles Coming Soon</h2>
-          <p class="os-body" style="margin-bottom: var(--spacing-32); max-width: 480px; margin-left: auto; margin-right: auto;">
-            We are preparing our daily engineering deep dives, architecture blueprints, and AI workforce case studies.
-          </p>
         </div>
-      )}
 
+        <!-- Engineering Special -->
+        <div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+            <span style="padding: 4px 10px; font-size: 10px; font-weight: 800; color: #ffffff; background: linear-gradient(to right, #3b82f6, #1d4ed8); border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">ENGINEERING</span>
+          </div>
+          <div class="horizontal-snap-scroll">
+            {techPosts.map((post) => (
+              <a href={`/blog/${post.slug}`} class="snap-card">
+                <h3 style="font-size: 14px; font-weight: 600; color: var(--ink-black); margin: 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{post.title}</h3>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* DESKTOP 3-COLUMN LAYOUT */}
+      <div class="blog-index-grid">
+        
+        {/* Left Sidebar */}
+        <aside class="blog-sidebar left-sidebar">
+          <div class="sticky-container">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+              <span style="padding: 4px 10px; font-size: 10px; font-weight: 800; color: #ffffff; background: linear-gradient(to right, #f472b6, #a81c85); border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">STRATEGY & PLATFORM</span>
+            </div>
+            <nav style="display: flex; flex-direction: column; gap: 8px;">
+              {strategyPosts.map(post => (
+                <a href={`/blog/${post.slug}`} class="sidebar-link">
+                  {post.title}
+                </a>
+              ))}
+            </nav>
+            <a href="/blog" class="view-all-link" style="color: var(--candy-pink);">View All →</a>
+          </div>
+        </aside>
+
+        {/* Center Main Column */}
+        <main class="blog-main-column">
+          {BLOG_POSTS.length > 0 ? (
+            <div style="display: flex; flex-direction: column; gap: var(--spacing-48);">
+              {BLOG_POSTS.map((post) => (
+                <article class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-48); box-shadow: var(--shadow-sm);">
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-16); flex-wrap: wrap; gap: 12px;">
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                      <span class="os-badge" style="background: var(--bg-cream-alt); border: 1px solid var(--border-light); color: var(--ink-secondary);">
+                        {post.category}
+                      </span>
+                    </div>
+                    <span class="os-small">{post.publishDate} • {post.readTime}</span>
+                  </div>
+
+                  <h2 class="os-h2" style="margin-bottom: var(--spacing-16);">
+                    <a href={`/blog/${post.slug}`} style="color: inherit; text-decoration: none;">
+                      {post.title}
+                    </a>
+                  </h2>
+
+                  <p class="os-body" style="max-width: 860px; margin-bottom: var(--spacing-24);">
+                    {post.description}
+                  </p>
+
+                  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; border-top: 1px solid var(--border-light); padding-top: var(--spacing-24);">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                      <div style="width: 34px; height: 34px; border-radius: 50%; background: var(--candy-pink-soft); display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                        {post.author.avatar}
+                      </div>
+                      <div>
+                        <div class="os-small" style="font-weight: 700; color: var(--ink-black);">{post.author.name}</div>
+                        <div class="os-caption">{post.author.role}</div>
+                      </div>
+                    </div>
+
+                    <a href={`/blog/${post.slug}`} class="os-btn os-btn-primary" style="padding: 10px 22px; font-size: var(--text-small);">
+                      Read Full Guide →
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-64) var(--spacing-32); text-align: center; max-width: 680px; margin: 40px auto 0; box-shadow: var(--shadow-sm);">
+              <div style="width: 56px; height: 56px; border-radius: 16px; background: var(--candy-pink-soft); border: 1px solid var(--candy-pink-border); display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 20px;">
+                ✍️
+              </div>
+              <h2 class="os-h3" style="margin-bottom: var(--spacing-12);">Articles Coming Soon</h2>
+              <p class="os-body" style="margin-bottom: var(--spacing-32); max-width: 480px; margin-left: auto; margin-right: auto;">
+                We are preparing our daily engineering deep dives, architecture blueprints, and AI workforce case studies.
+              </p>
+            </div>
+          )}
+        </main>
+
+        {/* Right Sidebar */}
+        <aside class="blog-sidebar right-sidebar">
+          <div class="sticky-container">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+              <span style="padding: 4px 10px; font-size: 10px; font-weight: 800; color: #ffffff; background: linear-gradient(to right, #3b82f6, #1d4ed8); border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">ENGINEERING</span>
+            </div>
+            <nav style="display: flex; flex-direction: column; gap: 8px;">
+              {techPosts.map(post => (
+                <a href={`/blog/${post.slug}`} class="sidebar-link">
+                  {post.title}
+                </a>
+              ))}
+            </nav>
+            <a href="/blog" class="view-all-link" style="color: #3b82f6;">View All Technical →</a>
+          </div>
+        </aside>
+
+      </div>
     </div>
+    
+    {/* BOTTOM ARCHIVE SECTION */}
+    <section style="background: #ffffff; border-top: 1px solid var(--border-medium); padding: 64px 0;">
+      <div class="os-container">
+        <h2 style="font-size: 24px; font-weight: 800; color: var(--ink-black); margin-bottom: 8px;">Complete blog archive</h2>
+        <p style="font-size: 14px; color: var(--ink-secondary); margin-bottom: 32px;">
+          Browse all {BLOG_POSTS.length} articles by category.
+        </p>
+
+        <div style="margin-bottom: 40px;">
+          <h3 style="font-size: 18px; font-weight: 800; color: var(--ink-black); margin-bottom: 16px;">
+            All Posts <span style="font-size: 14px; font-weight: 500; color: var(--ink-tertiary);">({BLOG_POSTS.length})</span>
+          </h3>
+          <ul class="archive-grid">
+            {BLOG_POSTS.map(post => (
+              <li>
+                <a href={`/blog/${post.slug}`} class="archive-link">
+                  {post.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
   </article>
 </Layout>
+
+<style>
+  /* Base Desktop Grid */
+  .blog-index-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr 220px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  /* Sidebars */
+  .blog-sidebar {
+    display: block; /* Hidden on mobile by media query */
+  }
+  
+  .sticky-container {
+    position: sticky;
+    top: 100px;
+  }
+
+  .sidebar-link {
+    display: block;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: var(--ink-secondary);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    line-height: 1.3;
+  }
+
+  .sidebar-link:hover {
+    background: var(--candy-pink-soft);
+    color: var(--candy-pink);
+  }
+
+  .view-all-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 16px;
+    padding: 0 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .view-all-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Mobile only sections hidden by default */
+  .mobile-only-scroll-sections {
+    display: none;
+  }
+
+  .horizontal-snap-scroll {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    margin-left: -20px; /* Bleed edge */
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+  }
+  .horizontal-snap-scroll::-webkit-scrollbar {
+    display: none; /* Safari/Chrome */
+  }
+
+  .snap-card {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 250px;
+    padding: 16px;
+    background: var(--candy-pink-soft);
+    border: 1px solid var(--candy-pink-border);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  /* Archive Grid */
+  .archive-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  @media (min-width: 640px) {
+    .archive-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    .archive-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .archive-link {
+    display: block;
+    font-size: 14px;
+    color: var(--ink-secondary);
+    text-decoration: none;
+    padding: 4px 0;
+    line-height: 1.4;
+  }
+  .archive-link:hover {
+    color: var(--candy-pink);
+    text-decoration: underline;
+  }
+
+  /* Responsive Media Queries */
+  @media (max-width: 1024px) {
+    .blog-index-grid {
+      grid-template-columns: 1fr;
+    }
+    .blog-sidebar {
+      display: none;
+    }
+    .mobile-only-scroll-sections {
+      display: block;
+    }
+  }
+</style>
