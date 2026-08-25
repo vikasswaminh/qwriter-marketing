@@ -2,6 +2,7 @@
 import Layout from "~/layouts/Layout.astro";
 import ExpertGlyph from "~/components/ExpertGlyph.astro";
 import TrustFooter from "~/components/home/TrustFooter.astro";
+import RibbonBackground from "~/components/shared/RibbonBackground.astro";
 import { experts, departments } from "~/data/experts";
 
 const grouped = Object.keys(departments).map(key => ({
@@ -13,8 +14,14 @@ const grouped = Object.keys(departments).map(key => ({
 <Layout current="experts" title="The 22 Assistants — OllaSuper" description="Meet every Assistant: HR, Sales, Operations, SEO, AEO, Data, Engineering, Product, Finance, Legal and 9 more. Each with their own prompts, glyph, and detail page.">
 
   {/* PREMIUM HERO */}
-  <section class="os-section premium-hero" style="position: relative; overflow: hidden; padding: 48px 0 48px; background: linear-gradient(180deg, var(--warm-cream) 0%, #fffbf2 100%);">
-    {/* Subtle Glow Backdrop (Matching Homepage) */}
+  <section class="os-section premium-hero" style="position: relative; overflow: hidden; padding: 24px 0 32px; background: linear-gradient(180deg, var(--warm-cream) 0%, #fffbf2 100%);">
+    
+    {/* Animated Ribbon Wave (Stripe-like) */}
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.6; mix-blend-mode: multiply; pointer-events: none;">
+      <RibbonBackground id="experts-hero-ribbon" lines={45} opacity={1} />
+    </div>
+
+    {/* Subtle Glow Backdrop */}
     <div style="position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(circle, rgba(255, 131, 218, 0.12) 0%, rgba(255, 252, 246, 0) 70%); pointer-events: none; z-index: 0;"></div>
     
     <div class="os-container" style="position: relative; z-index: 1;">
@@ -65,10 +72,10 @@ const grouped = Object.keys(departments).map(key => ({
   </div>
 
   {/* GROUPED LIST */}
-  <section id="all" class="os-section" style="padding: 80px 0; background: var(--bg-cream-alt);">
+  <section id="all" class="os-section" style="padding: 40px 0; background: var(--bg-cream-alt);">
     <div class="os-container">
       {grouped.map((group, gi) => (
-        <div id={group.key} style={`margin-top: ${gi === 0 ? '0' : '100px'};`}>
+        <div id={group.key} style={`margin-top: ${gi === 0 ? '0' : '64px'};`}>
           <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 2px solid rgba(0,0,0,0.04);">
             <div style={`width: 48px; height: 48px; border-radius: 14px; background: ${group.color}15; color: ${group.color}; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800;`}>
               {group.label.charAt(0)}
@@ -113,7 +120,7 @@ const grouped = Object.keys(departments).map(key => ({
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
   {/* PREMIUM BENTO: HOW TO USE AN ASSISTANT                          */}
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-  <section class="os-section" style="padding: 100px 0 40px; background: var(--bg-cream-alt); border-top: 1px solid var(--border-light);">
+  <section class="os-section" style="padding: 48px 0 40px; background: var(--bg-cream-alt); border-top: 1px solid var(--border-light);">
     <div class="os-container">
       
       <div class="os-reveal" style="text-align: center; margin-bottom: 64px;">

@@ -33,75 +33,89 @@ import { AI_EMPLOYEES } from "~/data/employees";
     <div class="os-employee-grid os-grid-3">
       {AI_EMPLOYEES.map((emp) => (
         <article 
-          class="os-employee-card" 
+          class="os-flip-card" 
           data-category={emp.category}
-          style={
-            emp.slug === 'research' ? 'background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url(/images/research_bg.png); background-size: cover; background-position: center;' : 
-            emp.slug === 'sales' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/sales_bg.png); background-size: cover; background-position: center;' : 
-            emp.slug === 'marketing' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/marketing_bg.png); background-size: cover; background-position: center;' : 
-            emp.slug === 'customer-support' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/support_bg.png); background-size: cover; background-position: center;' : 
-            emp.slug === 'operations' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/operations_bg.png); background-size: cover; background-position: center;' : 
-            emp.slug === 'custom' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/custom_bg.png); background-size: cover; background-position: center;' : 
-            ''
-          }
         >
-          
-          {/* Card Top */}
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 44px; height: 44px; border-radius: 12px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 22px;">
-                  {emp.avatarIcon}
+          <div class="os-flip-card-inner">
+            
+            {/* Front Face */}
+            <div class="os-flip-card-front" style={
+              emp.slug === 'research' ? 'background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url(/images/research_bg.png); background-size: cover; background-position: center;' : 
+              emp.slug === 'sales' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/sales_bg.png); background-size: cover; background-position: center;' : 
+              emp.slug === 'marketing' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/marketing_bg.png); background-size: cover; background-position: center;' : 
+              emp.slug === 'customer-support' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/support_bg.png); background-size: cover; background-position: center;' : 
+              emp.slug === 'operations' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/operations_bg.png); background-size: cover; background-position: center;' : 
+              emp.slug === 'custom' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/custom_bg.png); background-size: cover; background-position: center;' : 
+              ''
+            }>
+              <div style="flex: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+                  <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <div style="width: 56px; height: 56px; border-radius: 16px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: var(--shadow-sm);">
+                      {emp.avatarIcon}
+                    </div>
+                    <div>
+                      <h3 style="font-size: 20px; font-weight: 800; color: var(--ink-black); margin-bottom: 4px;">{emp.name}</h3>
+                      <div style="font-size: 13px; color: var(--ink-muted); font-weight: 600;">{emp.role}</div>
+                    </div>
+                  </div>
+                  <span class="os-badge os-badge-pink" style="font-size: 11px;">{emp.badge}</span>
                 </div>
+
+                <p style="font-size: 15px; line-height: 1.6; color: var(--ink-secondary); margin-bottom: 20px;">
+                  {emp.purpose}
+                </p>
+              </div>
+
+              <div class="os-employee-card__footer" style="display: flex; align-items: center; justify-content: center; border-top: none; opacity: 0.7;">
+                <span style="font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; color: var(--ink-muted);">
+                  Hover to view capabilities <span style="font-size: 16px;">↺</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Back Face */}
+            <div class="os-flip-card-back">
+              <div style="flex: 1; overflow-y: auto; padding-right: 4px;">
+                {/* Capabilities List */}
+                <div style="margin-bottom: 24px;">
+                  <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 12px;">Key Capabilities</div>
+                  <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--ink-primary);">
+                    {emp.capabilities.map((cap) => (
+                      <li style="display: flex; align-items: flex-start; gap: 8px;">
+                        <span style="color: var(--status-green); font-weight: 700;">✓</span>
+                        <span style="line-height: 1.4;">{cap}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Supported Tools Badges */}
+                <div style="margin-bottom: 24px;">
+                  <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 12px;">Supported MCP Tools</div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                    {emp.tools.map((t) => (
+                      <span style="font-family: var(--font-mono); font-size: 11px; padding: 4px 8px; border-radius: 4px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); color: var(--ink-secondary);">
+                        {t.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Card Bottom / Footer */}
+              <div class="os-employee-card__footer" style="display: flex; align-items: center; justify-content: space-between;">
                 <div>
-                  <h3 style="font-size: 17px; font-weight: 700; color: var(--ink-black); margin-bottom: 2px;">{emp.name}</h3>
-                  <div style="font-size: 12px; color: var(--ink-muted); font-weight: 500;">{emp.role}</div>
+                  <div class="os-caption">Average Time Saved</div>
+                  <div class="os-small" style="font-weight: 700; color: var(--ink-black);">{emp.stats.avgTimeSaved}</div>
                 </div>
-              </div>
-              <span class="os-badge os-badge-pink" style="font-size: 11px;">{emp.badge}</span>
-            </div>
-
-            <p style="font-size: 14px; line-height: 1.5; color: var(--ink-secondary); margin-bottom: 20px;">
-              {emp.purpose}
-            </p>
-
-            {/* Capabilities List */}
-            <div style="margin-bottom: 20px;">
-              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 8px;">Key Capabilities</div>
-              <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--ink-primary);">
-                {emp.capabilities.slice(0, 3).map((cap) => (
-                  <li style="display: flex; align-items: flex-start; gap: 6px;">
-                    <span style="color: var(--status-green); font-weight: 700;">✓</span>
-                    <span>{cap}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Supported Tools Badges */}
-            <div style="margin-bottom: 24px;">
-              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 8px;">Supported MCP Tools</div>
-              <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                {emp.tools.map((t) => (
-                  <span style="font-family: var(--font-mono); font-size: 11px; padding: 3px 8px; border-radius: 4px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); color: var(--ink-secondary);">
-                    {t.name}
-                  </span>
-                ))}
+                <a href={`/ai-employees/${emp.slug}`} class="os-btn os-btn-primary" style="padding: 8px 16px; font-size: var(--text-caption);">
+                  Deploy →
+                </a>
               </div>
             </div>
+            
           </div>
-
-          {/* Card Bottom / Footer */}
-          <div class="os-employee-card__footer" style="display: flex; align-items: center; justify-content: space-between;">
-            <div>
-              <div class="os-caption">Average Time Saved</div>
-              <div class="os-small" style="font-weight: 700; color: var(--ink-black);">{emp.stats.avgTimeSaved}</div>
-            </div>
-            <a href={`/ai-employees/${emp.slug}`} class="os-btn os-btn-secondary" style="padding: 8px 16px; font-size: var(--text-caption);">
-              Deploy Employee →
-            </a>
-          </div>
-
         </article>
       ))}
     </div>
@@ -142,7 +156,7 @@ import { AI_EMPLOYEES } from "~/data/employees";
 
 <script>
   const filterBtns = document.querySelectorAll('.os-filter-btn');
-  const cards = document.querySelectorAll('.os-employee-card');
+  const cards = document.querySelectorAll('.os-flip-card');
 
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {

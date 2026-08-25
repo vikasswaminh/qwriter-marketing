@@ -123,116 +123,257 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
             Hire one Assistant. Or stand up your whole workforce.
           </h2>
         </div>
-        <a href="/experts" style="font-size: var(--text-small); font-weight: 600; color: var(--ink-secondary); text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid var(--ink-black);">Browse all 30 →</a>
+        <a href="/experts" class="splash-nav" style="font-size: var(--text-small); font-weight: 600; color: var(--ink-secondary); text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid var(--ink-black);">Browse all 30 →</a>
       </div>
 
-      <div class="os-grid-4">
+      <style>
+        #use-cases-carousel::-webkit-scrollbar {
+          display: none;
+        }
+      </style>
+      
+      <div style="position: relative; margin-top: var(--spacing-32); margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%);">
         
-        <a href="/experts" class="os-card os-card-cream os-card-symmetric" style="border: 1px solid var(--border-medium); text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-          <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
-            <img src="/images/cards/assistants.jpg" alt="22 Assistants" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-          <div style="flex: 1;">
-            <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">22 Assistants</h3>
-            <p class="os-small" style="margin-bottom: var(--spacing-24);">
-              Chat-driven specialists across 6 departments.
-            </p>
-          </div>
-          <div style="font-size: var(--text-caption); font-weight: 700; color: #16a34a;">Learn more →</div>
-        </a>
+        {/* Carousel Container */}
+        <div id="use-cases-carousel" style="display: flex; gap: var(--spacing-24); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; padding-top: var(--spacing-16); padding-bottom: var(--spacing-32);">
+          
+          <a href="/experts" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+              <img src="/images/cards/assistants.jpg" alt="22 Assistants" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div style="flex: 1;">
+              <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">22 Assistants</h3>
+              <p class="os-small" style="margin-bottom: var(--spacing-24);">
+                Chat-driven specialists across 6 departments.
+              </p>
+            </div>
+            <div style="font-size: var(--text-caption); font-weight: 700; color: #16a34a;">Learn more →</div>
+          </a>
 
-        <a href="/agents" class="os-card os-card-cream os-card-symmetric" style="border: 1px solid var(--border-medium); text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-          <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
-            <img src="/images/cards/agents.jpg" alt="6 Agents" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-          <div style="flex: 1;">
-            <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">6 Agents</h3>
-            <p class="os-small" style="margin-bottom: var(--spacing-24);">
-              Run on a cadence. Take real actions with approval gates.
-            </p>
-          </div>
-          <div style="font-size: var(--text-caption); font-weight: 700; color: #d97706;">Learn more →</div>
-        </a>
+          <a href="/agents" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+              <img src="/images/cards/agents.jpg" alt="6 Agents" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div style="flex: 1;">
+              <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">6 Agents</h3>
+              <p class="os-small" style="margin-bottom: var(--spacing-24);">
+                Run on a cadence. Take real actions with approval gates.
+              </p>
+            </div>
+            <div style="font-size: var(--text-caption); font-weight: 700; color: #d97706;">Learn more →</div>
+          </a>
 
-        <a href="#workflow" class="os-card os-card-cream os-card-symmetric" style="border: 1px solid var(--border-medium); text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-          <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
-            <img src="/images/cards/handoff.jpg" alt="Multi-agent handoff" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-          <div style="flex: 1;">
-            <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">Multi-agent handoff</h3>
-            <p class="os-small" style="margin-bottom: var(--spacing-24);">
-              Specialists pass work to other specialists, end-to-end.
-            </p>
-          </div>
-          <div style="font-size: var(--text-caption); font-weight: 700; color: #0066ff;">Learn more →</div>
-        </a>
+          <a href="/platform" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+              <img src="/images/cards/handoff.jpg" alt="Multi-agent handoff" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div style="flex: 1;">
+              <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">Multi-agent handoff</h3>
+              <p class="os-small" style="margin-bottom: var(--spacing-24);">
+                Specialists pass work to other specialists, end-to-end.
+              </p>
+            </div>
+            <div style="font-size: var(--text-caption); font-weight: 700; color: #0066ff;">Learn more →</div>
+          </a>
 
-        <a href="/experts" class="os-card os-card-cream os-card-symmetric" style="border: 1px solid var(--border-medium); text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-          <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
-            <img src="/images/cards/seo.jpg" alt="SEO + AEO audits" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-          <div style="flex: 1;">
-            <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">SEO + AEO audits</h3>
-            <p class="os-small" style="margin-bottom: var(--spacing-24);">
-              Crawl any URL, score on 40 signals, return a fix list.
-            </p>
-          </div>
-          <div style="font-size: var(--text-caption); font-weight: 700; color: #2c8d5e;">Learn more →</div>
-        </a>
+          <a href="/experts#gtm" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+              <img src="/images/cards/seo.jpg" alt="SEO + AEO audits" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div style="flex: 1;">
+              <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">SEO + AEO audits</h3>
+              <p class="os-small" style="margin-bottom: var(--spacing-24);">
+                Crawl any URL, score on 40 signals, return a fix list.
+              </p>
+            </div>
+            <div style="font-size: var(--text-caption); font-weight: 700; color: #2c8d5e;">Learn more →</div>
+          </a>
 
-        <a href="/experts" class="os-card os-card-cream os-card-symmetric" style="border: 1px solid var(--border-medium); text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-          <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
-            <img src="/images/cards/sales.jpg" alt="Sales pipeline" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-          <div style="flex: 1;">
-            <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">Sales pipeline</h3>
-            <p class="os-small" style="margin-bottom: var(--spacing-24);">
-              Lead research, outbound drafts, CRM notes that stay tidy.
-            </p>
-          </div>
-          <div style="font-size: var(--text-caption); font-weight: 700; color: #c0426a;">Learn more →</div>
-        </a>
+          <a href="/experts#gtm" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+              <img src="/images/cards/sales.jpg" alt="Sales pipeline" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div style="flex: 1;">
+              <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">Sales pipeline</h3>
+              <p class="os-small" style="margin-bottom: var(--spacing-24);">
+                Lead research, outbound drafts, CRM notes that stay tidy.
+              </p>
+            </div>
+            <div style="font-size: var(--text-caption); font-weight: 700; color: #c0426a;">Learn more →</div>
+          </a>
 
-        <a href="/experts" class="os-card os-card-cream os-card-symmetric" style="border: 1px solid var(--border-medium); text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-          <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
-            <img src="/images/cards/hr.jpg" alt="HR + recruiting" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-          <div style="flex: 1;">
-            <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">HR + recruiting</h3>
-            <p class="os-small" style="margin-bottom: var(--spacing-24);">
-              Drafted JDs, candidate screening, employee-handbook answers.
-            </p>
-          </div>
-          <div style="font-size: var(--text-caption); font-weight: 700; color: #7150d4;">Learn more →</div>
-        </a>
+          <a href="/experts#people" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+              <img src="/images/cards/hr.jpg" alt="HR + recruiting" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div style="flex: 1;">
+              <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">HR + recruiting</h3>
+              <p class="os-small" style="margin-bottom: var(--spacing-24);">
+                Drafted JDs, candidate screening, employee-handbook answers.
+              </p>
+            </div>
+            <div style="font-size: var(--text-caption); font-weight: 700; color: #7150d4;">Learn more →</div>
+          </a>
 
-        <a href="/experts" class="os-card os-card-cream os-card-symmetric" style="border: 1px solid var(--border-medium); text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-          <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
-            <img src="/images/cards/finance.jpg" alt="Finance + ops" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-          <div style="flex: 1;">
-            <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">Finance + ops</h3>
-            <p class="os-small" style="margin-bottom: var(--spacing-24);">
-              Forecasts, standup summaries, tickets that file themselves.
-            </p>
-          </div>
-          <div style="font-size: var(--text-caption); font-weight: 700; color: #c2542f;">Learn more →</div>
-        </a>
+          <a href="/experts#ops" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+              <img src="/images/cards/finance.jpg" alt="Finance + ops" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div style="flex: 1;">
+              <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">Finance + ops</h3>
+              <p class="os-small" style="margin-bottom: var(--spacing-24);">
+                Forecasts, standup summaries, tickets that file themselves.
+              </p>
+            </div>
+            <div style="font-size: var(--text-caption); font-weight: 700; color: #c2542f;">Learn more →</div>
+          </a>
 
-        <a href="/signup" class="os-card os-card-cream os-card-symmetric" style="border: 1px solid var(--border-medium); text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-          <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
-            <img src="/images/cards/start.jpg" alt="Free to start" style="width: 100%; height: 100%; object-fit: cover;" />
+          <a href="/signup" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+              <img src="/images/cards/start.jpg" alt="Free to start" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div style="flex: 1;">
+              <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">Free to start</h3>
+              <p class="os-small" style="margin-bottom: var(--spacing-24);">
+                50,000 credits a month. No card. No vendor lock-in.
+              </p>
+            </div>
+            <div style="font-size: var(--text-caption); font-weight: 700; color: #16a34a;">Learn more →</div>
+          </a>
+
+          {/* Spacer for proper ending padding when scrolling */}
+          <div style="flex: 0 0 calc(50vw - 50% - var(--spacing-24));"></div>
+
+        </div>
+
+        {/* Navigation Controls */}
+        <div style="display: flex; align-items: center; justify-content: center; gap: var(--spacing-16); margin-top: var(--spacing-24);">
+          <button id="carousel-prev" aria-label="Previous slide" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-medium); background: var(--bg-cream-alt); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--ink-secondary); transition: all 0.2s; box-shadow: var(--shadow-sm);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          
+          <div id="carousel-dots" style="display: flex; gap: 8px;">
+            {[...Array(8)].map((_, i) => (
+              <div class={`carousel-dot`} data-index={i} style={`width: 8px; height: 8px; border-radius: 50%; background: ${i===0 ? 'var(--ink-black)' : 'var(--border-medium)'}; transition: background 0.3s;`}></div>
+            ))}
           </div>
-          <div style="flex: 1;">
-            <h3 class="os-h4" style="margin-bottom: var(--spacing-8);">Free to start</h3>
-            <p class="os-small" style="margin-bottom: var(--spacing-24);">
-              50,000 credits a month. No card. No vendor lock-in.
-            </p>
-          </div>
-          <div style="font-size: var(--text-caption); font-weight: 700; color: #16a34a;">Learn more →</div>
-        </a>
+
+          <button id="carousel-next" aria-label="Next slide" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-medium); background: var(--bg-cream-alt); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--ink-secondary); transition: all 0.2s; box-shadow: var(--shadow-sm);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
 
       </div>
+
+      <script>
+        import { navigate } from 'astro:transitions/client';
+
+        document.addEventListener('astro:page-load', () => {
+          // --- Carousel Logic ---
+          const carousel = document.getElementById('use-cases-carousel');
+          const prevBtn = document.getElementById('carousel-prev');
+          const nextBtn = document.getElementById('carousel-next');
+          const dots = document.querySelectorAll('.carousel-dot');
+
+          if (carousel && prevBtn && nextBtn) {
+            const gap = 24;
+            
+            const getScrollAmount = () => {
+              const firstCard = carousel.querySelector('a');
+              return firstCard ? firstCard.offsetWidth + gap : 344;
+            };
+            
+            prevBtn.addEventListener('click', () => {
+              carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+            });
+            
+            nextBtn.addEventListener('click', () => {
+              carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+            });
+
+            carousel.addEventListener('scroll', () => {
+              const scrollAmount = getScrollAmount();
+              let index = Math.round(carousel.scrollLeft / scrollAmount);
+              
+              if (index < 0) index = 0;
+              if (index >= dots.length) index = dots.length - 1;
+
+              dots.forEach((dot, i) => {
+                (dot as HTMLElement).style.background = i === index ? 'var(--ink-black)' : 'var(--border-medium)';
+              });
+            });
+            
+            [prevBtn, nextBtn].forEach(btn => {
+              btn.addEventListener('mouseenter', () => {
+                btn.style.background = 'var(--bg-white)';
+                btn.style.borderColor = 'var(--ink-black)';
+                btn.style.color = 'var(--ink-black)';
+              });
+              btn.addEventListener('mouseleave', () => {
+                btn.style.background = 'var(--bg-cream-alt)';
+                btn.style.borderColor = 'var(--border-medium)';
+                btn.style.color = 'var(--ink-secondary)';
+              });
+            });
+          }
+
+          // --- Dynamic Splash Navigation ---
+          document.querySelectorAll('.splash-nav').forEach(link => {
+            // Prevent duplicate listeners on Astro soft navigations
+            const newLink = link.cloneNode(true) as HTMLElement;
+            link.parentNode?.replaceChild(newLink, link);
+            
+            newLink.addEventListener('click', function(e) {
+              if (e.metaKey || e.ctrlKey) return; // allow new tabs
+              e.preventDefault();
+              
+              const href = this.getAttribute('href');
+              if (!href) return;
+              
+              // Get precise click coordinates
+              const x = e.clientX;
+              const y = e.clientY;
+              
+              // Create dynamic expanding circle overlay
+              const splash = document.createElement('div');
+              splash.style.position = 'fixed';
+              splash.style.left = x + 'px';
+              splash.style.top = y + 'px';
+              splash.style.width = '0';
+              splash.style.height = '0';
+              splash.style.borderRadius = '50%';
+              splash.style.backgroundColor = 'var(--candy-pink)';
+              splash.style.transform = 'translate(-50%, -50%)';
+              splash.style.zIndex = '99999'; // extremely high
+              splash.style.pointerEvents = 'none'; // prevent blocking UI
+              splash.style.transition = 'width 1.2s cubic-bezier(0.65, 0, 0.35, 1), height 1.2s cubic-bezier(0.65, 0, 0.35, 1)';
+              
+              document.body.appendChild(splash);
+              
+              // Calculate screen size to determine full cover scale
+              const maxDim = Math.max(window.innerWidth, window.innerHeight) * 3;
+              
+              // Trigger expansion
+              requestAnimationFrame(() => {
+                splash.style.width = maxDim + 'px';
+                splash.style.height = maxDim + 'px';
+              });
+              
+              // Trigger programmatic navigation as soon as circle covers screen
+              setTimeout(() => {
+                navigate(href);
+                
+                // Fade out and cleanup the splash overlay after route swap
+                setTimeout(() => {
+                  splash.style.transition = 'opacity 0.8s ease-in-out';
+                  splash.style.opacity = '0';
+                  setTimeout(() => splash.remove(), 800);
+                }, 200);
+              }, 900); 
+            });
+          });
+        });
+      </script>
 
     </div>
   </section>

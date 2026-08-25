@@ -211,23 +211,23 @@ const { employee } = Astro.props;
       </div>
 
       {/* Sample Production Run Box */}
-      <section class="os-card os-card-dark" style="border: 1px solid var(--candy-pink); width: 100%;">
+      <section class="os-card os-card-cream" style="border: 1px solid var(--candy-pink); width: 100%; box-shadow: 0 8px 32px rgba(255, 131, 218, 0.08);">
         <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--candy-pink); margin-bottom: 8px;">
           Verified Sample Run
         </div>
-        <div style="font-size: 13px; color: #ffffff; font-weight: 600; margin-bottom: 12px;">
+        <div style="font-size: 14px; color: var(--ink-black); font-weight: 600; margin-bottom: 16px;">
           "{employee.sampleRun.prompt}"
         </div>
-        <div style="font-size: 12px; color: #4ade80; line-height: 1.5; background: #131926; padding: 12px; border-radius: 8px; margin-bottom: 12px;">
+        <div style="font-size: 13px; color: #16a34a; font-weight: 500; line-height: 1.5; background: rgba(22, 163, 74, 0.08); border: 1px solid rgba(22, 163, 74, 0.2); padding: 12px 16px; border-radius: 8px; margin-bottom: 16px;">
           ✓ {employee.sampleRun.resultSummary}
-            </div>
-            <div style="display: flex; justify-content: space-between; font-size: 11px; color: #94a3b8; font-family: var(--font-mono);">
-              <span>Time: {employee.sampleRun.executionTime}</span>
-              <span>Approval: {employee.sampleRun.humanApprovalRequired ? 'Required' : 'Bypassed'}</span>
-            </div>
-          </section>
-
         </div>
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-secondary); font-family: var(--font-mono); font-weight: 500;">
+          <span>Time: {employee.sampleRun.executionTime}</span>
+          <span>Approval: {employee.sampleRun.humanApprovalRequired ? 'Required' : 'Bypassed'}</span>
+        </div>
+      </section>
+
+    </div>
 
       </div>
 

@@ -35,68 +35,87 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
       {/* Employee List Grid */}
       <div class="os-grid-2">
         {AI_EMPLOYEES.map((emp) => (
-          <article class="os-employee-card">
-            
-            <div>
-              {/* Header */}
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-24);">
-                <div style="display: flex; align-items: center; gap: 14px;">
-                  <div style="width: 48px; height: 48px; border-radius: 14px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 24px;">
-                    {emp.avatarIcon}
+          <article class="os-flip-card">
+            <div class="os-flip-card-inner">
+              
+              {/* Front Face */}
+              <div class="os-flip-card-front" style={
+                emp.slug === 'research' ? 'background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url(/images/research_bg.png); background-size: cover; background-position: center;' : 
+                emp.slug === 'sales' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/sales_bg.png); background-size: cover; background-position: center;' : 
+                emp.slug === 'marketing' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/marketing_bg.png); background-size: cover; background-position: center;' : 
+                emp.slug === 'customer-support' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/support_bg.png); background-size: cover; background-position: center;' : 
+                emp.slug === 'operations' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/operations_bg.png); background-size: cover; background-position: center;' : 
+                emp.slug === 'custom' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/custom_bg.png); background-size: cover; background-position: center;' : 
+                ''
+              }>
+                <div style="flex: 1;">
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                      <div style="width: 56px; height: 56px; border-radius: 16px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: var(--shadow-sm);">
+                        {emp.avatarIcon}
+                      </div>
+                      <div>
+                        <h3 style="font-size: 20px; font-weight: 800; color: var(--ink-black); margin-bottom: 4px;">{emp.name}</h3>
+                        <div style="font-size: 13px; color: var(--ink-muted); font-weight: 600;">{emp.role}</div>
+                      </div>
+                    </div>
+                    <span class="os-badge os-badge-pink" style="font-size: 11px;">{emp.badge}</span>
                   </div>
+  
+                  <p style="font-size: 15px; line-height: 1.6; color: var(--ink-secondary); margin-bottom: 20px;">
+                    {emp.purpose}
+                  </p>
+                </div>
+  
+                <div class="os-employee-card__footer" style="display: flex; align-items: center; justify-content: center; border-top: none; opacity: 0.7;">
+                  <span style="font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; color: var(--ink-muted);">
+                    Hover to view capabilities <span style="font-size: 16px;">↺</span>
+                  </span>
+                </div>
+              </div>
+  
+              {/* Back Face */}
+              <div class="os-flip-card-back">
+                <div style="flex: 1; overflow-y: auto; padding-right: 4px;">
+                  {/* Capabilities List */}
+                  <div style="margin-bottom: 24px;">
+                    <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 12px;">Capabilities & Skills</div>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--ink-primary);">
+                      {emp.capabilities.map((cap) => (
+                        <li style="display: flex; align-items: flex-start; gap: 8px;">
+                          <span style="color: var(--status-green); font-weight: 700;">✓</span>
+                          <span style="line-height: 1.4;">{cap}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+  
+                  {/* Supported Tools Badges */}
+                  <div style="margin-bottom: 24px;">
+                    <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 12px;">MCP Tools</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                      {emp.tools.map((t) => (
+                        <span style="font-family: var(--font-mono); font-size: 11px; padding: 4px 8px; border-radius: 4px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); color: var(--ink-secondary);">
+                          {t.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+  
+                {/* Card Bottom / Footer */}
+                <div class="os-employee-card__footer" style="display: flex; align-items: center; justify-content: space-between;">
                   <div>
-                    <h2 class="os-h4" style="margin-bottom: 2px;">
-                      <a href={`/ai-employees/${emp.slug}`} style="text-decoration: none; color: inherit;">
-                        {emp.name}
-                      </a>
-                    </h2>
-                    <span class="os-caption">{emp.role}</span>
+                    <div class="os-caption">Governance Mode</div>
+                    <div class="os-small" style="font-weight: 600; color: var(--ink-black);">{emp.approvalMode}</div>
                   </div>
-                </div>
-                <span class="os-badge os-badge-pink">{emp.badge}</span>
-              </div>
-
-              <p class="os-small" style="margin-bottom: var(--spacing-24);">
-                {emp.purpose}
-              </p>
-
-              {/* Capabilities */}
-              <div style="margin-bottom: var(--spacing-24);">
-                <div class="os-caption" style="font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px;">Capabilities & Skills</div>
-                <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: var(--text-small);">
-                  {emp.capabilities.map((cap) => (
-                    <li style="display: flex; align-items: flex-start; gap: 8px;">
-                      <span style="color: var(--status-green); font-weight: 700;">✓</span>
-                      <span>{cap}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Tools */}
-              <div style="margin-bottom: var(--spacing-24);">
-                <div class="os-caption" style="font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;">MCP Tools</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                  {emp.tools.map((t) => (
-                    <span style="font-family: var(--font-mono); font-size: var(--text-caption); padding: 4px 8px; border-radius: 4px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); color: var(--ink-secondary);">
-                      {t.name}
-                    </span>
-                  ))}
+                  <a href={`/ai-employees/${emp.slug}`} class="os-btn os-btn-primary" style="padding: 9px 18px; font-size: var(--text-small);">
+                    View Full Spec →
+                  </a>
                 </div>
               </div>
+              
             </div>
-
-            {/* Bottom Actions */}
-            <div class="os-employee-card__footer" style="display: flex; align-items: center; justify-content: space-between;">
-              <div>
-                <div class="os-caption">Governance Mode</div>
-                <div class="os-small" style="font-weight: 600; color: var(--ink-black);">{emp.approvalMode}</div>
-              </div>
-              <a href={`/ai-employees/${emp.slug}`} class="os-btn os-btn-primary" style="padding: 9px 18px; font-size: var(--text-small);">
-                View Full Spec →
-              </a>
-            </div>
-
           </article>
         ))}
       </div>

@@ -474,6 +474,59 @@ img, svg, video {
   border-top: 1px solid var(--border-light);
 }
 
+/* --- 3D Flip Card Animations --- */
+.os-flip-card {
+  perspective: 1500px;
+  height: 520px; /* Fixed height required for absolute faces */
+  width: 100%;
+}
+
+.os-flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.os-flip-card:hover .os-flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.os-flip-card-front, .os-flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-32);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.os-flip-card:hover .os-flip-card-front {
+  border-color: var(--candy-pink-hover);
+  box-shadow: 0 8px 32px rgba(255, 131, 218, 0.15);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.os-flip-card:hover .os-flip-card-back {
+  border-color: var(--candy-pink-hover);
+  box-shadow: 0 8px 32px rgba(255, 131, 218, 0.15);
+  background: linear-gradient(145deg, #ffffff 0%, var(--candy-pink-soft) 100%);
+}
+
+.os-flip-card-back {
+  transform: rotateY(180deg);
+  background: var(--candy-pink-soft);
+}
+
 .os-card-cream {
   background-color: var(--bg-cream-alt);
   border-color: var(--border-cream);
