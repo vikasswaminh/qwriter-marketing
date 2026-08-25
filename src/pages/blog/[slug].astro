@@ -4,11 +4,13 @@ import { BLOG_POSTS, type BlogPost } from "~/data/blog";
 import Post1 from "~/components/blog/posts/post-1.astro";
 import Post2 from "~/components/blog/posts/post-2.astro";
 import Post3 from "~/components/blog/posts/post-3.astro";
+import Post4 from "~/components/blog/posts/post-4.astro";
 
 const contentComponents: Record<string, any> = {
   "what-are-ai-agents-complete-guide-for-businesses-2026": Post1,
   "ai-agents-vs-ai-assistants-whats-the-difference": Post2,
   "ai-automation-how-businesses-can-automate-workflows-with-ai": Post3,
+  "best-ai-tools-for-business-2026": Post4,
 };
 
 export function getStaticPaths() {
@@ -132,13 +134,11 @@ const PostContent = contentComponents[post.slug];
         <div class="blog-main-column">
 
       {/* ─── 3. TL;DR CALLOUT BOX ─── */}
-      <section style="background: var(--candy-pink-soft); border-left: 5px solid var(--candy-pink); border-radius: 10px; border-top: 1px solid var(--candy-pink); border-right: 1px solid var(--candy-pink); border-bottom: 1px solid var(--candy-pink); padding: 28px; margin-bottom: var(--spacing-32); box-shadow: var(--shadow-sm);">
+      <section style="background: #ffffff; border: 1px solid var(--border-medium); border-left: 5px solid var(--candy-pink); border-radius: 10px; padding: 28px; margin-bottom: var(--spacing-32); box-shadow: var(--shadow-sm);">
         <h3 id="tldr" style="font-size: 1.2rem; font-weight: 800; color: #a81c85; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
           <span>⚡</span> TL;DR
         </h3>
-        <p style="font-size: 1.1rem; line-height: 1.7; color: var(--ink-black); margin: 0;">
-          {post.tldr}
-        </p>
+        <p class="html-content" style="font-size: 1.1rem; line-height: 1.7; color: var(--ink-black); margin: 0;" set:html={post.tldr}></p>
       </section>
 
       {/* ─── 3.5 KEY TAKEAWAYS ─── */}
@@ -153,9 +153,7 @@ const PostContent = contentComponents[post.slug];
                 <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--ink-black); margin-bottom: 12px;">
                   {takeaway.title}
                 </h4>
-                <p style="font-size: 1.05rem; line-height: 1.6; color: var(--ink-secondary); margin: 0;">
-                  {takeaway.description}
-                </p>
+                <p class="html-content" style="font-size: 1.05rem; line-height: 1.6; color: var(--ink-secondary); margin: 0;" set:html={takeaway.description}></p>
               </div>
             ))}
           </div>
@@ -210,16 +208,19 @@ const PostContent = contentComponents[post.slug];
 
         {/* ─── BRINGING IT ALL TOGETHER SECTION ─── */}
         {post.conclusion && (
-          <section class="os-card" style="background: var(--candy-pink-soft); border-left: 5px solid var(--candy-pink); padding: 40px; border-radius: var(--radius-lg); margin-top: 24px; box-shadow: var(--shadow-sm);">
-            <h2 id="conclusion" class="os-h2" style="margin-bottom: 24px; color: var(--ink-black); font-size: 1.75rem; font-weight: 800;">
+          <section class="os-card" style="background: var(--candy-pink-soft); border-left: 5px solid var(--candy-pink); padding: 24px 28px; border-radius: var(--radius-lg); margin-top: 24px; box-shadow: var(--shadow-sm);">
+            <h2 id="conclusion" class="os-h2" style="margin-bottom: 12px; color: var(--ink-black); font-size: 1.75rem; font-weight: 800;">
               {post.conclusion.title}
             </h2>
             <div style="display: flex; flex-direction: column; gap: 16px; color: var(--ink-secondary); font-size: 1.1rem; line-height: 1.7;">
               {post.conclusion.content.map((paragraph, idx) => (
-                <p style={`margin: 0; ${idx === post.conclusion.content.length - 1 ? 'font-weight: 600; color: var(--ink-black);' : ''}`}>
-                  {paragraph}
-                </p>
+                <p class="html-content" style="margin: 0;" set:html={paragraph}></p>
               ))}
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: 32px;">
+              <a href="/signup" class="os-btn os-btn-primary" style="display: inline-flex; align-items: center; justify-content: center; text-align: center; font-weight: 700; padding: 14px 36px; height: 52px; font-size: 1.1rem; box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4); border-radius: 8px; text-decoration: none;">
+                Deploy your AI workforce →
+              </a>
             </div>
           </section>
         )}
@@ -254,6 +255,22 @@ const PostContent = contentComponents[post.slug];
       </div>
     </div>
   </article>
+
+  <style is:global>
+    /* Ensure HTML injected links inside blog text are highlighted pink */
+    .html-content a, .blog-content a {
+      color: var(--candy-pink);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+    }
+    .html-content a:hover, .blog-content a:hover {
+      color: var(--candy-pink-hover);
+    }
+  </style>
+
 </Layout>
 
 
