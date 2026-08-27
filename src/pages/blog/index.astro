@@ -1,7 +1,9 @@
 ---
 import Layout from "~/layouts/Layout.astro";
-import { BLOG_POSTS } from "~/data/blog";
+import { BLOG_POSTS as RAW_BLOG_POSTS } from "~/data/blog";
 import RibbonBackground from "~/components/shared/RibbonBackground.astro";
+
+const BLOG_POSTS = [...RAW_BLOG_POSTS].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 
 // Split the current posts based on their actual themes since we don't have enough posts to fill strict engineering/platform categories yet
 const strategyPosts = BLOG_POSTS.filter(p => p.category.includes("Guide") || p.category.includes("Fundamentals"));
