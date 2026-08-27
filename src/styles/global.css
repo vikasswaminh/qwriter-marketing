@@ -71,8 +71,8 @@
   --text-h2: clamp(28px, 4vw, 42px);
   --text-h3: 24px;
   --text-h4: 20px;
-  --text-body-lg: 18px;
-  --text-body: 16px;
+  --text-body-lg: 16px;
+  --text-body: 15px;
   --text-small: 14px;
   --text-caption: 12px;
 
@@ -214,16 +214,16 @@ img, svg, video {
 
 /* ─── Standard Vertical Rhythm ─── */
 .os-section {
-  padding: clamp(64px, 8vw, 112px) 0;
+  padding: clamp(40px, 6vw, 64px) 0;
 }
 
 .os-section-light {
-  padding: clamp(64px, 8vw, 112px) 0;
+  padding: clamp(40px, 6vw, 64px) 0;
   background-color: var(--canvas-white);
 }
 
 .os-section-dark {
-  padding: clamp(64px, 8vw, 112px) 0;
+  padding: clamp(40px, 6vw, 64px) 0;
   background-color: var(--ink-black);
   color: var(--canvas-white);
 }
@@ -231,19 +231,19 @@ img, svg, video {
 /* ─── Typography & Section Headers ─── */
 .os-display {
   font-family: var(--font-sans);
-  font-weight: 900;
+  font-weight: 800;
   font-size: var(--text-display);
-  line-height: 1.0;
-  letter-spacing: -0.035em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: var(--ink-black);
 }
 
 .os-h1 {
   font-family: var(--font-sans);
-  font-weight: 900;
+  font-weight: 800;
   font-size: var(--text-h1);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: var(--ink-black);
 }
 
