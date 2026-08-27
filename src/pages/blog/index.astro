@@ -3,14 +3,9 @@ import Layout from "~/layouts/Layout.astro";
 import { BLOG_POSTS } from "~/data/blog";
 import RibbonBackground from "~/components/shared/RibbonBackground.astro";
 
-// For the placeholders in the sidebars, we can just randomly distribute the 4 posts we have, 
-// or use hardcoded subsets if we want.
-const platformPosts = BLOG_POSTS.filter(p => p.category === "Product Updates" || p.category === "Customer Story");
-// fallback if empty
-const strategyPosts = platformPosts.length > 0 ? platformPosts : BLOG_POSTS; 
-
-const engineeringPosts = BLOG_POSTS.filter(p => p.category === "Engineering" || p.category === "Architecture");
-const techPosts = engineeringPosts.length > 0 ? engineeringPosts : BLOG_POSTS;
+// Split the current posts based on their actual themes since we don't have enough posts to fill strict engineering/platform categories yet
+const strategyPosts = BLOG_POSTS.filter(p => p.category.includes("Guide") || p.category.includes("Fundamentals"));
+const techPosts = BLOG_POSTS.filter(p => p.category.includes("Automation") || p.category.includes("Tools"));
 ---
 
 <Layout
@@ -59,7 +54,7 @@ const techPosts = engineeringPosts.length > 0 ? engineeringPosts : BLOG_POSTS;
         <!-- Engineering Special -->
         <div>
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-            <span style="padding: 4px 10px; font-size: 10px; font-weight: 800; color: #ffffff; background: linear-gradient(to right, #3b82f6, #1d4ed8); border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">ENGINEERING</span>
+            <span style="padding: 4px 10px; font-size: 10px; font-weight: 800; color: #ffffff; background: linear-gradient(to right, #3b82f6, #1d4ed8); border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">AUTOMATION & TOOLS</span>
           </div>
           <div class="horizontal-snap-scroll">
             {techPosts.map((post) => (
@@ -151,16 +146,16 @@ const techPosts = engineeringPosts.length > 0 ? engineeringPosts : BLOG_POSTS;
         <aside class="blog-sidebar right-sidebar">
           <div class="sticky-container">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
-              <span style="padding: 4px 10px; font-size: 10px; font-weight: 800; color: #ffffff; background: linear-gradient(to right, #3b82f6, #1d4ed8); border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">ENGINEERING</span>
+              <span style="padding: 4px 10px; font-size: 10px; font-weight: 800; color: #ffffff; background: linear-gradient(to right, #3b82f6, #1d4ed8); border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">AUTOMATION & TOOLS</span>
             </div>
             <nav style="display: flex; flex-direction: column; gap: 8px;">
               {techPosts.map(post => (
-                <a href={`/blog/${post.slug}`} class="sidebar-link">
+                <a href={`/blog/${post.slug}`} class="sidebar-link-blue">
                   {post.title}
                 </a>
               ))}
             </nav>
-            <a href="/blog" class="view-all-link" style="color: #3b82f6;">View All Technical →</a>
+            <a href="/blog" class="view-all-link" style="color: #3b82f6;">View All Guides →</a>
           </div>
         </aside>
 
@@ -201,7 +196,6 @@ const techPosts = engineeringPosts.length > 0 ? engineeringPosts : BLOG_POSTS;
     display: grid;
     grid-template-columns: 220px 1fr 220px;
     gap: 40px;
-    align-items: start;
   }
 
   /* Sidebars */
@@ -226,6 +220,21 @@ const techPosts = engineeringPosts.length > 0 ? engineeringPosts : BLOG_POSTS;
   }
 
   .sidebar-link:hover {
+    background: var(--candy-pink-soft);
+    color: var(--candy-pink);
+  }
+
+  .sidebar-link-blue {
+    display: block;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: var(--ink-secondary);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    line-height: 1.3;
+  }
+  .sidebar-link-blue:hover {
     background: var(--status-blue-bg);
     color: var(--accent-blue);
   }

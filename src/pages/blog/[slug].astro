@@ -5,12 +5,14 @@ import Post1 from "~/components/blog/posts/post-1.astro";
 import Post2 from "~/components/blog/posts/post-2.astro";
 import Post3 from "~/components/blog/posts/post-3.astro";
 import Post4 from "~/components/blog/posts/post-4.astro";
+import Post5 from "~/components/blog/posts/post-5.astro";
 
 const contentComponents: Record<string, any> = {
   "what-are-ai-agents-complete-guide-for-businesses-2026": Post1,
   "ai-agents-vs-ai-assistants-whats-the-difference": Post2,
   "ai-automation-how-businesses-can-automate-workflows-with-ai": Post3,
   "best-ai-tools-for-business-2026": Post4,
+  "what-is-an-ai-workforce": Post5,
 };
 
 export function getStaticPaths() {
@@ -144,7 +146,7 @@ const PostContent = contentComponents[post.slug];
       {/* ─── 3.5 KEY TAKEAWAYS ─── */}
       {post.keyTakeaways && post.keyTakeaways.length > 0 && (
         <section style="margin-bottom: 24px;">
-          <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--ink-black); margin-bottom: 24px;">
+          <h3 id="key-takeaways" style="font-size: 1.5rem; font-weight: 800; color: var(--ink-black); margin-bottom: 24px;">
             Key Takeaways
           </h3>
           <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -337,10 +339,14 @@ const PostContent = contentComponents[post.slug];
 </style>
 
 <script>
+  let scrollListener = null;
+
   // Robust anchor link handling for the Table of Contents
   function initTocLinks() {
     const tocLinks = document.querySelectorAll('.os-toc-link');
+    if (tocLinks.length === 0) return;
     
+    // 1. Click listeners
     tocLinks.forEach(link => {
       // Remove any previous event listeners by cloning if necessary (not strictly needed here but safe)
       link.addEventListener('click', (e) => {
@@ -366,12 +372,59 @@ const PostContent = contentComponents[post.slug];
           // Update the URL hash quietly
           window.history.pushState(null, '', href);
           
-          // Update active state in TOC
+          // Update active state in TOC immediately for snappy feedback
           tocLinks.forEach(l => l.classList.remove('active'));
           link.classList.add('active');
         }
       });
     });
+
+    // 2. Scroll Spy listener
+    if (scrollListener) {
+      window.removeEventListener('scroll', scrollListener);
+    }
+
+    const targetIds = Array.from(tocLinks)
+      .map(link => link.getAttribute('href')?.substring(1))
+      .filter(Boolean);
+
+    const scrollOffset = 150; // offset to trigger active state
+
+    scrollListener = () => {
+      const scrollPosition = window.scrollY + scrollOffset;
+      let currentActiveId = null;
+      
+      // Find the last target element that is above the current scroll position
+      for (const id of targetIds) {
+        const element = document.getElementById(id);
+        if (element) {
+          const elementTop = element.getBoundingClientRect().top + window.scrollY;
+          if (scrollPosition >= elementTop) {
+            currentActiveId = id;
+          }
+        }
+      }
+      
+      // If none are above, default to the first one
+      if (!currentActiveId && targetIds.length > 0) {
+        currentActiveId = targetIds[0];
+      }
+
+      // Update active class
+      if (currentActiveId) {
+        tocLinks.forEach(link => {
+          if (link.getAttribute('href') === '#' + currentActiveId) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    };
+
+    window.addEventListener('scroll', scrollListener, { passive: true });
+    // Call once to set initial state
+    scrollListener();
   }
 
   // Run on initial load and after any ViewTransition page swaps
