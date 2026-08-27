@@ -438,8 +438,8 @@ export const BLOG_POSTS: BlogPost[] = [
     "description": "An AI workforce isn't sci-fi anymore \u2014 it's teams of specialized AI employees working alongside humans, autonomously handling research, sales outreach, content creation, customer support, and operations at scale. Here's how they work, what changes, and what's different from hiring humans.",
     "category": "AI Workforce / Applied AI Fundamentals",
     "readTime": "22 min read",
-    "publishDate": "2026-08-26",
-    "updatedDate": "2026-08-26",
+    "publishDate": "2026-08-27",
+    "updatedDate": "2026-08-27",
     "keywords": [
       "AI workforce",
       "AI employees",
