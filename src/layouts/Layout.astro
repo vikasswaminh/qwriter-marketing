@@ -8,14 +8,12 @@ interface Props {
   title?: string;
   description?: string;
   current?: string;
-  chrome?: boolean;
 }
 
 const {
   title = "OllaSuper — Your company. Powered by AI employees.",
   description = "Deploy intelligent AI employees that research, analyze, execute and automate real business workflows with enterprise observability and human governance.",
   current,
-  chrome = true,
 } = Astro.props;
 ---
 <!doctype html>
@@ -94,11 +92,11 @@ const {
   </head>
   <body>
     <a href="#main-content" class="os-skip-link">Skip to main content</a>
-    {chrome && <Nav current={current} />}
+    <Nav current={current} />
     <main id="main-content">
       <slot />
     </main>
-    {chrome && <Footer />}
+    <Footer />
 
     <script>
       function initAnimations() {

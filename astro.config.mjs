@@ -2,8 +2,9 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
 // Pure static output — Cloudflare Pages serves /dist as flat HTML.
-// No SSR adapter needed; the only server-side calls in the marketing site
-// are the login/signup form POSTs which go directly to app.ollasuper.com.
+// No SSR adapter needed; the marketing site makes no server-side calls at all.
+// Auth lives entirely on app.ollasuper.com — every sign-in CTA links straight
+// there, and public/_redirects 302s the retired /login + /signup paths.
 
 export default defineConfig({
   output: "static",

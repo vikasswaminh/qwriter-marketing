@@ -9,8 +9,6 @@ const STATIC_PATHS = [
   "/how-it-works",
   "/pricing",
   "/changelog",
-  "/login",
-  "/signup",
 ];
 
 export const GET: APIRoute = ({ site }) => {

@@ -2,3 +2,7 @@
 # Brand-leak fix 2026-06-15 — was app.qwriter.com which 404'd post-rebrand.
 /dashboard*  https://app.ollasuper.com/:splat  302
 /app*        https://app.ollasuper.com/:splat  302
+
+# Auth moved to the app subdomain (pages removed from this repo).
+/login       https://app.ollasuper.com/login   302
+/signup      https://app.ollasuper.com/login   302
