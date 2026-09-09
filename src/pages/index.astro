@@ -10,6 +10,7 @@ import RoiCalculator from "~/components/outcomes/RoiCalculator.astro";
 import HowItWorks from "~/components/home/HowItWorks.astro";
 import PlatformOverview from "~/components/home/PlatformOverview.astro";
 import TrustFooter from "~/components/home/TrustFooter.astro";
+import TrustMarquee from "~/components/home/TrustMarquee.astro";
 import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
 ---
 
@@ -146,8 +147,11 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
   <HowItWorks />
   <PlatformOverview />
 
+  {/* ─── 3.5. AI YOU CAN TRUST ─── */}
+  <TrustMarquee />
+
   {/* ─── 4. WHAT YOU CAN SHIP ─── */}
-  <section class="os-section" style="padding: 48px 0; background: #ffffff; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+  <section class="os-section" style="padding: 16px 0 48px; background: rgba(220, 20, 60, 0.04); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
     <div class="os-container">
       
       <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: var(--spacing-48); gap: var(--spacing-24); flex-wrap: wrap;">
@@ -156,22 +160,32 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
             WHAT YOU CAN SHIP
           </div>
           <h2 class="os-h2" style="margin: 0; max-width: 720px;">
-            Hire one Assistant. Or stand up your whole workforce.
+            <span style="color: #DC143C;">Hire</span> one Assistant. Or stand up your whole workforce.
           </h2>
         </div>
         <a href="/experts" class="splash-nav" style="font-size: var(--text-small); font-weight: 600; color: var(--text-secondary); text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid var(--text-primary);">Browse all 30 →</a>
       </div>
 
-      <style>
+      <style is:global>
         #use-cases-carousel::-webkit-scrollbar {
           display: none;
         }
+        #use-cases-grid .os-card {
+          border: 2px solid #0f172a !important;
+          box-shadow: 6px 6px 0px #0f172a !important;
+          transform: none !important;
+          transition: none !important;
+        }
+        #use-cases-grid .os-card:hover {
+          transform: none !important;
+          box-shadow: 6px 6px 0px #0f172a !important;
+        }
       </style>
       
-      <div style="position: relative; margin-top: var(--spacing-32); margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%);">
+      <div style="margin-top: 32px;">
         
-        {/* Carousel Container */}
-        <div id="use-cases-carousel" style="display: flex; gap: var(--spacing-24); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; padding-top: var(--spacing-16); padding-bottom: var(--spacing-32);">
+        {/* Grid Container */}
+        <div id="use-cases-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; padding-top: 16px; padding-bottom: 32px;">
           
           <a href="/experts" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
             <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-blue-tint);">
@@ -277,81 +291,14 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
             <div style="font-size: var(--text-caption); font-weight: 700; color: #16a34a;">Learn more →</div>
           </a>
 
-          {/* Spacer for proper ending padding when scrolling */}
-          <div style="flex: 0 0 calc(50vw - 50% - var(--spacing-24));"></div>
-
         </div>
-
-        {/* Navigation Controls */}
-        <div style="display: flex; align-items: center; justify-content: center; gap: var(--spacing-16); margin-top: var(--spacing-24);">
-          <button id="carousel-prev" aria-label="Previous slide" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-medium); background: var(--bg-blue-tint); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary); transition: all 0.2s; box-shadow: var(--shadow-sm);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          
-          <div id="carousel-dots" style="display: flex; gap: 8px;">
-            {[...Array(8)].map((_, i) => (
-              <div class={`carousel-dot`} data-index={i} style={`width: 8px; height: 8px; border-radius: 50%; background: ${i===0 ? 'var(--text-primary)' : 'var(--border-medium)'}; transition: background 0.3s;`}></div>
-            ))}
-          </div>
-
-          <button id="carousel-next" aria-label="Next slide" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-medium); background: var(--bg-blue-tint); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary); transition: all 0.2s; box-shadow: var(--shadow-sm);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-          </button>
-        </div>
-
       </div>
 
       <script>
         import { navigate } from 'astro:transitions/client';
 
         document.addEventListener('astro:page-load', () => {
-          // --- Carousel Logic ---
-          const carousel = document.getElementById('use-cases-carousel');
-          const prevBtn = document.getElementById('carousel-prev');
-          const nextBtn = document.getElementById('carousel-next');
-          const dots = document.querySelectorAll('.carousel-dot');
-
-          if (carousel && prevBtn && nextBtn) {
-            const gap = 24;
-            
-            const getScrollAmount = () => {
-              const firstCard = carousel.querySelector('a');
-              return firstCard ? firstCard.offsetWidth + gap : 344;
-            };
-            
-            prevBtn.addEventListener('click', () => {
-              carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-            });
-            
-            nextBtn.addEventListener('click', () => {
-              carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-            });
-
-            carousel.addEventListener('scroll', () => {
-              const scrollAmount = getScrollAmount();
-              let index = Math.round(carousel.scrollLeft / scrollAmount);
-              
-              if (index < 0) index = 0;
-              if (index >= dots.length) index = dots.length - 1;
-
-              dots.forEach((dot, i) => {
-                (dot as HTMLElement).style.background = i === index ? 'var(--text-primary)' : 'var(--border-medium)';
-              });
-            });
-            
-            [prevBtn, nextBtn].forEach(btn => {
-              btn.addEventListener('mouseenter', () => {
-                btn.style.background = 'var(--bg-white)';
-                btn.style.borderColor = 'var(--text-primary)';
-                btn.style.color = 'var(--text-primary)';
-              });
-              btn.addEventListener('mouseleave', () => {
-                btn.style.background = 'var(--bg-blue-tint)';
-                btn.style.borderColor = 'var(--border-medium)';
-                btn.style.color = 'var(--text-secondary)';
-              });
-            });
-          }
+          // --- Carousel Logic Removed ---
 
           // --- Dynamic Splash Navigation ---
           document.querySelectorAll('.splash-nav').forEach(link => {
@@ -430,10 +377,18 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
         </p>
       </div>
 
+      <style>
+        .work-card-red { border: 2px solid #DC143C !important; box-shadow: 6px 6px 0px #DC143C !important; transform: none !important; transition: none !important; }
+        .work-card-black { border: 2px solid #0f172a !important; box-shadow: 6px 6px 0px #0f172a !important; transform: none !important; transition: none !important; }
+        .work-card-blue { border: 2px solid var(--blue-primary) !important; box-shadow: 6px 6px 0px var(--blue-primary) !important; transform: none !important; transition: none !important; }
+        .work-card-red:hover { box-shadow: 6px 6px 0px #DC143C !important; transform: none !important; }
+        .work-card-black:hover { box-shadow: 6px 6px 0px #0f172a !important; transform: none !important; }
+        .work-card-blue:hover { box-shadow: 6px 6px 0px var(--blue-primary) !important; transform: none !important; }
+      </style>
+
       <div class="os-grid-3" style="gap: 20px;">
         
-        <a href="/experts/ir" class="os-card os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); text-decoration: none; position: relative; overflow: hidden; display: flex; flex-direction: column;">
-          <div style="position: absolute; left: 0; top: 20px; bottom: 20px; width: 3px; background: #d97706; border-radius: 0 2px 2px 0;"></div>
+        <a href="/experts/ir" class="os-card os-card-symmetric work-card-red" style="background: #ffffff; text-decoration: none; position: relative; overflow: hidden; display: flex; flex-direction: column;">
           <div style="flex: 1;">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px;">
               <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; color: #d97706; text-transform: uppercase;">INVESTOR UPDATE</span>
@@ -447,8 +402,7 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
           <div style="margin-top: 14px; font-size: 12px; font-weight: 600; color: #d97706;">See sample →</div>
         </a>
 
-        <a href="/experts/cos" class="os-card os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); text-decoration: none; position: relative; overflow: hidden; display: flex; flex-direction: column;">
-          <div style="position: absolute; left: 0; top: 20px; bottom: 20px; width: 3px; background: #7c3aed; border-radius: 0 2px 2px 0;"></div>
+        <a href="/experts/cos" class="os-card os-card-symmetric work-card-black" style="background: #ffffff; text-decoration: none; position: relative; overflow: hidden; display: flex; flex-direction: column;">
           <div style="flex: 1;">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px;">
               <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; color: #7c3aed; text-transform: uppercase;">BOARD REPORT</span>
@@ -462,8 +416,7 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
           <div style="margin-top: 14px; font-size: 12px; font-weight: 600; color: #7c3aed;">See sample →</div>
         </a>
 
-        <a href="/experts/sdr" class="os-card os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); text-decoration: none; position: relative; overflow: hidden; display: flex; flex-direction: column;">
-          <div style="position: absolute; left: 0; top: 20px; bottom: 20px; width: 3px; background: #16a34a; border-radius: 0 2px 2px 0;"></div>
+        <a href="/experts/sdr" class="os-card os-card-symmetric work-card-blue" style="background: #ffffff; text-decoration: none; position: relative; overflow: hidden; display: flex; flex-direction: column;">
           <div style="flex: 1;">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px;">
               <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; color: #16a34a; text-transform: uppercase;">SALES CAMPAIGN</span>

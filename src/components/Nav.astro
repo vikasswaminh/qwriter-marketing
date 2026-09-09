@@ -183,11 +183,18 @@ const { current } = Astro.props;
 
 <style>
   .os-nav-link:hover, .os-nav-link.active {
-    color: var(--text-primary) !important;
-    background-color: rgba(0, 0, 0, 0.05);
+    color: #DC143C !important;
+    text-decoration: underline !important;
+    text-underline-offset: 4px;
+    background-color: rgba(220, 20, 60, 0.05) !important;
   }
   .os-dropdown-item:hover {
-    background-color: var(--bg-blue-tint);
+    background-color: rgba(220, 20, 60, 0.05) !important;
+  }
+  .os-dropdown-item:hover div[style*="font-weight: 600"] {
+    color: #DC143C !important;
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
   }
   @media (max-width: 900px) {
     .os-nav-desktop, .os-nav-desktop-only {

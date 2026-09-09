@@ -2,6 +2,7 @@
 import Layout from "~/layouts/Layout.astro";
 import ExpertGlyph from "~/components/ExpertGlyph.astro";
 import TrustFooter from "~/components/home/TrustFooter.astro";
+import TrustMarquee from "~/components/home/TrustMarquee.astro";
 import RibbonBackground from "~/components/shared/RibbonBackground.astro";
 import { experts, departments } from "~/data/experts";
 
@@ -187,6 +188,7 @@ const grouped = Object.keys(departments).map(key => ({
   </section>
 
   {/* NEW UNIFIED FOOTER CTA */}
+  <TrustMarquee />
   <TrustFooter />
 
 </Layout>
