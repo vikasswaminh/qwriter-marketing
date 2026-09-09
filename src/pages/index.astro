@@ -378,12 +378,12 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
       </div>
 
       <style>
-        .work-card-red { border: 2px solid #DC143C !important; box-shadow: 6px 6px 0px #DC143C !important; transform: none !important; transition: none !important; }
-        .work-card-black { border: 2px solid #0f172a !important; box-shadow: 6px 6px 0px #0f172a !important; transform: none !important; transition: none !important; }
-        .work-card-blue { border: 2px solid var(--blue-primary) !important; box-shadow: 6px 6px 0px var(--blue-primary) !important; transform: none !important; transition: none !important; }
-        .work-card-red:hover { box-shadow: 6px 6px 0px #DC143C !important; transform: none !important; }
-        .work-card-black:hover { box-shadow: 6px 6px 0px #0f172a !important; transform: none !important; }
-        .work-card-blue:hover { box-shadow: 6px 6px 0px var(--blue-primary) !important; transform: none !important; }
+        .work-card-red { border: 2px solid #DC143C !important; box-shadow: 6px 6px 0px #DC143C !important; transform: translate(0, 0) !important; transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important; }
+        .work-card-black { border: 2px solid #0f172a !important; box-shadow: 6px 6px 0px #0f172a !important; transform: translate(0, 0) !important; transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important; }
+        .work-card-blue { border: 2px solid var(--blue-primary) !important; box-shadow: 6px 6px 0px var(--blue-primary) !important; transform: translate(0, 0) !important; transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important; }
+        .work-card-red:hover { box-shadow: 0px 0px 0px #DC143C !important; transform: translate(6px, 6px) !important; }
+        .work-card-black:hover { box-shadow: 0px 0px 0px #0f172a !important; transform: translate(6px, 6px) !important; }
+        .work-card-blue:hover { box-shadow: 0px 0px 0px var(--blue-primary) !important; transform: translate(6px, 6px) !important; }
       </style>
 
       <div class="os-grid-3" style="gap: 20px;">

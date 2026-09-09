@@ -546,6 +546,11 @@ img, svg, video {
   border: 1px solid #262626;
 }
 
+.os-card-dark:hover {
+  background-color: #0d0d0d !important;
+  border-color: #404040 !important;
+}
+
 /* ─── Bento Grid Layouts ─── */
 .os-bento-grid {
   display: grid;
