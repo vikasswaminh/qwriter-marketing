@@ -63,21 +63,21 @@ const PostContent = contentComponents[post.slug];
     }
   })} />
 
-  <article class="os-section" style="background: var(--warm-cream); padding-top: var(--spacing-48); padding-bottom: 100px;">
+  <article class="os-section" style="background: var(--bg-soft); padding-top: var(--spacing-48); padding-bottom: 100px;">
     <div class="os-container" style="max-width: 1180px;">
       
       {/* Breadcrumb */}
-      <nav aria-label="Breadcrumb" class="os-small" style="color: var(--ink-muted); margin-bottom: var(--spacing-24); display: flex; gap: var(--spacing-8); align-items: center;">
+      <nav aria-label="Breadcrumb" class="os-small" style="color: var(--text-muted); margin-bottom: var(--spacing-24); display: flex; gap: var(--spacing-8); align-items: center;">
         <a href="/" style="color: inherit; text-decoration: none;">Home</a>
         <span>/</span>
         <a href="/blog" style="color: inherit; text-decoration: none;">Blog</a>
         <span>/</span>
-        <span style="color: var(--ink-black); font-weight: 600;">{post.category}</span>
+        <span style="color: var(--text-primary); font-weight: 600;">{post.category}</span>
       </nav>
 
       {/* ─── 1. ARTICLE HERO HEADER ─── */}
       <header style="margin-bottom: var(--spacing-48); border-bottom: 1px solid var(--border-medium); padding-bottom: var(--spacing-32); width: 100%;">
-        <div class="os-caption" style="display: flex; gap: var(--spacing-12); font-weight: 700; color: var(--candy-pink-hover); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: var(--spacing-16); align-items: center; flex-wrap: wrap;">
+        <div class="os-caption" style="display: flex; gap: var(--spacing-12); font-weight: 700; color: var(--blue-light); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: var(--spacing-16); align-items: center; flex-wrap: wrap;">
           <span class="os-badge os-badge-pink">{post.category}</span>
           <span>•</span>
           <span>{post.updatedDate}</span>
@@ -85,7 +85,7 @@ const PostContent = contentComponents[post.slug];
           <span>{post.readTime}</span>
         </div>
 
-        <h1 class="os-display" style="margin-bottom: var(--spacing-24); color: var(--ink-black);">
+        <h1 class="os-display" style="margin-bottom: var(--spacing-24); color: var(--text-primary);">
           {post.title}
         </h1>
 
@@ -96,18 +96,18 @@ const PostContent = contentComponents[post.slug];
         {/* Author and Tag Metadata */}
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding-top: var(--spacing-16); border-top: 1px solid var(--border-light);">
           <div style="display: flex; align-items: center; gap: var(--spacing-12);">
-            <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--candy-pink-soft); border: 1px solid var(--candy-pink-border); display: flex; align-items: center; justify-content: center; font-size: 18px;">
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--bg-blue-tint); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 18px;">
               {post.author.avatar}
             </div>
             <div>
-              <div class="os-small" style="font-weight: 700; color: var(--ink-black);">{post.author.name}</div>
+              <div class="os-small" style="font-weight: 700; color: var(--text-primary);">{post.author.name}</div>
               <div class="os-caption">{post.author.role}</div>
             </div>
           </div>
 
           <div style="display: flex; flex-wrap: wrap; gap: 6px;">
             {post.keywords.slice(0, 5).map((kw) => (
-              <span class="os-badge" style="background: #ffffff; border: 1px solid var(--border-light); font-size: var(--text-caption); color: var(--ink-secondary);">
+              <span class="os-badge" style="background: #ffffff; border: 1px solid var(--border-light); font-size: var(--text-caption); color: var(--text-secondary);">
                 #{kw}
               </span>
             ))}
@@ -125,7 +125,7 @@ const PostContent = contentComponents[post.slug];
             
             <div style="display: flex; flex-direction: column; gap: 4px; width: 100%;">
               {post.tableOfContents.map((toc, index) => (
-                <a href={`#${toc.id}`} class={`os-toc-link ${index === 0 ? 'active' : ''}`} style="display: block; padding: 8px 12px; border-radius: 6px; color: var(--ink-secondary); text-decoration: none; font-size: 0.85rem; line-height: 1.3; transition: all 0.15s ease;">
+                <a href={`#${toc.id}`} class={`os-toc-link ${index === 0 ? 'active' : ''}`} style="display: block; padding: 8px 12px; border-radius: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; line-height: 1.3; transition: all 0.15s ease;">
                   {toc.title}
                 </a>
               ))}
@@ -136,26 +136,26 @@ const PostContent = contentComponents[post.slug];
         <div class="blog-main-column">
 
       {/* ─── 3. TL;DR CALLOUT BOX ─── */}
-      <section style="background: #ffffff; border: 1px solid var(--border-medium); border-left: 5px solid var(--candy-pink); border-radius: 10px; padding: 28px; margin-bottom: var(--spacing-32); box-shadow: var(--shadow-sm);">
+      <section style="background: #ffffff; border: 1px solid var(--border-medium); border-left: 5px solid var(--blue-primary); border-radius: 10px; padding: 28px; margin-bottom: var(--spacing-32); box-shadow: var(--shadow-sm);">
         <h3 id="tldr" style="font-size: 1.2rem; font-weight: 800; color: #a81c85; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
           <span>⚡</span> TL;DR
         </h3>
-        <p class="html-content" style="font-size: 1.1rem; line-height: 1.7; color: var(--ink-black); margin: 0;" set:html={post.tldr}></p>
+        <p class="html-content" style="font-size: 1.1rem; line-height: 1.7; color: var(--text-primary); margin: 0;" set:html={post.tldr}></p>
       </section>
 
       {/* ─── 3.5 KEY TAKEAWAYS ─── */}
       {post.keyTakeaways && post.keyTakeaways.length > 0 && (
         <section style="margin-bottom: 24px;">
-          <h3 id="key-takeaways" style="font-size: 1.5rem; font-weight: 800; color: var(--ink-black); margin-bottom: 24px;">
+          <h3 id="key-takeaways" style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 24px;">
             Key Takeaways
           </h3>
           <div style="display: flex; flex-direction: column; gap: 16px;">
             {post.keyTakeaways.map((takeaway) => (
-              <div style="background: #ffffff; border: 1px solid var(--border-medium); border-left: 4px solid var(--candy-pink); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm);">
-                <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--ink-black); margin-bottom: 12px;">
+              <div style="background: #ffffff; border: 1px solid var(--border-medium); border-left: 4px solid var(--blue-primary); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm);">
+                <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary); margin-bottom: 12px;">
                   {takeaway.title}
                 </h4>
-                <p class="html-content" style="font-size: 1.05rem; line-height: 1.6; color: var(--ink-secondary); margin: 0;" set:html={takeaway.description}></p>
+                <p class="html-content" style="font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); margin: 0;" set:html={takeaway.description}></p>
               </div>
             ))}
           </div>
@@ -163,24 +163,24 @@ const PostContent = contentComponents[post.slug];
       )}
 
       {/* ─── 4. ARTICLE BODY CONTENT (FORMATTED PROSE & CARDS) ─── */}
-      <div class="blog-content" style="display: flex; flex-direction: column; gap: var(--spacing-32); line-height: 1.8; font-size: 1.08rem; color: var(--ink-secondary);">
+      <div class="blog-content" style="display: flex; flex-direction: column; gap: var(--spacing-32); line-height: 1.8; font-size: 1.08rem; color: var(--text-secondary);">
         {PostContent ? <PostContent /> : <p>Content coming soon...</p>}
 
         {/* ─── 5. FAQ SECTION ─── */}
         {post.faqs && post.faqs.length > 0 && (
           <section class="os-card" style="background: #ffffff; border: 1px solid var(--border-medium); padding: 48px; border-radius: var(--radius-lg);">
-            <h2 id="faq" class="os-h2" style="margin-bottom: 32px; color: var(--ink-black); font-size: 1.75rem; font-weight: 800;">
+            <h2 id="faq" class="os-h2" style="margin-bottom: 32px; color: var(--text-primary); font-size: 1.75rem; font-weight: 800;">
               Frequently Asked Questions (FAQ)
             </h2>
 
             <div style="display: flex; flex-direction: column; gap: 16px;">
               {post.faqs.map((faq) => (
-                <details class="os-faq-item" style="border: 1px solid var(--candy-pink); border-radius: var(--radius-md); background: var(--bg-cream-alt); overflow: hidden;">
-                  <summary style="padding: 20px 24px; font-size: 1.1rem; font-weight: 700; color: var(--ink-black); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none;">
+                <details class="os-faq-item" style="border: 1px solid var(--blue-primary); border-radius: var(--radius-md); background: var(--bg-blue-tint); overflow: hidden;">
+                  <summary style="padding: 20px 24px; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none;">
                     {faq.question}
-                    <span class="os-faq-icon" style="color: var(--candy-pink); font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease;">+</span>
+                    <span class="os-faq-icon" style="color: var(--blue-primary); font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease;">+</span>
                   </summary>
-                  <div style="padding: 24px; background: var(--candy-pink-soft); font-size: 1.05rem; line-height: 1.7; color: var(--ink-secondary); border-top: 1px solid var(--candy-pink);">
+                  <div style="padding: 24px; background: var(--bg-blue-tint); font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); border-top: 1px solid var(--blue-primary);">
                     <p style="margin: 0;">
                       {faq.answer}
                     </p>
@@ -198,7 +198,7 @@ const PostContent = contentComponents[post.slug];
               /* Rotate the '+' to an 'x' when open */
               .os-faq-item[open] .os-faq-icon {
                 transform: rotate(45deg);
-                color: var(--ink-black);
+                color: var(--text-primary);
               }
 
               .os-faq-item summary:hover {
@@ -210,17 +210,17 @@ const PostContent = contentComponents[post.slug];
 
         {/* ─── BRINGING IT ALL TOGETHER SECTION ─── */}
         {post.conclusion && (
-          <section class="os-card" style="background: var(--candy-pink-soft); border-left: 5px solid var(--candy-pink); padding: 24px 28px; border-radius: var(--radius-lg); margin-top: 24px; box-shadow: var(--shadow-sm);">
-            <h2 id="conclusion" class="os-h2" style="margin-bottom: 12px; color: var(--ink-black); font-size: 1.75rem; font-weight: 800;">
+          <section class="os-card" style="background: var(--bg-blue-tint); border-left: 5px solid var(--blue-primary); padding: 24px 28px; border-radius: var(--radius-lg); margin-top: 24px; box-shadow: var(--shadow-sm);">
+            <h2 id="conclusion" class="os-h2" style="margin-bottom: 12px; color: var(--text-primary); font-size: 1.75rem; font-weight: 800;">
               {post.conclusion.title}
             </h2>
-            <div style="display: flex; flex-direction: column; gap: 16px; color: var(--ink-secondary); font-size: 1.1rem; line-height: 1.7;">
+            <div style="display: flex; flex-direction: column; gap: 16px; color: var(--text-secondary); font-size: 1.1rem; line-height: 1.7;">
               {post.conclusion.content.map((paragraph, idx) => (
                 <p class="html-content" style="margin: 0;" set:html={paragraph}></p>
               ))}
             </div>
             <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: 32px;">
-              <a href="https://app.ollasuper.com/login" class="os-btn os-btn-primary" style="display: inline-flex; align-items: center; justify-content: center; text-align: center; font-weight: 700; padding: 14px 36px; height: 52px; font-size: 1.1rem; box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4); border-radius: 8px; text-decoration: none; color: var(--ink-black) !important;">
+              <a href="https://app.ollasuper.com/login" class="os-btn os-btn-primary" style="display: inline-flex; align-items: center; justify-content: center; text-align: center; font-weight: 700; padding: 14px 36px; height: 52px; font-size: 1.1rem; box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4); border-radius: 8px; text-decoration: none; color: var(--text-primary) !important;">
                 Deploy your AI workforce →
               </a>
             </div>
@@ -228,8 +228,8 @@ const PostContent = contentComponents[post.slug];
         )}
 
         {/* ─── 5.5 BACKLINK ─── */}
-        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-medium); font-size: 1rem; color: var(--ink-secondary); text-align: center;">
-          Learn more about building an autonomous AI workforce at <a href="https://ollasuper.com" style="color: var(--candy-pink); text-decoration: underline; font-weight: 600;">ollasuper.com</a>.
+        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-medium); font-size: 1rem; color: var(--text-secondary); text-align: center;">
+          Learn more about building an autonomous AI workforce at <a href="https://ollasuper.com" style="color: var(--blue-primary); text-decoration: underline; font-weight: 600;">ollasuper.com</a>.
         </div>
 
 
@@ -244,7 +244,7 @@ const PostContent = contentComponents[post.slug];
   <style is:global>
     /* Ensure HTML injected links inside blog text are highlighted pink */
     .html-content a, .blog-content a {
-      color: var(--candy-pink);
+      color: var(--blue-primary);
       font-weight: 600;
       text-decoration: underline;
       text-decoration-thickness: 1.5px;
@@ -252,7 +252,7 @@ const PostContent = contentComponents[post.slug];
       transition: color 0.2s ease;
     }
     .html-content a:hover, .blog-content a:hover {
-      color: var(--candy-pink-hover);
+      color: var(--blue-light);
     }
   </style>
 
@@ -262,12 +262,12 @@ const PostContent = contentComponents[post.slug];
 
 <style is:global>
   .os-toc-link.active {
-    background: var(--candy-pink-soft) !important;
+    background: var(--bg-blue-tint) !important;
     color: #a81c85 !important;
     font-weight: 700 !important;
   }
   .os-toc-link:hover {
-    background: var(--candy-pink-soft) !important;
+    background: var(--bg-blue-tint) !important;
     color: #a81c85 !important;
   }
 

@@ -9,7 +9,7 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
   description="Experience a live demonstration of OllaSuper AI employees executing real business workflows."
   current="demo"
 >
-  <section class="os-section" style="padding-top: 0; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--warm-cream) 0%, #fffbf2 100%);">
+  <section class="os-section" style="padding-top: 0; position: relative; overflow: hidden; background: var(--bg-primary);">
     
     {/* HERO SECTION WITH RIBBON */}
     <div style="position: relative; overflow: hidden; padding-top: 24px; padding-bottom: 48px; border-bottom: 1px solid var(--border-light);">
@@ -44,38 +44,38 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
             
             <div>
               <h2 class="os-h3" style="margin-bottom: var(--spacing-8);">What to Expect</h2>
-              <p class="os-small" style="color: var(--ink-muted); margin: 0;">A hands-on, deeply technical look at our architecture.</p>
+              <p class="os-small" style="color: var(--text-muted); margin: 0;">A hands-on, deeply technical look at our architecture.</p>
             </div>
 
             <div style="display: flex; flex-direction: column; gap: var(--spacing-24);">
               <div style="display: flex; gap: var(--spacing-16); align-items: flex-start;">
-                <div style="width: 46px; height: 46px; border-radius: 12px; background: var(--candy-pink-soft); border: 1px solid var(--candy-pink-border); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">🎯</div>
+                <div style="width: 46px; height: 46px; border-radius: 12px; background: var(--bg-blue-tint); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">🎯</div>
                 <div>
                   <h3 class="os-h4" style="margin-bottom: 4px; font-size: 1.05rem;">Custom Workflow Simulation</h3>
-                  <p class="os-small" style="color: var(--ink-secondary); margin: 0; line-height: 1.5;">Watch an AI employee research, enrich leads, or reconcile transactions against your specific schema.</p>
+                  <p class="os-small" style="color: var(--text-secondary); margin: 0; line-height: 1.5;">Watch an AI employee research, enrich leads, or reconcile transactions against your specific schema.</p>
                 </div>
               </div>
 
               <div style="display: flex; gap: var(--spacing-16); align-items: flex-start;">
-                <div style="width: 46px; height: 46px; border-radius: 12px; background: var(--candy-pink-soft); border: 1px solid var(--candy-pink-border); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">🔌</div>
+                <div style="width: 46px; height: 46px; border-radius: 12px; background: var(--bg-blue-tint); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">🔌</div>
                 <div>
                   <h3 class="os-h4" style="margin-bottom: 4px; font-size: 1.05rem;">Model Context Protocol</h3>
-                  <p class="os-small" style="color: var(--ink-secondary); margin: 0; line-height: 1.5;">Learn how to connect your private APIs, databases, and Salesforce/HubSpot instances securely.</p>
+                  <p class="os-small" style="color: var(--text-secondary); margin: 0; line-height: 1.5;">Learn how to connect your private APIs, databases, and Salesforce/HubSpot instances securely.</p>
                 </div>
               </div>
 
               <div style="display: flex; gap: var(--spacing-16); align-items: flex-start;">
-                <div style="width: 46px; height: 46px; border-radius: 12px; background: var(--candy-pink-soft); border: 1px solid var(--candy-pink-border); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">🛡️</div>
+                <div style="width: 46px; height: 46px; border-radius: 12px; background: var(--bg-blue-tint); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">🛡️</div>
                 <div>
                   <h3 class="os-h4" style="margin-bottom: 4px; font-size: 1.05rem;">Security & Governance</h3>
-                  <p class="os-small" style="color: var(--ink-secondary); margin: 0; line-height: 1.5;">Review our SOC2 Type II controls, Human-in-the-Loop policies, and private VPC deployment options.</p>
+                  <p class="os-small" style="color: var(--text-secondary); margin: 0; line-height: 1.5;">Review our SOC2 Type II controls, Human-in-the-Loop policies, and private VPC deployment options.</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div style="padding-top: var(--spacing-24); border-top: 1px solid var(--border-light);">
-            <div class="os-caption" style="font-weight: 700; text-transform: uppercase; margin-bottom: 12px; color: var(--ink-black); letter-spacing: 0.05em;">Available AI Employees for Simulation</div>
+            <div class="os-caption" style="font-weight: 700; text-transform: uppercase; margin-bottom: 12px; color: var(--text-primary); letter-spacing: 0.05em;">Available AI Employees for Simulation</div>
             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
               {AI_EMPLOYEES.map((e) => (
                 <span class="os-badge os-badge-pink" style="font-size: 12px; padding: 6px 12px;">{e.avatarIcon} {e.name}</span>
@@ -89,35 +89,35 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
           <h2 class="os-h3" style="margin-bottom: var(--spacing-8);">
             Request a Technical Demo
           </h2>
-          <p class="os-small" style="color: var(--ink-muted); margin-bottom: var(--spacing-32);">
+          <p class="os-small" style="color: var(--text-muted); margin-bottom: var(--spacing-32);">
             Fill out your details to receive an instant calendar invite.
           </p>
 
           <form id="os-demo-form" style="display: flex; flex-direction: column; gap: 20px; flex-grow: 1;">
             <div>
-              <label for="email" style="display: block; font-size: 13px; font-weight: 600; color: var(--ink-black); margin-bottom: 8px;">Work Email *</label>
-              <input type="email" id="email" required placeholder="alex@company.com" style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 15px; background: var(--bg-cream-alt); transition: border-color 0.2s;" />
+              <label for="email" style="display: block; font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Work Email *</label>
+              <input type="email" id="email" required placeholder="alex@company.com" style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 15px; background: var(--bg-blue-tint); transition: border-color 0.2s;" />
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
               <div>
-                <label for="first_name" style="display: block; font-size: 13px; font-weight: 600; color: var(--ink-black); margin-bottom: 8px;">First Name *</label>
-                <input type="text" id="first_name" required placeholder="Alex" style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 15px; background: var(--bg-cream-alt); transition: border-color 0.2s;" />
+                <label for="first_name" style="display: block; font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">First Name *</label>
+                <input type="text" id="first_name" required placeholder="Alex" style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 15px; background: var(--bg-blue-tint); transition: border-color 0.2s;" />
               </div>
               <div>
-                <label for="last_name" style="display: block; font-size: 13px; font-weight: 600; color: var(--ink-black); margin-bottom: 8px;">Last Name *</label>
-                <input type="text" id="last_name" required placeholder="Rivera" style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 15px; background: var(--bg-cream-alt); transition: border-color 0.2s;" />
+                <label for="last_name" style="display: block; font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Last Name *</label>
+                <input type="text" id="last_name" required placeholder="Rivera" style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 15px; background: var(--bg-blue-tint); transition: border-color 0.2s;" />
               </div>
             </div>
 
             <div>
-              <label for="company" style="display: block; font-size: 13px; font-weight: 600; color: var(--ink-black); margin-bottom: 8px;">Company Name *</label>
-              <input type="text" id="company" required placeholder="Acme Global Inc." style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 15px; background: var(--bg-cream-alt); transition: border-color 0.2s;" />
+              <label for="company" style="display: block; font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Company Name *</label>
+              <input type="text" id="company" required placeholder="Acme Global Inc." style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 15px; background: var(--bg-blue-tint); transition: border-color 0.2s;" />
             </div>
 
             <div style="margin-bottom: auto;">
-              <label for="use_case" style="display: block; font-size: 13px; font-weight: 600; color: var(--ink-black); margin-bottom: 8px;">Primary Workflow of Interest</label>
-              <select id="use_case" style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 15px; background: var(--bg-cream-alt); transition: border-color 0.2s;">
+              <label for="use_case" style="display: block; font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Primary Workflow of Interest</label>
+              <select id="use_case" style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-medium); border-radius: 8px; font-size: 15px; background: var(--bg-blue-tint); transition: border-color 0.2s;">
                 <option value="research">Market & Competitor Research</option>
                 <option value="sales">Autonomous Outbound SDR & Pipeline</option>
                 <option value="marketing">Technical Content & SEO Strategy</option>

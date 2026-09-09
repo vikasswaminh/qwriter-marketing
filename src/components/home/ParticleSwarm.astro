@@ -137,7 +137,7 @@
       currentOffsetY += (targetOffsetY - currentOffsetY) * 0.05;
 
       // Slight motion blur by not fully clearing the canvas, matching the background color of the hero
-      // Background is #fffbf2 at the bottom, var(--warm-cream) at top. 
+      // Background is var(--bg-primary) at the bottom, var(--bg-soft) at top. 
       // We'll use a very transparent off-white to clear it.
       ctx.fillStyle = 'rgba(255, 252, 246, 0.3)';
       ctx.fillRect(0, 0, width, height);

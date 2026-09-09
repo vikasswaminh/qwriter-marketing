@@ -9,7 +9,7 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
   description="Deploy tailored AI employee squads across Sales, Marketing, Business Operations, Customer Experience, and Enterprise."
   current="solutions"
 >
-  <article class="os-section" style="background: var(--warm-cream); padding-top: 0;">
+  <article class="os-section" style="background: var(--bg-soft); padding-top: 0;">
     
     {/* HERO SECTION WITH RIBBON */}
     <div style="position: relative; overflow: hidden; padding-top: 24px; padding-bottom: 48px; border-bottom: 1px solid var(--border-light);">
@@ -41,7 +41,7 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
               <div>
                 <span class="os-badge os-badge-pink" style="margin-bottom: var(--spacing-8);">{sol.department}</span>
                 <h2 class="os-h2" style="margin-bottom: 6px;">{sol.title}</h2>
-                <p class="os-small" style="font-weight: 600; color: var(--ink-primary);">{sol.tagline}</p>
+                <p class="os-small" style="font-weight: 600; color: var(--text-primary);">{sol.tagline}</p>
               </div>
               <span class="os-badge os-badge-green" style="padding: 6px 14px;">{sol.badge}</span>
             </div>
@@ -54,7 +54,7 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
             <div class="os-grid-2" style="gap: var(--spacing-32); margin-bottom: var(--spacing-32);">
               
               {/* Recommended Squad */}
-              <div style="background: var(--bg-cream-alt); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--spacing-24);">
+              <div style="background: var(--bg-blue-tint); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--spacing-24);">
                 <div class="os-caption" style="font-weight: 700; text-transform: uppercase; margin-bottom: 14px;">
                   Recommended AI Employee Squad
                 </div>
@@ -62,10 +62,10 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
                   {sol.recommendedSquad.map((member) => (
                     <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
                       <div>
-                        <div class="os-small" style="font-weight: 700; color: var(--ink-black);">{member.role}</div>
+                        <div class="os-small" style="font-weight: 700; color: var(--text-primary);">{member.role}</div>
                         <div class="os-caption">{member.duty}</div>
                       </div>
-                      <a href={`/ai-employees/${member.slug}`} class="os-caption" style="font-weight: 600; color: var(--candy-pink); text-decoration: none;">
+                      <a href={`/ai-employees/${member.slug}`} class="os-caption" style="font-weight: 600; color: var(--blue-primary); text-decoration: none;">
                         Inspect →
                       </a>
                     </div>
@@ -74,7 +74,7 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
               </div>
 
               {/* Key Outcomes */}
-              <div style="background: var(--bg-cream-alt); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--spacing-24);">
+              <div style="background: var(--bg-blue-tint); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--spacing-24);">
                 <div class="os-caption" style="font-weight: 700; text-transform: uppercase; margin-bottom: 14px;">
                   Quantified Impact
                 </div>
@@ -96,7 +96,7 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
                 <blockquote class="os-small" style="font-style: italic; margin-bottom: 6px;">
                   "{sol.caseStudyHighlight.quote}"
                 </blockquote>
-                <div class="os-caption" style="font-weight: 600; color: var(--ink-black);">
+                <div class="os-caption" style="font-weight: 600; color: var(--text-primary);">
                   — {sol.caseStudyHighlight.author} ({sol.caseStudyHighlight.company})
                 </div>
               </div>

@@ -139,7 +139,7 @@ export const BLOG_POSTS: BlogPost[] = [
       title: "Wrapping It Up",
       content: [
         "Adopting AI agents isn't about replacing your team, it's about shifting their focus from execution to strategy. Whether you're a five-person startup looking to punch above your weight or an enterprise tired of scaling headcount for repetitive work, autonomous agents offer the leverage to grow without the growing pains.",
-        "If you want to build an automated ecosystem you can actually trust—one that combines perception, reasoning, and strict human approval gates before taking consequential action—<strong><a href=\"https://ollasuper.com\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--candy-pink); text-decoration: underline; text-underline-offset: 4px;\">OllaSuper</a></strong> is the definitive platform. The technology is here today, and the businesses deploying it now will be operating on an entirely different scale next year."
+        "If you want to build an automated ecosystem you can actually trust—one that combines perception, reasoning, and strict human approval gates before taking consequential action—<strong><a href=\"https://ollasuper.com\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--blue-primary); text-decoration: underline; text-underline-offset: 4px;\">OllaSuper</a></strong> is the definitive platform. The technology is here today, and the businesses deploying it now will be operating on an entirely different scale next year."
       ]
     }
   },
@@ -246,7 +246,7 @@ export const BLOG_POSTS: BlogPost[] = [
       title: "Wrapping It Up",
       content: [
         "The distinction between an assistant and an agent isn't semantics—it's the difference between buying a better calculator and hiring a new employee. Use assistants when you need advice, drafting, and ad-hoc brainpower. Use agents when you need recurring workflows executed consistently while you sleep.",
-        "When you're ready to move beyond just chatting with AI and start actually delegating work, <strong><a href=\"https://ollasuper.com\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--candy-pink); text-decoration: underline; text-underline-offset: 4px;\">OllaSuper</a></strong> gives you the architecture to run fully scheduled, tool-equipped agents with safety built in. Stop copying and pasting between chatbots and start building a real digital workforce."
+        "When you're ready to move beyond just chatting with AI and start actually delegating work, <strong><a href=\"https://ollasuper.com\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--blue-primary); text-decoration: underline; text-underline-offset: 4px;\">OllaSuper</a></strong> gives you the architecture to run fully scheduled, tool-equipped agents with safety built in. Stop copying and pasting between chatbots and start building a real digital workforce."
       ]
     }
   },
@@ -327,7 +327,7 @@ export const BLOG_POSTS: BlogPost[] = [
       title: "Wrapping It Up",
       content: [
         "True AI automation isn't about connecting a web hook to an LLM and hoping for the best—it's about deliberately identifying the repetitive 80% of your business and handing it over to a supervised system. From outbound sales to inbox triage, the highest ROI comes from automating the processes that quietly drain your team's hours.",
-        "To start automating safely, you need a system that supports both intelligent reasoning and rigorous human oversight. <strong><a href=\"https://ollasuper.com\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--candy-pink); text-decoration: underline; text-underline-offset: 4px;\">OllaSuper</a></strong> is built specifically to deploy 24/7 automated workflows without sacrificing control. Reclaim your lost time and let your team focus on the work that actually matters."
+        "To start automating safely, you need a system that supports both intelligent reasoning and rigorous human oversight. <strong><a href=\"https://ollasuper.com\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--blue-primary); text-decoration: underline; text-underline-offset: 4px;\">OllaSuper</a></strong> is built specifically to deploy 24/7 automated workflows without sacrificing control. Reclaim your lost time and let your team focus on the work that actually matters."
       ]
     }
   },
@@ -432,7 +432,7 @@ export const BLOG_POSTS: BlogPost[] = [
       title: "Wrapping It Up",
       content: [
         "Evaluating AI tools in 2026 requires looking past the landing page hype and focusing strictly on utility. While point solutions for design, coding, or meeting transcription are incredibly useful, the most transformative shift for a business is moving from individual tools to an orchestrated AI workforce.",
-        "Instead of patching together a dozen disconnected subscriptions, you can unify your automation strategy with a single platform. <strong><a href=\"https://ollasuper.com\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--candy-pink); text-decoration: underline; text-underline-offset: 4px;\">OllaSuper</a></strong> provides the complete orchestration layer to hire, manage, and scale specialized AI employees across sales, marketing, and operations. Build your stack deliberately, and start today."
+        "Instead of patching together a dozen disconnected subscriptions, you can unify your automation strategy with a single platform. <strong><a href=\"https://ollasuper.com\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--blue-primary); text-decoration: underline; text-underline-offset: 4px;\">OllaSuper</a></strong> provides the complete orchestration layer to hire, manage, and scale specialized AI employees across sales, marketing, and operations. Build your stack deliberately, and start today."
       ]
     }
   }
@@ -583,7 +583,7 @@ export const BLOG_POSTS: BlogPost[] = [
       title: "Wrapping It Up",
       content: [
         "The concept of an AI workforce is no longer a future-of-work prediction; it is an active operational advantage being used right now. By coordinating specialized digital employees that share memory and hand off tasks autonomously, businesses are decoupling growth from traditional headcount constraints.",
-        "Building this new organizational chart requires a platform designed for multi-agent collaboration and enterprise-grade governance. <strong><a href=\"https://ollasuper.com\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--candy-pink); text-decoration: underline; text-underline-offset: 4px;\">OllaSuper</a></strong> is the central hub to deploy and manage your AI team, ensuring every action is trackable, secure, and approved. Your digital workforce is ready to be hired."
+        "Building this new organizational chart requires a platform designed for multi-agent collaboration and enterprise-grade governance. <strong><a href=\"https://ollasuper.com\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--blue-primary); text-decoration: underline; text-underline-offset: 4px;\">OllaSuper</a></strong> is the central hub to deploy and manage your AI team, ensuring every action is trackable, secure, and approved. Your digital workforce is ready to be hired."
       ]
     },
     "keyTakeaways": [

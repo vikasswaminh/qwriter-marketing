@@ -19,89 +19,125 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
   current="home"
 >
 
+  <style>
+    @media (max-width: 1024px) {
+      .os-hide-mobile { display: none !important; }
+    }
+    @keyframes redPulse {
+      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+      70% { box-shadow: 0 0 0 6px rgba(220, 38, 38, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+    }
+    .status-dot-red {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ff6b6b, var(--red-primary));
+      box-shadow: 0 0 4px rgba(220, 38, 38, 0.6);
+      animation: redPulse 2s infinite;
+    }
+  </style>
+
   {/* ─── 1. HERO SECTION ─── */}
-  <section class="os-section" style="padding: 32px 0 48px; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--warm-cream) 0%, #fffbf2 100%);">
+  <section class="os-section" style="padding: 0; position: relative; overflow: hidden; background: #FFFFFF; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-start;">
     
-    {/* Stripe-Style Particle Swarm */}
-    <ParticleSwarm />
+    {/* Decorative Background Elements */}
+    {/* Decorative Background Image */}
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; background-image: url('/images/hero-bg.png'); background-size: cover; background-position: center bottom; opacity: 1;"></div>
 
     <div class="os-container-wide" style="position: relative; z-index: 1;">
-      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 860px; margin: 0 auto; padding-top: 48px;">
+
+
+      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 860px; margin: 0 auto; padding-top: 4vh;">
         
         {/* Value Proposition & CTAs */}
-        <div class="os-eyebrow os-reveal" style="margin-bottom: var(--spacing-24);">
-          <span class="os-badge" style="background: var(--candy-pink); color: var(--ink-black); font-size: var(--text-caption); padding: 4px 12px; border-radius: var(--radius-pill); font-weight: 700;">
-            <span class="os-live-dot"></span> AI Workforce Platform
+        <div class="os-eyebrow os-reveal" style="margin-bottom: var(--spacing-24); display: flex; align-items: center; justify-content: center; gap: 12px;">
+          <span class="os-badge" style="background: var(--bg-blue-tint); color: var(--text-primary); font-size: 12px; padding: 6px 14px; border-radius: var(--radius-pill); font-weight: 700; display: flex; align-items: center; gap: 8px;">
+            <span class="status-dot-red"></span> AI WORKFORCE PLATFORM
           </span>
-          <span class="os-caption">Production-Ready 2026</span>
+          <span style="font-size: 12px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.05em;">PRODUCTION-READY 2026</span>
         </div>
 
-        <h1 class="os-display os-reveal os-reveal-delay-1" style="margin-bottom: var(--spacing-24);">
-          <span class="os-text-gradient-animate">Build Your AI Workforce.</span>
+        <h1 class="os-display os-reveal os-reveal-delay-1" style="margin-bottom: 24px;">
+          <span style="color: var(--text-primary);">Build Your</span> <span style="color: var(--blue-primary);">AI</span> <span style="color: var(--red-primary);">Workforce.</span>
         </h1>
 
-        <p class="os-lead os-reveal os-reveal-delay-2" style="margin-bottom: 32px; max-width: 640px;">
-          <strong style="font-weight: 700; color: var(--ink-black);">80 Experts</strong> that advise across Sales, HR, SEO, Legal, Finance and 25 more — plus <strong style="font-weight: 700; color: var(--ink-black);">6 Agents</strong> that run on schedules and take real actions with your approval.
+        <p class="os-lead os-reveal os-reveal-delay-2" style="margin-bottom: 36px; max-width: 680px; font-size: 20px;">
+          <strong style="font-weight: 700; color: var(--text-primary);">80 Experts</strong> that advise across Sales, HR, SEO, Legal, Finance and 25 more — plus <strong style="font-weight: 700; color: var(--text-primary);">6 Agents</strong> that run on schedules and take real actions with your approval.
         </p>
 
         {/* Primary Action Buttons */}
-        <div class="os-reveal os-reveal-delay-3" style="display: flex; gap: 16px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
-          <a href="https://app.ollasuper.com/login" class="os-btn os-btn-primary os-magnetic" style="padding: 14px 28px; font-size: 15px;">
+        <div class="os-reveal os-reveal-delay-3" style="display: flex; gap: 16px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
+          <a href="https://app.ollasuper.com/login" class="os-btn os-btn-primary os-magnetic" style="padding: 14px 28px; font-size: 15px; border-radius: 30px;">
             Build Your AI Workforce →
           </a>
-          <a href="#employees" class="os-btn os-btn-secondary" style="padding: 14px 24px; font-size: 15px;">
+          <a href="#employees" class="os-btn os-btn-secondary" style="padding: 14px 24px; font-size: 15px; border-radius: 30px;">
             Explore AI Employees
           </a>
-          <a href="/demo" class="os-btn os-btn-ghost" style="padding: 14px 20px; font-size: 15px; font-weight: 600;">
+          <a href="/demo" class="os-btn os-btn-ghost" style="padding: 14px 20px; font-size: 15px; font-weight: 700; color: var(--text-primary);">
             Book a Demo
           </a>
         </div>
 
         {/* Trust Highlights Strip */}
-        <div style="display: flex; gap: 24px; align-items: center; justify-content: center; font-size: 13px; color: var(--ink-secondary); flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <span style="color: var(--status-green); font-weight: 700;">✓</span>
+        <div style="display: flex; gap: 24px; align-items: center; justify-content: center; font-size: 14px; color: var(--text-secondary); flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: var(--red-primary); font-weight: 700;">✓</span>
             <span>No credit card</span>
           </div>
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <span style="color: var(--status-green); font-weight: 700;">✓</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: var(--blue-primary); font-weight: 700;">✓</span>
             <span>Enterprise ready</span>
           </div>
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <span style="color: var(--status-green); font-weight: 700;">✓</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: var(--red-primary); font-weight: 700;">✓</span>
             <span>Multi-agent collaboration</span>
           </div>
         </div>
 
       </div>
     </div>
-  </section>
 
-  {/* ─── 2. METRICS STRIP ─── */}
-  <section class="os-section-light" style="padding: 16px 0; border-top: 1px solid var(--candy-pink); border-bottom: 1px solid var(--candy-pink);">
-    <div class="os-container">
-      <div style="text-align: center; font-size: 0.75rem; color: var(--ink-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">
-        Built for the next generation of operating teams
+    {/* ─── 2. METRICS STRIP ─── */}
+    <div style="padding: 16px 24px 16px 24px; position: relative; z-index: 2;">
+      {/* Centered Accents Just Below the Hero CTAs */}
+      <div style="display: flex; justify-content: center; gap: 16px; max-width: 700px; margin: 0 auto 56px;" class="os-hide-mobile">
+        <span class="os-badge" style="background: rgba(220, 20, 60, 0.1); color: crimson; font-size: 12px; padding: 6px 14px; border-radius: var(--radius-pill); font-weight: 700; display: flex; align-items: center;">
+          INTELLIGENT TEAMS
+        </span>
+        <span class="os-badge" style="background: rgba(220, 20, 60, 0.1); color: crimson; font-size: 12px; padding: 6px 14px; border-radius: var(--radius-pill); font-weight: 700; display: flex; align-items: center;">
+          REAL RESULTS
+        </span>
+        <span class="os-badge" style="background: rgba(220, 20, 60, 0.1); color: crimson; font-size: 12px; padding: 6px 14px; border-radius: var(--radius-pill); font-weight: 700; display: flex; align-items: center;">
+          WORK SMARTER WITH AI
+        </span>
       </div>
-      <div class="os-grid-4">
-        <div style="text-align: center;">
-          <div style="font-size: 2.25rem; font-weight: 800; color: var(--ink-black); line-height: 1;">30</div>
-          <div style="font-size: 0.9rem; color: var(--ink-secondary); margin-top: 6px;">AI specialists</div>
+
+      <div style="background: #FFFFFF; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02); padding: 16px 24px; border: 1px solid var(--border-light); max-width: 700px; margin: 0 auto;">
+        <div style="text-align: center; font-size: 0.6rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">
+          Built for the next generation of operating teams
         </div>
-        <div style="text-align: center;">
-          <div style="font-size: 2.25rem; font-weight: 800; color: var(--ink-black); line-height: 1;">9</div>
-          <div style="font-size: 0.9rem; color: var(--ink-secondary); margin-top: 6px;">Departments covered</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-size: 2.25rem; font-weight: 800; color: var(--ink-black); line-height: 1;">120+</div>
-          <div style="font-size: 0.9rem; color: var(--ink-secondary); margin-top: 6px;">Output types</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-size: 2.25rem; font-weight: 800; color: var(--ink-black); line-height: 1;">1.2M</div>
-          <div style="font-size: 0.9rem; color: var(--ink-secondary); margin-top: 6px;">Tasks completed weekly</div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center;">
+          <div style="border-right: 1px solid var(--border-light);">
+            <div style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); line-height: 1;">30</div>
+            <div style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 4px;">AI specialists</div>
+          </div>
+          <div style="border-right: 1px solid var(--border-light);">
+            <div style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); line-height: 1;">9</div>
+            <div style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 4px;">Departments covered</div>
+          </div>
+          <div style="border-right: 1px solid var(--border-light);">
+            <div style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); line-height: 1;">120+</div>
+            <div style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 4px;">Output types</div>
+          </div>
+          <div>
+            <div style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); line-height: 1;">1.2M</div>
+            <div style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 4px;">Tasks completed weekly</div>
+          </div>
         </div>
       </div>
     </div>
+
   </section>
 
   {/* ─── 3. AI EMPLOYEES SHOWCASE ─── */}
@@ -123,7 +159,7 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
             Hire one Assistant. Or stand up your whole workforce.
           </h2>
         </div>
-        <a href="/experts" class="splash-nav" style="font-size: var(--text-small); font-weight: 600; color: var(--ink-secondary); text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid var(--ink-black);">Browse all 30 →</a>
+        <a href="/experts" class="splash-nav" style="font-size: var(--text-small); font-weight: 600; color: var(--text-secondary); text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid var(--text-primary);">Browse all 30 →</a>
       </div>
 
       <style>
@@ -138,7 +174,7 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
         <div id="use-cases-carousel" style="display: flex; gap: var(--spacing-24); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; padding-top: var(--spacing-16); padding-bottom: var(--spacing-32);">
           
           <a href="/experts" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-blue-tint);">
               <img src="/images/cards/assistants.jpg" alt="22 Assistants" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div style="flex: 1;">
@@ -151,7 +187,7 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
           </a>
 
           <a href="/agents" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-blue-tint);">
               <img src="/images/cards/agents.jpg" alt="6 Agents" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div style="flex: 1;">
@@ -164,7 +200,7 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
           </a>
 
           <a href="/platform" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-blue-tint);">
               <img src="/images/cards/handoff.jpg" alt="Multi-agent handoff" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div style="flex: 1;">
@@ -177,7 +213,7 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
           </a>
 
           <a href="/experts#gtm" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-blue-tint);">
               <img src="/images/cards/seo.jpg" alt="SEO + AEO audits" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div style="flex: 1;">
@@ -190,7 +226,7 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
           </a>
 
           <a href="/experts#gtm" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-blue-tint);">
               <img src="/images/cards/sales.jpg" alt="Sales pipeline" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div style="flex: 1;">
@@ -203,7 +239,7 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
           </a>
 
           <a href="/experts#people" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-blue-tint);">
               <img src="/images/cards/hr.jpg" alt="HR + recruiting" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div style="flex: 1;">
@@ -216,7 +252,7 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
           </a>
 
           <a href="/experts#ops" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-blue-tint);">
               <img src="/images/cards/finance.jpg" alt="Finance + ops" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div style="flex: 1;">
@@ -229,7 +265,7 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
           </a>
 
           <a href="https://app.ollasuper.com/login" class="os-card os-card-cream os-card-symmetric splash-nav" style="flex: 0 0 320px; scroll-snap-align: start; text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-cream-alt);">
+            <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); margin-bottom: var(--spacing-16); overflow: hidden; background: var(--bg-blue-tint);">
               <img src="/images/cards/start.jpg" alt="Free to start" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div style="flex: 1;">
@@ -248,17 +284,17 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
 
         {/* Navigation Controls */}
         <div style="display: flex; align-items: center; justify-content: center; gap: var(--spacing-16); margin-top: var(--spacing-24);">
-          <button id="carousel-prev" aria-label="Previous slide" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-medium); background: var(--bg-cream-alt); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--ink-secondary); transition: all 0.2s; box-shadow: var(--shadow-sm);">
+          <button id="carousel-prev" aria-label="Previous slide" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-medium); background: var(--bg-blue-tint); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary); transition: all 0.2s; box-shadow: var(--shadow-sm);">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
           </button>
           
           <div id="carousel-dots" style="display: flex; gap: 8px;">
             {[...Array(8)].map((_, i) => (
-              <div class={`carousel-dot`} data-index={i} style={`width: 8px; height: 8px; border-radius: 50%; background: ${i===0 ? 'var(--ink-black)' : 'var(--border-medium)'}; transition: background 0.3s;`}></div>
+              <div class={`carousel-dot`} data-index={i} style={`width: 8px; height: 8px; border-radius: 50%; background: ${i===0 ? 'var(--text-primary)' : 'var(--border-medium)'}; transition: background 0.3s;`}></div>
             ))}
           </div>
 
-          <button id="carousel-next" aria-label="Next slide" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-medium); background: var(--bg-cream-alt); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--ink-secondary); transition: all 0.2s; box-shadow: var(--shadow-sm);">
+          <button id="carousel-next" aria-label="Next slide" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-medium); background: var(--bg-blue-tint); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary); transition: all 0.2s; box-shadow: var(--shadow-sm);">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         </div>
@@ -299,20 +335,20 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
               if (index >= dots.length) index = dots.length - 1;
 
               dots.forEach((dot, i) => {
-                (dot as HTMLElement).style.background = i === index ? 'var(--ink-black)' : 'var(--border-medium)';
+                (dot as HTMLElement).style.background = i === index ? 'var(--text-primary)' : 'var(--border-medium)';
               });
             });
             
             [prevBtn, nextBtn].forEach(btn => {
               btn.addEventListener('mouseenter', () => {
                 btn.style.background = 'var(--bg-white)';
-                btn.style.borderColor = 'var(--ink-black)';
-                btn.style.color = 'var(--ink-black)';
+                btn.style.borderColor = 'var(--text-primary)';
+                btn.style.color = 'var(--text-primary)';
               });
               btn.addEventListener('mouseleave', () => {
-                btn.style.background = 'var(--bg-cream-alt)';
+                btn.style.background = 'var(--bg-blue-tint)';
                 btn.style.borderColor = 'var(--border-medium)';
-                btn.style.color = 'var(--ink-secondary)';
+                btn.style.color = 'var(--text-secondary)';
               });
             });
           }
@@ -342,7 +378,7 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
               splash.style.width = '0';
               splash.style.height = '0';
               splash.style.borderRadius = '50%';
-              splash.style.backgroundColor = 'var(--candy-pink)';
+              splash.style.backgroundColor = 'var(--blue-primary)';
               splash.style.transform = 'translate(-50%, -50%)';
               splash.style.zIndex = '99999'; // extremely high
               splash.style.pointerEvents = 'none'; // prevent blocking UI
@@ -379,7 +415,7 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
   </section>
 
   {/* ─── 5. THE WORK THAT SHIPS ─── */}
-  <section class="os-section" style="padding: 48px 0; background: var(--warm-cream);">
+  <section class="os-section" style="padding: 48px 0; background: var(--bg-soft);">
     <div class="os-container">
       
       <div class="os-section-header">
@@ -401,10 +437,10 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
           <div style="flex: 1;">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px;">
               <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; color: #d97706; text-transform: uppercase;">INVESTOR UPDATE</span>
-              <span style="font-size: 11px; color: var(--ink-secondary);">by <strong style="color: var(--ink-black); font-weight: 700;">Investor Relations</strong></span>
+              <span style="font-size: 11px; color: var(--text-secondary);">by <strong style="color: var(--text-primary); font-weight: 700;">Investor Relations</strong></span>
             </div>
-            <h3 style="margin: 0 0 10px 0; font-weight: 700; font-size: 17px; letter-spacing: -0.015em; line-height: 1.25; color: var(--ink-black);">October Investor Update</h3>
-            <div style="padding: 14px 16px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); border-radius: 8px; font-size: 12.5px; line-height: 1.55; color: var(--ink-secondary);">
+            <h3 style="margin: 0 0 10px 0; font-weight: 700; font-size: 17px; letter-spacing: -0.015em; line-height: 1.25; color: var(--text-primary);">October Investor Update</h3>
+            <div style="padding: 14px 16px; background: var(--bg-blue-tint); border: 1px solid var(--border-light); border-radius: 8px; font-size: 12.5px; line-height: 1.55; color: var(--text-secondary);">
               <strong>Highlights.</strong> ARR up 22% MoM to $4.6M. Net new logos: 84. Hired Anjali as VP Product (ex-Razorpay). <br/><br/><strong>Asks.</strong> Intros for VP Sales hire (former CRO, 500-2K SaaS).
             </div>
           </div>
@@ -416,10 +452,10 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
           <div style="flex: 1;">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px;">
               <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; color: #7c3aed; text-transform: uppercase;">BOARD REPORT</span>
-              <span style="font-size: 11px; color: var(--ink-secondary);">by <strong style="color: var(--ink-black); font-weight: 700;">Chief of Staff</strong></span>
+              <span style="font-size: 11px; color: var(--text-secondary);">by <strong style="color: var(--text-primary); font-weight: 700;">Chief of Staff</strong></span>
             </div>
-            <h3 style="margin: 0 0 10px 0; font-weight: 700; font-size: 17px; letter-spacing: -0.015em; line-height: 1.25; color: var(--ink-black);">Q3 Board Pre-Read</h3>
-            <div style="padding: 14px 16px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); border-radius: 8px; font-size: 12.5px; line-height: 1.55; color: var(--ink-secondary);">
+            <h3 style="margin: 0 0 10px 0; font-weight: 700; font-size: 17px; letter-spacing: -0.015em; line-height: 1.25; color: var(--text-primary);">Q3 Board Pre-Read</h3>
+            <div style="padding: 14px 16px; background: var(--bg-blue-tint); border: 1px solid var(--border-light); border-radius: 8px; font-size: 12.5px; line-height: 1.55; color: var(--text-secondary);">
               Q3 vs Q2: revenue +28%, NRR 118%, customer count +12. <br/><br/><strong>Strategic decisions to surface:</strong> AI infra build vs buy, EU expansion timing, follow-on equity plan.
             </div>
           </div>
@@ -431,10 +467,10 @@ import ParticleSwarm from "~/components/home/ParticleSwarm.astro";
           <div style="flex: 1;">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px;">
               <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; color: #16a34a; text-transform: uppercase;">SALES CAMPAIGN</span>
-              <span style="font-size: 11px; color: var(--ink-secondary);">by <strong style="color: var(--ink-black); font-weight: 700;">SDR Agent</strong></span>
+              <span style="font-size: 11px; color: var(--text-secondary);">by <strong style="color: var(--text-primary); font-weight: 700;">SDR Agent</strong></span>
             </div>
-            <h3 style="margin: 0 0 10px 0; font-weight: 700; font-size: 17px; letter-spacing: -0.015em; line-height: 1.25; color: var(--ink-black);">23-touch ABM Sequence</h3>
-            <div style="padding: 14px 16px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); border-radius: 8px; font-size: 12.5px; line-height: 1.55; color: var(--ink-secondary);">
+            <h3 style="margin: 0 0 10px 0; font-weight: 700; font-size: 17px; letter-spacing: -0.015em; line-height: 1.25; color: var(--text-primary);">23-touch ABM Sequence</h3>
+            <div style="padding: 14px 16px; background: var(--bg-blue-tint); border: 1px solid var(--border-light); border-radius: 8px; font-size: 12.5px; line-height: 1.55; color: var(--text-secondary);">
               Day 1 · Day 3 · Day 7 · Day 12 · Day 21. <br/><br/><strong>50 prospects.</strong> US Series A SaaS hiring SDRs. Each step: subject + 90-word body + LinkedIn voice note.
             </div>
           </div>

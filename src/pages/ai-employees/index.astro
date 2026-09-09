@@ -9,7 +9,7 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
   description="Explore the full catalog of autonomous AI employees for Market Research, Outbound Sales, Technical Marketing, Tier-2 Support, and Business Operations."
   current="ai-employees"
 >
-  <section class="os-section" style="background: var(--warm-cream); padding-top: 0;">
+  <section class="os-section" style="background: var(--bg-soft); padding-top: 0;">
     
     {/* HERO SECTION WITH RIBBON */}
     <div style="position: relative; overflow: hidden; padding-top: 24px; padding-bottom: 48px; border-bottom: 1px solid var(--border-light);">
@@ -39,36 +39,28 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
             <div class="os-flip-card-inner">
               
               {/* Front Face */}
-              <div class="os-flip-card-front" style={
-                emp.slug === 'research' ? 'background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url(/images/research_bg.png); background-size: cover; background-position: center;' : 
-                emp.slug === 'sales' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/sales_bg.png); background-size: cover; background-position: center;' : 
-                emp.slug === 'marketing' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/marketing_bg.png); background-size: cover; background-position: center;' : 
-                emp.slug === 'customer-support' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/support_bg.png); background-size: cover; background-position: center;' : 
-                emp.slug === 'operations' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/operations_bg.png); background-size: cover; background-position: center;' : 
-                emp.slug === 'custom' ? 'background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/images/custom_bg.png); background-size: cover; background-position: center;' : 
-                ''
-              }>
+              <div class="os-flip-card-front">
                 <div style="flex: 1;">
                   <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
                     <div style="display: flex; flex-direction: column; gap: 16px;">
-                      <div style="width: 56px; height: 56px; border-radius: 16px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: var(--shadow-sm);">
+                      <div style="width: 56px; height: 56px; border-radius: 16px; background: var(--bg-blue-tint); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: var(--shadow-sm);">
                         {emp.avatarIcon}
                       </div>
                       <div>
-                        <h3 style="font-size: 20px; font-weight: 800; color: var(--ink-black); margin-bottom: 4px;">{emp.name}</h3>
-                        <div style="font-size: 13px; color: var(--ink-muted); font-weight: 600;">{emp.role}</div>
+                        <h3 style="font-size: 20px; font-weight: 800; color: var(--text-primary); margin-bottom: 4px;">{emp.name}</h3>
+                        <div style="font-size: 13px; color: var(--text-muted); font-weight: 600;">{emp.role}</div>
                       </div>
                     </div>
                     <span class="os-badge os-badge-pink" style="font-size: 11px;">{emp.badge}</span>
                   </div>
   
-                  <p style="font-size: 15px; line-height: 1.6; color: var(--ink-secondary); margin-bottom: 20px;">
+                  <p style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 20px;">
                     {emp.purpose}
                   </p>
                 </div>
   
                 <div class="os-employee-card__footer" style="display: flex; align-items: center; justify-content: center; border-top: none; opacity: 0.7;">
-                  <span style="font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; color: var(--ink-muted);">
+                  <span style="font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; color: var(--text-muted);">
                     Hover to view capabilities <span style="font-size: 16px;">↺</span>
                   </span>
                 </div>
@@ -79,8 +71,8 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
                 <div style="flex: 1; overflow-y: auto; padding-right: 4px;">
                   {/* Capabilities List */}
                   <div style="margin-bottom: 24px;">
-                    <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 12px;">Capabilities & Skills</div>
-                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--ink-primary);">
+                    <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 12px;">Capabilities & Skills</div>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--text-primary);">
                       {emp.capabilities.map((cap) => (
                         <li style="display: flex; align-items: flex-start; gap: 8px;">
                           <span style="color: var(--status-green); font-weight: 700;">✓</span>
@@ -92,10 +84,10 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
   
                   {/* Supported Tools Badges */}
                   <div style="margin-bottom: 24px;">
-                    <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 12px;">MCP Tools</div>
+                    <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 12px;">MCP Tools</div>
                     <div style="display: flex; flex-wrap: wrap; gap: 6px;">
                       {emp.tools.map((t) => (
-                        <span style="font-family: var(--font-mono); font-size: 11px; padding: 4px 8px; border-radius: 4px; background: var(--bg-cream-alt); border: 1px solid var(--border-light); color: var(--ink-secondary);">
+                        <span style="font-family: var(--font-mono); font-size: 11px; padding: 4px 8px; border-radius: 4px; background: var(--bg-blue-tint); border: 1px solid var(--border-light); color: var(--text-secondary);">
                           {t.name}
                         </span>
                       ))}
@@ -107,7 +99,7 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
                 <div class="os-employee-card__footer" style="display: flex; align-items: center; justify-content: space-between;">
                   <div>
                     <div class="os-caption">Governance Mode</div>
-                    <div class="os-small" style="font-weight: 600; color: var(--ink-black);">{emp.approvalMode}</div>
+                    <div class="os-small" style="font-weight: 600; color: var(--text-primary);">{emp.approvalMode}</div>
                   </div>
                   <a href={`/ai-employees/${emp.slug}`} class="os-btn os-btn-primary" style="padding: 9px 18px; font-size: var(--text-small);">
                     View Full Spec →

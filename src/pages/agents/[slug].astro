@@ -26,13 +26,13 @@ const related = agent.pairs.map(p => {
 <Layout current="agents" title={`${agent.name} — OllaSuper`} description={agent.oneliner}>
 
   {/* HERO */}
-  <section class="os-section" style="position: relative; overflow: hidden; background: linear-gradient(180deg, var(--warm-cream) 0%, #fffbf2 100%);">
+  <section class="os-section" style="position: relative; overflow: hidden; background: var(--bg-primary);">
     <div class="qw-hero-bg"></div>
     <div class="os-container" style="position: relative;">
-      <div class="os-small" style="display: flex; align-items: center; gap: var(--spacing-8); font-weight: 500; color: var(--ink-secondary); margin-bottom: var(--spacing-16);">
-        <a href="/agents" style="color: var(--ink-secondary); text-decoration: none;">⚡ Agents</a>
+      <div class="os-small" style="display: flex; align-items: center; gap: var(--spacing-8); font-weight: 500; color: var(--text-secondary); margin-bottom: var(--spacing-16);">
+        <a href="/agents" style="color: var(--text-secondary); text-decoration: none;">⚡ Agents</a>
         <span style="color: var(--border-medium);">→</span>
-        <span style="color: var(--ink-black); font-weight: 600;">{agent.short}</span>
+        <span style="color: var(--text-primary); font-weight: 600;">{agent.short}</span>
       </div>
 
       <div style="display: flex; align-items: center; gap: var(--spacing-24);">
@@ -53,22 +53,22 @@ const related = agent.pairs.map(p => {
   </section>
 
   {/* META BAR */}
-  <section class="os-section" style="padding-top: 0; padding-bottom: 40px; background: linear-gradient(180deg, #fffbf2 0%, var(--bg-cream) 100%); border-bottom: 1px solid var(--border-light);">
+  <section class="os-section" style="padding-top: 0; padding-bottom: 40px; background: var(--bg-primary); border-bottom: 1px solid var(--border-light);">
     <div class="os-container">
       <div class="os-grid-3">
         <div class="os-card os-card-cream os-card-symmetric" style="padding: var(--spacing-24); border: 1px solid var(--border-medium);">
           <div class="os-caption" style="font-weight: 700; text-transform: uppercase;">Schedule</div>
-          <div style="font-weight: 700; font-size: 15px; color: var(--ink-black); margin-top: var(--spacing-8);">{agent.schedule.display}</div>
+          <div style="font-weight: 700; font-size: 15px; color: var(--text-primary); margin-top: var(--spacing-8);">{agent.schedule.display}</div>
         </div>
         <div class="os-card os-card-cream os-card-symmetric" style="padding: var(--spacing-24); border: 1px solid var(--border-medium);">
           <div class="os-caption" style="font-weight: 700; text-transform: uppercase;">Model</div>
-          <div style="font-weight: 700; font-size: 15px; color: var(--ink-black); margin-top: var(--spacing-8);">{agent.modelTier === "deep-research" ? "Tongyi DeepResearch 30B A3B" : agent.modelTier === "smart" ? "OpenAI GPT-4o" : "OpenAI GPT-4o-mini"}</div>
-          <div class="os-caption" style="color: var(--ink-secondary); margin-top: 4px;">{agent.model}</div>
+          <div style="font-weight: 700; font-size: 15px; color: var(--text-primary); margin-top: var(--spacing-8);">{agent.modelTier === "deep-research" ? "Tongyi DeepResearch 30B A3B" : agent.modelTier === "smart" ? "OpenAI GPT-4o" : "OpenAI GPT-4o-mini"}</div>
+          <div class="os-caption" style="color: var(--text-secondary); margin-top: 4px;">{agent.model}</div>
         </div>
         <div class="os-card os-card-cream os-card-symmetric" style="padding: var(--spacing-24); border: 1px solid var(--border-medium);">
           <div class="os-caption" style="font-weight: 700; text-transform: uppercase;">Approval</div>
-          <div style="font-weight: 700; font-size: 15px; color: var(--ink-black); margin-top: var(--spacing-8);">{agent.approval.display}</div>
-          {agent.approval.details && <div class="os-caption" style="color: var(--ink-secondary); margin-top: 4px;">{agent.approval.details}</div>}
+          <div style="font-weight: 700; font-size: 15px; color: var(--text-primary); margin-top: var(--spacing-8);">{agent.approval.display}</div>
+          {agent.approval.details && <div class="os-caption" style="color: var(--text-secondary); margin-top: 4px;">{agent.approval.details}</div>}
         </div>
       </div>
     </div>
@@ -89,12 +89,12 @@ const related = agent.pairs.map(p => {
       <div style="display: grid; gap: 32px;">
         {Object.entries(toolGroups).map(([cat, ts]) => (
           <div>
-            <div style="font-size: 12px; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">{cat}</div>
+            <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">{cat}</div>
             <div style="display: grid; gap: 8px;">
               {ts.map(t => (
                 <div class="os-card os-card-cream os-card-symmetric" style="display: flex; gap: 16px; padding: 12px 16px; border: 1px solid var(--border-medium); align-items: baseline;">
-                  <code style="font-size: 13px; font-weight: 600; font-family: ui-monospace, monospace; color: var(--ink-black);">{t.name}</code>
-                  <span style="font-size: 14px; color: var(--ink-secondary); flex: 1;">{t.description}</span>
+                  <code style="font-size: 13px; font-weight: 600; font-family: ui-monospace, monospace; color: var(--text-primary);">{t.name}</code>
+                  <span style="font-size: 14px; color: var(--text-secondary); flex: 1;">{t.description}</span>
                 </div>
               ))}
             </div>
@@ -108,10 +108,10 @@ const related = agent.pairs.map(p => {
   <section class="os-section" style="padding-top: 0;">
     <div class="os-container">
       <h2 class="os-h2" style="margin-bottom: 24px;">Workspace</h2>
-      <p style="font-size: 14px; color: var(--ink-secondary); margin-bottom: 16px;">Paths under <code style="font-size: 13px; font-family: var(--font-mono); background: var(--bg-cream-alt); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-light);">/var/lib/openfang/workspace/</code> this Agent reads or writes:</p>
+      <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">Paths under <code style="font-size: 13px; font-family: var(--font-mono); background: var(--bg-blue-tint); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-light);">/var/lib/openfang/workspace/</code> this Agent reads or writes:</p>
       <div style="display: flex; gap: 12px; flex-wrap: wrap;">
         {agent.workspace.map(p => (
-          <code style="display: inline-block; padding: 8px 16px; font-size: 13px; font-family: ui-monospace, monospace; background: var(--bg-cream-alt); color: var(--ink-black); border: 1px solid var(--border-medium); border-radius: 6px;">{p}</code>
+          <code style="display: inline-block; padding: 8px 16px; font-size: 13px; font-family: ui-monospace, monospace; background: var(--bg-blue-tint); color: var(--text-primary); border: 1px solid var(--border-medium); border-radius: 6px;">{p}</code>
         ))}
       </div>
     </div>
@@ -123,10 +123,10 @@ const related = agent.pairs.map(p => {
       <h2 class="os-h2" style="margin-bottom: 24px;">Starter prompts</h2>
       <div class="os-grid-2">
         {agent.starters.map(s => (
-          <a href={`${dashboardBase}/chat?agent=${agent.slug}&prompt=${encodeURIComponent(s.prompt)}`} class="os-card os-card-cream os-card-symmetric" style="display: block; padding: 24px; color: var(--ink-black); text-decoration: none; border: 1px solid var(--border-medium);">
-            <div style="font-weight: 700; font-size: 15px; color: var(--ink-black);">{s.title}</div>
-            <div style="font-size: 13px; color: var(--ink-secondary); margin-top: 6px;">{s.tagline}</div>
-            <div style="font-size: 13px; color: var(--ink-secondary); margin-top: 16px; line-height: 1.55;">{s.prompt}</div>
+          <a href={`${dashboardBase}/chat?agent=${agent.slug}&prompt=${encodeURIComponent(s.prompt)}`} class="os-card os-card-cream os-card-symmetric" style="display: block; padding: 24px; color: var(--text-primary); text-decoration: none; border: 1px solid var(--border-medium);">
+            <div style="font-weight: 700; font-size: 15px; color: var(--text-primary);">{s.title}</div>
+            <div style="font-size: 13px; color: var(--text-secondary); margin-top: 6px;">{s.tagline}</div>
+            <div style="font-size: 13px; color: var(--text-secondary); margin-top: 16px; line-height: 1.55;">{s.prompt}</div>
           </a>
         ))}
       </div>
@@ -139,14 +139,14 @@ const related = agent.pairs.map(p => {
       <h2 class="os-h2" style="margin-bottom: 24px;">Sample interaction</h2>
       <div class="os-card os-card-cream os-card-symmetric" style="padding: 0; overflow: hidden; border: 1px solid var(--border-medium);">
         <div style="padding: 20px 24px; background: #ffffff; border-bottom: 1px solid var(--border-light);">
-          <div style="font-size: 11px; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">You</div>
-          <div style="font-size: 15px; line-height: 1.5; color: var(--ink-black);">{agent.sample.user}</div>
+          <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">You</div>
+          <div style="font-size: 15px; line-height: 1.5; color: var(--text-primary);">{agent.sample.user}</div>
         </div>
         <div style="padding: 24px;">
-          <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">
             <span style="font-size: 14px;">⚡</span> {agent.name}
           </div>
-          <div style="font-size: 15px; line-height: 1.65; white-space: pre-wrap; color: var(--ink-black);">{agent.sample.assistant}</div>
+          <div style="font-size: 15px; line-height: 1.65; white-space: pre-wrap; color: var(--text-primary);">{agent.sample.assistant}</div>
         </div>
       </div>
     </div>

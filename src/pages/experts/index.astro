@@ -14,7 +14,7 @@ const grouped = Object.keys(departments).map(key => ({
 <Layout current="experts" title="The 22 Assistants — OllaSuper" description="Meet every Assistant: HR, Sales, Operations, SEO, AEO, Data, Engineering, Product, Finance, Legal and 9 more. Each with their own prompts, glyph, and detail page.">
 
   {/* PREMIUM HERO */}
-  <section class="os-section premium-hero" style="position: relative; overflow: hidden; padding: 24px 0 32px; background: linear-gradient(180deg, var(--warm-cream) 0%, #fffbf2 100%);">
+  <section class="os-section premium-hero" style="position: relative; overflow: hidden; padding: 24px 0 32px; background: var(--bg-primary);">
     
     {/* Animated Ribbon Wave (Stripe-like) */}
     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.6; mix-blend-mode: multiply; pointer-events: none;">
@@ -27,13 +27,13 @@ const grouped = Object.keys(departments).map(key => ({
     <div class="os-container" style="position: relative; z-index: 1;">
       <div class="os-grid-2" style="align-items: center; gap: 64px;">
         <div>
-          <div class="os-eyebrow" style="color: var(--candy-pink); margin-bottom: 16px;">
-            <span class="os-badge" style="background: var(--candy-pink-soft); border: 1px solid rgba(244,114,182,0.2); color: var(--candy-pink); font-size: 11px;">22 SPECIALISTS</span>
+          <div class="os-eyebrow" style="color: var(--blue-primary); margin-bottom: 16px;">
+            <span class="os-badge" style="background: var(--bg-blue-tint); border: 1px solid rgba(244,114,182,0.2); color: var(--blue-primary); font-size: 11px;">22 SPECIALISTS</span>
           </div>
-          <h1 class="os-display" style="font-size: 4rem; line-height: 1.1; margin-bottom: 24px; color: var(--ink-black); letter-spacing: -0.03em;">
+          <h1 class="os-display" style="font-size: 4rem; line-height: 1.1; margin-bottom: 24px; color: var(--text-primary); letter-spacing: -0.03em;">
             The 22 Assistants.
           </h1>
-          <p class="os-lead" style="max-width: 500px; color: var(--ink-secondary); font-size: 1.1rem; line-height: 1.6;">
+          <p class="os-lead" style="max-width: 500px; color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6;">
             Every Assistant ships with its own system prompt, four starter chips, and a highly tuned workflow. Ready to deploy instantly.
           </p>
         </div>
@@ -41,12 +41,12 @@ const grouped = Object.keys(departments).map(key => ({
         {/* Sleek Tip Card */}
         <div class="os-card os-card-cream" style="padding: 32px; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); border: 1px solid rgba(255,131,218,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.04); border-radius: 24px;">
           <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-            <div style="width: 40px; height: 40px; border-radius: 12px; background: var(--candy-pink-soft); color: var(--candy-pink); display: flex; align-items: center; justify-content: center;">
+            <div style="width: 40px; height: 40px; border-radius: 12px; background: var(--bg-blue-tint); color: var(--blue-primary); display: flex; align-items: center; justify-content: center;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
             </div>
-            <div style="font-weight: 800; font-size: 16px; color: var(--ink-black);">Pro Tip</div>
+            <div style="font-weight: 800; font-size: 16px; color: var(--text-primary);">Pro Tip</div>
           </div>
-          <p style="font-size: 14px; color: var(--ink-secondary); line-height: 1.6; margin: 0;">
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
             The filter chips below are sticky. Scroll past a department to jump straight to the next one without losing your place.
           </p>
         </div>
@@ -62,9 +62,9 @@ const grouped = Object.keys(departments).map(key => ({
         {grouped.map(g => (
           <a href={`#${g.key}`} class="os-btn filter-chip" style={`padding: 8px 18px; font-size: 13px; font-weight: 600; border-radius: 99px;`}
              onmouseover={`this.style.borderColor='${g.color}'; this.style.color='${g.color}'; this.style.background='${g.color}11'`} 
-             onmouseout="this.style.borderColor='var(--border-medium)'; this.style.color='var(--ink-black)'; this.style.background='transparent'">
+             onmouseout="this.style.borderColor='var(--border-medium)'; this.style.color='var(--text-primary)'; this.style.background='transparent'">
             <span style={`width: 8px; height: 8px; border-radius: 999px; background: ${g.color}; display: inline-block; margin-right: 6px;`}></span>
-            {g.label} <span style="color: var(--ink-muted); font-weight: 500; margin-left: 4px;">{g.experts.length}</span>
+            {g.label} <span style="color: var(--text-muted); font-weight: 500; margin-left: 4px;">{g.experts.length}</span>
           </a>
         ))}
       </div>
@@ -72,7 +72,7 @@ const grouped = Object.keys(departments).map(key => ({
   </div>
 
   {/* GROUPED LIST */}
-  <section id="all" class="os-section" style="padding: 40px 0; background: var(--bg-cream-alt);">
+  <section id="all" class="os-section" style="padding: 40px 0; background: var(--bg-blue-tint);">
     <div class="os-container">
       {grouped.map((group, gi) => (
         <div id={group.key} style={`margin-top: ${gi === 0 ? '0' : '64px'};`}>
@@ -82,7 +82,7 @@ const grouped = Object.keys(departments).map(key => ({
             </div>
             <div>
               <h2 class="os-h2" style="margin: 0; font-size: 2rem; letter-spacing: -0.02em;">{group.label}</h2>
-              <div style="font-size: 13px; color: var(--ink-secondary); font-weight: 600; margin-top: 4px;">{group.experts.length} Specialists</div>
+              <div style="font-size: 13px; color: var(--text-secondary); font-weight: 600; margin-top: 4px;">{group.experts.length} Specialists</div>
             </div>
           </div>
 
@@ -97,8 +97,8 @@ const grouped = Object.keys(departments).map(key => ({
                     <ExpertGlyph slug={e.slug} color={e.color} size={64} flat={true} />
                   </div>
                   <div style="flex: 1;">
-                    <div style="font-size: 1.1rem; font-weight: 800; color: var(--ink-black); margin-bottom: 6px;">{e.name}</div>
-                    <p style="font-size: 0.85rem; color: var(--ink-secondary); line-height: 1.5; margin: 0;">{e.oneliner}</p>
+                    <div style="font-size: 1.1rem; font-weight: 800; color: var(--text-primary); margin-bottom: 6px;">{e.name}</div>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">{e.oneliner}</p>
                   </div>
                 </div>
 
@@ -120,64 +120,64 @@ const grouped = Object.keys(departments).map(key => ({
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
   {/* PREMIUM BENTO: HOW TO USE AN ASSISTANT                          */}
   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-  <section class="os-section" style="padding: 48px 0 40px; background: var(--bg-cream-alt); border-top: 1px solid var(--border-light);">
+  <section class="os-section" style="padding: 48px 0 40px; background: var(--bg-blue-tint); border-top: 1px solid var(--border-light);">
     <div class="os-container">
       
       <div class="os-reveal" style="text-align: center; margin-bottom: 64px;">
-        <div class="os-eyebrow" style="margin-bottom: 12px; color: var(--candy-pink); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.85rem;">
+        <div class="os-eyebrow" style="margin-bottom: 12px; color: var(--blue-primary); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.85rem;">
           HOW TO USE AN ASSISTANT
         </div>
         <h2 class="os-h2" style="font-size: 2.5rem; letter-spacing: -0.02em; margin-bottom: 16px;">
           Five steps to a shippable answer.
         </h2>
-        <p class="os-lead" style="max-width: 600px; margin: 0 auto; color: var(--ink-secondary);">
-          Assistants are chat-driven specialists. They advise. They don't take real-world actions on their own — that's what <a href="/agents" style="color: var(--candy-pink); font-weight: 700; text-decoration: none;">Agents</a> are for.
+        <p class="os-lead" style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">
+          Assistants are chat-driven specialists. They advise. They don't take real-world actions on their own — that's what <a href="/agents" style="color: var(--blue-primary); font-weight: 700; text-decoration: none;">Agents</a> are for.
         </p>
       </div>
 
       <div class="os-reveal os-reveal-delay-1" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
         
         {/* Step 1 & 2 (Bigger cells) */}
-        <div class="bento-cell os-tilt" style="grid-column: span 2; background: var(--bg-cream-alt); border-radius: 24px; padding: 40px; border: 1px solid var(--border-medium); display: flex; flex-direction: column; justify-content: center;">
+        <div class="bento-cell os-tilt" style="grid-column: span 2; background: var(--bg-blue-tint); border-radius: 24px; padding: 40px; border: 1px solid var(--border-medium); display: flex; flex-direction: column; justify-content: center;">
           <div style="display: flex; gap: 40px; align-items: flex-start;">
             <div style="flex: 1;">
-              <div style="font-family: var(--font-mono); font-size: 12px; color: var(--candy-pink); font-weight: 800; margin-bottom: 12px;">STEP 1</div>
+              <div style="font-family: var(--font-mono); font-size: 12px; color: var(--blue-primary); font-weight: 800; margin-bottom: 12px;">STEP 1</div>
               <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;">Browse or search</h3>
-              <p style="color: var(--ink-secondary); line-height: 1.6; font-size: 0.95rem;">Filter by department (People / GTM / Ops / Data) or type a problem into the ⌘K palette. Each Assistant lists their starters so you can preview what kinds of work they're good at.</p>
+              <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">Filter by department (People / GTM / Ops / Data) or type a problem into the ⌘K palette. Each Assistant lists their starters so you can preview what kinds of work they're good at.</p>
             </div>
             <div style="flex: 1;">
-              <div style="font-family: var(--font-mono); font-size: 12px; color: var(--candy-pink); font-weight: 800; margin-bottom: 12px;">STEP 2</div>
+              <div style="font-family: var(--font-mono); font-size: 12px; color: var(--blue-primary); font-weight: 800; margin-bottom: 12px;">STEP 2</div>
               <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;">Open the chat</h3>
-              <p style="color: var(--ink-secondary); line-height: 1.6; font-size: 0.95rem;">One click on an Assistant tile lands you in the chat surface with their system prompt already loaded. The badge in the topbar reminds you which Assistant you're talking to.</p>
+              <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">One click on an Assistant tile lands you in the chat surface with their system prompt already loaded. The badge in the topbar reminds you which Assistant you're talking to.</p>
             </div>
           </div>
         </div>
 
         {/* Step 3 */}
-        <div class="bento-cell os-tilt" style="background: linear-gradient(135deg, var(--warm-cream), #ffffff); border-radius: 24px; padding: 40px; border: 1px solid var(--candy-pink-soft);">
-          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--candy-pink); font-weight: 800; margin-bottom: 12px;">STEP 3</div>
+        <div class="bento-cell os-tilt" style="background: linear-gradient(135deg, var(--bg-soft), #ffffff); border-radius: 24px; padding: 40px; border: 1px solid var(--bg-blue-tint);">
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--blue-primary); font-weight: 800; margin-bottom: 12px;">STEP 3</div>
           <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px;">Pick a starter</h3>
-          <p style="color: var(--ink-secondary); line-height: 1.6; font-size: 0.95rem;">Every Assistant ships 4 starter prompts that represent their dominant use cases. They're a much faster start than a blank page.</p>
+          <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">Every Assistant ships 4 starter prompts that represent their dominant use cases. They're a much faster start than a blank page.</p>
         </div>
 
         {/* Step 4 */}
         <div class="bento-cell os-tilt" style="background: #ffffff; border-radius: 24px; padding: 40px; border: 1px solid var(--border-medium);">
-          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--candy-pink); font-weight: 800; margin-bottom: 12px;">STEP 4</div>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--blue-primary); font-weight: 800; margin-bottom: 12px;">STEP 4</div>
           <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px;">Ground in your sources</h3>
-          <p style="color: var(--ink-secondary); line-height: 1.6; font-size: 0.95rem;">Use the source toggle to attach scans, files, or snippets. Replies automatically cite the chunks they used.</p>
+          <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">Use the source toggle to attach scans, files, or snippets. Replies automatically cite the chunks they used.</p>
         </div>
 
         {/* Step 5 */}
         <div class="bento-cell os-tilt" style="grid-column: span 2; background: #fafbfc; border-radius: 24px; padding: 40px; border: 1px solid var(--border-medium); display: flex; align-items: center; justify-content: space-between;">
           <div style="max-width: 400px;">
-            <div style="font-family: var(--font-mono); font-size: 12px; color: var(--candy-pink); font-weight: 800; margin-bottom: 12px;">STEP 5</div>
+            <div style="font-family: var(--font-mono); font-size: 12px; color: var(--blue-primary); font-weight: 800; margin-bottom: 12px;">STEP 5</div>
             <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;">Iterate, copy, save</h3>
-            <p style="color: var(--ink-secondary); line-height: 1.6; font-size: 0.95rem; margin: 0;">Hover any AI reply for Copy / Regenerate / Save. Save sends a reply into your Documents workspace; Regenerate runs the same prompt for an alternate take.</p>
+            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem; margin: 0;">Hover any AI reply for Copy / Regenerate / Save. Save sends a reply into your Documents workspace; Regenerate runs the same prompt for an alternate take.</p>
           </div>
           
           <div style="padding: 24px; background: #ffffff; border-radius: 16px; border: 1px dashed var(--border-medium);">
-            <div style="font-size: 12px; font-weight: 700; color: var(--ink-black); margin-bottom: 8px;">💡 Credits</div>
-            <div style="font-size: 12px; color: var(--ink-secondary); max-width: 200px; line-height: 1.5;">Every chat turn spends credits = the LLM tokens used. Free tier = 50,000/month.</div>
+            <div style="font-size: 12px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">💡 Credits</div>
+            <div style="font-size: 12px; color: var(--text-secondary); max-width: 200px; line-height: 1.5;">Every chat turn spends credits = the LLM tokens used. Free tier = 50,000/month.</div>
           </div>
         </div>
 
@@ -196,13 +196,13 @@ const grouped = Object.keys(departments).map(key => ({
   .filter-chip {
     background: transparent;
     border: 1px solid var(--border-medium);
-    color: var(--ink-black);
+    color: var(--text-primary);
     transition: all 0.2s ease;
   }
   .filter-chip.active {
-    background: var(--ink-black) !important;
+    background: var(--text-primary) !important;
     color: #ffffff !important;
-    border-color: var(--ink-black) !important;
+    border-color: var(--text-primary) !important;
   }
 
   /* Expert Card Hover States */

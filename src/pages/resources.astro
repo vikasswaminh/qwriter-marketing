@@ -9,7 +9,7 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
   description="Guides, benchmarks, case studies, and the 2026 Agentic Web Readability Specification."
   current="resources"
 >
-  <section class="os-section" style="background: var(--warm-cream); padding-top: 0;">
+  <section class="os-section" style="background: var(--bg-soft); padding-top: 0;">
     
     {/* HERO SECTION WITH RIBBON */}
     <div style="position: relative; overflow: hidden; padding-top: 24px; padding-bottom: 48px; border-bottom: 1px solid var(--border-light);">
@@ -63,23 +63,23 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
             <div>
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
                 <span class="os-badge os-badge-green" style="font-size: 11px;">{res.badge}</span>
-                <span class="os-caption" style="color: var(--ink-muted);">{res.readTime}</span>
+                <span class="os-caption" style="color: var(--text-muted);">{res.readTime}</span>
               </div>
 
               <h3 class="os-h4" style="margin-bottom: 10px;">
                 {res.title}
               </h3>
 
-              <p class="os-small" style="color: var(--ink-secondary); margin-bottom: var(--spacing-20);">
+              <p class="os-small" style="color: var(--text-secondary); margin-bottom: var(--spacing-20);">
                 {res.excerpt}
               </p>
 
               <div style="margin-bottom: var(--spacing-20);">
                 <div class="os-caption" style="font-weight: 700; text-transform: uppercase; margin-bottom: var(--spacing-8);">Key Takeaways</div>
-                <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: var(--text-caption); color: var(--ink-primary);">
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: var(--text-caption); color: var(--text-primary);">
                   {res.keyPoints.map((pt) => (
                     <li style="display: flex; align-items: flex-start; gap: 6px;">
-                      <span style="color: var(--candy-pink); font-weight: 700;">●</span>
+                      <span style="color: var(--blue-primary); font-weight: 700;">●</span>
                       <span>{pt}</span>
                     </li>
                   ))}
@@ -88,7 +88,7 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
             </div>
 
             <div style="padding-top: var(--spacing-16); border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center;">
-              <div class="os-caption" style="color: var(--ink-muted);">By {res.author.name}</div>
+              <div class="os-caption" style="color: var(--text-muted);">By {res.author.name}</div>
               <a href="https://app.ollasuper.com/login" class="os-btn os-btn-secondary" style="padding: 6px 14px; font-size: var(--text-caption);">
                 Read Article →
               </a>
