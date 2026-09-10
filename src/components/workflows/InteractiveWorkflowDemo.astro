@@ -59,7 +59,7 @@ const stages = [
         See how an AI employee turns a goal into audited execution.
       </h2>
       <p class="os-lead" style="color: var(--text-secondary);">
-        Watch the multi-stage autonomous reasoning chain execute in real-time. Click any stage to inspect the underlying tool payload.
+        Watch the multi-stage autonomous reasoning chain execute in real-time. Hover any stage to inspect the underlying tool payload.
       </p>
     </div>
 
@@ -91,11 +91,11 @@ const stages = [
         {/* Left: Step Nodes Scrubber */}
         <div style="padding: 32px; border-right: 1px solid var(--border-medium); display: flex; flex-direction: column; gap: 14px; background: #ffffff;">
           <div style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px;">
-            Autonomous Execution Sequence (Click to inspect)
+            Autonomous Execution Sequence (Hover to inspect)
           </div>
 
           {stages.map((stage, i) => (
-            <button class={`os-step-btn ${i === 0 ? 'active' : ''}`} data-step-index={i} style="text-align: left; background: #ffffff; border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: 14px 18px; cursor: pointer; transition: all 0.15s ease; display: flex; justify-content: space-between; align-items: center;">
+            <button type="button" class={`os-step-btn ${i === 0 ? 'active' : ''}`} data-step-index={i} aria-label={`Inspect ${stage.title}`} style="text-align: left; background: #ffffff; border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: 14px 18px; cursor: pointer; transition: all 0.15s ease; display: flex; justify-content: space-between; align-items: center;">
               <div>
                 <div style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 2px;">{stage.title}</div>
                 <div style="font-size: 12px; color: var(--text-secondary);">{stage.action}</div>
@@ -174,19 +174,23 @@ const stages = [
   const detail = document.getElementById('os-step-detail');
   const payload = document.getElementById('os-step-payload');
 
+  function updateStage(btn) {
+    const idx = parseInt(btn.getAttribute('data-step-index') || '0', 10);
+    const stage = stages[idx];
+
+    buttons.forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    if (badge) badge.innerText = `STAGE ${stage.step} / 5`;
+    if (toolName) toolName.innerText = `TOOL: ${stage.tool}`;
+    if (title) title.innerText = stage.title;
+    if (detail) detail.innerText = stage.detail;
+    if (payload) payload.innerText = stage.payload;
+  }
+
   buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const idx = parseInt(btn.getAttribute('data-step-index') || '0', 10);
-      const stage = stages[idx];
-
-      buttons.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      if (badge) badge.innerText = `STAGE ${stage.step} / 5`;
-      if (toolName) toolName.innerText = `TOOL: ${stage.tool}`;
-      if (title) title.innerText = stage.title;
-      if (detail) detail.innerText = stage.detail;
-      if (payload) payload.innerText = stage.payload;
-    });
+    btn.addEventListener('mouseenter', () => updateStage(btn));
+    btn.addEventListener('focus', () => updateStage(btn));
+    btn.addEventListener('click', () => updateStage(btn));
   });
 </script>
