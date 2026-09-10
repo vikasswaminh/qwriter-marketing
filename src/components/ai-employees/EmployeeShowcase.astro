@@ -73,6 +73,16 @@ import { AI_EMPLOYEES } from "~/data/employees";
 </section>
 
 <style>
+  .os-filter-bar {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .os-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+
   .os-filter-btn {
     padding: 8px 18px;
     border-radius: var(--radius-pill);
@@ -83,6 +93,8 @@ import { AI_EMPLOYEES } from "~/data/employees";
     font-weight: 500;
     cursor: pointer;
     transition: all 0.15s ease;
+    white-space: nowrap;
+    flex: 0 0 auto;
   }
   .os-filter-btn:hover {
     background: var(--bg-blue-tint);
@@ -109,6 +121,7 @@ import { AI_EMPLOYEES } from "~/data/employees";
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
+    min-width: 0;
   }
   
   .os-employee-card-static::before {
@@ -132,6 +145,45 @@ import { AI_EMPLOYEES } from "~/data/employees";
 
   .os-employee-card-static:hover::before {
     opacity: 1;
+  }
+
+  @media (max-width: 900px) {
+    .os-employee-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .os-section {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .os-filter-bar {
+      justify-content: flex-start;
+      padding-bottom: 4px;
+    }
+
+    .os-employee-grid {
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+    }
+
+    .os-employee-card-static {
+      padding: 20px !important;
+      border-left-width: 5px !important;
+      border-radius: 16px !important;
+    }
+
+    .os-employee-card-static > div:last-child {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 14px;
+    }
+
+    .os-employee-card-static .os-btn {
+      width: 100%;
+    }
   }
 </style>
 

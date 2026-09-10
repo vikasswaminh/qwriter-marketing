@@ -17,28 +17,28 @@
     </div>
 
     {/* Live Telemetry Metrics Strip */}
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px;">
-      <div style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 20px; text-align: center;">
+    <div class="trace-metrics" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px;">
+      <div class="trace-stat" style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 20px; text-align: center;">
         <div style="font-size: 32px; font-weight: 800; color: #ffffff; margin-bottom: 4px;">24</div>
         <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em;">AI Employees Active</div>
       </div>
-      <div style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 20px; text-align: center;">
+      <div class="trace-stat" style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 20px; text-align: center;">
         <div style="font-size: 32px; font-weight: 800; color: #4ade80; margin-bottom: 4px;">1,429</div>
         <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em;">Tasks Completed Today</div>
       </div>
-      <div style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 20px; text-align: center;">
+      <div class="trace-stat" style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 20px; text-align: center;">
         <div style="font-size: 32px; font-weight: 800; color: var(--blue-primary); margin-bottom: 4px;">98.2%</div>
         <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em;">Autonomous Success Rate</div>
       </div>
-      <div style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 20px; text-align: center;">
+      <div class="trace-stat" style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-md); padding: 20px; text-align: center;">
         <div style="font-size: 32px; font-weight: 800; color: #38bdf8; margin-bottom: 4px;">2,850 hrs</div>
         <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em;">Human Time Saved</div>
       </div>
     </div>
 
     {/* Execution Trace Timeline Visualizer */}
-    <div style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-xl); padding: 32px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #1e293b;">
+    <div class="trace-panel" style="background: #131926; border: 1px solid #1e293b; border-radius: var(--radius-xl); padding: 32px;">
+      <div class="trace-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #1e293b;">
         <div>
           <h3 style="font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Live Execution Trace</h3>
           <div style="font-family: var(--font-mono); font-size: 12px; color: #64748b;">Session ID: sess_9481ad • Agent: Research Analyst v2 • Runtime: 1.4s</div>
@@ -49,41 +49,41 @@
       </div>
 
       {/* Trace Timeline Steps */}
-      <div style="display: flex; flex-direction: column; gap: 14px; font-family: var(--font-mono); font-size: 13px;">
+      <div class="trace-timeline" style="display: flex; flex-direction: column; gap: 14px; font-family: var(--font-mono); font-size: 13px;">
         
-        <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #38bdf8;">
-          <span style="color: #64748b; font-size: 11px;">00:00.00</span>
-          <span style="color: #38bdf8; font-weight: 600;">AGENT_STARTED</span>
-          <span style="color: #cbd5e1;">Initialized context memory & loaded brand guidelines</span>
-          <span style="margin-left: auto; color: #64748b; font-size: 11px;">+12ms</span>
+        <div class="trace-row trace-blue" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #38bdf8;">
+          <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.00</span>
+          <span class="trace-label" style="color: #38bdf8; font-weight: 600;">AGENT_STARTED</span>
+          <span class="trace-copy" style="color: #cbd5e1;">Initialized context memory & loaded brand guidelines</span>
+          <span class="trace-delta" style="margin-left: auto; color: #64748b; font-size: 11px;">+12ms</span>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #a855f7;">
-          <span style="color: #64748b; font-size: 11px;">00:00.12</span>
-          <span style="color: #a855f7; font-weight: 600;">TOOL_SELECT</span>
-          <span style="color: #cbd5e1;">Invoked tool 'mcp_web_scrape' targeting domain cluster</span>
-          <span style="margin-left: auto; color: #64748b; font-size: 11px;">+280ms</span>
+        <div class="trace-row trace-purple" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #a855f7;">
+          <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.12</span>
+          <span class="trace-label" style="color: #a855f7; font-weight: 600;">TOOL_SELECT</span>
+          <span class="trace-copy" style="color: #cbd5e1;">Invoked tool 'mcp_web_scrape' targeting domain cluster</span>
+          <span class="trace-delta" style="margin-left: auto; color: #64748b; font-size: 11px;">+280ms</span>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #eab308;">
-          <span style="color: #64748b; font-size: 11px;">00:00.40</span>
-          <span style="color: #eab308; font-weight: 600;">DATA_COLLECTED</span>
-          <span style="color: #cbd5e1;">Extracted 118 records; PII scrubber redacted 4 emails</span>
-          <span style="margin-left: auto; color: #64748b; font-size: 11px;">+410ms</span>
+        <div class="trace-row trace-yellow" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #eab308;">
+          <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.40</span>
+          <span class="trace-label" style="color: #eab308; font-weight: 600;">DATA_COLLECTED</span>
+          <span class="trace-copy" style="color: #cbd5e1;">Extracted 118 records; PII scrubber redacted 4 emails</span>
+          <span class="trace-delta" style="margin-left: auto; color: #64748b; font-size: 11px;">+410ms</span>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid var(--blue-primary);">
-          <span style="color: #64748b; font-size: 11px;">00:00.81</span>
-          <span style="color: var(--blue-primary); font-weight: 600;">DECISION_MADE</span>
-          <span style="color: #cbd5e1;">Filtered top 25 high-confidence entities matching criteria</span>
-          <span style="margin-left: auto; color: #64748b; font-size: 11px;">+180ms</span>
+        <div class="trace-row trace-cyan" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid var(--blue-primary);">
+          <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.81</span>
+          <span class="trace-label" style="color: var(--blue-primary); font-weight: 600;">DECISION_MADE</span>
+          <span class="trace-copy" style="color: #cbd5e1;">Filtered top 25 high-confidence entities matching criteria</span>
+          <span class="trace-delta" style="margin-left: auto; color: #64748b; font-size: 11px;">+180ms</span>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #4ade80;">
-          <span style="color: #64748b; font-size: 11px;">00:00.99</span>
-          <span style="color: #4ade80; font-weight: 600;">ACTION_PERFORMED</span>
-          <span style="color: #cbd5e1;">Synchronized structured dataset into Notion & Salesforce</span>
-          <span style="margin-left: auto; color: #4ade80; font-weight: 700; font-size: 11px;">TOTAL: 1.4s</span>
+        <div class="trace-row trace-green" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #4ade80;">
+          <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.99</span>
+          <span class="trace-label" style="color: #4ade80; font-weight: 600;">ACTION_PERFORMED</span>
+          <span class="trace-copy" style="color: #cbd5e1;">Synchronized structured dataset into Notion & Salesforce</span>
+          <span class="trace-delta" style="margin-left: auto; color: #4ade80; font-weight: 700; font-size: 11px;">TOTAL: 1.4s</span>
         </div>
 
       </div>
@@ -93,14 +93,156 @@
 </section>
 
 <style>
+  .trace-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .trace-panel {
+    overflow: hidden;
+  }
+
+  .trace-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+
+  .trace-row {
+    display: grid;
+    grid-template-columns: 68px auto minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: center;
+    padding: 12px 16px;
+    background: #0c101a;
+    border-radius: 8px;
+  }
+
+  .trace-copy {
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
   @media (max-width: 900px) {
-    section div[style*="grid-template-columns: repeat(4, 1fr)"] {
-      grid-template-columns: repeat(2, 1fr) !important;
+    .trace-metrics {
+      display: flex !important;
+      gap: 12px !important;
+      margin-bottom: 24px !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      padding-bottom: 6px !important;
+      scrollbar-width: auto;
+      -ms-overflow-style: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x proximity;
+    }
+
+    .trace-metrics::-webkit-scrollbar,
+    .trace-panel::-webkit-scrollbar,
+    .os-section .os-container > div[style*="display: grid; grid-template-columns: 1fr 1.1fr"]::-webkit-scrollbar {
+      height: 8px;
+      background: rgba(148, 163, 184, 0.12);
+      border-radius: 999px;
+    }
+
+    .trace-metrics::-webkit-scrollbar-thumb,
+    .trace-panel::-webkit-scrollbar-thumb,
+    .os-section .os-container > div[style*="display: grid; grid-template-columns: 1fr 1.1fr"]::-webkit-scrollbar-thumb {
+      background: rgba(125, 211, 252, 0.7);
+      border-radius: 999px;
+    }
+
+    .trace-stat {
+      flex: 0 0 72% !important;
+      min-width: 220px !important;
+      padding: 18px 14px !important;
+      scroll-snap-align: start;
+    }
+
+    .trace-panel {
+      padding: 20px 16px !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .trace-header {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 12px !important;
+    }
+
+    .trace-header h3 {
+      font-size: 1.1rem !important;
+    }
+
+    .trace-timeline {
+      display: grid !important;
+      grid-auto-flow: column !important;
+      grid-auto-columns: minmax(280px, 84vw) !important;
+      gap: 10px !important;
+      width: max-content !important;
+      min-width: 100% !important;
+    }
+
+    .trace-row {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 8px !important;
+      width: min(84vw, 320px) !important;
+      min-width: 280px !important;
+      padding: 12px 12px !important;
+      scroll-snap-align: start;
+    }
+
+    .trace-time,
+    .trace-label,
+    .trace-delta {
+      font-size: 10px !important;
+      line-height: 1.3 !important;
+    }
+
+    .trace-copy {
+      width: 100% !important;
+      font-size: 11px !important;
+      line-height: 1.5 !important;
     }
   }
+
   @media (max-width: 500px) {
-    section div[style*="grid-template-columns: repeat(4, 1fr)"] {
-      grid-template-columns: 1fr !important;
+    .trace-stat {
+      flex-basis: 80% !important;
+      min-width: 220px !important;
+      padding: 16px 12px !important;
+    }
+
+    .trace-stat > div:first-child {
+      font-size: 2rem !important;
+    }
+
+    .trace-header {
+      padding-bottom: 12px !important;
+    }
+
+    .trace-header .os-badge {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .trace-timeline {
+      grid-auto-columns: minmax(260px, 88vw) !important;
+    }
+
+    .trace-row {
+      width: min(88vw, 300px) !important;
+      min-width: 260px !important;
+      border-radius: 10px !important;
     }
   }
 </style>

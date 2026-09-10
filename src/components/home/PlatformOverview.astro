@@ -133,4 +133,72 @@
       grid-template-columns: 1fr;
     }
   }
+
+  @media (max-width: 768px) {
+    section.os-section {
+      padding-top: 32px !important;
+      padding-bottom: 24px !important;
+    }
+
+    .os-container {
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+
+    .os-section > .os-container > div:first-child {
+      margin-bottom: 32px !important;
+    }
+
+    .os-section h2.os-h2 {
+      font-size: clamp(2rem, 9vw, 2.8rem) !important;
+      line-height: 1.12 !important;
+      letter-spacing: -0.03em !important;
+    }
+
+    .platform-grid {
+      gap: 12px;
+    }
+
+    .platform-card {
+      padding: 18px 16px !important;
+      border-radius: 14px;
+      box-shadow: 0 0 0 1px var(--blue-primary);
+    }
+
+    .platform-card-title {
+      font-size: 1.1rem;
+    }
+
+    .platform-card-desc {
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .os-btn {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .os-section > .os-container > div:first-child {
+      max-width: 100% !important;
+    }
+
+    .platform-grid {
+      gap: 10px;
+    }
+
+    .platform-card {
+      padding: 16px 14px !important;
+    }
+
+    .platform-card-title {
+      font-size: 1rem;
+    }
+
+    .platform-card-desc {
+      font-size: 0.82rem;
+    }
+  }
 </style>

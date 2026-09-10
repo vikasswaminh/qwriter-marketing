@@ -148,6 +148,62 @@ html {
     --header-height: 56px;
     --anchor-offset: 80px;
   }
+
+  .os-container,
+  .os-container-wide,
+  .os-container-narrow {
+    width: min(100% - 20px, 1200px);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .os-section {
+    padding: clamp(32px, 10vw, 52px) 0;
+  }
+
+  .os-grid-2,
+  .os-grid-3,
+  .os-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .os-card,
+  .os-employee-card,
+  .os-flip-card-front,
+  .os-flip-card-back {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .os-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .os-display {
+    font-size: clamp(2.8rem, 15vw, 4rem);
+  }
+
+  .os-h1 {
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+  }
+
+  .os-h2 {
+    font-size: clamp(2rem, 9vw, 2.7rem);
+  }
+
+  .os-lead {
+    font-size: 1rem;
+  }
 }
 
 body {
@@ -158,6 +214,7 @@ body {
   color: var(--text-primary);
   line-height: 1.5;
   font-size: 15px;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {

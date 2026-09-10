@@ -64,11 +64,11 @@ const stages = [
     </div>
 
     {/* Interactive Workflow Container */}
-    <div style="background: #ffffff; border: 1px solid var(--border-medium); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-xl);">
+    <div class="workflow-demo-shell" style="background: #ffffff; border: 1px solid var(--border-medium); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-xl);">
       
       {/* Target Prompt Banner */}
-      <div style="background: var(--bg-blue-tint); padding: 20px 28px; border-bottom: 1px solid var(--border-medium); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-        <div style="display: flex; align-items: center; gap: 14px;">
+      <div class="workflow-demo-target" style="background: var(--bg-blue-tint); padding: 20px 28px; border-bottom: 1px solid var(--border-medium); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+        <div style="display: flex; align-items: center; gap: 14px; min-width: 0;">
           <div style="width: 38px; height: 38px; border-radius: 10px; background: var(--bg-blue-tint); border: 1px solid rgba(244, 114, 182, 0.3); display: flex; align-items: center; justify-content: center; font-size: 18px;">
             🔍
           </div>
@@ -86,10 +86,10 @@ const stages = [
       </div>
 
       {/* Scrubber & Detail Split View */}
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
+      <div class="workflow-demo-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
         
         {/* Left: Step Nodes Scrubber */}
-        <div style="padding: 32px; border-right: 1px solid var(--border-medium); display: flex; flex-direction: column; gap: 14px; background: #ffffff;">
+        <div class="workflow-demo-node-panel" style="padding: 32px; border-right: 1px solid var(--border-medium); display: flex; flex-direction: column; gap: 14px; background: #ffffff;">
           <div style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px;">
             Autonomous Execution Sequence (Hover to inspect)
           </div>
@@ -106,7 +106,7 @@ const stages = [
         </div>
 
         {/* Right: Live Step Inspector */}
-        <div style="padding: 32px; background: #fafbfc; display: flex; flex-direction: column; justify-content: space-between;">
+        <div class="workflow-demo-inspector" style="padding: 32px; background: #fafbfc; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
               <span id="os-step-badge" class="os-badge os-badge-pink" style="font-size: 11px;">
@@ -150,6 +150,22 @@ const stages = [
 </section>
 
 <style>
+  .workflow-demo-shell {
+    width: 100%;
+  }
+
+  .workflow-demo-grid {
+    width: 100%;
+  }
+
+  .workflow-demo-shell {
+    max-width: 100%;
+  }
+
+  .workflow-demo-target > div:last-child {
+    flex-wrap: wrap;
+  }
+
   .os-step-btn:hover {
     border-color: var(--bg-blue-tint) !important;
     background: var(--bg-blue-tint) !important;
@@ -160,8 +176,114 @@ const stages = [
     box-shadow: 0 4px 12px rgba(244, 114, 182, 0.1);
   }
   @media (max-width: 900px) {
-    section div[style*="grid-template-columns: 1.1fr 1.3fr"] {
+    .workflow-demo-grid {
       grid-template-columns: 1fr !important;
+    }
+
+    .workflow-demo-target {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      padding: 18px 16px !important;
+    }
+
+    .workflow-demo-target > div:first-child {
+      width: 100%;
+      align-items: flex-start !important;
+    }
+
+    .workflow-demo-target > div:last-child {
+      width: 100%;
+      justify-content: space-between !important;
+      flex-wrap: wrap;
+    }
+
+    .workflow-demo-node-panel,
+    .workflow-demo-inspector {
+      padding: 18px 16px !important;
+    }
+
+    .os-step-btn {
+      width: 100%;
+      padding: 12px 14px !important;
+      gap: 10px;
+    }
+
+    .os-step-btn > div:first-child {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .os-step-btn > div:last-child {
+      margin-left: 12px;
+      flex-shrink: 0;
+    }
+
+    .workflow-demo-inspector > div:first-child {
+      gap: 12px;
+    }
+
+    .workflow-demo-inspector h3 {
+      font-size: 1.1rem !important;
+    }
+
+    .workflow-demo-inspector .os-terminal {
+      overflow-x: auto;
+    }
+
+    .workflow-demo-inspector .os-terminal-body {
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .os-section-header {
+      margin-bottom: 24px !important;
+      gap: 8px;
+      padding: 0 4px;
+    }
+
+    .os-section-header .os-h2 {
+      font-size: clamp(1.8rem, 8vw, 2.4rem) !important;
+      line-height: 1.15 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .os-section-header .os-lead {
+      font-size: 0.95rem !important;
+      line-height: 1.55 !important;
+    }
+
+    .workflow-demo-target {
+      gap: 12px !important;
+    }
+
+    .workflow-demo-target > div:first-child {
+      display: block;
+    }
+
+    .workflow-demo-target > div:last-child {
+      display: flex;
+      width: 100%;
+      justify-content: flex-start !important;
+      gap: 8px;
+    }
+
+    .workflow-demo-node-panel,
+    .workflow-demo-inspector {
+      border-right: none !important;
+      border-bottom: 1px solid var(--border-medium);
+    }
+
+    .workflow-demo-inspector {
+      border-bottom: none !important;
+    }
+
+    .workflow-demo-inspector > div:last-child {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
     }
   }
 </style>

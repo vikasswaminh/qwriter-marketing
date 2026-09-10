@@ -14,8 +14,8 @@ const { current } = Astro.props;
 <header class="os-nav-blur" style="position: sticky; top: 0; z-index: 999; height: 56px; width: 100%;">
   <div class="os-container-wide" style="display: flex; align-items: center; justify-content: space-between; height: 100%;">
     {/* Brand Logo */}
-    <div style="display: flex; align-items: center; gap: 36px;">
-      <a href="/" aria-label="OllaSuper Home" style="display: inline-flex; align-items: center; text-decoration: none;">
+    <div class="os-nav-brand-wrap" style="display: flex; align-items: center; gap: 36px; min-width: 0;">
+      <a href="/" aria-label="OllaSuper Home" style="display: inline-flex; align-items: center; text-decoration: none; flex-shrink: 0;">
         <Logo size={24} wordmark={true} />
       </a>
 
@@ -132,7 +132,7 @@ const { current } = Astro.props;
       <a href="/demo" class="os-btn os-btn-secondary os-nav-desktop-only" style="padding: 9px 16px; font-size: 13px;">
         Book Demo
       </a>
-      <a href="https://app.ollasuper.com/login" class="os-btn os-btn-primary" style="padding: 9px 18px; font-size: 13px;">
+      <a href="https://app.ollasuper.com/login" class="os-btn os-btn-primary os-nav-primary-cta" style="padding: 9px 18px; font-size: 13px;">
         Deploy Workforce →
       </a>
       
@@ -200,8 +200,34 @@ const { current } = Astro.props;
     .os-nav-desktop, .os-nav-desktop-only {
       display: none !important;
     }
+    .os-nav-primary-cta {
+      display: none !important;
+    }
     .os-mobile-toggle {
       display: inline-flex !important;
+    }
+    .os-nav-brand-wrap {
+      gap: 12px !important;
+    }
+    .os-nav-blur {
+      height: 52px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    header.os-nav-blur {
+      height: 52px !important;
+    }
+    .os-nav-brand-wrap {
+      gap: 8px !important;
+    }
+    .os-mobile-toggle {
+      padding: 7px !important;
+    }
+    #os-mobile-drawer {
+      padding: 18px 16px !important;
+      top: 60px !important;
+      height: calc(100vh - 60px) !important;
     }
   }
 </style>

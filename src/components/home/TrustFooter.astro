@@ -77,6 +77,69 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
     }
   }
 
+  @media (max-width: 640px) {
+    .os-container[style*="justify-content: space-between"] {
+      gap: 24px !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+
+    .os-container[style*="justify-content: space-between"] > div:first-child {
+      width: 100%;
+    }
+
+    .os-container[style*="justify-content: space-between"] > div:first-child h2 {
+      font-size: clamp(2rem, 9vw, 3rem) !important;
+      margin-bottom: 16px !important;
+      max-width: 100% !important;
+    }
+
+    .os-container[style*="justify-content: space-between"] > div:first-child > div:last-child {
+      display: grid !important;
+      grid-template-columns: 1fr;
+      gap: 8px !important;
+      font-size: 0.8rem !important;
+    }
+
+    .os-container[style*="justify-content: space-between"] > div:last-child {
+      width: 100%;
+      gap: 16px !important;
+    }
+
+    .os-container[style*="justify-content: space-between"] > div:last-child > div:first-child {
+      display: grid !important;
+      grid-template-columns: 1fr;
+      width: 100%;
+      gap: 12px;
+    }
+
+    .os-container[style*="justify-content: space-between"] > div:last-child > div:first-child > a {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 18px !important;
+      font-size: 0.95rem !important;
+    }
+
+    .os-container[style*="justify-content: space-between"] > div:last-child > div:last-child {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .os-container[style*="justify-content: space-between"] > div:last-child > div:last-child > div:first-child {
+      transform: scale(0.9);
+      margin-right: 0 !important;
+    }
+
+    .os-container[style*="justify-content: space-between"] > div:last-child > div:last-child > div:last-child {
+      font-size: 0.78rem !important;
+      line-height: 1.4;
+      text-align: left;
+    }
+  }
+
   /* Premium Trust Item Hover Physics */
   .os-trust-item {
     display: flex;

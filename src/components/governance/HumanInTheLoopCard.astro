@@ -95,6 +95,83 @@
     section div[style*="grid-template-columns: 1fr 1.1fr"] {
       grid-template-columns: 1fr !important;
     }
+
+    .os-section {
+      padding-top: 32px !important;
+      padding-bottom: 32px !important;
+    }
+
+    .os-section .os-container {
+      padding-left: 14px !important;
+      padding-right: 14px !important;
+    }
+
+    .os-section h2.os-h2 {
+      font-size: clamp(2rem, 8vw, 2.8rem) !important;
+      line-height: 1.12 !important;
+      margin-bottom: 16px !important;
+    }
+
+    .os-section .os-lead {
+      font-size: 0.98rem !important;
+      line-height: 1.55 !important;
+    }
+
+    .os-section .os-container > div[style*="display: grid; grid-template-columns: 1fr 1.1fr"] {
+      display: flex !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+      gap: 16px !important;
+      padding-bottom: 8px;
+      scrollbar-width: auto;
+      -ms-overflow-style: auto;
+    }
+
+    .os-section .os-container > div[style*="display: grid; grid-template-columns: 1fr 1.1fr"]::-webkit-scrollbar {
+      height: 8px;
+      background: rgba(148, 163, 184, 0.12);
+      border-radius: 999px;
+    }
+
+    .os-section .os-container > div[style*="display: grid; grid-template-columns: 1fr 1.1fr"]::-webkit-scrollbar-thumb {
+      background: rgba(59, 130, 246, 0.7);
+      border-radius: 999px;
+    }
+
+    .os-section .os-container > div[style*="display: grid; grid-template-columns: 1fr 1.1fr"] > div {
+      flex: 0 0 86vw !important;
+      min-width: 280px !important;
+      scroll-snap-align: start;
+    }
+
+    .os-section .os-container > div[style*="display: grid; grid-template-columns: 1fr 1.1fr"] > div:first-child {
+      padding-right: 4px;
+    }
+
+    .os-section .os-container > div[style*="display: grid; grid-template-columns: 1fr 1.1fr"] > div:last-child {
+      padding: 18px !important;
+    }
+
+    .os-section .os-container > div[style*="display: grid; grid-template-columns: 1fr 1.1fr"] > div:last-child > div:first-child {
+      gap: 8px !important;
+    }
+
+    .os-section .os-container > div[style*="display: grid; grid-template-columns: 1fr 1.1fr"] > div:last-child > div:first-child > div:first-child {
+      width: 9px !important;
+      height: 9px !important;
+    }
+
+    .os-section .os-container > div[style*="display: grid; grid-template-columns: 1fr 1.1fr"] > div:last-child > div#os-approval-actions {
+      flex-direction: column !important;
+      gap: 10px !important;
+    }
+
+    .os-section .os-container > div[style*="display: grid; grid-template-columns: 1fr 1.1fr"] > div:last-child .os-btn {
+      width: 100%;
+      min-width: 0;
+    }
   }
 </style>
 

@@ -95,10 +95,22 @@ const {
   <body>
     <a href="#main-content" class="os-skip-link">Skip to main content</a>
     {/* Announcement Banner */}
-    <a href="https://blogs.ollasuper.com/" style="display: flex; justify-content: center; align-items: center; gap: 10px; background: linear-gradient(90deg, #0E98CF 0%, #11327A 100%); padding: 8px 16px; text-decoration: none; color: #FFFFFF; font-weight: 500; font-size: 13.5px; width: 100%; transition: background 0.2s ease; z-index: 1000; position: relative;" target="_blank" rel="noopener noreferrer">
+    <a href="https://blogs.ollasuper.com/" class="mobile-announcement" style="display: flex; justify-content: center; align-items: center; gap: 10px; background: linear-gradient(90deg, #0E98CF 0%, #11327A 100%); padding: 8px 16px; text-decoration: none; color: #FFFFFF; font-weight: 500; font-size: 13.5px; width: 100%; transition: background 0.2s ease; z-index: 1000; position: relative;" target="_blank" rel="noopener noreferrer">
       <span style="background: #FFC107; color: #000000; padding: 2px 8px; border-radius: 99px; font-weight: 800; font-size: 10.5px; letter-spacing: 0.05em;">NEW</span>
-      Discover the future of AI operating teams on our new blog &rarr;
+      <span>Discover the future of AI operating teams on our new blog &rarr;</span>
     </a>
+
+    <style>
+      @media (max-width: 480px) {
+        .mobile-announcement {
+          padding: 8px 12px !important;
+          font-size: 11px !important;
+          line-height: 1.35 !important;
+          text-align: center !important;
+          gap: 8px !important;
+        }
+      }
+    </style>
     {chrome && <Nav current={current} />}
     <main id="main-content">
       <slot />
