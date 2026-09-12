@@ -12,7 +12,7 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
   <article class="os-section" style="background: var(--bg-soft); padding-top: 0;">
     
     {/* HERO SECTION WITH RIBBON */}
-    <div style="position: relative; overflow: hidden; padding-top: 24px; padding-bottom: 48px; border-bottom: 1px solid var(--border-light);">
+    <div style="position: relative; overflow: hidden; padding-top: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border-light);">
       
       <RibbonBackground id="stripe-ribbon-solutions" lines={40} opacity={0.6} />
 
@@ -31,7 +31,7 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
       </div>
     </div>
 
-    <div class="os-container" style="padding-top: 48px; padding-bottom: 48px;">
+    <div class="os-container" style="padding-top: 16px; padding-bottom: 48px;">
       {/* Solutions List */}
       <div style="display: flex; flex-direction: column; gap: var(--spacing-48);">
         {SOLUTIONS.map((sol) => (
