@@ -49,43 +49,45 @@
       </div>
 
       {/* Trace Timeline Steps */}
-      <div class="trace-timeline" style="display: flex; flex-direction: column; gap: 14px; font-family: var(--font-mono); font-size: 13px;">
-        
-        <div class="trace-row trace-blue" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #38bdf8;">
-          <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.00</span>
-          <span class="trace-label" style="color: #38bdf8; font-weight: 600;">AGENT_STARTED</span>
-          <span class="trace-copy" style="color: #cbd5e1;">Initialized context memory & loaded brand guidelines</span>
-          <span class="trace-delta" style="margin-left: auto; color: #64748b; font-size: 11px;">+12ms</span>
-        </div>
+      <div class="trace-timeline-wrapper">
+        <div class="trace-timeline" style="display: flex; flex-direction: column; gap: 14px; font-family: var(--font-mono); font-size: 13px;">
+          
+          <div class="trace-row trace-blue" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #38bdf8;">
+            <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.00</span>
+            <span class="trace-label" style="color: #38bdf8; font-weight: 600;">AGENT_STARTED</span>
+            <span class="trace-copy" style="color: #cbd5e1;">Initialized context memory & loaded brand guidelines</span>
+            <span class="trace-delta" style="margin-left: auto; color: #64748b; font-size: 11px;">+12ms</span>
+          </div>
 
-        <div class="trace-row trace-purple" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #a855f7;">
-          <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.12</span>
-          <span class="trace-label" style="color: #a855f7; font-weight: 600;">TOOL_SELECT</span>
-          <span class="trace-copy" style="color: #cbd5e1;">Invoked tool 'mcp_web_scrape' targeting domain cluster</span>
-          <span class="trace-delta" style="margin-left: auto; color: #64748b; font-size: 11px;">+280ms</span>
-        </div>
+          <div class="trace-row trace-purple" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #a855f7;">
+            <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.12</span>
+            <span class="trace-label" style="color: #a855f7; font-weight: 600;">TOOL_SELECT</span>
+            <span class="trace-copy" style="color: #cbd5e1;">Invoked tool 'mcp_web_scrape' targeting domain cluster</span>
+            <span class="trace-delta" style="margin-left: auto; color: #64748b; font-size: 11px;">+280ms</span>
+          </div>
 
-        <div class="trace-row trace-yellow" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #eab308;">
-          <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.40</span>
-          <span class="trace-label" style="color: #eab308; font-weight: 600;">DATA_COLLECTED</span>
-          <span class="trace-copy" style="color: #cbd5e1;">Extracted 118 records; PII scrubber redacted 4 emails</span>
-          <span class="trace-delta" style="margin-left: auto; color: #64748b; font-size: 11px;">+410ms</span>
-        </div>
+          <div class="trace-row trace-yellow" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #eab308;">
+            <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.40</span>
+            <span class="trace-label" style="color: #eab308; font-weight: 600;">DATA_COLLECTED</span>
+            <span class="trace-copy" style="color: #cbd5e1;">Extracted 118 records; PII scrubber redacted 4 emails</span>
+            <span class="trace-delta" style="margin-left: auto; color: #64748b; font-size: 11px;">+410ms</span>
+          </div>
 
-        <div class="trace-row trace-cyan" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid var(--blue-primary);">
-          <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.81</span>
-          <span class="trace-label" style="color: var(--blue-primary); font-weight: 600;">DECISION_MADE</span>
-          <span class="trace-copy" style="color: #cbd5e1;">Filtered top 25 high-confidence entities matching criteria</span>
-          <span class="trace-delta" style="margin-left: auto; color: #64748b; font-size: 11px;">+180ms</span>
-        </div>
+          <div class="trace-row trace-cyan" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid var(--blue-primary);">
+            <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.81</span>
+            <span class="trace-label" style="color: var(--blue-primary); font-weight: 600;">DECISION_MADE</span>
+            <span class="trace-copy" style="color: #cbd5e1;">Filtered top 25 high-confidence entities matching criteria</span>
+            <span class="trace-delta" style="margin-left: auto; color: #64748b; font-size: 11px;">+180ms</span>
+          </div>
 
-        <div class="trace-row trace-green" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #4ade80;">
-          <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.99</span>
-          <span class="trace-label" style="color: #4ade80; font-weight: 600;">ACTION_PERFORMED</span>
-          <span class="trace-copy" style="color: #cbd5e1;">Synchronized structured dataset into Notion & Salesforce</span>
-          <span class="trace-delta" style="margin-left: auto; color: #4ade80; font-weight: 700; font-size: 11px;">TOTAL: 1.4s</span>
-        </div>
+          <div class="trace-row trace-green" style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0c101a; border-radius: 8px; border-left: 3px solid #4ade80;">
+            <span class="trace-time" style="color: #64748b; font-size: 11px;">00:00.99</span>
+            <span class="trace-label" style="color: #4ade80; font-weight: 600;">ACTION_PERFORMED</span>
+            <span class="trace-copy" style="color: #cbd5e1;">Synchronized structured dataset into Notion & Salesforce</span>
+            <span class="trace-delta" style="margin-left: auto; color: #4ade80; font-weight: 700; font-size: 11px;">TOTAL: 1.4s</span>
+          </div>
 
+        </div>
       </div>
     </div>
 
@@ -166,9 +168,7 @@
 
     .trace-panel {
       padding: 20px 16px !important;
-      overflow-x: auto !important;
       overflow-y: hidden !important;
-      -webkit-overflow-scrolling: touch;
     }
 
     .trace-header {
@@ -181,11 +181,34 @@
       font-size: 1.1rem !important;
     }
 
+    .trace-timeline-wrapper {
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+      margin-left: -16px;
+      margin-right: -16px;
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-bottom: 6px;
+    }
+
+    .trace-timeline-wrapper::-webkit-scrollbar {
+      height: 8px;
+      background: rgba(148, 163, 184, 0.12);
+      border-radius: 999px;
+    }
+
+    .trace-timeline-wrapper::-webkit-scrollbar-thumb {
+      background: rgba(125, 211, 252, 0.7);
+      border-radius: 999px;
+    }
+
     .trace-timeline {
-      display: flex !important;
-      flex-direction: column !important;
+      display: grid !important;
+      grid-auto-flow: column !important;
+      grid-auto-columns: minmax(280px, 84vw) !important;
       gap: 10px !important;
-      width: 100% !important;
+      width: max-content !important;
+      min-width: 100% !important;
     }
 
     .trace-row {
@@ -193,8 +216,10 @@
       flex-direction: column !important;
       align-items: flex-start !important;
       gap: 8px !important;
-      width: 100% !important;
+      width: min(84vw, 320px) !important;
+      min-width: 280px !important;
       padding: 12px 12px !important;
+      scroll-snap-align: start;
     }
 
     .trace-time,
@@ -205,7 +230,7 @@
     }
 
     .trace-copy {
-      min-width: 0 !important;
+      width: 100% !important;
       font-size: 11px !important;
       line-height: 1.5 !important;
     }
