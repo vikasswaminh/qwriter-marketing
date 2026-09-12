@@ -182,12 +182,10 @@
     }
 
     .trace-timeline {
-      display: grid !important;
-      grid-auto-flow: column !important;
-      grid-auto-columns: minmax(280px, 84vw) !important;
+      display: flex !important;
+      flex-direction: column !important;
       gap: 10px !important;
-      width: max-content !important;
-      min-width: 100% !important;
+      width: 100% !important;
     }
 
     .trace-row {
@@ -195,10 +193,8 @@
       flex-direction: column !important;
       align-items: flex-start !important;
       gap: 8px !important;
-      width: min(84vw, 320px) !important;
-      min-width: 280px !important;
+      width: 100% !important;
       padding: 12px 12px !important;
-      scroll-snap-align: start;
     }
 
     .trace-time,
@@ -209,7 +205,7 @@
     }
 
     .trace-copy {
-      width: 100% !important;
+      min-width: 0 !important;
       font-size: 11px !important;
       line-height: 1.5 !important;
     }
