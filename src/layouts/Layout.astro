@@ -49,6 +49,10 @@ const {
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
+    {current === "home" && (
+      <link rel="preload" href="/images/hero-bg.png" as="image" fetchpriority="high" />
+    )}
+
     {/* Preload and Load Lato (Google Fonts) */}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
