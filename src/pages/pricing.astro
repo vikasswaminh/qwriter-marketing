@@ -134,7 +134,7 @@ const faqs = [
       {/* Pricing Cards Grid */}
       <div class="os-grid-4" style="margin-bottom: var(--spacing-80); align-items: stretch;">
         {tiers.map((tier) => (
-          <div class={`os-card os-card-symmetric ${tier.isPrimary ? 'os-card-cream' : ''}`} style={`border: ${tier.isPrimary ? '2px solid var(--blue-primary)' : '1px solid var(--border-medium)'}; background: #ffffff; position: relative; padding: var(--spacing-32); display: flex; flex-direction: column; height: 100%;`}>
+          <div class={`os-card os-card-symmetric ${tier.isPrimary ? 'os-card-cream' : ''}`} style={`border: ${tier.isPrimary ? '2px solid var(--blue-primary)' : '1px solid var(--border-medium)'}; box-shadow: ${tier.isPrimary ? '4px 4px 0px var(--blue-primary)' : '4px 4px 0px var(--border-medium)'}; background: #ffffff; position: relative; padding: var(--spacing-32); display: flex; flex-direction: column; height: 100%; transition: transform 0.2s ease, box-shadow 0.2s ease;`} onmouseover="this.style.transform='translate(-2px, -2px)'; this.style.boxShadow=this.style.boxShadow.replace('4px 4px', '6px 6px');" onmouseout="this.style.transform='translate(0, 0)'; this.style.boxShadow=this.style.boxShadow.replace('6px 6px', '4px 4px');">
             
             {tier.isPrimary && (
               <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue-primary); color: var(--text-primary); font-size: var(--text-caption); font-weight: 700; padding: 3px 12px; border-radius: var(--radius-pill); text-transform: uppercase;">
