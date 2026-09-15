@@ -50,12 +50,9 @@ const { employee } = Astro.props;
       </nav>
 
       {/* Hero Header */}
-      <div class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-48); box-shadow: var(--shadow-sm); margin-bottom: var(--spacing-48); border-radius: 20px;">
+      <div class="os-card os-card-cream os-card-symmetric" style="background: #ffffff; border: 1px solid var(--border-medium); padding: var(--spacing-48); box-shadow: inset 0 2px 16px rgba(0, 0, 0, 0.03), 0 4px 20px rgba(0, 0, 0, 0.02); margin-bottom: var(--spacing-48); border-radius: 20px;">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: var(--spacing-24); margin-bottom: var(--spacing-24);">
           <div style="display: flex; align-items: center; gap: 20px;">
-            <div style="width: 64px; height: 64px; border-radius: 18px; background: var(--bg-blue-tint); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 32px;">
-              {employee.avatarIcon}
-            </div>
             <div>
               <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
                 <h1 class="os-h3">{employee.name}</h1>
@@ -100,7 +97,7 @@ const { employee } = Astro.props;
       <div class="os-grid-2" style="margin-bottom: 32px;">
         
         {/* Capabilities */}
-        <section class="os-card os-card-cream" style="background: #ffffff; border: 1px solid var(--blue-primary); height: 100%; display: flex; flex-direction: column;">
+        <section class="os-card os-card-cream" style="background: #ffffff; border: 1px solid var(--border-medium); box-shadow: inset 0 2px 16px rgba(0, 0, 0, 0.03); height: 100%; display: flex; flex-direction: column; border-radius: 16px;">
           <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">
             Core Capabilities
           </h2>
@@ -118,7 +115,7 @@ const { employee } = Astro.props;
         </section>
 
         {/* Inputs & Outputs */}
-        <section class="os-card os-card-cream" style="background: #ffffff; border: 1px solid var(--blue-primary); height: 100%; display: flex; flex-direction: column;">
+        <section class="os-card os-card-cream" style="background: #ffffff; border: 1px solid var(--border-medium); box-shadow: inset 0 2px 16px rgba(0, 0, 0, 0.03); height: 100%; display: flex; flex-direction: column; border-radius: 16px;">
           <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">
             Inputs & Deliverables
           </h2>
@@ -150,7 +147,7 @@ const { employee } = Astro.props;
         </section>
 
         {/* Workflow Execution Pipeline */}
-        <section class="os-card os-card-cream" style="background: #ffffff; border: 1px solid var(--blue-primary); height: 100%; display: flex; flex-direction: column;">
+        <section class="os-card os-card-cream" style="background: #ffffff; border: 1px solid var(--border-medium); box-shadow: inset 0 2px 16px rgba(0, 0, 0, 0.03); height: 100%; display: flex; flex-direction: column; border-radius: 16px;">
           <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">
             Autonomous Execution Sequence
           </h2>
@@ -180,7 +177,7 @@ const { employee } = Astro.props;
         </section>
 
         {/* Supported MCP Tools */}
-        <section class="os-card os-card-cream" style="background: #ffffff; border: 1px solid var(--blue-primary); height: 100%; display: flex; flex-direction: column;">
+        <section class="os-card os-card-cream" style="background: #ffffff; border: 1px solid var(--border-medium); box-shadow: inset 0 2px 16px rgba(0, 0, 0, 0.03); height: 100%; display: flex; flex-direction: column; border-radius: 16px;">
           <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">
             Connected MCP Tools
           </h2>
@@ -203,7 +200,7 @@ const { employee } = Astro.props;
       </div>
 
       {/* Sample Production Run Box */}
-      <section class="os-card os-card-cream" style="border: 1px solid var(--blue-primary); width: 100%; ">
+      <section class="os-card os-card-cream" style="background: #ffffff; border: 1px solid var(--border-medium); box-shadow: inset 0 2px 16px rgba(0, 0, 0, 0.03); width: 100%; border-radius: 16px;">
         <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue-primary); margin-bottom: 8px;">
           Verified Sample Run
         </div>
