@@ -13,36 +13,36 @@ seoKeywords: ["AI agent frameworks", "agentic AI frameworks", "LangChain", "Auto
 <article class="os-section" style="background: var(--color-section); padding-top: var(--spacing-48); padding-bottom: 100px;">
 <div class="os-container">
 
-<nav aria-label="Breadcrumb" class="os-small" style="color: var(--color-muted); margin-bottom: var(--spacing-24); display: flex; gap: var(--spacing-8); align-items: center; flex-wrap: wrap;">
-<a href="/" style="color: inherit; text-decoration: none;">Home</a> <span>/</span> <a href="/blog" style="color: inherit; text-decoration: none;">Blog</a> <span>/</span> <span style="color: var(--color-heading); font-weight: 600;">AI Workforce</span>
+<nav aria-label="Breadcrumb" class="os-small" style="color: #64748B; font-size: 14px; margin-bottom: 16px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+<a href="/" style="color: inherit; text-decoration: none;">Home</a> <span>/</span> <a href="/blog" style="color: inherit; text-decoration: none;">Blog</a> <span>/</span> <span style="color: #64748B; font-weight: 600;">AI Workforce</span>
 </nav>
 
-<header style="margin-bottom: var(--spacing-32); border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-24); width: 100%;">
-<div class="os-caption" style="display: flex; gap: var(--spacing-12); font-weight: 700; color: var(--color-primary-hover); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: var(--spacing-16); align-items: center; flex-wrap: wrap;">
-<span class="os-badge os-badge-pink">AI Workforce</span> <span>•</span> <span>2026-09-10</span> <span>•</span> <span>23 min read</span>
+<header style="margin-bottom: 32px; width: 100%;">
+<div class="os-caption" style="display: flex; gap: 12px; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em; font-size: 13px; margin-bottom: 16px; align-items: center; flex-wrap: wrap;">
+<span style="background: #C5221F; color: #ffffff; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 4px; text-transform: uppercase;">AI Workforce</span> <span>•</span> <span>2026-09-10</span> <span>•</span> <span>23 min read</span>
 </div>
-<h1 class="os-display" style="margin-bottom: var(--spacing-24); color: var(--color-heading);">
+<h1 class="os-display" style="margin-bottom: 12px; color: #0F172A; font-size: 40px; font-weight: 800; line-height: 1.15; margin-top: 16px;">
 AI Agent Frameworks: Complete Guide
 </h1>
-<p class="os-lead" style="max-width: 1000px; margin-bottom: var(--spacing-24);">
+<p class="os-lead" style="max-width: 820px; margin-bottom: 28px; font-size: 18px; line-height: 1.6; color: #475569;">
 AI agent frameworks are the invisible scaffolding behind every serious autonomous AI deployment. Here's what they are, how the major ones differ, and how to pick one without wasting six months of engineering time.
 </p>
 
-<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding-top: var(--spacing-16); border-top: 1px solid var(--color-border-light);">
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding-bottom: 24px; margin-bottom: 32px; border-bottom: 1px solid #E2E8F0;">
 <div style="display: flex; align-items: center; gap: var(--spacing-12);">
 <div style="width: 38px; height: 38px; border-radius: 50%; background: transparent; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; font-size: 18px;">
 ⚡
 </div>
 <div>
-<div class="os-small" style="font-weight: 700; color: var(--color-heading);">OllaSuper Systems Engineering</div>
-<div class="os-caption"><a href="/blog/what-is-an-ai-workforce" class="internal-link">AI Workforce</a> Architecture</div>
+<div class="os-small" style="font-weight: 700; color: #0F172A; font-size: 14px;">OllaSuper Systems Engineering</div>
+<div class="os-caption" style="color: #C5221F; font-size: 12px; font-weight: 700; text-transform: uppercase;">AI WORKFORCE ARCHITECTURE</div>
 </div>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; max-width: 60%; align-items: center;">
-<span style="background: var(--color-background-alt, #f7f7f9); border: 1px solid var(--color-border); padding: 4px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; color: var(--color-body); letter-spacing: 0.05em; text-transform: uppercase;">#AI agent frameworks</span>
-<span style="background: var(--color-background-alt, #f7f7f9); border: 1px solid var(--color-border); padding: 4px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; color: var(--color-body); letter-spacing: 0.05em; text-transform: uppercase;">#LangChain</span>
-<span style="background: var(--color-background-alt, #f7f7f9); border: 1px solid var(--color-border); padding: 4px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; color: var(--color-body); letter-spacing: 0.05em; text-transform: uppercase;">#multi agent systems</span>
-<span style="background: var(--color-background-alt, #f7f7f9); border: 1px solid var(--color-border); padding: 4px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; color: var(--color-body); letter-spacing: 0.05em; text-transform: uppercase;">#autonomous AI agents</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; max-width: 60%; align-items: center;">
+<span style="background: #F1F5F9; color: #334155; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">#AI agent frameworks</span>
+<span style="background: #F1F5F9; color: #334155; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">#LangChain</span>
+<span style="background: #F1F5F9; color: #334155; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">#multi agent systems</span>
+<span style="background: #F1F5F9; color: #334155; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">#autonomous AI agents</span>
 </div>
 </div>
 </header>
@@ -51,42 +51,42 @@ AI agent frameworks are the invisible scaffolding behind every serious autonomou
 <aside class="blog-sidebar" id="left-sidebar-placeholder"></aside>
 <div class="blog-main-column">
 
-<section style="background: #ffffff; border: 1px solid var(--color-border); border-left: 5px solid var(--color-primary); border-radius: 10px; padding: 28px; margin-bottom: var(--spacing-32); box-shadow: var(--shadow-sm);">
-<h3 id="tldr" style="font-size: 1.2rem; font-weight: 800; color: var(--color-primary-hover); margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+<section style="background: #F8FAFC; border-left: 4px solid #C5221F; border-radius: 12px; padding: 24px; margin-bottom: 32px; border-top-left-radius: 0; border-bottom-left-radius: 0;">
+<h3 id="tldr" style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
 <span>⚡</span> TL;DR
 </h3>
-<p class="html-content" style="font-size: 1.1rem; line-height: 1.7; color: var(--color-heading); margin: 0;">An AI agent framework is the underlying software scaffolding that lets you build, connect, and run AI agents without reinventing memory, tool calling, planning, and orchestration from scratch every time. Think of it as the operating system layer for agentic AI — the plumbing that decides how an agent remembers what it did yesterday, how it calls a search tool or a database, how it hands work off to another agent, and how a human gets a chance to approve something before it goes live.</p>
-<p class="html-content" style="font-size: 1.1rem; line-height: 1.7; color: var(--color-heading); margin: 0;">This guide walks through what these frameworks actually do under the hood, how the major players differ in philosophy rather than just feature lists, where businesses get real value from them, the mistakes that quietly sink most agent projects, and a practical way to think about choosing one in 2026 without falling for marketing noise dressed up as architecture.</p>
+<p class="html-content" style="font-size: 16px; line-height: 1.7; color: #334155; margin: 0;">An AI agent framework is the underlying software scaffolding that lets you build, connect, and run AI agents without reinventing memory, tool calling, planning, and orchestration from scratch every time. Think of it as the operating system layer for agentic AI — the plumbing that decides how an agent remembers what it did yesterday, how it calls a search tool or a database, how it hands work off to another agent, and how a human gets a chance to approve something before it goes live.</p>
+<p class="html-content" style="font-size: 16px; line-height: 1.7; color: #334155; margin: 0;">This guide walks through what these frameworks actually do under the hood, how the major players differ in philosophy rather than just feature lists, where businesses get real value from them, the mistakes that quietly sink most agent projects, and a practical way to think about choosing one in 2026 without falling for marketing noise dressed up as architecture.</p>
 </section>
 
 <section style="margin-bottom: 24px;">
-<h3 id="key-takeaways" style="font-size: 1.5rem; font-weight: 800; color: #cf2121; margin-bottom: 24px;">
+<h3 id="key-takeaways" style="font-size: 24px; font-weight: 800; color: #C5221F; margin-bottom: 16px;">
 Key Takeaways
 </h3> <div style="display: flex; flex-direction: column; gap: 16px;"> <div style="background: #ffffff; border: 1px solid var(--color-border); border-left: 4px solid var(--color-primary); border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 12px; box-shadow: var(--shadow-sm);">
-<h4 style="font-size: 1.15rem; font-weight: 800; color: #cf2121; margin-bottom: 4px;">Key Point</h4>
-<p class="html-content" style="font-size: 1.1rem; line-height: 1.6; color: var(--color-body); margin: 0;">An AI agent framework provides reusable scaffolding, memory, tool calling, reasoning loops, and orchestration that turns a raw language model into a reliable working agent without a team having to build that plumbing from scratch every time.</p>
+<h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">Key Point</h4>
+<p class="html-content" style="font-size: 15px; line-height: 1.6; color: #334155; margin: 0;">An AI agent framework provides reusable scaffolding, memory, tool calling, reasoning loops, and orchestration that turns a raw language model into a reliable working agent without a team having to build that plumbing from scratch every time.</p>
 </div>
 <div style="background: #ffffff; border: 1px solid var(--color-border); border-left: 4px solid var(--color-primary); border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 12px; box-shadow: var(--shadow-sm);">
-<h4 style="font-size: 1.15rem; font-weight: 800; color: #cf2121; margin-bottom: 4px;">The major frameworks differ mainly in philosophy, not just features.</h4>
-<p class="html-content" style="font-size: 1.1rem; line-height: 1.6; color: var(--color-body); margin: 0;">Some favor explicit graph-based control, some favor conversational multi-agent collaboration, and some favor a simple role-based structure.</p>
+<h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">The major frameworks differ mainly in philosophy, not just features.</h4>
+<p class="html-content" style="font-size: 15px; line-height: 1.6; color: #334155; margin: 0;">Some favor explicit graph-based control, some favor conversational multi-agent collaboration, and some favor a simple role-based structure.</p>
 </div>
 <div style="background: #ffffff; border: 1px solid var(--color-border); border-left: 4px solid var(--color-primary); border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 12px; box-shadow: var(--shadow-sm);">
-<h4 style="font-size: 1.15rem; font-weight: 800; color: #cf2121; margin-bottom: 4px;">Start with a single, well-tooled agent before reaching for multi-agent orchestration.</h4>
-<p class="html-content" style="font-size: 1.1rem; line-height: 1.6; color: var(--color-body); margin: 0;">Complexity should be earned by the actual shape of the task.</p>
+<h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">Start with a single, well-tooled agent before reaching for multi-agent orchestration.</h4>
+<p class="html-content" style="font-size: 15px; line-height: 1.6; color: #334155; margin: 0;">Complexity should be earned by the actual shape of the task.</p>
 </div>
 <div style="background: #ffffff; border: 1px solid var(--color-border); border-left: 4px solid var(--color-primary); border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 12px; box-shadow: var(--shadow-sm);">
-<h4 style="font-size: 1.15rem; font-weight: 800; color: #cf2121; margin-bottom: 4px;">Key Point</h4>
-<p class="html-content" style="font-size: 1.1rem; line-height: 1.6; color: var(--color-body); margin: 0;">Observability and approval gates are not optional extras; they are the core safety mechanism that makes agentic AI trustworthy enough for real business work.</p>
+<h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">Key Point</h4>
+<p class="html-content" style="font-size: 15px; line-height: 1.6; color: #334155; margin: 0;">Observability and approval gates are not optional extras; they are the core safety mechanism that makes agentic AI trustworthy enough for real business work.</p>
 </div>
 <div style="background: #ffffff; border: 1px solid var(--color-border); border-left: 4px solid var(--color-primary); border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 12px; box-shadow: var(--shadow-sm);">
-<h4 style="font-size: 1.15rem; font-weight: 800; color: #cf2121; margin-bottom: 4px;">Framework choice is important, but it is rarely permanent.</h4>
-<p class="html-content" style="font-size: 1.1rem; line-height: 1.6; color: var(--color-body); margin: 0;">A focused proof of concept against your actual use case teaches you more than months of comparison research.</p>
+<h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">Framework choice is important, but it is rarely permanent.</h4>
+<p class="html-content" style="font-size: 15px; line-height: 1.6; color: #334155; margin: 0;">A focused proof of concept against your actual use case teaches you more than months of comparison research.</p>
 </div>
 </div>
 </section>
 
 <div class="blog-content" style="display: flex; flex-direction: column; gap: var(--spacing-32); line-height: 1.8; font-size: 1.1rem; color: var(--color-body);">
-<article class="os-article-content" style="padding: 40px; background: #ffffff; border: 1px solid var(--color-border); border-radius: 10px; box-shadow: var(--shadow-sm);">
+<article class="os-article-content">
 <h2 style="margin-top: 24px; margin-bottom: 12px; color: var(--color-heading);">Why Everyone Suddenly Cares About Agent Frameworks</h2>
 
 A couple of years ago, “building an AI agent” mostly meant writing a clever prompt, wiring it to an API call, and hoping for the best. It worked for demos. It fell apart the moment a real business tried to run it in production, because a demo does not need to remember what happened three days ago, does not need to gracefully retry a failed tool call, and definitely does not need five different specialists coordinating on the same task without stepping on each other.
