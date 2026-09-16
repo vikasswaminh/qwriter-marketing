@@ -920,6 +920,30 @@ main.container.article-container {
 
 .blog-main-column {
   min-width: 0;
+}
+
+/* Individual White Boxes for TL;DR and Key Takeaways */
+.blog-main-column > section {
+  background: #ffffff !important;
+  border-radius: 12px !important;
+  border: 1px solid #E2E8F0 !important;
+  border-left: 4px solid #C5221F !important;
+  padding: 32px !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05) !important;
+  margin-bottom: 32px !important;
+}
+
+/* Remove internal grey background for Key Takeaways items */
+.blog-main-column > section > div > div {
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-bottom: 24px !important;
+}
+
+/* White Box for Content Body */
+.blog-main-column .os-article-content {
   background: #ffffff;
   border-radius: 16px;
   padding: 40px;
@@ -947,8 +971,9 @@ main.container.article-container {
     margin-bottom: 32px;
   }
   
-  .blog-main-column {
-    padding: 24px;
+  .blog-main-column > section,
+  .blog-main-column .os-article-content {
+    padding: 24px !important;
     border-radius: 12px;
   }
 }
