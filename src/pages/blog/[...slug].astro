@@ -1,0 +1,18 @@
+---
+import PostLayout from '~/layouts/BlogPostLayout.astro';
+import { getPublishedPosts } from '~/utils/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await post.render();
+---
+
+<PostLayout post={post} headings={headings}>
+  <div style="--color-heading: var(--brand-heading); --color-body: var(--brand-body); --color-muted: var(--brand-muted); --color-section: var(--brand-section-bg); --bg-card: var(--brand-background); --color-primary: var(--brand-primary); --color-primary-hover: var(--brand-rich); --accent: var(--brand-primary); --candy-pink: var(--brand-primary); --candy-pink-hover: var(--brand-rich);">
+    <Content />
+  </div>
+</PostLayout>

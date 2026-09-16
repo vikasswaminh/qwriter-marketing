@@ -1,0 +1,25 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import { SITE } from '~/blog-config';
+import '~/styles/blog.css'; // The blog's specific CSS
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  className?: string;
+  article?: {
+    publishedTime?: string;
+    modifiedTime?: string;
+    author?: string;
+    tags?: string[];
+  };
+}
+const { title = SITE.title, description, image, article, className = '' } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <main class={`container ${className}`.trim()}>
+    <slot />
+  </main>
+</Layout>

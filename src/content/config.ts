@@ -1,4 +1,21 @@
-// Content collections are not used in the OllaSuper rebuild — the changelog
-// and expert detail pages are sourced from src/data/experts.ts and inline
-// arrays. Kept as an empty export so Astro's content layer doesn't complain.
-export const collections = {};
+import { defineCollection, z } from 'astro:content';
+
+// The blog collection. Each post is a markdown file in src/content/blog/*.md
+// with the frontmatter below. See CONTRIBUTING.md for the authoring guide.
+const blog = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    seoTitle: z.string().optional(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    author: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    seoKeywords: z.array(z.string()).optional(),
+    cover: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { blog };
