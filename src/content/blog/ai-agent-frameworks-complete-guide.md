@@ -51,7 +51,7 @@ AI agent frameworks are the invisible scaffolding behind every serious autonomou
 <aside class="blog-sidebar" id="left-sidebar-placeholder"></aside>
 <div class="blog-main-column">
 
-<section style="background: #F8FAFC; border-left: 4px solid #C5221F; border-radius: 12px; padding: 24px; margin-bottom: 32px; border-top-left-radius: 0; border-bottom-left-radius: 0;">
+<section style="background: #F8FAFC; border-left: 4px solid #C5221F; border-radius: 12px; padding: 16px 20px; margin-bottom: 32px; border-top-left-radius: 0; border-bottom-left-radius: 0;">
 <h3 id="tldr" style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
 <span>⚡</span> TL;DR
 </h3>
