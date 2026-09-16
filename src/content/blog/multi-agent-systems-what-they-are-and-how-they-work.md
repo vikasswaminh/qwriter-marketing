@@ -10,7 +10,7 @@ seoKeywords: ['Multi-Agent Systems', 'Swarm AI', 'Agent Orchestration']
 ---
 
 <article class="os-section" style="background: var(--color-section); padding-top: var(--spacing-24); padding-bottom: 40px;">
-<div class="os-container" style="max-width: 1560px; margin: 0 auto; width: 100%; padding: 0 40px;">
+<div class="os-container">
 <nav aria-label="Breadcrumb" class="os-small" style="color: var(--color-muted); margin-bottom: var(--spacing-24); display: flex; gap: var(--spacing-8); align-items: center; flex-wrap: wrap;"> <a href="/" style="color: inherit; text-decoration: none;">Home</a> <span>/</span> <a href="/blog" style="color: inherit; text-decoration: none;">Blog</a> <span>/</span> <span style="color: var(--color-heading); font-weight: 600;">AI Workforce</span> </nav>
 
 <header style="margin-bottom: var(--spacing-24); border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-16); width: 100%;">
