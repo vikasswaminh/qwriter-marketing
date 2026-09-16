@@ -885,7 +885,11 @@ main.container.article-container {
 
 .blog-layout-grid {
   display: grid;
-  grid-template-columns: 240px 1fr 240px;
+  grid-template-columns: 240px minmax(auto, 800px) 240px;
+  justify-content: space-between;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 0 24px;
   gap: 32px;
   align-items: start;
 }
