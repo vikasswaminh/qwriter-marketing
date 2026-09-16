@@ -19,7 +19,7 @@ const { title = SITE.title, description, image, article, className = '' } = Astr
 ---
 
 <Layout title={title} description={description} stickyNav={false}>
-  <main class={`container ${className}`.trim()}>
+  <main class={`container article-container ${className}`.trim()}>
     <slot />
   </main>
 </Layout>
