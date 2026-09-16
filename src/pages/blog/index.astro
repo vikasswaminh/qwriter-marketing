@@ -6,8 +6,8 @@ import RibbonBackground from "~/components/shared/RibbonBackground.astro";
 const BLOG_POSTS = [...RAW_BLOG_POSTS].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 
 // Split the current posts based on their actual themes since we don't have enough posts to fill strict engineering/platform categories yet
-const strategyPosts = BLOG_POSTS.filter(p => p.category.includes("Guide") || p.category.includes("Fundamentals"));
-const techPosts = BLOG_POSTS.filter(p => p.category.includes("Automation") || p.category.includes("Tools"));
+const strategyPosts = BLOG_POSTS.filter(p => p.category?.includes("Guide") || p.category?.includes("Fundamentals") || !p.category);
+const techPosts = BLOG_POSTS.filter(p => p.category?.includes("Automation") || p.category?.includes("Tools"));
 ---
 
 <Layout

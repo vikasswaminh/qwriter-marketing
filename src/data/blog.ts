@@ -609,6 +609,452 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ]
   }
+,
+  {
+    title: "Agentic AI: What It Is, How It Works, and Why It Matters in 2026",
+    description: "Agentic AI isn't another chatbot upgrade system. It’s software that plans, decides, and acts on its own. Here's what agentic AI means, how it works under the hood, and why 2026 is the year it stopped being a buzzword and started running real businesses.",
+    publishDate: "2026-09-01",
+    updatedDate: "2026-09-04",
+    author: {
+      name: "OllaSuper Systems Engineering",
+      role: "AI Workforce Architecture",
+      avatar: "⚡"
+    },
+    coverImage: "/agentic_ai_cover.webp",
+    keywords: ["AI Workforce","Applied AI Fundamentals"],
+    slug: "agentic-ai",
+    tldr: "Agentic AI is software that doesn't just respond to you it perceives a situation, reasons through it, plans a sequence of steps, and executes them using real tools, with minimal hand holding along the way. It's the difference between an AI that writes you an email and an AI that researches the recipient, drafts the email, checks it against your tone guidelines, and queues it for your one click approval on its own, on a schedule, before you even asked. This piece breaks down what \"agentic\" actually means (as opposed to marketing dressed up in the word), the architecture running underneath a real agentic system perception, memory, planning, tool use, action, feedback where businesses are already using this in 2026, what's genuinely new about this moment versus the last three years of AI hype, the honest risks nobody puts in the pitch deck, and a practical way to think about adopting it without getting burned.",
+    tableOfContents: [
+      { num: "01", id: "tldr", title: "TL;DR Summary" },
+      { num: "02", id: "key-takeaways", title: "Key Takeaways" },
+      { num: "03", id: "faq", title: "Frequently Asked Questions" }
+    ],
+    keyTakeaways: [
+      {
+            "title": "Agentic AI goes beyond generative AI by planning and acting",
+            "description": "Agentic AI doesn't just generate answers. It can perceive information, reason through a goal, plan multiple steps, use external tools, act, and continuously adjust based on feedback."
+      },
+      {
+            "title": "Agentic AI works through a perceive → reason → plan → act → feedback loop",
+            "description": "A real agentic system combines goals, perception, memory, reasoning, planning, tool use, action, and feedback. This architecture is what separates an AI agent from a basic chatbot or assistant."
+      },
+      {
+            "title": "Agentic AI is different from AI assistants and traditional automation",
+            "description": "Generative AI responds to prompts, assistants help humans’ complete tasks, and traditional automation follows predefined rules. Agentic AI can independently decide what steps to take toward a defined goal, making it more flexible for complex workflows."
+      },
+      {
+            "title": "Businesses are using agentic AI for sales, marketing, support, research, and operations",
+            "description": "High-value use cases include AI-powered sales research, lead and pipeline monitoring, SEO auditing, customer-support triage, competitive research, invoice reconciliation, compliance monitoring, and recurring business workflows."
+      },
+      {
+            "title": "Successful agentic AI adoption requires human oversight, security, and clear boundaries",
+            "description": "The strongest approach isn't completely unsupervised AI. Businesses should use approval gates, least-privilege access, audit logs, defined scopes, shadow testing, and human ownership for consequential actions."
+      }
+],
+    faqs: [
+      {
+            "question": "How does this relate to AI Agents?",
+            "answer": "This is a fundamental concept in building autonomous workflows."
+      }
+],
+    conclusion: {
+      "title": "Wrapping It Up",
+      "content": [
+            "Adopting AI agents isn't about replacing your team, it's about shifting their focus from execution to strategy.",
+            "If you want to build an automated ecosystem you can actually trust, <strong><a href='https://ollasuper.com' target='_blank' style='color: var(--blue-primary); text-decoration: underline;'>OllaSuper</a></strong> is the definitive platform."
+      ]
+}
+  },
+  {
+    title: "AI Agent Frameworks: The Complete Guide for Businesses (2026)",
+    description: "AI agent frameworks are the invisible scaffolding behind every serious autonomous AI deployment. Here's what they are, how the major ones differ, and how to pick one without wasting six months of engineering time.",
+    publishDate: "2026-09-10",
+    updatedDate: "2026-09-10",
+    author: {
+      name: "OllaSuper Systems Engineering",
+      role: "AI Workforce Architecture",
+      avatar: "⚡"
+    },
+    coverImage: "/agentic_ai_cover.webp",
+    keywords: ["AI Workforce","Applied AI Fundamentals"],
+    slug: "ai-agent-frameworks-complete-guide",
+    tldr: "",
+    tableOfContents: [
+      { num: "01", id: "tldr", title: "TL;DR Summary" },
+      { num: "02", id: "key-takeaways", title: "Key Takeaways" },
+      { num: "03", id: "faq", title: "Frequently Asked Questions" }
+    ],
+    keyTakeaways: [],
+    faqs: [
+      {
+            "question": "How does this relate to AI Agents?",
+            "answer": "This is a fundamental concept in building autonomous workflows."
+      }
+],
+    conclusion: {
+      "title": "Wrapping It Up",
+      "content": [
+            "Adopting AI agents isn't about replacing your team, it's about shifting their focus from execution to strategy.",
+            "If you want to build an automated ecosystem you can actually trust, <strong><a href='https://ollasuper.com' target='_blank' style='color: var(--blue-primary); text-decoration: underline;'>OllaSuper</a></strong> is the definitive platform."
+      ]
+}
+  },
+  {
+    title: "AI Agent Security: Risks, Threats, and Best Practices",
+    description: "AI agents don't just talk, they act. They send emails, touch CRMs, and move data. Here's the real threat landscape behind agentic AI, from prompt injection to excessive agency, and the practical, unglamorous framework for deploying agents safely.",
+    publishDate: "2026-09-07",
+    updatedDate: "2026-09-07",
+    author: {
+      name: "OllaSuper Systems Engineering",
+      role: "AI Workforce Architecture",
+      avatar: "⚡"
+    },
+    coverImage: "/agentic_ai_cover.webp",
+    keywords: ["Security & Governance"],
+    slug: "ai-agent-security-risks-threats-and-best-practices",
+    tldr: "AI agents don't just answer questions; they take real actions with real credentials. They send emails, touch CRMs, call APIs, and move data. That makes them a fundamentally different security problem than chatbots ever were. The core threats are prompt injections, especially the indirect kind hidden inside web pages, documents, and tickets an agent reads, along with excessive agency and permission sprawl, tool and API misuse, data leakage, memory poisoning, third party supply chain risk, and the compounding danger of multi agent handoffs. Traditional security tools help but weren't built for a system whose attack surface is language itself. The fix isn't avoiding agents. It's least privilege access, real human approval gates on anything consequential, treating all external content as untrusted by default, full audit logging, shadow mode testing before going live, and a named human owner for every agent in production.",
+    tableOfContents: [
+      { num: "01", id: "tldr", title: "TL;DR Summary" },
+      { num: "02", id: "key-takeaways", title: "Key Takeaways" },
+      { num: "03", id: "faq", title: "Frequently Asked Questions" }
+    ],
+    keyTakeaways: [
+      {
+            "title": "Attack Surface",
+            "description": "The attack surface has moved from code to language. An agent's reasoning can be hijacked by nothing more than carefully worded text hidden in a webpage, document, or email. No breach, no exploit, and no traditional vulnerability are required."
+      },
+      {
+            "title": "Indirect Prompt Injection",
+            "description": "Indirect prompt injection is the threat businesses underestimate most. The malicious instruction rarely comes from the person talking to the agent. It's planted on the content the agent is asked to process on its own legitimate errand."
+      },
+      {
+            "title": "Excessive Agency",
+            "description": "Excessive agency, not malice, causes most real damage. Permission creeps gradually and reasonably, one convenient expansion at a time, until an agent scoped for one narrow task quietly holds access to everything."
+      },
+      {
+            "title": "Approval Gates",
+            "description": "Approval gates are the single most important control. Autonomous research and drafting can run freely, but anything that leaves the system and touches the real world, whether that's sending, publishing, paying, or modifying, needs a human checkpoint first."
+      },
+      {
+            "title": "Traditional Security Limitations",
+            "description": "Traditional security tools are necessary but not sufficient. Firewalls and access controls can't tell the difference between a legitimate API call and the same call made because a prompt injection convinced the agent to make it. The problem happens upstream, in reasoning, not at the network layer."
+      }
+],
+    faqs: [
+      {
+            "question": "How does this relate to AI Agents?",
+            "answer": "This is a fundamental concept in building autonomous workflows."
+      }
+],
+    conclusion: {
+      "title": "Wrapping It Up",
+      "content": [
+            "Adopting AI agents isn't about replacing your team, it's about shifting their focus from execution to strategy.",
+            "If you want to build an automated ecosystem you can actually trust, <strong><a href='https://ollasuper.com' target='_blank' style='color: var(--blue-primary); text-decoration: underline;'>OllaSuper</a></strong> is the definitive platform."
+      ]
+}
+  },
+  {
+    title: "AI Agent Use Cases: 15 Ways Businesses Are Using AI Agents in 2026",
+    description: "From outbound sales to fraud detection, here are 15 real ways businesses are putting AI agents to work in 2026, what each one looks like day to day, and how to know if your business is ready for it.",
+    publishDate: "2026-09-03",
+    updatedDate: "2026-09-04",
+    author: {
+      name: "OllaSuper Systems Engineering",
+      role: "AI Workforce Architecture",
+      avatar: "⚡"
+    },
+    coverImage: "/agentic_ai_cover.webp",
+    keywords: ["AI Workforce","Applied AI Fundamentals"],
+    slug: "ai-agent-use-cases-15-ways-businesses-are-using-ai-agents-in-2026",
+    tldr: "AI agents stopped being a concept somewhere around 2025 and turned into something businesses run in the background, every day, without thinking twice about it. Not chatbots that wait for a prompt, but systems that work on a schedule, touch real tools like your CRM and inbox, and hand a finished draft to a human for a final yes before anything goes out the door. None of them replaces your team. All of it gives your team back the hours that repetitive, well-defined work was quietly eating every single week.",
+    tableOfContents: [
+      { num: "01", id: "tldr", title: "TL;DR Summary" },
+      { num: "02", id: "key-takeaways", title: "Key Takeaways" },
+      { num: "03", id: "faq", title: "Frequently Asked Questions" }
+    ],
+    keyTakeaways: [
+      {
+            "title": "AI Agents Act, They Don't Just Chat",
+            "description": "An AI agent is defined by what it does when nobody's watching: it runs on a schedule or a trigger, reaches into real business tools, and completes multi-step work on its own, unlike a chatbot that only responds when prompted."
+      },
+      {
+            "title": "The Best Use Cases Are Repetitive, Frequent, and Well-Defined",
+            "description": "Businesses get the most value from AI agents on tasks that happen often, follow a recognizable pattern, and eat hours without needing constant creative judgment, things like outbound research, inbox triage, reconciliation, and reporting."
+      },
+      {
+            "title": "Human Approval Gates Are What Make This Safe",
+            "description": "The businesses succeeding with agents in 2026 aren't the ones giving AI unrestricted access. They're the ones who let agents research, draft, and prepare, while keeping a human sign-off step for anything that leaves the building."
+      },
+      {
+            "title": "Every Department Has an Agent Use Case Now",
+            "description": "Sales, marketing, HR, finance, legal, engineering, support, and operations all have workflows mature enough to hand to an agent in 2026. This isn't a sales-and-marketing story anymore, it's a whole-company story."
+      },
+      {
+            "title": "Multi-Agent Collaboration Is Where the Real Compounding Happens",
+            "description": "The single biggest shift in 2026 isn't one agent doing one task well, its specialized agents handing work to each other the way departments hand work between people, producing finished deliverables instead of isolated outputs."
+      }
+],
+    faqs: [
+      {
+            "question": "How does this relate to AI Agents?",
+            "answer": "This is a fundamental concept in building autonomous workflows."
+      }
+],
+    conclusion: {
+      "title": "Wrapping It Up",
+      "content": [
+            "Adopting AI agents isn't about replacing your team, it's about shifting their focus from execution to strategy.",
+            "If you want to build an automated ecosystem you can actually trust, <strong><a href='https://ollasuper.com' target='_blank' style='color: var(--blue-primary); text-decoration: underline;'>OllaSuper</a></strong> is the definitive platform."
+      ]
+}
+  },
+  {
+    title: "AI Agents vs Chatbots: What's the Difference? A Clear 2026 Breakdown",
+    description: "Chatbots talk. AI agents act. Here's the real, non-marketing explanation of how AI agents and chatbots differ, where each one genuinely earns its keep, and how to tell which one your business needs.",
+    publishDate: "2026-09-09",
+    updatedDate: "2026-09-09",
+    author: {
+      name: "OllaSuper Systems Engineering",
+      role: "AI Workforce Architecture",
+      avatar: "⚡"
+    },
+    coverImage: "/cover_ai_agents_chatbots.jpg",
+    keywords: ["AI Workforce","Applied AI Fundamentals"],
+    slug: "ai-agents-vs-chatbots-whats-the-difference",
+    tldr: "",
+    tableOfContents: [
+      { num: "01", id: "tldr", title: "TL;DR Summary" },
+      { num: "02", id: "key-takeaways", title: "Key Takeaways" },
+      { num: "03", id: "faq", title: "Frequently Asked Questions" }
+    ],
+    keyTakeaways: [],
+    faqs: [
+      {
+            "question": "How does this relate to AI Agents?",
+            "answer": "This is a fundamental concept in building autonomous workflows."
+      }
+],
+    conclusion: {
+      "title": "Wrapping It Up",
+      "content": [
+            "Adopting AI agents isn't about replacing your team, it's about shifting their focus from execution to strategy.",
+            "If you want to build an automated ecosystem you can actually trust, <strong><a href='https://ollasuper.com' target='_blank' style='color: var(--blue-primary); text-decoration: underline;'>OllaSuper</a></strong> is the definitive platform."
+      ]
+}
+  },
+  {
+    title: "How to Build an AI Agent for Your Business: Step-by-Step Guide (2026)",
+    description: "A practical, no-fluff walkthrough of how to build an AI agent for your business in 2026, from picking the right task to approval gates, testing, and scaling to a full AI workforce.",
+    publishDate: "2026-09-08",
+    updatedDate: "2026-09-08",
+    author: {
+      name: "OllaSuper Systems Engineering",
+      role: "AI Workforce Architecture",
+      avatar: "⚡"
+    },
+    coverImage: "/ai-workforce-agents-cover.jpg",
+    keywords: ["AI Workforce","Applied AI Fundamentals"],
+    slug: "how-to-build-an-ai-agent-for-your-business-step-by-step-guide",
+    tldr: "Building an AI agent for your business is not a weekend coding project, and it is not a six-month enterprise overhaul either. It sits somewhere in between, and the businesses that get it right treat it as a discipline, not a demo. This guide walks through the real, practical steps: picking one narrow and recurring task worth automating, mapping how that task actually gets done today, deciding whether to build the agent yourself or use a platform, designing how the agent perceives information, gives it memory, lets it reason and plan, connects it to real tools, decides what it can do on its own versus what needs a human's sign off, tests it quietly before trusting it, deploys it on a schedule, and keeps a clear audit trail of everything it touches. We will also walk through a real example from scratch, cover the mistakes that sink most first attempts, talk honestly about cost, and close with what building AI agents for your business will look like as 2026 moves forward.",
+    tableOfContents: [
+      { num: "01", id: "tldr", title: "TL;DR Summary" },
+      { num: "02", id: "key-takeaways", title: "Key Takeaways" },
+      { num: "03", id: "faq", title: "Frequently Asked Questions" }
+    ],
+    keyTakeaways: [
+      {
+            "title": "Start narrow, not companywide",
+            "description": "Your first AI agent should handle one clearly defined, recurring, mostly mechanical task, not an entire department. Narrow builds are easier to trust, easier to test, and easier to expand later."
+      },
+      {
+            "title": "Map the process before you automate it",
+            "description": "Understand exactly how the task gets done today, including its edge cases and exceptions, before designing anything. Automating an undefined or inconsistent process just scales the inconsistency."
+      },
+      {
+            "title": "The approval gate is the most important design decision you'll make",
+            "description": "Let the agent handle research, drafting, and analysis fully on its own, but route anything that touches a real customer, a public page, or a financial record through a human checkpoint until the agent has earned real trust."
+      },
+      {
+            "title": "Test in shadow mode before you trust it live",
+            "description": "Run the agent quietly against real situations for a couple of weeks, comparing its output to what a human would have done, before letting anything it produces go live unsupervised."
+      },
+      {
+            "title": "Log everything and expand deliberately",
+            "description": "A clear, reviewable audit trail protects you the day something goes wrong, and proving value on one well-scoped task before building the next one is what turns a single agent into a genuine, trustworthy AI workforce over time."
+      }
+],
+    faqs: [
+      {
+            "question": "How does this relate to AI Agents?",
+            "answer": "This is a fundamental concept in building autonomous workflows."
+      }
+],
+    conclusion: {
+      "title": "Wrapping It Up",
+      "content": [
+            "Adopting AI agents isn't about replacing your team, it's about shifting their focus from execution to strategy.",
+            "If you want to build an automated ecosystem you can actually trust, <strong><a href='https://ollasuper.com' target='_blank' style='color: var(--blue-primary); text-decoration: underline;'>OllaSuper</a></strong> is the definitive platform."
+      ]
+}
+  },
+  {
+    title: "Multi-Agent Systems: What They Are and How They Work",
+    description: "Agentic AI isn't another chatbot upgrade system. It’s software that plans, decides, and acts on its own. Here's what agentic AI means, how it works under the hood, and why 2026 is the year it stopped being a buzzword and started running real businesses.",
+    publishDate: "2026-09-02",
+    updatedDate: "2026-09-04",
+    author: {
+      name: "OllaSuper Systems Engineering",
+      role: "AI Workforce Architecture",
+      avatar: "⚡"
+    },
+    coverImage: "/agentic_ai_cover.webp",
+    keywords: ["AI Workforce","Applied AI Fundamentals"],
+    slug: "multi-agent-systems-what-they-are-and-how-they-work",
+    tldr: "Agentic AI is software that doesn't just respond to you it perceives a situation, reasons through it, plans a sequence of steps, and executes them using real tools, with minimal hand holding along the way. It's the difference between an AI that writes you an email and an AI that researches the recipient, drafts the email, checks it against your tone guidelines, and queues it for your one click approval on its own, on a schedule, before you even asked. This piece breaks down what \"agentic\" actually means (as opposed to marketing dressed up in the word), the architecture running underneath a real agentic system perception, memory, planning, tool use, action, feedback where businesses are already using this in 2026, what's genuinely new about this moment versus the last three years of AI hype, the honest risks nobody puts in the pitch deck, and a practical way to think about adopting it without getting burned.",
+    tableOfContents: [
+      { num: "01", id: "tldr", title: "TL;DR Summary" },
+      { num: "02", id: "key-takeaways", title: "Key Takeaways" },
+      { num: "03", id: "faq", title: "Frequently Asked Questions" }
+    ],
+    keyTakeaways: [
+      {
+            "title": "Agentic AI goes beyond generative AI by planning and acting",
+            "description": "Agentic AI doesn't just generate answers. It can perceive information, reason through a goal, plan multiple steps, use external tools, act, and continuously adjust based on feedback."
+      },
+      {
+            "title": "Agentic AI works through a perceive → reason → plan → act → feedback loop",
+            "description": "A real agentic system combines goals, perception, memory, reasoning, planning, tool use, action, and feedback. This architecture is what separates an AI agent from a basic chatbot or assistant."
+      },
+      {
+            "title": "Agentic AI is different from AI assistants and traditional automation",
+            "description": "Generative AI responds to prompts, assistants help humans’ complete tasks, and traditional automation follows predefined rules. Agentic AI can independently decide what steps to take toward a defined goal, making it more flexible for complex workflows."
+      },
+      {
+            "title": "Businesses are using agentic AI for sales, marketing, support, research, and operations",
+            "description": "High-value use cases include AI-powered sales research, lead and pipeline monitoring, SEO auditing, customer-support triage, competitive research, invoice reconciliation, compliance monitoring, and recurring business workflows."
+      },
+      {
+            "title": "Successful agentic AI adoption requires human oversight, security, and clear boundaries",
+            "description": "The strongest approach isn't completely unsupervised AI. Businesses should use approval gates, least-privilege access, audit logs, defined scopes, shadow testing, and human ownership for consequential actions."
+      }
+],
+    faqs: [
+      {
+            "question": "How does this relate to AI Agents?",
+            "answer": "This is a fundamental concept in building autonomous workflows."
+      }
+],
+    conclusion: {
+      "title": "Wrapping It Up",
+      "content": [
+            "Adopting AI agents isn't about replacing your team, it's about shifting their focus from execution to strategy.",
+            "If you want to build an automated ecosystem you can actually trust, <strong><a href='https://ollasuper.com' target='_blank' style='color: var(--blue-primary); text-decoration: underline;'>OllaSuper</a></strong> is the definitive platform."
+      ]
+}
+  },
+  {
+    title: "RAG vs Fine-Tuning: What's the Difference?",
+    description: "RAG and fine-tuning both make AI models smarter, but they solve completely different problems. Here's the real difference between retrieval and retraining, explained without the jargon, so you can pick the right one for your business.",
+    publishDate: "2026-09-15",
+    updatedDate: "2026-09-15",
+    author: {
+      name: "OllaSuper Systems Engineering",
+      role: "AI Workforce Architecture",
+      avatar: "⚡"
+    },
+    coverImage: "/cover_rag_vs_finetuning.jpg",
+    keywords: ["AI Workforce","Applied AI Fundamentals"],
+    slug: "rag-vs-fine-tuning-whats-the-difference",
+    tldr: "",
+    tableOfContents: [
+      { num: "01", id: "tldr", title: "TL;DR Summary" },
+      { num: "02", id: "key-takeaways", title: "Key Takeaways" },
+      { num: "03", id: "faq", title: "Frequently Asked Questions" }
+    ],
+    keyTakeaways: [],
+    faqs: [
+      {
+            "question": "How does this relate to AI Agents?",
+            "answer": "This is a fundamental concept in building autonomous workflows."
+      }
+],
+    conclusion: {
+      "title": "Wrapping It Up",
+      "content": [
+            "Adopting AI agents isn't about replacing your team, it's about shifting their focus from execution to strategy.",
+            "If you want to build an automated ecosystem you can actually trust, <strong><a href='https://ollasuper.com' target='_blank' style='color: var(--blue-primary); text-decoration: underline;'>OllaSuper</a></strong> is the definitive platform."
+      ]
+}
+  },
+  {
+    title: "What Is an AI Workforce? How AI Teams Are Changing Work — The Complete 2026 Guide",
+    description: "An AI workforce isn't sci-fi anymore — it's teams of specialized AI employees working alongside humans, autonomously handling research, sales outreach, content creation, customer support, and operations at scale.",
+    publishDate: "2026-08-27",
+    updatedDate: "2026-09-04",
+    author: {
+      name: "OllaSuper Systems Engineering",
+      role: "AI Workforce Architecture",
+      avatar: "⚡"
+    },
+    coverImage: "/ai_workforce.webp",
+    keywords: ["AI Workforce","Applied AI Fundamentals"],
+    slug: "what-is-an-ai-workforce",
+    tldr: "",
+    tableOfContents: [
+      { num: "01", id: "tldr", title: "TL;DR Summary" },
+      { num: "02", id: "key-takeaways", title: "Key Takeaways" },
+      { num: "03", id: "faq", title: "Frequently Asked Questions" }
+    ],
+    keyTakeaways: [],
+    faqs: [
+      {
+            "question": "How does this relate to AI Agents?",
+            "answer": "This is a fundamental concept in building autonomous workflows."
+      }
+],
+    conclusion: {
+      "title": "Wrapping It Up",
+      "content": [
+            "Adopting AI agents isn't about replacing your team, it's about shifting their focus from execution to strategy.",
+            "If you want to build an automated ecosystem you can actually trust, <strong><a href='https://ollasuper.com' target='_blank' style='color: var(--blue-primary); text-decoration: underline;'>OllaSuper</a></strong> is the definitive platform."
+      ]
+}
+  },
+  {
+    title: "What Is RAG in AI? Retrieval Augmented Generation Explained (2026 Guide)",
+    description: "RAG isn't a buzzword; it's the reason your AI stops guessing and starts knowing. Here's exactly how Retrieval Augmented Generation works, why it beats fine tuning for most business problems, and how to build one that doesn't fall apart in production.",
+    publishDate: "2026-09-11",
+    updatedDate: "2026-09-11",
+    author: {
+      name: "OllaSuper Systems Engineering",
+      role: "AI Workforce Architecture",
+      avatar: "⚡"
+    },
+    coverImage: "/cover_rag_ai.jpg",
+    keywords: ["AI Workforce","Applied AI Fundamentals"],
+    slug: "what-is-rag-in-ai-retrieval-augmented-generation-explained",
+    tldr: "",
+    tableOfContents: [
+      { num: "01", id: "tldr", title: "TL;DR Summary" },
+      { num: "02", id: "key-takeaways", title: "Key Takeaways" },
+      { num: "03", id: "faq", title: "Frequently Asked Questions" }
+    ],
+    keyTakeaways: [],
+    faqs: [
+      {
+            "question": "How does this relate to AI Agents?",
+            "answer": "This is a fundamental concept in building autonomous workflows."
+      }
+],
+    conclusion: {
+      "title": "Wrapping It Up",
+      "content": [
+            "Adopting AI agents isn't about replacing your team, it's about shifting their focus from execution to strategy.",
+            "If you want to build an automated ecosystem you can actually trust, <strong><a href='https://ollasuper.com' target='_blank' style='color: var(--blue-primary); text-decoration: underline;'>OllaSuper</a></strong> is the definitive platform."
+      ]
+}
+  }
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
