@@ -13,14 +13,17 @@ const { title, seoTitle, description, pubDate, updatedDate, author, tags, seoKey
 
 const canonical = new URL(`/blog/${post.slug}/`, Astro.site).href;
 
-const allPosts = await getCollection('blog');
-const otherPosts = allPosts
-  .filter((p) => p.slug !== post.slug)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 6);
+const leftPosts = [
+  { slug: "rag-vs-fine-tuning-whats-the-difference", data: { title: "RAG vs Fine-Tuning: What's the Difference?" } },
+  { slug: "ai-agent-frameworks-complete-guide", data: { title: "AI Agent Frameworks: The Complete Guide for Businesses (2026)" } },
+  { slug: "ai-agents-vs-chatbots-whats-the-difference", data: { title: "AI Agents vs Chatbots: What's the Difference? A Clear 2026 Breakdown" } }
+];
 
-const leftPosts = otherPosts.slice(0, 3);
-const rightPosts = otherPosts.slice(3, 6);
+const rightPosts = [
+  { slug: "how-to-build-an-ai-agent-for-your-business-step-by-step-guide", data: { title: "How to Build an AI Agent for Your Business: Step-by-Step Guide (2026)" } },
+  { slug: "ai-agent-security-risks-threats-and-best-practices", data: { title: "AI Agent Security: Risks, Threats, and Best Practices" } },
+  { slug: "ai-agent-use-cases-15-ways-businesses-are-using-ai-agents-in-2026", data: { title: "AI Agent Use Cases: 15 Ways Businesses Are Using AI Agents in 2026" } }
+];
 
 const jsonLd = {
   '@context': 'https://schema.org',
