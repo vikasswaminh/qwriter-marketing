@@ -290,14 +290,7 @@ main.container.article-container {
 .sidebar-right {
   position: sticky;
   top: 24px;
-  height: calc(100vh - 48px);
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.sidebar-left::-webkit-scrollbar,
-.sidebar-right::-webkit-scrollbar {
-  display: none;
+  height: max-content;
 }
 
 /* Sidebar */
@@ -906,8 +899,7 @@ main.container.article-container {
   scrollbar-width: thin;
   position: sticky;
   top: 24px;
-  height: calc(100vh - 48px);
-  overflow-y: auto;
+  height: max-content;
   padding-right: 8px;
 }
 
