@@ -11,7 +11,7 @@ cover: "/ai-workforce-agents-cover.jpg"
 ---
 
 <article class="os-section" style="background: var(--color-section); padding-top: var(--spacing-48); padding-bottom: 100px;">
-<div class="os-container">
+<div style="width: 100%; max-width: 100%; padding: 0 16px;">
 <nav aria-label="Breadcrumb" class="os-small" style="color: #64748B; font-size: 14px; margin-bottom: 16px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
 <a href="/" style="color: inherit; text-decoration: none;">Home</a> <span>/</span> <a href="/blog" style="color: inherit; text-decoration: none;">Blog</a> <span>/</span> <span style="color: #64748B; font-weight: 600;">AI Workforce</span>
 </nav>
