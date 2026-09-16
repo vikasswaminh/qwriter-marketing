@@ -920,6 +920,11 @@ main.container.article-container {
 
 .blog-main-column {
   min-width: 0;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
 }
 
 @media(max-width: 1100px) {
@@ -940,6 +945,11 @@ main.container.article-container {
   .blog-sidebar {
     position: static !important;
     margin-bottom: 32px;
+  }
+  
+  .blog-main-column {
+    padding: 24px;
+    border-radius: 12px;
   }
 }
 
