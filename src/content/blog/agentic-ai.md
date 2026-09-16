@@ -37,23 +37,23 @@ seoKeywords: ['Agentic AI Explained', 'Autonomous Systems', 'AI Innovation']
 <div >
 <div style="background: var(--bg-card); border: 1px solid var(--color-border-light); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; box-shadow: 0 2px 8px -2px rgba(0,0,0,0.05);">
 <h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">Agentic AI goes beyond generative AI by planning and acting</h4>
-<p class="html-content" style="font-size: 15px; line-height: 1.6; color: #334155; margin: 0;">Agentic AI doesn't just generate answers. It can perceive information, reason through a goal, plan multiple steps, use external tools, act, and continuously adjust based on feedback.</p>
+<p class="html-content" style="font-size: 1.1rem; line-height: 1.6; color: #334155; margin: 0;">Agentic AI doesn't just generate answers. It can perceive information, reason through a goal, plan multiple steps, use external tools, act, and continuously adjust based on feedback.</p>
 </div>
 <div style="background: var(--bg-card); border: 1px solid var(--color-border-light); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; box-shadow: 0 2px 8px -2px rgba(0,0,0,0.05);">
 <h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">Agentic AI works through a perceive → reason → plan → act → feedback loop</h4>
-<p class="html-content" style="font-size: 15px; line-height: 1.6; color: #334155; margin: 0;">A real agentic system combines goals, perception, memory, reasoning, planning, tool use, action, and feedback. This architecture is what separates an AI agent from a basic chatbot or assistant.</p>
+<p class="html-content" style="font-size: 1.1rem; line-height: 1.6; color: #334155; margin: 0;">A real agentic system combines goals, perception, memory, reasoning, planning, tool use, action, and feedback. This architecture is what separates an AI agent from a basic chatbot or assistant.</p>
 </div>
 <div style="background: var(--bg-card); border: 1px solid var(--color-border-light); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; box-shadow: 0 2px 8px -2px rgba(0,0,0,0.05);">
 <h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">Agentic AI is different from AI assistants and traditional automation</h4>
-<p class="html-content" style="font-size: 15px; line-height: 1.6; color: #334155; margin: 0;">Generative AI responds to prompts, assistants help humans’ complete tasks, and traditional automation follows predefined rules. Agentic AI can independently decide what steps to take toward a defined goal, making it more flexible for complex workflows.</p>
+<p class="html-content" style="font-size: 1.1rem; line-height: 1.6; color: #334155; margin: 0;">Generative AI responds to prompts, assistants help humans’ complete tasks, and traditional automation follows predefined rules. Agentic AI can independently decide what steps to take toward a defined goal, making it more flexible for complex workflows.</p>
 </div>
 <div style="background: var(--bg-card); border: 1px solid var(--color-border-light); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; box-shadow: 0 2px 8px -2px rgba(0,0,0,0.05);">
 <h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">Businesses are using agentic AI for sales, marketing, support, research, and operations</h4>
-<p class="html-content" style="font-size: 15px; line-height: 1.6; color: #334155; margin: 0;">High-value use cases include AI-powered sales research, lead and pipeline monitoring, SEO auditing, customer-support triage, competitive research, invoice reconciliation, compliance monitoring, and recurring business workflows.</p>
+<p class="html-content" style="font-size: 1.1rem; line-height: 1.6; color: #334155; margin: 0;">High-value use cases include AI-powered sales research, lead and pipeline monitoring, SEO auditing, customer-support triage, competitive research, invoice reconciliation, compliance monitoring, and recurring business workflows.</p>
 </div>
 <div style="background: var(--bg-card); border: 1px solid var(--color-border-light); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; box-shadow: 0 2px 8px -2px rgba(0,0,0,0.05);">
 <h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">Successful agentic AI adoption requires human oversight, security, and clear boundaries</h4>
-<p class="html-content" style="font-size: 15px; line-height: 1.6; color: #334155; margin: 0;">The strongest approach isn't completely unsupervised AI. Businesses should use approval gates, least-privilege access, audit logs, defined scopes, shadow testing, and human ownership for consequential actions.</p>
+<p class="html-content" style="font-size: 1.1rem; line-height: 1.6; color: #334155; margin: 0;">The strongest approach isn't completely unsupervised AI. Businesses should use approval gates, least-privilege access, audit logs, defined scopes, shadow testing, and human ownership for consequential actions.</p>
 </div>
 </div>
 </section>
