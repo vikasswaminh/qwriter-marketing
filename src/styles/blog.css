@@ -951,7 +951,7 @@ main.container.article-container {
   border-left: 4px solid #C5221F !important;
   padding: 32px !important;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05) !important;
-  margin-bottom: 24px !important;
+  margin-bottom: 0 !important;
 }
 
 /* White Box for Content Body */
