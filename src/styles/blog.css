@@ -120,9 +120,9 @@ main.container {
 }
 
 main.container.article-container {
-  max-width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
+  max-width: var(--wide) !important;
+  padding: 0 1.25rem !important;
+  margin: 0 auto !important;
   width: 100% !important;
 }
 
@@ -288,9 +288,15 @@ main.container.article-container {
 .sidebar-left,
 .sidebar-right {
   position: sticky;
-  top: 100px;
-  height: calc(100vh - 100px);
+  top: 24px;
+  height: calc(100vh - 48px);
   overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.sidebar-left::-webkit-scrollbar,
+.sidebar-right::-webkit-scrollbar {
+  display: none;
 }
 
 /* Sidebar */
@@ -898,8 +904,8 @@ main.container.article-container {
   scrollbar-color: var(--candy-pink) transparent;
   scrollbar-width: thin;
   position: sticky;
-  top: 100px;
-  height: calc(100vh - 100px);
+  top: 24px;
+  height: calc(100vh - 48px);
   overflow-y: auto;
   padding-right: 8px;
 }
