@@ -9,6 +9,7 @@ interface Props {
   description?: string;
   current?: string;
   chrome?: boolean;
+  stickyNav?: boolean;
 }
 
 const {
@@ -16,6 +17,7 @@ const {
   description = "Deploy intelligent AI employees that research, analyze, execute and automate real business workflows with enterprise observability and human governance.",
   current,
   chrome = true,
+  stickyNav = true,
 } = Astro.props;
 ---
 <!doctype html>
@@ -115,7 +117,7 @@ const {
         }
       }
     </style>
-    {chrome && <Nav current={current} />}
+    {chrome && <Nav current={current} sticky={stickyNav} />}
     <main id="main-content">
       <slot />
     </main>

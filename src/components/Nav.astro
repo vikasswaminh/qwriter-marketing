@@ -6,12 +6,13 @@ import { SOLUTIONS } from "~/data/solutions";
 
 interface Props {
   current?: string;
+  sticky?: boolean;
 }
 
-const { current } = Astro.props;
+const { current, sticky = true } = Astro.props;
 ---
 
-<header class="os-nav-blur" style="position: sticky; top: 0; z-index: 999; height: 56px; width: 100%;">
+<header class="os-nav-blur" style={`position: ${sticky ? 'sticky' : 'relative'}; top: 0; z-index: 999; height: 56px; width: 100%;`}>
   <div class="os-container-wide" style="display: flex; align-items: center; justify-content: space-between; height: 100%;">
     {/* Brand Logo */}
     <div class="os-nav-brand-wrap" style="display: flex; align-items: center; gap: 36px; min-width: 0;">
