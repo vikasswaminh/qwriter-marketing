@@ -923,8 +923,8 @@ main.container.article-container {
   min-width: 0;
 }
 
-/* Individual White Boxes for TL;DR and Key Takeaways */
-.blog-main-column > section {
+/* Individual White Boxes for TL;DR */
+.blog-main-column > section:has(h3#tldr) {
   background: #ffffff !important;
   border-radius: 12px !important;
   border: 1px solid #E2E8F0 !important;
@@ -934,12 +934,23 @@ main.container.article-container {
   margin-bottom: 32px !important;
 }
 
-/* Remove internal grey background for Key Takeaways items */
-.blog-main-column > section > div > div {
+/* Clear styles from Key Takeaways section container */
+.blog-main-column > section:has(h3#key-takeaways) {
   background: transparent !important;
-  padding: 0 !important;
   border: none !important;
+  padding: 0 !important;
   box-shadow: none !important;
+  margin-bottom: 32px !important;
+}
+
+/* Individual White Boxes for Key Takeaway Items */
+.blog-main-column > section:has(h3#key-takeaways) > div > div {
+  background: #ffffff !important;
+  border-radius: 12px !important;
+  border: 1px solid #E2E8F0 !important;
+  border-left: 4px solid #C5221F !important;
+  padding: 32px !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05) !important;
   margin-bottom: 24px !important;
 }
 
