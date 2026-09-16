@@ -16,7 +16,7 @@ cover: "/ai-workforce-agents-cover.jpg"
 <a href="/" style="color: inherit; text-decoration: none;">Home</a> <span>/</span> <a href="/blog" style="color: inherit; text-decoration: none;">Blog</a> <span>/</span> <span style="color: var(--color-heading); font-weight: 600;">AI Workforce</span>
 </nav>
 
-<header style="margin-bottom: var(--spacing-48); border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-32); width: 100%;">
+<header style="margin-bottom: var(--spacing-32); border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-24); width: 100%;">
 <div class="os-caption" style="display: flex; gap: var(--spacing-12); font-weight: 700; color: var(--color-primary-hover); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: var(--spacing-16); align-items: center; flex-wrap: wrap;">
 <span class="os-badge os-badge-pink">AI Workforce</span> <span>•</span> <span>2026-09-08</span> <span>•</span> <span>23 min read</span>
 </div>
@@ -31,10 +31,10 @@ cover: "/ai-workforce-agents-cover.jpg"
 <div class="os-caption"><a href="/blog/what-is-an-ai-workforce" class="internal-link">AI Workforce</a> Architecture</div>
 </div>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 6px;">
-<span style="font-weight: 800; font-size: 0.95rem; color: var(--color-heading);">#build an AI agent</span>
-<span style="font-weight: 800; font-size: 0.95rem; color: var(--color-heading);">#AI agent for business</span>
-<span style="font-weight: 800; font-size: 0.95rem; color: var(--color-heading);">#autonomous AI agents</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; max-width: 60%; align-items: center;">
+<span style="background: var(--color-background-alt, #f7f7f9); border: 1px solid var(--color-border); padding: 4px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; color: var(--color-body); letter-spacing: 0.05em; text-transform: uppercase;">#build an AI agent</span>
+<span style="background: var(--color-background-alt, #f7f7f9); border: 1px solid var(--color-border); padding: 4px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; color: var(--color-body); letter-spacing: 0.05em; text-transform: uppercase;">#AI agent for business</span>
+<span style="background: var(--color-background-alt, #f7f7f9); border: 1px solid var(--color-border); padding: 4px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; color: var(--color-body); letter-spacing: 0.05em; text-transform: uppercase;">#autonomous AI agents</span>
 </div>
 </div>
 </header>
