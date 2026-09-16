@@ -252,6 +252,7 @@ main.container.article-container {
   display: grid;
   grid-template-columns: 300px 1fr 300px;
   gap: 2.5rem;
+  align-items: start;
 }
 
 @media (max-width: 1024px) {
