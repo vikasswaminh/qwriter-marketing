@@ -873,13 +873,13 @@ main.container.article-container {
 }
 
 .os-toc-link:hover {
-  background: var(--candy-pink-soft) !important;
-  color: #a81c85 !important;
+  background: #EFF6FF !important;
+  color: #2563EB !important;
 }
 
 .os-toc-link.active {
-  background: var(--candy-pink-soft) !important;
-  color: #a81c85 !important;
+  background: #EFF6FF !important;
+  color: #2563EB !important;
   font-weight: 700 !important;
 }
 
