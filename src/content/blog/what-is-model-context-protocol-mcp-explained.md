@@ -7,7 +7,7 @@ updatedDate: 2026-09-17
 author: "OllaSuper Systems Engineering"
 tags: ["AI Workforce", "Applied AI Fundamentals", "Guide"]
 seoKeywords: ["Model Context Protocol", "MCP", "what is MCP", "MCP explained", "AI agents MCP", "Anthropic MCP", "MCP vs API", "AI infrastructure", "MCP servers"]
-cover: "/ai-workforce-agents-cover.jpg"
+cover: "/mcp-blog-cover.jpg"
 ---
 
 <article class="os-section" style="background: var(--color-section); padding-top: var(--spacing-48); padding-bottom: 100px;">
