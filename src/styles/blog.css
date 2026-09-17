@@ -1049,6 +1049,11 @@ main.container.article-container {
   color: var(--candy-pink-hover);
 }
 
+background: #fdf2f8;
+color: #c13584;
+border-left-color: #c13584;
+}
+
 .os-article-content {
   background: #ffffff;
   border: 1px solid var(--border-light);
@@ -1375,8 +1380,8 @@ h6 {
 .os-faq-item {
   margin-bottom: 16px;
   overflow: hidden;
-  background: #fdf2f8;
-  border: 1px solid #fce7f3;
+  background: #ffeaea;
+  border: 1px solid #ffcaca;
   border-radius: var(--radius-md, 8px);
   transition: all 0.2s ease;
 }
