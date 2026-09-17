@@ -66,20 +66,18 @@ cover: "/mcp-blog-cover.jpg"
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">MCP servers generally expose three types of things to a connected AI application, and understanding these three categories makes the whole system click into place.</p>
 
 <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
-  <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; font-weight: 700; padding: 2px 10px; border-radius: 6px; white-space: nowrap; font-size: 0.95em;">are actions the AI can take. Sending an email, creating a calendar event, updating a record, running a search. These are the verbs. When people talk about an AI agent "taking action," this</span>
-  <span> is almost always happening through a tool exposed by an MCP server.</span>
+  <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; font-weight: 700; padding: 2px 10px; border-radius: 6px; white-space: nowrap; font-size: 0.95em;">Tools</span>
+  <span> are actions the AI can take. Sending an email, creating a calendar event, updating a record, running a search. These are the verbs. When people talk about an AI agent "taking action," this is almost always happening through a tool exposed by an MCP server.</span>
 </div>
 
-
 <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
-  <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; font-weight: 700; padding: 2px 10px; border-radius: 6px; white-space: nowrap; font-size: 0.95em;">are pieces of data the AI can read. A document, a database table, a file, a webpage. These</span>
-  <span> are more like the nouns; the raw material an AI model can pull in to inform its reasoning before it decides what to do next.</span>
+  <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; font-weight: 700; padding: 2px 10px; border-radius: 6px; white-space: nowrap; font-size: 0.95em;">Resources</span>
+  <span> are pieces of data the AI can read. A document, a database table, a file, a webpage. These are more like the nouns; the raw material an AI model can pull in to inform its reasoning before it decides what to do next.</span>
 </div>
 
-
 <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
-  <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; font-weight: 700; padding: 2px 10px; border-radius: 6px; white-space: nowrap; font-size: 0.95em;">are</span>
-  <span> pre-built templates that help guide how the AI approaches a particular task using that server's tools and resources. Think of these as suggested workflows baked directly into the server itself, so the AI doesn't have to figure out the best approach entirely from scratch every single time.</span>
+  <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; font-weight: 700; padding: 2px 10px; border-radius: 6px; white-space: nowrap; font-size: 0.95em;">Prompts</span>
+  <span> are pre-built templates that help guide how the AI approaches a particular task using that server's tools and resources. Think of these as suggested workflows baked directly into the server itself, so the AI doesn't have to figure out the best approach entirely from scratch every single time.</span>
 </div>
 
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">Putting together, tools, resources, and prompts give an MCP server a complete way to describe not just what it can do, but how it should ideally be used. That's a subtle but important design choice, because it means the people who understand a piece of software best, the ones building the MCP server for it, get to bake their expertise directly into the protocol layer.</p>
