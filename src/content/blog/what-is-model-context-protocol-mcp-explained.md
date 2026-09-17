@@ -29,7 +29,7 @@ cover: "/mcp-blog-cover.jpg"
 <div class="blog-main-column">
 
 <!-- TLDR SECTION -->
-<section style="background: #ffffff; border-left: 4px solid #C5221F; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 24px; margin-bottom: 32px; border: 1px solid #E2E8F0; border-top-left-radius: 0; border-bottom-left-radius: 0;">
+<section style="background: #F8FAFC; border-left: 4px solid #C5221F; border-radius: 12px; padding: 16px 20px; margin-bottom: 32px; border-top-left-radius: 0; border-bottom-left-radius: 0;">
 <h3 id="tldr" style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;"> <span>⚡</span> TL;DR </h3>
 <ul style="margin: 0; padding-left: 20px; color: #334155; font-size: 1.1rem; line-height: 1.6; display: flex; flex-direction: column; gap: 8px;">
 <li><strong style="color: #0F172A;">MCP is an open standard</strong> that lets AI models connect to outside tools and data sources.</li>
@@ -41,7 +41,6 @@ cover: "/mcp-blog-cover.jpg"
 <!-- MAIN CONTENT -->
 <div class="blog-content" style="display: flex; flex-direction: column; gap: var(--spacing-32); line-height: 1.8; font-size: 1.1rem; color: var(--color-body);">
 <article class="os-article-content">
-<section style="background: #ffffff; padding: 32px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #E2E8F0;">
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">To really understand how MCP works, it helps to break it down into its three main components. This part sounds technical, but stick with it, because these three pieces explain almost everything you need to know.</p>
 
 <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
@@ -138,7 +137,7 @@ cover: "/mcp-blog-cover.jpg"
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">The trajectory of AI over the past several years has moved steadily from pure text generation toward genuine action taking. Early large language models were valued for what they could say. The current generation is increasingly valued for what they can do how many real tasks they can complete without a human needing to manually bridge the gap between an AI's suggestion and an actual outcome.</p>
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">That shift depends entirely on infrastructure like MCP existing and continuing to mature. As more of the software world builds MCP servers, the practical ceiling on what an AI agent can accomplish keeps rising, not because the underlying models are getting smarter every single month, though they generally are, but because the range of real-world systems those models can reach keeps expanding.</p>
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">It's a reasonable bet that within the next couple of years, asking whether a business tool has an MCP server will feel about as natural as asking today whether it has an API, or a mobile app. It's quietly becoming one of those pieces of infrastructure that everyone eventually relies on without necessarily thinking about it every day, in the same way most people don't think about TCP/IP while sending an email, even though the entire internet depends on it working correctly in the background.</p>
-<p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">For businesses trying to figure out where to place their bets on AI adoption, the practical takeaway is straightforward. Platforms and tools built around open, widely adopted standards like MCP are generally a safer long-term investment than those built around closed, proprietary systems that lock you into one vendor's specific way of doing things. Open standards tend to win overtime, not because they're always the flashiest option on day one, but because they compound in value as more of the ecosystem adopts them.</p></section>
+<p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">For businesses trying to figure out where to place their bets on AI adoption, the practical takeaway is straightforward. Platforms and tools built around open, widely adopted standards like MCP are generally a safer long-term investment than those built around closed, proprietary systems that lock you into one vendor's specific way of doing things. Open standards tend to win overtime, not because they're always the flashiest option on day one, but because they compound in value as more of the ecosystem adopts them.</p>
 
 <section style="background: #ffffff; padding: 32px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-top: 32px; border: 1px solid #E2E8F0;">
 <h2 id="faq" class="os-h2" style="margin-top: 20px; margin-bottom: 32px; color: var(--color-heading); font-size: 1.75rem; font-weight: 800; text-align: center;">Frequently Asked Questions (FAQ)</h2>
