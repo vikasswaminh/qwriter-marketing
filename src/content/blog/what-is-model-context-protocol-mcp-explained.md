@@ -38,6 +38,34 @@ cover: "/mcp-blog-cover.jpg"
 </ul>
 </section>
 
+<!-- KEY TAKEAWAYS SECTION -->
+<section style="margin-bottom: 32px;">
+<h3 id="key-takeaways" style="font-size: 24px; font-weight: 800; color: #C5221F; margin-bottom: 16px;"> Key Takeaways </h3>
+<div style="display: flex; flex-direction: column; gap: 16px;">
+
+<div style="background: #ffffff; border: 1px solid #E2E8F0; border-left: 4px solid #C5221F; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 20px;">
+<h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">MCP Solves the Integration Bottleneck</h4>
+<p style="font-size: 1.1rem; line-height: 1.6; color: #334155; margin: 0;">Instead of writing custom code to connect an AI agent to every new tool, MCP allows agents to dynamically discover and use resources, standardizing how AI talks to software.</p>
+</div>
+
+<div style="background: #ffffff; border: 1px solid #E2E8F0; border-left: 4px solid #C5221F; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 20px;">
+<h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">It Separates the Host from the Server</h4>
+<p style="font-size: 1.1rem; line-height: 1.6; color: #334155; margin: 0;">The architecture uses a Host (the AI application) and a Client to connect to independent Servers (the tools/data sources), keeping operations clean, secure, and isolated.</p>
+</div>
+
+<div style="background: #ffffff; border: 1px solid #E2E8F0; border-left: 4px solid #C5221F; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 20px;">
+<h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">Servers Provide Tools, Resources, and Prompts</h4>
+<p style="font-size: 1.1rem; line-height: 1.6; color: #334155; margin: 0;">MCP servers expose Actions the AI can take, Data the AI can read, and Pre-built templates, giving the AI complete context on how to operate effectively.</p>
+</div>
+
+<div style="background: #ffffff; border: 1px solid #E2E8F0; border-left: 4px solid #C5221F; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 20px;">
+<h4 style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 8px;">Security and Trust Are Built-In</h4>
+<p style="font-size: 1.1rem; line-height: 1.6; color: #334155; margin: 0;">By standardizing the protocol, businesses can maintain control over what data and tools the AI can access, reducing the risk of agents acting outside their boundaries.</p>
+</div>
+
+</div>
+</section>
+
 <!-- MAIN CONTENT -->
 <div class="blog-content" style="display: flex; flex-direction: column; gap: var(--spacing-32); line-height: 1.8; font-size: 1.1rem; color: var(--color-body);">
 <article class="os-article-content">
