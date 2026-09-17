@@ -71,42 +71,40 @@ cover: "/mcp-blog-cover.jpg"
 <article class="os-article-content">
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">To really understand how MCP works, it helps to break it down into its three main components. This part sounds technical, but stick with it, because these three pieces explain almost everything you need to know.</p>
 
-<div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
-  <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; font-weight: 700; padding: 2px 10px; border-radius: 6px; white-space: nowrap; font-size: 0.95em;">Host</span>
-  <span> is the actual AI application the person is using. This could be a chat interface, a coding assistant, or an autonomous agent platform like OllaSuper. The host is the thing coordinating everything, the application the human is directly interacting with.</span>
-</div>
-
-
-<div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
-  <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; font-weight: 700; padding: 2px 10px; border-radius: 6px; white-space: nowrap; font-size: 0.95em;">Client</span>
-  <span> lives inside the host and manages the actual connection to a specific MCP server. Think of the client as a dedicated liaison. If the host wants to talk to three different tools, it typically spins up three different clients, one dedicated connection per tool, keeping each conversation clean and separate.</span>
-</div>
-
-
-<div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
-  <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; font-weight: 700; padding: 2px 10px; border-radius: 6px; white-space: nowrap; font-size: 0.95em;">Server</span>
-  <span> is the piece that exposes a tool or a data source to the outside world in the MCP format. A company that wants their database, their CRM, or their internal software to be usable by AI agents builds an MCP server for it. That server describes, in a structured way, exactly what it can do: what actions are available, what data can be retrieved, what parameters are required, and so on.</span>
-</div>
+<ul style="margin-bottom: 24px; padding-left: 20px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
+  <li style="margin-bottom: 12px;">
+    <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; padding: 2px 6px; border-radius: 4px; font-weight: 600;">Host</span>
+    is the actual AI application the person is using. This could be a chat interface, a coding assistant, or an autonomous agent platform like OllaSuper. The host is the thing coordinating everything, the application the human is directly interacting with.
+  </li>
+  <li style="margin-bottom: 12px;">
+    <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; padding: 2px 6px; border-radius: 4px; font-weight: 600;">Client</span>
+    lives inside the host and manages the actual connection to a specific MCP server. Think of the client as a dedicated liaison. If the host wants to talk to three different tools, it typically spins up three different clients, one dedicated connection per tool, keeping each conversation clean and separate.
+  </li>
+  <li style="margin-bottom: 12px;">
+    <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; padding: 2px 6px; border-radius: 4px; font-weight: 600;">Server</span>
+    is the piece that exposes a tool or a data source to the outside world in the MCP format. A company that wants their database, their CRM, or their internal software to be usable by AI agents builds an MCP server for it. That server describes, in a structured way, exactly what it can do: what actions are available, what data can be retrieved, what parameters are required, and so on.
+  </li>
+</ul>
 
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">Here's the flow in practice. Say an AI agent needs to check a customer's account status in CRM. The host, which is the AI application, uses its client to connect to the CRM's MCP server. The client asks the server, in MCP's standard format, "what can you do?" The server responds with a structured list of its available actions, things like "look up customer by email" or "list open support tickets." The AI model reads that list, decides which action fits the current task, and the client sends a formal request to the server asking it to perform that specific action. The server does the work, whether that's querying a database or calling an internal API, and sends the result back in a standardized format that the AI model can read and reason over.</p>
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">The genuinely clever part is that none of this requires the AI model to have been trained on that specific CRM ahead of time. The server describes its own capabilities on the fly. This means new tools can be added to an AI agent's toolkit without retraining the model at all. You're just giving it a new menu to read.</p>
 <h2 class="os-h2" style="margin-top: 40px; margin-bottom: 20px; color: var(--color-heading); font-size: 1.75rem; font-weight: 800;">The Three Things a Server Can Offer</h2>
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">MCP servers generally expose three types of things to a connected AI application, and understanding these three categories makes the whole system click into place.</p>
 
-<div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
-  <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; font-weight: 700; padding: 2px 10px; border-radius: 6px; white-space: nowrap; font-size: 0.95em;">Tools</span>
-  <span> are actions the AI can take. Sending an email, creating a calendar event, updating a record, running a search. These are the verbs. When people talk about an AI agent "taking action," this is almost always happening through a tool exposed by an MCP server.</span>
-</div>
-
-<div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
-  <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; font-weight: 700; padding: 2px 10px; border-radius: 6px; white-space: nowrap; font-size: 0.95em;">Resources</span>
-  <span> are pieces of data the AI can read. A document, a database table, a file, a webpage. These are more like the nouns; the raw material an AI model can pull in to inform its reasoning before it decides what to do next.</span>
-</div>
-
-<div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
-  <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; font-weight: 700; padding: 2px 10px; border-radius: 6px; white-space: nowrap; font-size: 0.95em;">Prompts</span>
-  <span> are pre-built templates that help guide how the AI approaches a particular task using that server's tools and resources. Think of these as suggested workflows baked directly into the server itself, so the AI doesn't have to figure out the best approach entirely from scratch every single time.</span>
-</div>
+<ul style="margin-bottom: 24px; padding-left: 20px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
+  <li style="margin-bottom: 12px;">
+    <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; padding: 2px 6px; border-radius: 4px; font-weight: 600;">Tools</span>
+    are actions the AI can take. Sending an email, creating a calendar event, updating a record, running a search. These are the verbs. When people talk about an AI agent "taking action," this is almost always happening through a tool exposed by an MCP server.
+  </li>
+  <li style="margin-bottom: 12px;">
+    <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; padding: 2px 6px; border-radius: 4px; font-weight: 600;">Resources</span>
+    are pieces of data the AI can read. A document, a database table, a file, a webpage. These are more like the nouns; the raw material an AI model can pull in to inform its reasoning before it decides what to do next.
+  </li>
+  <li style="margin-bottom: 12px;">
+    <span style="background: rgba(197, 34, 31, 0.1); color: #C5221F; padding: 2px 6px; border-radius: 4px; font-weight: 600;">Prompts</span>
+    are pre-built templates that help guide how the AI approaches a particular task using that server's tools and resources. Think of these as suggested workflows baked directly into the server itself, so the AI doesn't have to figure out the best approach entirely from scratch every single time.
+  </li>
+</ul>
 
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">Putting together, tools, resources, and prompts give an MCP server a complete way to describe not just what it can do, but how it should ideally be used. That's a subtle but important design choice, because it means the people who understand a piece of software best, the ones building the MCP server for it, get to bake their expertise directly into the protocol layer.</p>
 <h2 class="os-h2" style="margin-top: 40px; margin-bottom: 20px; color: var(--color-heading); font-size: 1.75rem; font-weight: 800;">MCP vs Traditional APIs: What's Different</h2>
@@ -135,10 +133,20 @@ cover: "/mcp-blog-cover.jpg"
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">Here's something that doesn't get talked about enough in a lot of MCP explainers, and it's genuinely important, especially for any business thinking about deploying AI agents that can take real action rather than just offering suggestions.</p>
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">Giving an AI model the ability to do things, rather than just talk about them, is a meaningful responsibility. An AI agent that can send emails, update financial records, or modify a database is an agent that can cause real damage if it misunderstands a task, hallucinates a detail, or is manipulated by malicious input hidden inside a document it was asked to read.</p>
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">MCP itself, as a protocol, doesn't automatically solve this. It's a communication standard, not a safety system. The responsibility for building proper guardrails sits with the platform implementing MCP, not the protocol itself.This is where thoughtful platforms differ. Good practice generally involves a few key principles.</p>
-<p style="margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155; padding-left: 16px; border-left: 4px solid #E2E8F0;">First, distinguishing clearly between read-only actions and actions that change something in the real world. Reading a database to gather information is low risk. Sending four hundred emails to real prospects, or executing a financial transaction, is a completely different risk tier, and should be treated that way.</p>
-<p style="margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155; padding-left: 16px; border-left: 4px solid #E2E8F0;">Second, requiring explicit human approval for higher risk actions before they execute. This is often called human-in-the-loop governance, and it's a design philosophy where an AI agent can autonomously research, draft, and plan around the clock, but a person still must click approve before anything with real world consequences goes out the door. This isn't a limitation bolted on because the AI can't be trusted at all. It's a sensible acknowledgment that autonomy and accountability need to scale together, especially in the early years of a technology this powerful.</p>
-<p style="margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155; padding-left: 16px; border-left: 4px solid #E2E8F0;">Third, maintaining detailed, immutable logs of exactly what an agent did, which tools it called, what data it accessed, and what decisions led to each action. This kind of audit trail matters enormously for businesses in regulated industries, and honestly for any business that wants to sleep well at night knowing they can trace back exactly what their AI workforce has been doing.</p>
-<p style="margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155; padding-left: 16px; border-left: 4px solid #E2E8F0;">Fourth, scoping permissions tightly. An MCP server connected to a financial system shouldn't hand an AI agent unrestricted access to every function that system offers. Just like you wouldn't give a new employee access to everything on their first day, a well-configured MCP integration limits an agent to exactly the specific actions it needs for its role, nothing more.</p>
+<ul style="margin-bottom: 24px; padding-left: 20px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
+  <li style="margin-bottom: 12px;">
+    <span style="color: #C5221F; text-decoration: underline; font-weight: 600;">First, distinguishing clearly between read-only actions and actions that change something in the real world.</span> Reading a database to gather information is low risk. Sending four hundred emails to real prospects, or executing a financial transaction, is a completely different risk tier, and should be treated that way.
+  </li>
+  <li style="margin-bottom: 12px;">
+    <span style="color: #C5221F; text-decoration: underline; font-weight: 600;">Second, requiring explicit human approval for higher risk actions before they execute.</span> This is often called human-in-the-loop governance, and it's a design philosophy where an AI agent can autonomously research, draft, and plan around the clock, but a person still must click approve before anything with real world consequences goes out the door. This isn't a limitation bolted on because the AI can't be trusted at all. It's a sensible acknowledgment that autonomy and accountability need to scale together, especially in the early years of a technology this powerful.
+  </li>
+  <li style="margin-bottom: 12px;">
+    <span style="color: #C5221F; text-decoration: underline; font-weight: 600;">Third, maintaining detailed, immutable logs of exactly what an agent did.</span> This includes which tools it called, what data it accessed, and what decisions led to each action. This kind of audit trail matters enormously for businesses in regulated industries, and honestly for any business that wants to sleep well at night knowing they can trace back exactly what their AI workforce has been doing.
+  </li>
+  <li style="margin-bottom: 12px;">
+    <span style="color: #C5221F; text-decoration: underline; font-weight: 600;">Fourth, scoping permissions tightly.</span> An MCP server connected to a financial system shouldn't hand an AI agent unrestricted access to every function that system offers. Just like you wouldn't give a new employee access to everything on their first day, a well-configured MCP integration limits an agent to exactly the specific actions it needs for its role, nothing more.
+  </li>
+</ul>
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">If you're evaluating any platform built on MCP, these governance questions are worth asking directly. How are read-only actions separated from action-taking ones? What does the approval workflow look like for anything sensitive? What gets logged, and for how long? A platform that has clearly thought through these questions is a platform that understands the responsibility that comes with giving AI real hands to work with.</p>
 <h2 class="os-h2" style="margin-top: 40px; margin-bottom: 20px; color: var(--color-heading); font-size: 1.75rem; font-weight: 800;">How the MCP Ecosystem Has Grown</h2>
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">When Model Context Protocol was first introduced, it was, understandably, a small and early ecosystem. A handful of reference servers, a lot of curiosity from the developer community, and some healthy skepticism about whether yet another proposed standard would stick.</p>
@@ -147,10 +155,20 @@ cover: "/mcp-blog-cover.jpg"
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">This matters practically because it means the value of any platform built natively on MCP compounds over time. As more tools build MCP servers, platforms like OllaSuper that were architected around this protocol from the ground up automatically gain access to more of the software world, without needing to build and maintain each individual connector themselves. It's a rising tide that lifts every properly built MCP compatible boat, rather than a zero-sum race between vendors each building their own closed integration library.</p>
 <h2 class="os-h2" style="margin-top: 40px; margin-bottom: 20px; color: var(--color-heading); font-size: 1.75rem; font-weight: 800;">Common Misunderstandings Worth Clearing Up</h2>
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">A few misconceptions come up often enough that they're worth addressing directly.</p>
-<p style="margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155; padding-left: 16px; border-left: 4px solid #E2E8F0;">The first is thinking MCP is a specific product you buy. It's not. It's an open specification, similar in spirit to how HTTP is the open standard underlying how web browsers talk to websites. Nobody owns HTTP, and in the same way, nobody owns MCP. Anyone can build an MCP server or an MCP compatible application without paying a license fee or asking permission.</p>
-<p style="margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155; padding-left: 16px; border-left: 4px solid #E2E8F0;">The second is assuming MCP makes AI models smarter. It doesn't. MCP has nothing to do with a model's reasoning ability, its training data, or how well it writes or plans. What it does is give an already capable model access to fresh, real-world information and the ability to act on it. A brilliant model with no tool access is still stuck guessing based on what it already knows. A more modest model with well-designed MCP tool access can often outperform it on practical tasks, simply because it can go check reality instead of relying purely on memory.</p>
-<p style="margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155; padding-left: 16px; border-left: 4px solid #E2E8F0;">The third misconception is thinking MCP eliminates the need for careful platform design and governance. As covered above, the protocol standardizes communication, but the responsibility for safe, well-governed deployment still sits squarely with whoever is building the AI application on top of it. MCP being open and standardized doesn't mean every implementation of it is automatically safe or well designed.</p>
-<p style="margin-bottom: 16px; font-size: 1.1rem; line-height: 1.75; color: #334155; padding-left: 16px; border-left: 4px solid #E2E8F0;">The fourth is assuming MCP is only relevant for developers or highly technical teams. The entire point of MCP for a business leader is that it makes AI agents cheaper and faster to deploy for real operational work. You don't need to understand the protocol's technical details to benefit from a platform that's built well on top of it, in the same way you don't need to understand how USB works to plug in a mouse.</p>
+<ul style="margin-bottom: 24px; padding-left: 20px; font-size: 1.1rem; line-height: 1.75; color: #334155;">
+  <li style="margin-bottom: 12px;">
+    <span style="color: #C5221F; text-decoration: underline; font-weight: 600;">The first is thinking MCP is a specific product you buy.</span> It's not. It's an open specification, similar in spirit to how HTTP is the open standard underlying how web browsers talk to websites. Nobody owns HTTP, and in the same way, nobody owns MCP. Anyone can build an MCP server or an MCP compatible application without paying a license fee or asking permission.
+  </li>
+  <li style="margin-bottom: 12px;">
+    <span style="color: #C5221F; text-decoration: underline; font-weight: 600;">The second is assuming MCP makes AI models smarter.</span> It doesn't. MCP has nothing to do with a model's reasoning ability, its training data, or how well it writes or plans. What it does is give an already capable model access to fresh, real-world information and the ability to act on it. A brilliant model with no tool access is still stuck guessing based on what it already knows. A more modest model with well-designed MCP tool access can often outperform it on practical tasks, simply because it can go check reality instead of relying purely on memory.
+  </li>
+  <li style="margin-bottom: 12px;">
+    <span style="color: #C5221F; text-decoration: underline; font-weight: 600;">The third misconception is thinking MCP eliminates the need for careful platform design and governance.</span> As covered above, the protocol standardizes communication, but the responsibility for safe, well-governed deployment still sits squarely with whoever is building the AI application on top of it. MCP being open and standardized doesn't mean every implementation of it is automatically safe or well designed.
+  </li>
+  <li style="margin-bottom: 12px;">
+    <span style="color: #C5221F; text-decoration: underline; font-weight: 600;">The fourth is assuming MCP is only relevant for developers or highly technical teams.</span> The entire point of MCP for a business leader is that it makes AI agents cheaper and faster to deploy for real operational work. You don't need to understand the protocol's technical details to benefit from a platform that's built well on top of it, in the same way you don't need to understand how USB works to plug in a mouse.
+  </li>
+</ul>
 <h2 class="os-h2" style="margin-top: 40px; margin-bottom: 20px; color: var(--color-heading); font-size: 1.75rem; font-weight: 800;">What This Means If You're Choosing an AI Agent Platform</h2>
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">If you're a business owner or operator evaluating AI agent platforms right now, here are the practical questions this whole explanation should leave you equipped to ask.</p>
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">Is the platform built natively on an open standard like MCP, or does it rely on a closed, proprietary integration system that only that vendor controls? Native MCP support generally means faster access to a growing library of tools and less risk of being stuck waiting on a vendor's roadmap for a connector you need today.</p>
