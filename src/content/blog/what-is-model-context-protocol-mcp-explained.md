@@ -24,14 +24,13 @@ cover: "/mcp-blog-cover.jpg"
 <p class="os-lead" style="max-width: 820px; margin-bottom: 28px; font-size: 18px; line-height: 1.6; color: #475569;">A non-technical explanation of the Model Context Protocol (MCP), how it works, and why it is the defining infrastructure for the next generation of AI agents.</p>
 </header>
 
-<div class="blog-layout-grid" style="display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; align-items: start;">
-<div class="blog-content-column" style="min-width: 0;">
+<div class="blog-layout-grid">
+<aside class="blog-sidebar" id="left-sidebar-placeholder"></aside>
+<div class="blog-main-column">
 
 <!-- TLDR SECTION -->
-<section style="background: #ffffff; padding: 24px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 32px; border: 1px solid #E2E8F0;">
-<h2 style="font-size: 20px; font-weight: 700; color: #0F172A; margin-bottom: 12px; margin-top: 0; display: flex; align-items: center; gap: 8px;">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C5221F" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg> TL;DR
-</h2>
+<section style="background: #ffffff; border-left: 4px solid #C5221F; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 24px; margin-bottom: 32px; border: 1px solid #E2E8F0; border-top-left-radius: 0; border-bottom-left-radius: 0;">
+<h3 id="tldr" style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;"> <span>⚡</span> TL;DR </h3>
 <ul style="margin: 0; padding-left: 20px; color: #334155; font-size: 1.1rem; line-height: 1.6; display: flex; flex-direction: column; gap: 8px;">
 <li><strong style="color: #0F172A;">MCP is an open standard</strong> that lets AI models connect to outside tools and data sources.</li>
 <li><strong style="color: #0F172A;">It eliminates custom integration work</strong> by allowing AI agents to discover what a tool can do at runtime.</li>
@@ -40,6 +39,8 @@ cover: "/mcp-blog-cover.jpg"
 </section>
 
 <!-- MAIN CONTENT -->
+<div class="blog-content" style="display: flex; flex-direction: column; gap: var(--spacing-32); line-height: 1.8; font-size: 1.1rem; color: var(--color-body);">
+<article class="os-article-content">
 <section style="background: #ffffff; padding: 32px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #E2E8F0;">
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">To really understand how MCP works, it helps to break it down into its three main components. This part sounds technical, but stick with it, because these three pieces explain almost everything you need to know.</p>
 
@@ -223,29 +224,7 @@ cover: "/mcp-blog-cover.jpg"
 </div>
 <div style="text-align: center;"> <a href="https://ollasuper.com/" style="display: inline-block; background: #cf2121; color: white; padding: 10px 24px; border-radius: 6px; font-weight: 600; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 12px rgba(207, 33, 33, 0.2); font-size: 0.95rem; height: 42px; line-height: 22px;">Explore Enterprise AI</a> </div> 
 </section>
-
 </div>
-
-<!-- SIDEBAR -->
-<div class="blog-sidebar-column" style="position: sticky; top: 120px; display: flex; flex-direction: column; gap: 24px;">
-  <!-- OllaSuper Promo -->
-  <div style="background: var(--bg-blue-tint); border: 1px solid var(--border-light); border-radius: 12px; padding: 24px;">
-    <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-top: 0; margin-bottom: 12px;">Deploy Your AI Workforce</h3>
-    <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
-      OllaSuper is the enterprise platform for building and managing intelligent AI employees that execute real work.
-    </p>
-    <a href="/demo" class="os-btn os-btn-primary" style="width: 100%; display: flex; justify-content: center; height: 38px; line-height: 38px; padding: 0;">Book a Demo</a>
-  </div>
-  
-  <!-- Related Articles -->
-  <div style="background: var(--bg-blue-tint); border: 1px solid var(--border-light); border-radius: 12px; padding: 24px;">
-    <h3 style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-top: 0; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em;">Related Articles</h3>
-    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
-      <li><a href="/blog/ai-agent-frameworks-complete-guide" style="font-size: 14px; color: var(--blue-primary); text-decoration: none; font-weight: 600; line-height: 1.4; display: block;">AI Agent Frameworks: The Complete Guide</a></li>
-      <li><a href="/blog/what-is-an-ai-workforce" style="font-size: 14px; color: var(--blue-primary); text-decoration: none; font-weight: 600; line-height: 1.4; display: block;">What is an AI Workforce?</a></li>
-      <li><a href="/blog/how-to-build-an-ai-agent-for-your-business-step-by-step-guide" style="font-size: 14px; color: var(--blue-primary); text-decoration: none; font-weight: 600; line-height: 1.4; display: block;">How to Build an AI Agent for Your Business</a></li>
-    </ul>
-  </div>
 </div>
 </div>
 </article>
