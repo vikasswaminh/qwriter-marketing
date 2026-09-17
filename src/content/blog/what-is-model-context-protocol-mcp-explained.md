@@ -29,7 +29,7 @@ cover: "/mcp-blog-cover.jpg"
 <div class="blog-main-column">
 
 <!-- TLDR SECTION -->
-<section style="background: #F8FAFC; border-left: 4px solid #C5221F; border-radius: 12px; padding: 16px 20px; margin-bottom: 32px; border-top-left-radius: 0; border-bottom-left-radius: 0;">
+<section style="background: #ffffff; border: 1px solid #E2E8F0; border-left: 4px solid #C5221F; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 24px; margin-bottom: 32px;">
 <h3 id="tldr" style="font-size: 18px; font-weight: 800; color: #C5221F; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;"> <span>⚡</span> TL;DR </h3>
 <ul style="margin: 0; padding-left: 20px; color: #334155; font-size: 1.1rem; line-height: 1.6; display: flex; flex-direction: column; gap: 8px;">
 <li><strong style="color: #0F172A;">MCP is an open standard</strong> that lets AI models connect to outside tools and data sources.</li>
