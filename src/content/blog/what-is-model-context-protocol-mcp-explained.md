@@ -183,6 +183,7 @@ cover: "/mcp-blog-cover.jpg"
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">It's a reasonable bet that within the next couple of years, asking whether a business tool has an MCP server will feel about as natural as asking today whether it has an API, or a mobile app. It's quietly becoming one of those pieces of infrastructure that everyone eventually relies on without necessarily thinking about it every day, in the same way most people don't think about TCP/IP while sending an email, even though the entire internet depends on it working correctly in the background.</p>
 <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.75; color: #334155;">For businesses trying to figure out where to place their bets on AI adoption, the practical takeaway is straightforward. Platforms and tools built around open, widely adopted standards like MCP are generally a safer long-term investment than those built around closed, proprietary systems that lock you into one vendor's specific way of doing things. Open standards tend to win overtime, not because they're always the flashiest option on day one, but because they compound in value as more of the ecosystem adopts them.</p>
 </article>
+</div>
 
 <section class="os-faq" style="padding: 40px; background: #ffffff; border: 1px solid var(--color-border); border-radius: 10px; box-shadow: var(--shadow-sm); margin-top: 40px;">
 <h2 id="faq" class="os-h2" style="margin-top: 0px;  margin-bottom: 32px; color: var(--color-heading); font-size: 1.75rem; font-weight: 800;">Frequently Asked Questions (FAQ)</h2>
@@ -278,12 +279,16 @@ cover: "/mcp-blog-cover.jpg"
 </div>
 </section>
 
-<section style="background: #ffffff; padding: 32px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-top: 32px; border: 1px solid #E2E8F0;">
-<h2 id="bringing-it-together" style="font-size: 28px; font-weight: 800; color: #0F172A; margin-top: 8px; margin-bottom: 16px; text-align: center;">Bringing It Together</h2>
-<div style="font-size: 1.1rem; line-height: 1.75; color: #334155; margin-bottom: 28px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
-<p style="margin-bottom: 16px;">Model Context Protocol may sound like unglamorous plumbing, but it's the critical infrastructure that turns AI from a clever conversationalist into a genuinely useful digital employee.</p><p style="margin-bottom: 16px;">The next time you evaluate an AI product, ask how it connects to your tools. Open standards like MCP mean it's built to scale with a growing ecosystem. Closed, one-off integrations mean you'll always be playing catch-up.</p><p style="margin-bottom: 16px;">That distinction is exactly what separates interesting AI demos from AI systems that actually run your business.</p>
+<section class="os-card" style="background: #ffffff; border: 1px solid var(--color-border); border-left: 5px solid var(--color-primary); padding: 8px 12px; border-radius: var(--radius-md); margin-top: 24px; box-shadow: var(--shadow-sm);">
+<h2 id="bringing-it-together" class="os-h2" style="margin-bottom: 12px; color: var(--color-heading); font-size: 1.75rem; font-weight: 800; text-align: center !important;"> Bringing It All Together </h2>
+<div style="display: flex; flex-direction: column; gap: 16px; color: var(--color-body); font-size: 1.1rem; line-height: 1.7;">
+<p class="html-content" style="margin: 0; text-align: center;">Model Context Protocol may sound like unglamorous plumbing, but it's the critical infrastructure that turns AI from a clever conversationalist into a genuinely useful digital employee.</p>
+<p class="html-content" style="margin: 0; text-align: center;">The next time you evaluate an AI product, ask how it connects to your tools. Open standards like MCP mean it's built to scale with a growing ecosystem. Closed, one-off integrations mean you'll always be playing catch-up.</p>
+<p class="html-content" style="margin: 0; text-align: center;">That distinction is exactly what separates interesting AI demos from AI systems that actually run your business.</p>
 </div>
-<div style="text-align: center;"> <a href="https://ollasuper.com/" style="display: inline-block; background: #cf2121; color: white; padding: 10px 24px; border-radius: 6px; font-weight: 600; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 12px rgba(207, 33, 33, 0.2); font-size: 0.95rem; height: 42px; line-height: 22px;">Explore Enterprise AI</a> </div> 
+<div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: 32px;">
+<a href="https://ollasuper.com/" class="os-btn os-btn-primary" style="background: #cf2121; display: inline-flex; align-items: center; justify-content: center; text-align: center; font-weight: 700; padding: 10px 24px; height: 42px; font-size: 0.95rem; box-shadow: 0 6px 20px rgba(207, 33, 33, 0.4); border-radius: 8px; text-decoration: none; color: #ffffff !important;">Explore Enterprise AI →</a>
+</div>
 </section>
 
 </div>
