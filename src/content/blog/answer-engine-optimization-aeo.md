@@ -207,11 +207,11 @@ seoKeywords: ["answer engine optimization", "AEO", "how to rank in AI search", "
 </section>
 
 <section class="os-card" style="background: #ffffff; border: 1px solid var(--color-border); border-left: 5px solid var(--color-primary); padding: 40px; border-radius: 12px; margin-top: 40px; box-shadow: var(--shadow-sm);">
-<h2 id="wrapping-up" class="os-h2" style="margin-top: 0px; margin-bottom: 24px; color: var(--color-heading); font-size: 1.75rem; font-weight: 800; text-align: left !important;"> Wrapping Up </h2>
+<h2 id="wrapping-up" class="os-h2" style="margin-top: 0px; margin-bottom: 24px; color: var(--color-heading); font-size: 1.75rem; font-weight: 800; text-align: center !important;"> Wrapping Up </h2>
 <div style="display: flex; flex-direction: column; gap: 16px; color: var(--color-body); font-size: 1.1rem; line-height: 1.75;">
-<p class="html-content" style="margin: 0; text-align: left;">Answer Engine Optimization (AEO) requires a fundamental shift from traditional SEO strategies. To rank in AI search results, you must answer questions directly, structure data cleanly for machines, and build consistent brand authority across the web. Master these AEO practices, and your brand will become the trusted source that AI engines consistently recommend to your buyers.</p>
+<p class="html-content" style="margin: 0; text-align: center;">Answer Engine Optimization (AEO) requires a fundamental shift from traditional SEO strategies. To rank in AI search results, you must answer questions directly, structure data cleanly for machines, and build consistent brand authority across the web. Master these AEO practices, and your brand will become the trusted source that AI engines consistently recommend to your buyers.</p>
 </div>
-<div style="display: flex; justify-content: flex-start; align-items: center; width: 100%; margin-top: 32px;">
+<div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: 32px;">
 <a href="https://ollasuper.com/" class="os-btn os-btn-primary" style="background: #cf2121; display: inline-flex; align-items: center; justify-content: center; text-align: center; font-weight: 700; padding: 10px 24px; height: 42px; font-size: 0.95rem; box-shadow: 0 6px 20px rgba(207, 33, 33, 0.4); border-radius: 8px; text-decoration: none; color: #ffffff !important;">See how OllaSuper's Marketing Employee can audit your content →</a>
 </div>
 </section>
